@@ -1,0 +1,1364 @@
+<!-- 
+Performance notes:
+1. Images should be compressed and converted to WebP format
+2. Consider using image CDN for responsive image delivery
+3. External resources should be minified and combined
+4. Enable HTTP/2 on server for parallel resource loading
+5. Add server-side caching with appropriate cache headers
+6. Consider using compression algorithms like Brotli instead of gzip
+7. Enable preloading for critical resources 
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aditto Ahosan Kabbo - Data Analyst & Statistics Student</title>
+    <!-- Preconnect to external domains to improve loading -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Load critical CSS first -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Inline critical CSS -->
+    <style>
+        /* Critical path CSS for initial rendering */
+        body {margin: 0; font-family: 'Roboto', sans-serif;}
+        .navbar {position: fixed; top: 0; left: 0; width: 100%; background-color: #ffffff; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); z-index: 1000; padding: 15px 0;}
+        .container {max-width: 1200px; margin: 0 auto; padding: 0 20px;}
+    </style>
+    <!-- Preload hero image -->
+    <link rel="preload" href="images/profile.png" as="image">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="#home">AK</a>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="hero">
+        <div class="particles-js" id="particles-js"></div>
+        <div class="hero-background">
+            <div class="animated-shape shape1"></div>
+            <div class="animated-shape shape2"></div>
+            <div class="animated-shape shape3"></div>
+            <div class="animated-shape shape4"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-layout">
+                    <div class="hero-text">
+                        <div class="hero-intro">Hello, I'm</div>
+                        <h1>Aditto Ahosan Kabbo</h1>
+                        <div class="typing-container">
+                            
+                            <span id="typed-strings">
+                                <span>Aspiring Data Analyst</span>
+                                <span>Data Visualization Expert</span>
+                                <span>Statistician</span>
+                                <span>Problem Solver</span>
+                            </span>
+                            <span id="typed" class="typed"></span>
+                        </div>
+                        <p class="tagline">Transforming Complex Data into <span class="highlight">Actionable Insights</span></p>
+                        
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">5+</div>
+                                <div class="stat-label">Projects</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">7+</div>
+                                <div class="stat-label">Technologies</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">2+</div>
+                                <div class="stat-label">Years</div>
+                            </div>
+                        </div>
+                        
+                        <div class="hero-btns">
+                            <a href="#contact" class="btn primary-btn">Contact Me <i class="fas fa-paper-plane"></i></a>
+                            <a href="#projects" class="btn secondary-btn">View My Work <i class="fas fa-project-diagram"></i></a>
+                        </div>
+                        <div class="social-links">
+                            <a href="https://linkedin.com/in/adittoahosankabbo" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://github.com/AdittoAhosanKabbo" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="https://kaggle.com/adittoahosankabbo" target="_blank" aria-label="Kaggle"><i class="fab fa-kaggle"></i></a>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <div class="profile-frame"></div>
+                        <div class="profile-image-container">
+                            <img data-src="images/profile.png" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23f0f0f0'/%3E%3C/svg%3E" alt="Aditto Ahosan Kabbo" class="profile-image">
+                        </div>
+                        <div class="floating-badge data-badge">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="floating-badge stats-badge">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <div class="floating-badge python-badge">
+                            <i class="fab fa-python"></i>
+                        </div>
+                        <div class="floating-badge excel-badge">
+                            <i class="fas fa-table"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-down">
+            <div class="mouse">
+                <div class="mouse-wheel"></div>
+            </div>
+            <span class="scroll-text">Scroll Down</span>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-info">
+                    <div class="section-icon">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <p>I am a passionate <span class="highlight-text">Data Enthusiast</span> currently pursuing a Bachelor's degree in Statistics with strong analytical skills. Proficient in transforming raw data into actionable insights using <span class="highlight-text">Power BI</span>, <span class="highlight-text">SQL</span>, <span class="highlight-text">Python</span>, <span class="highlight-text">R</span>, and advanced Excel.</p>
+                    <p>Seeking opportunities to apply <span class="highlight-text">statistical knowledge</span> and <span class="highlight-text">data analysis expertise</span> in a professional setting. I'm driven by the challenges of extracting meaningful patterns from complex datasets and communicating those findings effectively.</p>
+                    <div class="personal-details">
+                        <div class="detail-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Rajshahi, Bangladesh</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>aditahosankabbo@gmail.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+880 1749 018051</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-interests">
+                    <div class="section-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Interest Areas</h3>
+                    <div class="interest-tags">
+                        <span>Data Analysis</span>
+                        <span>Statistical Modeling</span>
+                        <span>Data Visualization</span>
+                        <span>Machine Learning</span>
+                        <span>Predictive Analytics</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="shape-divider">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Data Analysis & Visualization</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-icon"><i class="fas fa-chart-line"></i></div>
+                            <h4>Power BI</h4>
+                            <p>Dashboard Creation, Data Modeling, DAX Formulas</p>
+                            <div class="skill-level" style="--skill-progress: 0.9"></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon"><i class="fas fa-table"></i></div>
+                            <h4>Excel/Google Sheets</h4>
+                            <p>Advanced Functions, Pivot Tables, Data Analysis</p>
+                            <div class="skill-level" style="--skill-progress: 0.95"></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon"><i class="fab fa-python"></i></div>
+                            <h4>Python</h4>
+                            <p>Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn</p>
+                            <div class="skill-level" style="--skill-progress: 0.85"></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon"><i class="fab fa-r-project"></i></div>
+                            <h4>R</h4>
+                            <p>Statistical Analysis and Visualization</p>
+                            <div class="skill-level" style="--skill-progress: 0.8"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Database & Statistical Methods</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-icon"><i class="fas fa-database"></i></div>
+                            <h4>SQL</h4>
+                            <p>Data Querying, Database Management, MS SQL Server</p>
+                            <div class="skill-level" style="--skill-progress: 0.85"></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon"><i class="fas fa-calculator"></i></div>
+                            <h4>SPSS</h4>
+                            <p>Statistical Analysis, Hypothesis Testing, Regression</p>
+                            <div class="skill-level" style="--skill-progress: 0.75"></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon"><i class="fas fa-square-root-alt"></i></div>
+                            <h4>Statistical Methods</h4>
+                            <p>Hypothesis Testing, Regression, Time Series Analysis</p>
+                            <div class="skill-level" style="--skill-progress: 0.8"></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon"><i class="fas fa-code-branch"></i></div>
+                            <h4>Development Tools</h4>
+                            <p>Git, GitHub, Jupyter, VS Code, Kaggle</p>
+                            <div class="skill-level" style="--skill-progress: 0.7"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="shape-divider bottom-divider">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education-section">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Bachelor of Science in Statistics</h3>
+                        <h4>Pabna University of Science and Technology</h4>
+                        <p class="timeline-date">Expected Graduation: 2026</p>
+                        <p>Pursuing a comprehensive education in Statistical Methods, Data Analysis, and Research Methodologies. Focusing on developing analytical skills and expertise in statistical software tools.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Data Analysis with R Programming</h3>
+                        <h4>Google (Coursera)</h4>
+                        <p class="timeline-date">Completed: July 2023</p>
+                        <p>Gained expertise in R programming for data analysis, including data visualization, fundamentals of R programming, and R Markdown for structured reporting. <a href="https://www.coursera.org/account/accomplishments/verify/9WFH7KS9QLH6" target="_blank"><i class="fas fa-certificate"></i> View Certificate</a></p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Crash Course on Python</h3>
+                        <h4>Google (Coursera)</h4>
+                        <p class="timeline-date">Completed: August 2023</p>
+                        <p>Developed Python programming skills for automation, including writing scripts and creating Python objects.<br> <a href="https://www.coursera.org/account/accomplishments/verify/J72QQWLZZ2UV" target="_blank"><i class="fas fa-certificate"></i> View Certificate</a></p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Excel for Data Analysis</h3>
+                        <h4>Udemy</h4>
+                        <p class="timeline-date">Completed: 2022</p>
+                        <p>Comprehensive course covering advanced Excel techniques for data analysis and visualization. <br><a href="https://www.udemy.com/certificate/UC-761a5b3c-2f32-437f-b00a-1b2170cc8385/" target="_blank"><i class="fas fa-certificate"></i> View Certificate</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="shape-divider bottom-divider">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <p class="section-description">Here are some of my data visualization projects and interactive dashboards.</p>
+            
+            <!-- Data Visualization Section -->
+            <div class="dataviz-section">
+                <h3 class="dataviz-section__title">Data Visualization</h3>
+                <p class="dataviz-section__description">Interactive dashboards and visualizations showcasing my data analysis expertise.</p>
+                
+                <!-- Filter Dropdown -->
+                <div class="dataviz-filter">
+                    <label for="dataviz-filter-select">Filter by tool:</label>
+                    <select id="dataviz-filter-select" class="dataviz-filter__select">
+                        <option value="all">Show All</option>
+                        <option value="tableau">Tableau</option>
+                        <option value="powerbi">Power BI</option>
+                        <option value="d3">D3.js</option>
+                    </select>
+                </div>
+                
+                <!-- Tabs Navigation -->
+                <div class="dataviz-tabs">
+                    <button class="dataviz-tabs__button active" data-tab="customer-segmentation" data-tool="powerbi">
+                        <i class="fas fa-boxes"></i>
+                        <span>Inventory Management</span>
+                    </button>
+                    <button class="dataviz-tabs__button" data-tab="market-trends" data-tool="d3">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Market Trends</span>
+                    </button>
+                    <button class="dataviz-tabs__button" data-tab="sales-dashboard" data-tool="tableau">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Sales Dashboard</span>
+                    </button>
+                    <button class="dataviz-tabs__button" data-tab="covid-analysis" data-tool="tableau">
+                        <i class="fas fa-virus"></i>
+                        <span>COVID-19 Analysis</span>
+                    </button>
+                </div>
+                
+                <!-- Tab Content -->
+                <div class="dataviz-content">
+                    <!-- Inventory Management Tab -->
+                    <div id="customer-segmentation" class="dataviz-content__panel active" data-tool="powerbi">
+                        <div class="dataviz-card">
+                            <div class="dataviz-card__header">
+                                <h4 class="dataviz-card__title">Inventory Management Dashboard</h4>
+                                <button class="dataviz-card__expand-btn" aria-label="View fullscreen">
+                                    <i class="fas fa-expand-alt"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="dataviz-card__frame-container">
+                                <div class="dataviz-card__loading">
+                                    <div class="dataviz-card__spinner"></div>
+                                    <span>Loading dashboard...</span>
+                                </div>
+                                <div class="dataviz-card__iframe-wrapper">
+                                    <iframe 
+                                        data-src="https://app.powerbi.com/view?r=eyJrIjoiMTc3MDA2N2UtYmU3Mi00ZjFiLWExNWEtMWE5NDI4NjYxNmJhIiwidCI6IjQ2NTRiNmYxLTBlNDctNDU3OS1hOGExLTAyZmU5ZDk0M2M3YiIsImMiOjl9"
+                                        class="dataviz-card__iframe" 
+                                        title="Inventory Management Dashboard"
+                                        loading="lazy"
+                                        frameborder="0" 
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                            </div>
+                            
+                            <div class="dataviz-card__info">
+                                <div class="dataviz-card__goal">
+                                    <h5>Goal</h5>
+                                    <p>The goal of this project is to improve inventory management by analyzing data to optimize stock levels, boost supplier performance, and increase warehouse efficiency.</p>
+                                </div>
+                                <div class="dataviz-card__tools">
+                                    <h5>Tools</h5>
+                                    <div class="dataviz-card__tool-tags">
+                                        <span>Power BI</span>
+                                        <span>SQL</span>
+                                        <span>DAX</span>
+                                    </div>
+                                </div>
+                                <div class="dataviz-card__findings">
+                                    <h5>Key Findings</h5>
+                                    <ul>
+                                        <li>📊 Critical shortages: 263 products need urgent restocking (7,115 units), while 774 are out of stock—some delayed 216 days.</li>
+                                        <li>⏱️ Supply bottlenecks: Longest lead time is 17.3 days (Supplier SUP0041), with restocking peaking in May/October (460+ products).
+ 
+</li>
+                                        <li>💰 High-value demand: Top products cost (995–999) (Books/Electronics), while Clothing turnover hits 74.25x, signaling rapid sales</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Market Trends Tab -->
+                    <div id="market-trends" class="dataviz-content__panel" data-tool="d3">
+                        <div class="dataviz-card">
+                            <div class="dataviz-card__header">
+                                <h4 class="dataviz-card__title">Market Trend Analysis</h4>
+                                <button class="dataviz-card__expand-btn" aria-label="View fullscreen">
+                                    <i class="fas fa-expand-alt"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="dataviz-card__frame-container">
+                                <div class="dataviz-card__loading">
+                                    <div class="dataviz-card__spinner"></div>
+                                    <span>Loading dashboard...</span>
+                                </div>
+                                <div class="dataviz-card__iframe-wrapper">
+                                    <iframe 
+                                        data-src="https://observablehq.com/embed/@d3/multi-line-chart?cells=chart"
+                                        class="dataviz-card__iframe" 
+                                        title="Market Trend Analysis"
+                                        loading="lazy"
+                                        frameborder="0" 
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                            </div>
+                            
+                            <div class="dataviz-card__info">
+                                <div class="dataviz-card__goal">
+                                    <h5>Goal</h5>
+                                    <p>Visualize 5-year market growth trends across different product categories and regions.</p>
+                                </div>
+                                <div class="dataviz-card__tools">
+                                    <h5>Tools</h5>
+                                    <div class="dataviz-card__tool-tags">
+                                        <span>D3.js</span>
+                                        <span>JavaScript</span>
+                                        <span>CSS</span>
+                                    </div>
+                                </div>
+                                <div class="dataviz-card__findings">
+                                    <h5>Key Findings</h5>
+                                    <ul>
+                                        <li>Emerging markets growing 3.2x faster than established markets</li>
+                                        <li>Digital product sales show consistent upward trend across all quarters</li>
+                                        <li>Seasonal variations decreased over time, indicating more stable demand</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Sales Dashboard Tab -->
+                    <div id="sales-dashboard" class="dataviz-content__panel" data-tool="tableau">
+                        <div class="dataviz-card">
+                            <div class="dataviz-card__header">
+                                <h4 class="dataviz-card__title">E-Commerce Sales Performance</h4>
+                                <button class="dataviz-card__expand-btn" aria-label="View fullscreen">
+                                    <i class="fas fa-expand-alt"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="dataviz-card__frame-container">
+                                <div class="dataviz-card__loading">
+                                    <div class="dataviz-card__spinner"></div>
+                                    <span>Loading dashboard...</span>
+                                </div>
+                                <div class="dataviz-card__iframe-wrapper">
+                                    <iframe 
+                                        data-src="https://public.tableau.com/views/SuperstoreSalesDashboard_16799261231180/SalesDashboard?:language=en-US&:display_count=n&:origin=viz_share_link"
+                                        class="dataviz-card__iframe" 
+                                        frameborder="0" 
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                            </div>
+                            
+                            <div class="dataviz-card__info">
+                                <div class="dataviz-card__goal">
+                                    <h5>Goal</h5>
+                                    <p>Track regional sales performance and product category profitability with interactive drill-down capabilities.</p>
+                                </div>
+                                <div class="dataviz-card__tools">
+                                    <h5>Tools</h5>
+                                    <div class="dataviz-card__tool-tags">
+                                        <span>Tableau</span>
+                                        <span>SQL</span>
+                                        <span>Excel</span>
+                                    </div>
+                                </div>
+                                <div class="dataviz-card__findings">
+                                    <h5>Key Findings</h5>
+                                    <ul>
+                                        <li>Sales increased by 24% in Q4 compared to the previous year</li>
+                                        <li>Technology category has the highest profit margin at 32%</li>
+                                        <li>Western region leads in overall revenue contribution</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- COVID-19 Analysis Tab -->
+                    <div id="covid-analysis" class="dataviz-content__panel" data-tool="tableau">
+                        <div class="dataviz-card">
+                            <div class="dataviz-card__header">
+                                <h4 class="dataviz-card__title">COVID-19 Global Trends</h4>
+                                <button class="dataviz-card__expand-btn" aria-label="View fullscreen">
+                                    <i class="fas fa-expand-alt"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="dataviz-card__frame-container">
+                                <div class="dataviz-card__loading">
+                                    <div class="dataviz-card__spinner"></div>
+                                    <span>Loading dashboard...</span>
+                                </div>
+                                <div class="dataviz-card__iframe-wrapper">
+                                    <iframe 
+                                        data-src="https://public.tableau.com/views/COVID-19GlobalVaccineTracker/GlobalVaccineTracker?:language=en-US&:display_count=n&:origin=viz_share_link"
+                                        class="dataviz-card__iframe" 
+                                        frameborder="0" 
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                            </div>
+                            
+                            <div class="dataviz-card__info">
+                                <div class="dataviz-card__goal">
+                                    <h5>Goal</h5>
+                                    <p>Analyze global COVID-19 spread patterns and vaccination rates with time-series analysis.</p>
+                                </div>
+                                <div class="dataviz-card__tools">
+                                    <h5>Tools</h5>
+                                    <div class="dataviz-card__tool-tags">
+                                        <span>Tableau</span>
+                                        <span>Python</span>
+                                        <span>Pandas</span>
+                                    </div>
+                                </div>
+                                <div class="dataviz-card__findings">
+                                    <h5>Key Findings</h5>
+                                    <ul>
+                                        <li>Vaccination rates strongly correlate with decreased hospitalization rates</li>
+                                        <li>Urban centers showed 35% higher transmission rates initially</li>
+                                        <li>Seasonal patterns emerged across both hemispheres</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Modal for fullscreen view -->
+            <div class="dataviz-modal">
+                <div class="dataviz-modal__content">
+                    <button class="dataviz-modal__close" aria-label="Close" id="modalCloseButton">&times;</button>
+                    <h3 class="dataviz-modal__title">Dashboard Title</h3>
+                    <div class="dataviz-modal__frame-container">
+                        <div class="dataviz-modal__loading">
+                            <div class="dataviz-modal__spinner"></div>
+                            <span>Loading dashboard...</span>
+                        </div>
+                        <div class="dataviz-modal__iframe-wrapper"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Statistical Modeling Section -->
+            <div class="statistical-section">
+                <h3 class="statistical-section__title">Statistical Analysis</h3>
+                <p class="statistical-section__description">Advanced statistical modeling projects showcasing dimension reduction techniques and multivariate statistics.</p>
+                
+                <!-- Filter Dropdown for Statistical Techniques -->
+                <div class="statistical-filter">
+                    <label for="statistical-filter-select">Filter by technique:</label>
+                    <select id="statistical-filter-select" class="statistical-filter__select">
+                        <option value="all">Show All</option>
+                        <option value="pca">Principal Component Analysis (PCA)</option>
+                        <option value="fa">Factor Analysis</option>
+                        <option value="lda">Linear Discriminant Analysis (LDA)</option>
+                        <option value="tsne">t-SNE</option>
+                        <option value="umap">UMAP</option>
+                    </select>
+                </div>
+                
+                <!-- Tabs Navigation -->
+                <div class="statistical-tabs">
+                    <button class="statistical-tabs__button active" data-tab="factor-analysis" data-technique="fa">
+                        <i class="fas fa-project-diagram"></i>
+                        <span>Factor Analysis</span>
+                    </button>
+                    <button class="statistical-tabs__button" data-tab="pca-analysis" data-technique="pca">
+                        <i class="fas fa-chart-scatter"></i>
+                        <span>PCA</span>
+                    </button>
+                    <button class="statistical-tabs__button" data-tab="lda-analysis" data-technique="lda">
+                        <i class="fas fa-layer-group"></i>
+                        <span>LDA</span>
+                    </button>
+                    <button class="statistical-tabs__button" data-tab="tsne-analysis" data-technique="tsne">
+                        <i class="fas fa-braille"></i>
+                        <span>t-SNE</span>
+                    </button>
+                </div>
+                
+                <!-- Tab Content -->
+                <div class="statistical-content">
+                    <!-- Factor Analysis Tab -->
+                    <div id="factor-analysis" class="statistical-content__panel active" data-technique="fa">
+                        <div class="statistical-card">
+                            <div class="statistical-card__header">
+                                <h4 class="statistical-card__title">Factor Analysis: Identifying Latent Variables</h4>
+                                <button class="statistical-card__expand-btn" aria-label="View fullscreen">
+                                    <i class="fas fa-expand-alt"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="statistical-card__frame-container">
+                                <div class="statistical-card__loading">
+                                    <div class="statistical-card__spinner"></div>
+                                    <span>Loading analysis...</span>
+                                </div>
+                                <div class="statistical-card__iframe-wrapper">
+                                    <iframe 
+                                        data-src="https://adittoahosankabbo.github.io/Dimension_Reduction/Factor%20_Analaysis/FA1/"
+                                        class="statistical-card__iframe" 
+                                        frameborder="0" 
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                            </div>
+                            
+                            <div class="statistical-card__info">
+                                <div class="statistical-card__goal">
+                                    <h5>Objective</h5>
+                                    <p>This factor analysis project explores the underlying dimension structure in multivariate data with 9 variables. Using principal component analysis and factor rotation techniques, I identified 3 key latent factors that explain 62.4% of the total variance in the dataset.</p>
+                                </div>
+                                <div class="statistical-card__tools">
+                                    <h5>Tools & Techniques</h5>
+                                    <div class="statistical-card__tool-tags">
+                                        <span>Python</span>
+                                        <span>Principal Component Method</span>
+                                        <span>None Rotation</span>
+                                        <span>Eigenvalue Analysis</span>
+                                    </div>
+                                </div>
+                                <div class="statistical-card__findings">
+                                    <h5>Key Findings</h5>
+                                    <ul>
+                                        <li>1. Identified 3 significant factors explaining 62.4% of total variance in the dataset</li>
+                                        <li>2. Kaiser-Meyer-Olkin (KMO) value of 0.703 confirmed good sampling adequacy</li>
+                                        <li>3. Bartlett's test showed significant correlations (p ≈ 5.99e-153)</li>
+                                        <li>4. Extracted Factor 1 (Quality of Life/Amenities), Factor 2 (Socioeconomic), and Factor 3 (Climate)</li>
+                                    </ul>
+                                </div>
+                                <div class="statistical-card__links">
+                                    <a href="https://github.com/AdittoAhosanKabbo/Dimension_Reduction/tree/main/Factor%20_Analaysis/FA1" class="statistical-card__link" target="_blank">
+                                        <i class="fab fa-github"></i> View on GitHub
+                                    </a>
+                                    <a href="https://adittoahosankabbo.github.io/Dimension_Reduction/Factor%20_Analaysis/FA1/" class="statistical-card__link" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i> View Live Project
+                                    </a>
+                                    <a href="https://nbviewer.org/github/AdittoAhosanKabbo/Dimension_Reduction/blob/main/Factor%20_Analaysis/Pythonipynbfile/Factor_Analaysis_(placedata_tf).ipynb" class="statistical-card__link" target="_blank">
+                                        <i class="fas fa-code"></i> View Jupyter Notebook
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- PCA Analysis Tab -->
+                    <div id="pca-analysis" class="statistical-content__panel" data-technique="pca">
+                        <div class="statistical-card">
+                            <div class="statistical-card__header">
+                                <h4 class="statistical-card__title">PCA: Dimension Reduction for Healthcare Data</h4>
+                                <button class="statistical-card__expand-btn" aria-label="View fullscreen">
+                                    <i class="fas fa-expand-alt"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="statistical-card__frame-container">
+                                <div class="statistical-card__loading">
+                                    <div class="statistical-card__spinner"></div>
+                                    <span>Loading analysis...</span>
+                                </div>
+                                <div class="statistical-card__iframe-wrapper">
+                                    <iframe 
+                                        data-src="YOUR-PCA-ANALYSIS-HTML-URL"
+                                        class="statistical-card__iframe" 
+                                        frameborder="0" 
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                            </div>
+                            
+                            <div class="statistical-card__info">
+                                <div class="statistical-card__goal">
+                                    <h5>Objective</h5>
+                                    <p>Applied Principal Component Analysis on healthcare datasets to reduce dimensionality while retaining critical information for predictive modeling. This project demonstrates how PCA can reduce computational complexity while preserving statistical relationships.</p>
+                                </div>
+                                <div class="statistical-card__tools">
+                                    <h5>Tools & Techniques</h5>
+                                    <div class="statistical-card__tool-tags">
+                                        <span>Python</span>
+                                        <span>scikit-learn</span>
+                                        <span>Pandas</span>
+                                        <span>Matplotlib</span>
+                                    </div>
+                                </div>
+                                <div class="statistical-card__findings">
+                                    <h5>Key Findings</h5>
+                                    <ul>
+                                        <li>Reduced 24 variables to 6 principal components while preserving 92% of variance</li>
+                                        <li>Improved model training speed by 78% with minimal accuracy loss (0.3%)</li>
+                                        <li>Identified significant feature correlations that were not apparent in raw data</li>
+                                        <li>Created visualization techniques to interpret principal components</li>
+                                    </ul>
+                                </div>
+                                <div class="statistical-card__links">
+                                    <a href="YOUR-GITHUB-URL-PCA" class="statistical-card__link" target="_blank">
+                                        <i class="fab fa-github"></i> View on GitHub
+                                    </a>
+                                    <a href="YOUR-DEPLOYED-PCA-URL" class="statistical-card__link" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i> View Live Project
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- LDA Analysis Tab -->
+                    <div id="lda-analysis" class="statistical-content__panel" data-technique="lda">
+                        <div class="statistical-card">
+                            <div class="statistical-card__header">
+                                <h4 class="statistical-card__title">Linear Discriminant Analysis for Classification</h4>
+                                <button class="statistical-card__expand-btn" aria-label="View fullscreen">
+                                    <i class="fas fa-expand-alt"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="statistical-card__frame-container">
+                                <div class="statistical-card__loading">
+                                    <div class="statistical-card__spinner"></div>
+                                    <span>Loading analysis...</span>
+                                </div>
+                                <div class="statistical-card__iframe-wrapper">
+                                    <iframe 
+                                        data-src="YOUR-LDA-ANALYSIS-HTML-URL"
+                                        class="statistical-card__iframe" 
+                                        frameborder="0" 
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                            </div>
+                            
+                            <div class="statistical-card__info">
+                                <div class="statistical-card__goal">
+                                    <h5>Objective</h5>
+                                    <p>Using Linear Discriminant Analysis to identify the optimal feature combinations that maximize separation between classes while reducing dimensionality. This supervised approach creates discriminant functions to improve classification performance.</p>
+                                </div>
+                                <div class="statistical-card__tools">
+                                    <h5>Tools & Techniques</h5>
+                                    <div class="statistical-card__tool-tags">
+                                        <span>Python</span>
+                                        <span>scikit-learn</span>
+                                        <span>Multivariate Analysis</span>
+                                        <span>Classification</span>
+                                    </div>
+                                </div>
+                                <div class="statistical-card__findings">
+                                    <h5>Key Findings</h5>
+                                    <ul>
+                                        <li>Achieved 94% classification accuracy after dimensionality reduction</li>
+                                        <li>Identified 3 discriminant functions that captured class separability</li>
+                                        <li>Reduced feature space from 18 dimensions to 3 while maintaining performance</li>
+                                        <li>Visualized class boundaries with canonical plots for improved interpretability</li>
+                                    </ul>
+                                </div>
+                                <div class="statistical-card__links">
+                                    <a href="YOUR-GITHUB-URL-LDA" class="statistical-card__link" target="_blank">
+                                        <i class="fab fa-github"></i> View on GitHub
+                                    </a>
+                                    <a href="YOUR-DEPLOYED-LDA-URL" class="statistical-card__link" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i> View Live Project
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- t-SNE Analysis Tab -->
+                    <div id="tsne-analysis" class="statistical-content__panel" data-technique="tsne">
+                        <div class="statistical-card">
+                            <div class="statistical-card__header">
+                                <h4 class="statistical-card__title">t-SNE: Nonlinear Dimensionality Reduction</h4>
+                                <button class="statistical-card__expand-btn" aria-label="View fullscreen">
+                                    <i class="fas fa-expand-alt"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="statistical-card__frame-container">
+                                <div class="statistical-card__loading">
+                                    <div class="statistical-card__spinner"></div>
+                                    <span>Loading analysis...</span>
+                                </div>
+                                <div class="statistical-card__iframe-wrapper">
+                                    <iframe 
+                                        data-src="YOUR-TSNE-ANALYSIS-HTML-URL"
+                                        class="statistical-card__iframe" 
+                                        frameborder="0" 
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                            </div>
+                            
+                            <div class="statistical-card__info">
+                                <div class="statistical-card__goal">
+                                    <h5>Objective</h5>
+                                    <p>Applying t-Distributed Stochastic Neighbor Embedding (t-SNE) to visualize high-dimensional data in 2D/3D space while preserving local structure. This project focused on highlighting clusters and patterns in complex datasets.</p>
+                                </div>
+                                <div class="statistical-card__tools">
+                                    <h5>Tools & Techniques</h5>
+                                    <div class="statistical-card__tool-tags">
+                                        <span>Python</span>
+                                        <span>scikit-learn</span>
+                                        <span>Interactive Visualization</span>
+                                        <span>Nonlinear Embedding</span>
+                                    </div>
+                                </div>
+                                <div class="statistical-card__findings">
+                                    <h5>Key Findings</h5>
+                                    <ul>
+                                        <li>Successfully visualized 784-dimension MNIST data in 2D while preserving digit clusters</li>
+                                        <li>Optimized perplexity parameter to balance local and global structure preservation</li>
+                                        <li>Created interactive visualization tool to explore high-dimensional embeddings</li>
+                                        <li>Demonstrated superior cluster separation compared to linear techniques like PCA</li>
+                                    </ul>
+                                </div>
+                                <div class="statistical-card__links">
+                                    <a href="YOUR-GITHUB-URL-TSNE" class="statistical-card__link" target="_blank">
+                                        <i class="fab fa-github"></i> View on GitHub
+                                    </a>
+                                    <a href="YOUR-DEPLOYED-TSNE-URL" class="statistical-card__link" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i> View Live Project
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Modal for fullscreen view -->
+                <div class="statistical-modal">
+                    <div class="statistical-modal__content">
+                        <button class="statistical-modal__close" aria-label="Close" id="statModalCloseButton">&times;</button>
+                        <h3 class="statistical-modal__title">Analysis Title</h3>
+                        <div class="statistical-modal__frame-container">
+                            <div class="statistical-modal__loading">
+                                <div class="statistical-modal__spinner"></div>
+                                <span>Loading analysis...</span>
+                            </div>
+                            <div class="statistical-modal__iframe-wrapper"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p><a href="mailto:aditahosankabbo@gmail.com">aditahosankabbo@gmail.com</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p><a href="tel:+8801749018051">+880 1749 018051</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Rajshahi,Bangladesh</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://linkedin.com/in/adittoahosankabbo" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/AdittoAhosanKabbo" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://kaggle.com/adittoahosankabbo" target="_blank" aria-label="Kaggle"><i class="fab fa-kaggle"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Send Me a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" placeholder="Subject">
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn primary-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Aditto Ahosan Kabbo</h3>
+                    <p>Data Analyst | Statistics Student</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Aditto Ahosan Kabbo. All rights reserved.</p>
+            </div>
+        </div>    </footer>
+
+    <script src="js/particles.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12" defer></script>
+    <script src="js/script.js" defer></script>
+    <script>
+        // Improved lazy loading using Intersection Observer API
+        document.addEventListener('DOMContentLoaded', function() {
+            // Utility function to fix modal close buttons
+            function fixModalCloseButton(modal, closeButton, closeFunction) {
+                if (!modal || !closeButton) return;
+                
+                // Clone and replace the close button to remove old event listeners
+                const newButton = closeButton.cloneNode(true);
+                closeButton.parentNode.replaceChild(newButton, closeButton);
+                
+                // Add event listener to the new button
+                newButton.addEventListener('click', closeFunction);
+                
+                // Add keyboard event listener
+                const keydownHandler = (e) => {
+                    if (e.key === 'Escape' && modal.classList.contains('show')) {
+                        closeFunction();
+                    }
+                };
+                document.addEventListener('keydown', keydownHandler);
+                
+                // Click outside to close
+                const outsideClickHandler = (e) => {
+                    if (e.target === modal) {
+                        closeFunction();
+                    }
+                };
+                modal.addEventListener('click', outsideClickHandler);
+                
+                // Return cleanup function
+                return () => {
+                    document.removeEventListener('keydown', keydownHandler);
+                    modal.removeEventListener('click', outsideClickHandler);
+                };
+            }
+            
+            // Add global variable to track modal cleanup functions
+            window.modalCleanupFunctions = {};
+            
+            // Lazy load images
+            const lazyImages = document.querySelectorAll('img[data-src]');
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.onload = () => img.classList.add('loaded');
+                        observer.unobserve(img);
+                    }
+                });
+            }, {
+                rootMargin: '100px 0px',
+                threshold: 0.01
+            });
+            
+            lazyImages.forEach(img => imageObserver.observe(img));
+            
+            // Lazy load iframes with improved behavior
+            const iframeObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const container = entry.target;
+                        const iframe = container.querySelector('iframe[data-src]');
+                        const loading = container.querySelector('.dataviz-card__loading, .statistical-card__loading');
+                        
+                        if (iframe && !iframe.src) {
+                            // Set timeout to stagger iframe loading to prevent performance issues
+                            setTimeout(() => {
+                                iframe.src = iframe.dataset.src;
+                                iframe.addEventListener('load', () => {
+                                    iframe.classList.add('loaded');
+                                    if (loading) loading.classList.add('hidden');
+                                });
+                            }, 300); // Stagger loading
+                            
+                            observer.unobserve(container);
+                        }
+                    }
+                });
+            }, {
+                rootMargin: '200px 0px',
+                threshold: 0.01
+            });
+            
+            // Apply to all iframe containers
+            document.querySelectorAll('.dataviz-card__frame-container, .statistical-card__frame-container')
+                .forEach(container => iframeObserver.observe(container));
+            
+            var typed = new Typed('#typed', {
+                stringsElement: '#typed-strings',
+                typeSpeed: 60,
+                backSpeed: 30,
+                backDelay: 1500,
+                startDelay: 1000,
+                loop: true,
+                showCursor: true,
+                cursorChar: '|'
+            });
+            
+            // Data Visualization Section with optimized event handling
+            const tabButtons = document.querySelectorAll('.dataviz-tabs__button');
+            const tabPanels = document.querySelectorAll('.dataviz-content__panel');
+            const filterSelect = document.getElementById('dataviz-filter-select');
+            const modal = document.querySelector('.dataviz-modal');
+            const modalClose = document.querySelector('.dataviz-modal__close');
+            const modalTitle = document.querySelector('.dataviz-modal__title');
+            const modalIframeWrapper = document.querySelector('.dataviz-modal__iframe-wrapper');
+            const expandButtons = document.querySelectorAll('.dataviz-card__expand-btn');
+            
+            // Tab Switching
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons and panels
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabPanels.forEach(panel => panel.classList.remove('active'));
+                    
+                    // Add active class to clicked button and corresponding panel
+                    button.classList.add('active');
+                    const tabId = button.getAttribute('data-tab');
+                    const activePanel = document.getElementById(tabId);
+                    activePanel.classList.add('active');
+                    
+                    // Lazy load iframe in the active tab if not already loaded
+                    lazyLoadIframe(activePanel);
+                });
+            });
+            
+            // Filter functionality
+            filterSelect.addEventListener('change', () => {
+                const selectedTool = filterSelect.value;
+                
+                // Show/hide tabs based on filter
+                tabButtons.forEach(button => {
+                    const buttonTool = button.getAttribute('data-tool');
+                    
+                    if (selectedTool === 'all' || selectedTool === buttonTool) {
+                        button.style.display = 'flex';
+                    } else {
+                        button.style.display = 'none';
+                        button.classList.remove('active');
+                    }
+                });
+                
+                // Show/hide panels based on filter
+                tabPanels.forEach(panel => {
+                    const panelTool = panel.getAttribute('data-tool');
+                    
+                    if (selectedTool === 'all' || panelTool === selectedTool) {
+                        panel.style.display = 'block';
+                    } else {
+                        panel.style.display = 'none';
+                        panel.classList.remove('active');
+                    }
+                });
+                
+                // Make sure at least one tab is active after filtering
+                const visibleButtons = [...tabButtons].filter(btn => 
+                    btn.style.display !== 'none'
+                );
+                
+                if (visibleButtons.length > 0 && ![...visibleButtons].some(btn => btn.classList.contains('active'))) {
+                    visibleButtons[0].click();
+                }
+            });
+            
+            // Modal functionality
+            expandButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const card = button.closest('.dataviz-card');
+                    const title = card.querySelector('.dataviz-card__title').textContent;
+                    const iframe = card.querySelector('.dataviz-card__iframe');
+                    const iframeSrc = iframe.getAttribute('data-src');
+                    
+                    // Set modal content
+                    modalTitle.textContent = title;
+                    modalIframeWrapper.innerHTML = `<iframe src="${iframeSrc}" frameborder="0" allowfullscreen></iframe>`;
+                    
+                    // Show modal
+                    modal.classList.add('show');
+                    document.body.style.overflow = 'hidden';
+                    
+                    // Add loading indicator to modal
+                    const modalLoading = document.querySelector('.dataviz-modal__loading');
+                    
+                    // Listen for iframe load event to hide loading spinner
+                    const modalIframe = modalIframeWrapper.querySelector('iframe');
+                    modalIframe.addEventListener('load', () => {
+                        modalLoading.classList.add('hidden');
+                    });
+
+                    // Fix modal close button using reusable function
+                    const closeButton = document.getElementById('modalCloseButton');
+                    // Clean up previous event listeners if they exist
+                    if (window.modalCleanupFunctions['dataviz']) {
+                        window.modalCleanupFunctions['dataviz']();
+                    }
+                    // Setup new event listeners
+                    window.modalCleanupFunctions['dataviz'] = fixModalCloseButton(modal, closeButton, closeModal);
+                });
+            });
+            
+            // Close modal with clean up of event listeners
+            function closeModal() {
+                modal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+                
+                // Clean up event listeners using the stored cleanup function
+                if (window.modalCleanupFunctions['dataviz']) {
+                    window.modalCleanupFunctions['dataviz']();
+                    delete window.modalCleanupFunctions['dataviz'];
+                }
+                
+                setTimeout(() => {
+                    modalIframeWrapper.innerHTML = '';
+                    const modalLoading = document.querySelector('.dataviz-modal__loading');
+                    modalLoading.classList.remove('hidden');
+                }, 300);
+            }
+            
+            // Lazy Load iframes
+            function lazyLoadIframe(container) {
+                const iframe = container.querySelector('.dataviz-card__iframe');
+                const loading = container.querySelector('.dataviz-card__loading');
+                
+                if (iframe && !iframe.src) {
+                    const src = iframe.getAttribute('data-src');
+                    iframe.src = src;
+                    
+                    iframe.addEventListener('load', () => {
+                        iframe.classList.add('loaded');
+                        loading.classList.add('hidden');
+                    });
+                }
+            }
+            
+            // Load the first tab's iframe on page load
+            const activePanel = document.querySelector('.dataviz-content__panel.active');
+            if (activePanel) {
+                lazyLoadIframe(activePanel);
+            }
+            
+            // Statistical Section
+            const statTabButtons = document.querySelectorAll('.statistical-tabs__button');
+            const statTabPanels = document.querySelectorAll('.statistical-content__panel');
+            const statFilterSelect = document.getElementById('statistical-filter-select');
+            const statModal = document.querySelector('.statistical-modal');
+            const statModalClose = document.querySelector('.statistical-modal__close');
+            const statModalTitle = document.querySelector('.statistical-modal__title');
+            const statModalIframeWrapper = document.querySelector('.statistical-modal__iframe-wrapper');
+            const statExpandButtons = document.querySelectorAll('.statistical-card__expand-btn');
+            
+            // Statistical Tab Switching
+            statTabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons and panels
+                    statTabButtons.forEach(btn => btn.classList.remove('active'));
+                    statTabPanels.forEach(panel => panel.classList.remove('active'));
+                    
+                    // Add active class to clicked button and corresponding panel
+                    button.classList.add('active');
+                    const tabId = button.getAttribute('data-tab');
+                    const activePanel = document.getElementById(tabId);
+                    activePanel.classList.add('active');
+                    
+                    // Lazy load iframe in the active tab if not already loaded
+                    lazyLoadStatIframe(activePanel);
+                });
+            });
+            
+            // Statistical Filter functionality
+            if (statFilterSelect) {
+                statFilterSelect.addEventListener('change', () => {
+                    const selectedTechnique = statFilterSelect.value;
+                    
+                    // Show/hide tabs based on filter
+                    statTabButtons.forEach(button => {
+                        const buttonTechnique = button.getAttribute('data-technique');
+                        
+                        if (selectedTechnique === 'all' || buttonTechnique === selectedTechnique) {
+                            button.style.display = 'flex';
+                        } else {
+                            button.style.display = 'none';
+                            button.classList.remove('active');
+                        }
+                    });
+                    
+                    // Show/hide panels based on filter
+                    statTabPanels.forEach(panel => {
+                        const panelTechnique = panel.getAttribute('data-technique');
+                        
+                        if (selectedTechnique === 'all' || panelTechnique === selectedTechnique) {
+                            panel.style.display = 'block';
+                        } else {
+                            panel.style.display = 'none';
+                            panel.classList.remove('active');
+                        }
+                    });
+                    
+                    // Make sure at least one tab is active after filtering
+                    const visibleButtons = [...statTabButtons].filter(btn => 
+                        btn.style.display !== 'none'
+                    );
+                    
+                    if (visibleButtons.length > 0 && ![...visibleButtons].some(btn => btn.classList.contains('active'))) {
+                        visibleButtons[0].click();
+                    }
+                });
+            }
+            
+            // Statistical Modal functionality
+            if (statExpandButtons.length > 0) {
+                statExpandButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const card = button.closest('.statistical-card');
+                        const title = card.querySelector('.statistical-card__title').textContent;
+                        const iframe = card.querySelector('.statistical-card__iframe');
+                        const iframeSrc = iframe.getAttribute('data-src');
+                        
+                        // Set modal content
+                        statModalTitle.textContent = title;
+                        statModalIframeWrapper.innerHTML = `<iframe src="${iframeSrc}" frameborder="0" allowfullscreen></iframe>`;
+                        
+                        // Show modal
+                        statModal.classList.add('show');
+                        document.body.style.overflow = 'hidden';
+                        
+                        // Add loading indicator to modal
+                        const modalLoading = document.querySelector('.statistical-modal__loading');
+                        
+                        // Listen for iframe load event to hide loading spinner
+                        const modalIframe = statModalIframeWrapper.querySelector('iframe');
+                        modalIframe.addEventListener('load', () => {
+                            modalLoading.classList.add('hidden');
+                        });
+                        
+                        // Fix statistical modal close button using reusable function
+                        const closeButton = document.getElementById('statModalCloseButton');
+                        // Clean up previous event listeners if they exist
+                        if (window.modalCleanupFunctions['stat']) {
+                            window.modalCleanupFunctions['stat']();
+                        }
+                        // Setup new event listeners
+                        window.modalCleanupFunctions['stat'] = fixModalCloseButton(statModal, closeButton, closeStatModal);
+                    });
+                });
+            }
+            
+            // Close statistical modal
+            function closeStatModal() {
+                statModal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+                
+                // Clean up event listeners using the stored cleanup function
+                if (window.modalCleanupFunctions['stat']) {
+                    window.modalCleanupFunctions['stat']();
+                    delete window.modalCleanupFunctions['stat'];
+                }
+                
+                setTimeout(() => {
+                    statModalIframeWrapper.innerHTML = '';
+                    const modalLoading = document.querySelector('.statistical-modal__loading');
+                    if (modalLoading) {
+                        modalLoading.classList.remove('hidden');
+                    }
+                }, 300);
+            }
+            
+            // Lazy Load statistical iframes
+            function lazyLoadStatIframe(container) {
+                const iframe = container.querySelector('.statistical-card__iframe');
+                const loading = container.querySelector('.statistical-card__loading');
+                
+                if (iframe && !iframe.src && iframe.getAttribute('data-src')) {
+                    const src = iframe.getAttribute('data-src');
+                    iframe.src = src;
+                    
+                    iframe.addEventListener('load', () => {
+                        iframe.classList.add('loaded');
+                        if (loading) {
+                            loading.classList.add('hidden');
+                        }
+                    });
+                }
+            }
+            
+            // Load the first statistical tab's iframe on page load
+            const activeStatPanel = document.querySelector('.statistical-content__panel.active');
+            if (activeStatPanel) {
+                lazyLoadStatIframe(activeStatPanel);
+            }
+            
+            // After all initializations complete
+            setTimeout(() => {
+                // Execute less critical operations after initial load
+                // Init animations, load non-critical resources, etc.
+                if ('requestIdleCallback' in window) {
+                    requestIdleCallback(() => {
+                        // Performance optimized initialization of non-critical features
+                        document.querySelectorAll('iframe[data-defer-src]').forEach(iframe => {
+                            iframe.setAttribute('data-src', iframe.getAttribute('data-defer-src'));
+                            iframe.removeAttribute('data-defer-src');
+                        });
+                    });
+                }
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
