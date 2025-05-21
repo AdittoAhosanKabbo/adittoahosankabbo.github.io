@@ -149,28 +149,79 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Mobile menu toggle
+// Mobile menu toggle with improved animation
 if (menuToggle) {
     menuToggle.addEventListener('click', () => {
+        // Toggle mobile menu
         navLinks.classList.toggle('active');
         
         // Change menu toggle animation
         const spans = menuToggle.querySelectorAll('span');
         spans.forEach(span => span.classList.toggle('active'));
+        
+        // Prevent body scrolling when mobile menu is open
+        document.body.classList.toggle('menu-open');
+        
+        // Accessibility
+        const isExpanded = navLinks.classList.contains('active');
+        menuToggle.setAttribute('aria-expanded', isExpanded);
+        
+        // Add backdrop for mobile menu when open
+        if (isExpanded) {
+            if (!document.querySelector('.mobile-menu-backdrop')) {
+                const backdrop = document.createElement('div');
+                backdrop.classList.add('mobile-menu-backdrop');
+                document.body.appendChild(backdrop);
+                
+                // Close menu when clicking outside
+                backdrop.addEventListener('click', () => {
+                    closeMenu();
+                });
+            }
+        } else {
+            const backdrop = document.querySelector('.mobile-menu-backdrop');
+            if (backdrop) {
+                backdrop.remove();
+            }
+        }
     });
+}
+
+// Function to close the mobile menu
+function closeMenu() {
+    if (navLinks.classList.contains('active')) {
+        navLinks.classList.remove('active');
+        
+        // Reset menu toggle
+        const spans = menuToggle.querySelectorAll('span');
+        spans.forEach(span => span.classList.remove('active'));
+        
+        // Re-enable body scrolling
+        document.body.classList.remove('menu-open');
+        
+        // Accessibility
+        menuToggle.setAttribute('aria-expanded', false);
+        
+        // Remove backdrop
+        const backdrop = document.querySelector('.mobile-menu-backdrop');
+        if (backdrop) {
+            backdrop.remove();
+        }
+    }
 }
 
 // Close mobile menu when a link is clicked
 document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
-        if (navLinks.classList.contains('active')) {
-            navLinks.classList.remove('active');
-            
-            // Reset menu toggle
-            const spans = menuToggle.querySelectorAll('span');
-            spans.forEach(span => span.classList.remove('active'));
-        }
+        closeMenu();
     });
+});
+
+// Close mobile menu on escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeMenu();
+    }
 });
 
 // Contact form submit handling
@@ -210,14 +261,26 @@ function initWebsite() {
             const targetElement = document.querySelector(targetId);
             
             if (targetElement) {
-                // Scroll to the target element
-                targetElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+                // Get navbar height for offset
+                const navbarHeight = navbar.offsetHeight;
+                
+                // Scroll to the target element with offset
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
                 });
             }
         });
     });
+    
+    // Set initial ARIA attributes for mobile menu
+    if (menuToggle) {
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Toggle navigation menu');
+    }
 }
 
 // Type text animation

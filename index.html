@@ -22,11 +22,17 @@ Performance notes:
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <!-- Mobile-specific styles - these won't affect desktop layout -->
+    <link rel="stylesheet" href="css/mobile.css">
+    <!-- Navbar Transform styles -->
+    <link rel="stylesheet" href="css/navbar-transform.css">
+    <!-- Skills carousel styles -->
+    <link rel="stylesheet" href="css/skills-carousel.css">
     <!-- Inline critical CSS -->
     <style>
         /* Critical path CSS for initial rendering */
         body {margin: 0; font-family: 'Roboto', sans-serif;}
-        .navbar {position: fixed; top: 0; left: 0; width: 100%; background-color: #ffffff; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); z-index: 1000; padding: 15px 0;}
+        .navbar {position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;}
         .container {max-width: 1200px; margin: 0 auto; padding: 0 20px;}
     </style>
     <!-- Preload hero image -->
@@ -34,15 +40,11 @@ Performance notes:
 </head>
 <body>
     <!-- Navigation Bar -->
+    <div class="scroll-progress"></div>
     <nav class="navbar">
         <div class="container">
             <div class="logo">
-                <a href="#home">AK</a>
-            </div>
-            <div class="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
+                <a href="#home">AdittoAhosan</a>
             </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
@@ -52,6 +54,38 @@ Performance notes:
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation Bar (icons only) -->
+    <nav class="navbar-mobile">
+        <ul class="nav-mobile-links">
+            <li><a href="#home" title="Home"><i class="fas fa-home"></i></a></li>
+            <li><a href="#about" title="About"><i class="fas fa-user"></i></a></li>
+            <li><a href="#skills" title="Skills"><i class="fas fa-chart-bar"></i></a></li>
+            <li><a href="#education" title="Education"><i class="fas fa-graduation-cap"></i></a></li>
+            <li><a href="#projects" title="Projects"><i class="fas fa-project-diagram"></i></a></li>
+            <li><a href="#contact" title="Contact"><i class="fas fa-envelope"></i></a></li>
+        </ul>
+    </nav>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation Bar (icons only) -->
+    <nav class="navbar-mobile">
+        <ul class="nav-mobile-links">
+            <li><a href="#home" title="Home"><i class="fas fa-home"></i></a></li>
+            <li><a href="#about" title="About"><i class="fas fa-user"></i></a></li>
+            <li><a href="#skills" title="Skills"><i class="fas fa-chart-bar"></i></a></li>
+            <li><a href="#education" title="Education"><i class="fas fa-graduation-cap"></i></a></li>
+            <li><a href="#projects" title="Projects"><i class="fas fa-project-diagram"></i></a></li>
+            <li><a href="#contact" title="Contact"><i class="fas fa-envelope"></i></a></li>
+        </ul>
         </div>
     </nav>
 
@@ -250,6 +284,67 @@ Performance notes:
                 </div>
             </div>
         </div>
+        
+        <!-- Skills Carousel - inspired by espressosys.com -->
+        <div class="skills-carousel-container">
+            <div class="skills-carousel-title">Technologies I Work With</div>
+            <div class="skills-carousel">
+                <!-- Python -->
+                <div class="skills-carousel-item">
+                    <img src="LOGO/PYTHON (1).png" alt="Python Logo" class="skills-logo">
+                    <span class="skills-carousel-item-text">Python</span>
+                </div>
+                
+                <!-- R -->
+                <div class="skills-carousel-item">
+                    <img src="LOGO/R.png" alt="R Logo" class="skills-logo">
+                    <span class="skills-carousel-item-text">R</span>
+                </div>
+                
+                <!-- Power BI -->
+                <div class="skills-carousel-item">
+                    <img src="LOGO/POWERBI.jpg" alt="Power BI Logo" class="skills-logo">
+                    <span class="skills-carousel-item-text">Power BI</span>
+                </div>
+                
+                <!-- Excel -->
+                <div class="skills-carousel-item">
+                    <img src="LOGO/EXCEL LOGO.png" alt="Excel Logo" class="skills-logo">
+                    <span class="skills-carousel-item-text">Excel</span>
+                </div>
+                
+                <!-- SQL -->
+                <div class="skills-carousel-item">
+                    <img src="LOGO/SQL LOGO.png" alt="SQL Logo" class="skills-logo">
+                    <span class="skills-carousel-item-text">SQL</span>
+                </div>
+                
+                <!-- SPSS -->
+                <div class="skills-carousel-item">
+                    <img src="LOGO/SPSS.png" alt="SPSS Logo" class="skills-logo">
+                    <span class="skills-carousel-item-text">SPSS</span>
+                </div>
+                
+                <!-- Jupyter -->
+                <div class="skills-carousel-item">
+                    <img src="LOGO/JUPYTER.png" alt="Jupyter Logo" class="skills-logo">
+                    <span class="skills-carousel-item-text">Jupyter</span>
+                </div>
+                
+                <!-- Git -->
+                <div class="skills-carousel-item">
+                    <img src="LOGO/Git_icon.svg.png" alt="Git Logo" class="skills-logo">
+                    <span class="skills-carousel-item-text">Git</span>
+                </div>
+                
+                <!-- Tableau -->
+                <div class="skills-carousel-item">
+                    <img src="LOGO/TABLEU.png" alt="Tableau Logo" class="skills-logo">
+                    <span class="skills-carousel-item-text">Tableau</span>
+                </div>
+            </div>
+        </div>
+        
         <div class="shape-divider bottom-divider">
             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
                 <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
@@ -659,7 +754,7 @@ Performance notes:
                                     </ul>
                                 </div>
                                 <div class="statistical-card__links">
-                                    <a href="https://github.com/AdittoAhosanKabbo/Dimension_Reduction/tree/main/Factor%20_Analaysis/FA1" class="statistical-card__link" target="_blank">
+                                    <a href="https://github.com/AdittoAhosanKabbo/Dimension_Reduction/blob/main/Factor%20_Analaysis/Pythonipynbfile/Factor_Analaysis_(placedata_tf).ipynb" class="statistical-card__link" target="_blank">
                                         <i class="fab fa-github"></i> View on GitHub
                                     </a>
                                     <a href="https://adittoahosankabbo.github.io/Dimension_Reduction/Factor%20_Analaysis/FA1/" class="statistical-card__link" target="_blank">
@@ -952,6 +1047,8 @@ Performance notes:
     <script src="js/particles.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12" defer></script>
     <script src="js/script.js" defer></script>
+    <script src="js/skills-carousel.js" defer></script>
+    <script src="js/navbar-transform.js" defer></script>
     <script>
         // Improved lazy loading using Intersection Observer API
         document.addEventListener('DOMContentLoaded', function() {
