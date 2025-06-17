@@ -1,0 +1,1788 @@
+/* Excel and Power BI About Section Styles */
+
+/* Override existing about content layout */
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Default two columns */
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    perspective: 1000px;
+    padding: 20px; /* Added padding for better spacing on smaller screens */
+}
+
+/* ===== EXCEL CONTAINER STYLES ===== */
+.excel-container {
+    background: #ffffff;
+    border: 1px solid #727272;
+    border-radius: 0; /* More authentic Excel window appearance */
+    overflow: visible; /* FIXED: Allow scrolling instead of hidden */
+    box-shadow: 
+        0 0 0 1px rgba(0, 0, 0, 0.1),
+        0 1px 3px rgba(0, 0, 0, 0.12),
+        0 1px 2px rgba(0, 0, 0, 0.24),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8); /* Inner light edge for realism */
+    transition: all 0.3s ease;
+    position: relative;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 520px;
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+    /* More realistic window appearance */
+    border-top: 1px solid #8a8a8a;
+    border-left: 1px solid #8a8a8a;
+    border-right: 1px solid #4a4a4a;
+    border-bottom: 1px solid #4a4a4a;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.excel-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 0 0 1px rgba(0, 0, 0, 0.15),
+        0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Enhanced window effects for more realism */
+.excel-container::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: radial-gradient(circle at center, transparent 60%, rgba(0, 0, 0, 0.1) 100%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Excel Title Bar */
+.excel-header {
+    background: linear-gradient(to bottom, #fefefe 0%, #f1f1f1 50%, #e8e8e8 51%, #d8d8d8 100%);
+    color: #2c2c2c;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    font-family: 'Segoe UI', sans-serif;
+    height: 30px;
+    border-bottom: 1px solid #a6a6a6;
+    position: relative;
+    justify-content: space-between;
+    /* More realistic title bar shadow */
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.excel-title-area {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    gap: 8px;
+}
+
+.excel-app-icon {
+    width: 16px;
+    height: 16px;
+    background: linear-gradient(135deg, #1d7c47 0%, #0f5f32 50%, #0d4f29 100%);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 9px;
+    font-weight: bold;
+    font-family: 'Calibri', sans-serif;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.3),
+        0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.excel-window-title {
+    font-size: 12px;
+    color: #323130;
+    font-weight: 400;
+}
+
+.excel-controls {
+    display: flex;
+    align-items: center;
+    height: 32px;
+}
+
+.excel-control-btn {
+    width: 46px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    color: #2c2c2c;
+    font-size: 10px;
+    cursor: pointer;
+    transition: background-color 0.1s ease;
+    position: relative;
+}
+
+.excel-control-btn:hover {
+    background: linear-gradient(to bottom, #f0f0f0 0%, #e5e5e5 100%);
+    border: 1px solid #c0c0c0;
+    margin: -1px;
+}
+
+.excel-control-btn.close:hover {
+    background: linear-gradient(to bottom, #e81123 0%, #d30010 100%);
+    color: white;
+    border-color: #c50014;
+}
+
+/* Excel File Tab */
+.excel-file-tab {
+    background: #ffffff;
+    padding: 6px 12px;
+    border-bottom: 1px solid #d1d1d1;
+    font-size: 11px;
+    color: #323130;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 2px solid #0078d4;
+    border-radius: 4px 4px 0 0;
+    margin: 2px 2px 0 2px;
+    box-shadow: 
+        0 -1px 2px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.excel-file-tab i.fa-times {
+    transition: opacity 0.1s ease;
+}
+
+.excel-file-tab i.fa-times:hover {
+    opacity: 1 !important;
+    color: #e81123;
+}
+
+/* Excel Ribbon */
+.excel-ribbon {
+    background: linear-gradient(to bottom, #f8f8f8 0%, #f0f0f0 50%, #e8e8e8 51%, #e0e0e0 100%);
+    border-bottom: 1px solid #bfbfbf;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 11px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.excel-ribbon-tabs {
+    display: flex;
+    background: #ffffff;
+    border-bottom: 1px solid #d1d1d1;
+    padding-left: 8px;
+}
+
+.excel-ribbon-tab {
+    padding: 6px 12px;
+    color: #323130;
+    cursor: pointer;
+    position: relative;
+    font-size: 11px;
+    border-bottom: 3px solid transparent;
+    transition: all 0.15s ease;
+}
+
+.excel-ribbon-tab:hover {
+    background: #f3f2f1;
+}
+
+.excel-ribbon-tab.active {
+    border-bottom-color: #0078d4;
+    background: #ffffff;
+}
+
+.excel-ribbon-content {
+    padding: 6px 12px;
+    background: linear-gradient(to bottom, #f8f8f8 0%, #f0f0f0 50%, #e8e8e8 51%, #e0e0e0 100%);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-height: 50px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.excel-ribbon-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 4px 8px;
+    border-radius: 2px;
+    transition: background-color 0.1s ease;
+    cursor: pointer;
+}
+
+.excel-ribbon-group:hover {
+    background: linear-gradient(to bottom, #fff 0%, #f5f5f5 100%);
+    border: 1px solid #c0c0c0;
+    margin: -1px;
+}
+
+.excel-ribbon-icon {
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(to bottom, #fafafa 0%, #f0f0f0 50%, #e8e8e8 51%, #e0e0e0 100%);
+    border: 1px solid #c0c0c0;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2c2c2c;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.8),
+        0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.excel-ribbon-icon:hover {
+    background: linear-gradient(to bottom, #fff 0%, #f8f8f8 50%, #f0f0f0 51%, #e8e8e8 100%);
+    border-color: #808080;
+}
+
+.excel-ribbon-icon:active {
+    background: linear-gradient(to bottom, #e8e8e8 0%, #f0f0f0 50%, #f8f8f8 51%, #fff 100%);
+    box-shadow: 
+        inset 0 1px 2px rgba(0, 0, 0, 0.2),
+        0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.excel-ribbon-label {
+    font-size: 9px;
+    color: #323130;
+    text-align: center;
+}
+
+/* Formula Bar */
+.excel-formula-bar {
+    background: linear-gradient(to bottom, #fefefe 0%, #f8f8f8 100%);
+    border-bottom: 1px solid #bfbfbf;
+    padding: 4px 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Calibri', sans-serif;
+    font-size: 11px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.excel-name-box {
+    width: 80px;
+    height: 22px;
+    border: 1px solid #a6a6a6;
+    padding: 0 6px;
+    font-size: 11px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    font-family: 'Calibri', sans-serif;
+    font-weight: 600;
+    color: #2c2c2c;
+    box-shadow: 
+        inset 1px 1px 2px rgba(0, 0, 0, 0.1),
+        0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.excel-formula-input {
+    flex: 1;
+    height: 22px;
+    border: 1px solid #a6a6a6;
+    padding: 0 6px;
+    font-size: 11px;
+    background: #ffffff;
+    font-family: 'Calibri', sans-serif;
+    display: flex;
+    align-items: center;
+    color: #2c2c2c;
+    box-shadow: 
+        inset 1px 1px 2px rgba(0, 0, 0, 0.1),
+        0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* Excel Spreadsheet */
+.excel-spreadsheet {
+    flex: 1;
+    background: #ffffff;
+    overflow: auto;
+    font-family: 'Calibri', sans-serif;
+    font-size: 13px;
+    position: relative;
+}
+
+.excel-column-headers {
+    position: sticky;
+    top: 0;
+    background: linear-gradient(to bottom, #fafafa 0%, #f0f0f0 50%, #e8e8e8 51%, #e0e0e0 100%);
+    border-bottom: 1px solid #a6a6a6;
+    display: grid;
+    grid-template-columns: 50px repeat(3, 1fr);
+    z-index: 2;
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.8),
+        0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.excel-column-header {
+    padding: 6px 8px;
+    text-align: center;
+    font-weight: 600;
+    color: #2c2c2c;
+    border-right: 1px solid #a6a6a6;
+    font-size: 12px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.1s ease;
+}
+
+.excel-column-header:hover {
+    background: linear-gradient(to bottom, #ffffff 0%, #f5f5f5 50%, #eeeeee 51%, #e8e8e8 100%);
+}
+
+.excel-column-header.corner {
+    background: linear-gradient(to bottom, #fafafa 0%, #f0f0f0 50%, #e8e8e8 51%, #e0e0e0 100%);
+}
+
+.excel-data-rows {
+    display: grid;
+    grid-template-columns: 50px repeat(3, 1fr);
+}
+
+.excel-row-header {
+    background: linear-gradient(to bottom, #fafafa 0%, #f0f0f0 50%, #e8e8e8 51%, #e0e0e0 100%);
+    border-right: 1px solid #a6a6a6;
+    border-bottom: 1px solid #d4d4d4;
+    padding: 6px 8px;
+    text-align: center;
+    font-weight: 600;
+    color: #2c2c2c;
+    font-size: 12px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.1s ease;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.excel-row-header:hover {
+    background: linear-gradient(to bottom, #ffffff 0%, #f5f5f5 50%, #eeeeee 51%, #e8e8e8 100%);
+}
+
+.excel-cell {
+    padding: 6px 10px;
+    border-right: 1px solid #d4d4d4;
+    border-bottom: 1px solid #d4d4d4;
+    color: #2c2c2c;
+    background: #ffffff;
+    font-size: 13px;
+    font-weight: 400;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    font-family: 'Calibri', sans-serif;
+    cursor: cell;
+    transition: all 0.1s ease;
+    position: relative;
+}
+
+.excel-cell:hover {
+    background: linear-gradient(to bottom, #e6f3ff 0%, #cce7ff 100%);
+    border-color: #4a90e2;
+    box-shadow: 
+        inset 0 0 0 1px #4a90e2,
+        0 0 3px rgba(74, 144, 226, 0.3);
+}
+
+.excel-cell:focus {
+    background: #ffffff;
+    border: 2px solid #4a90e2;
+    box-shadow: 
+        inset 0 0 0 1px #4a90e2,
+        0 0 5px rgba(74, 144, 226, 0.5);
+    outline: none;
+    margin: -1px;
+}
+
+.excel-cell.header-cell {
+    font-weight: 700;
+    background: linear-gradient(to bottom, #2d8659 0%, #1e5f3e 100%);
+    color: #ffffff;
+    border-color: #1a5d37;
+    text-align: center;
+    font-size: 13px;
+    justify-content: center;
+}
+
+.excel-cell.data-cell {
+    background: #ffffff;
+    color: #323130;
+    font-weight: 400;
+}
+
+.excel-cell.name-cell {
+    font-weight: 600;
+    color: #1a5d37;
+}
+
+.excel-cell.role-cell {
+    font-weight: 600;
+    color: #8b4513;
+    font-style: italic;
+}
+
+.excel-cell.location-cell {
+    font-weight: 500;
+    color: #7c2d12;
+}
+
+.excel-cell.important {
+    background: linear-gradient(to right, #fff5f5 0%, #ffffff 100%);
+    border-left: 3px solid #d73502;
+    font-weight: 600;
+}
+
+/* Excel Status Bar */
+.excel-status-bar {
+    background: #f3f2f1;
+    border-top: 1px solid #d1d1d1;
+    padding: 4px 12px;
+    font-size: 11px;
+    color: #323130;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 24px;
+}
+
+.excel-status-right {
+    display: flex;
+    gap: 16px;
+}
+
+/* SQL CONTAINER STYLES */
+.sql-container {
+    background: #ffffff;
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.04),
+        0 2px 8px rgba(0, 0, 0, 0.02),
+        0 0 0 1px rgba(0, 0, 0, 0.02);
+    transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+    position: relative;
+    font-family: 'JetBrains Mono', 'SF Mono', 'Monaco', 'Consolas', monospace;
+    display: flex;
+    flex-direction: column;
+    min-height: 600px;
+    max-height: 80vh;
+    animation: fadeInUp 0.8s ease-out 0.2s forwards;
+    opacity: 0;
+    color: #1a1a1a;
+    backdrop-filter: blur(20px);
+}
+
+.sql-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.06),
+        0 4px 16px rgba(0, 0, 0, 0.04),
+        0 0 0 1px rgba(0, 0, 0, 0.03);
+}
+
+/* SQL Header */
+.sql-header {
+    background: #ffffff;
+    color: #2c3e50;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    height: auto;
+    border-bottom: 1px solid #f0f0f0;    justify-content: space-between;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.sql-title-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.sql-app-icon {
+    font-size: 18px;
+    color: #3b82f6;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 4px rgba(59, 130, 246, 0.2));
+}
+
+.sql-window-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a1a1a;
+    letter-spacing: 0.2px;
+}
+
+.sql-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sql-control-btn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    color: #6b7280;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);
+    border-radius: 6px;
+    font-weight: 400;
+}
+
+.sql-control-btn:hover {
+    background: #f8fafc;
+    color: #374151;
+    transform: scale(1.05);
+}
+
+.sql-control-btn.close:hover {
+    background: #fef2f2;
+    color: #dc2626;
+    transform: scale(1.05);
+}
+
+/* SQL Toolbar */
+.sql-toolbar {
+    background: #ffffff;
+    padding: 12px 20px;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.sql-toolbar-btn {
+    background: #f8fafc;
+    color: #374151;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    letter-spacing: 0.3px;
+}
+
+.sql-toolbar-btn i {
+    font-size: 14px;
+    color: #3b82f6;
+}
+
+.sql-toolbar-btn:hover {
+    background: #e2e8f0;
+    border-color: #cbd5e1;
+    color: #1e293b;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+.sql-toolbar-btn.active {
+    background: #3b82f6;
+    border-color: #2563eb;
+    color: white;
+    box-shadow: 
+        0 0 0 3px rgba(59, 130, 246, 0.1),
+        0 4px 12px rgba(59, 130, 246, 0.2);
+    font-weight: 600;
+}
+
+.sql-toolbar-btn.active i {
+    color: #dbeafe;
+}
+
+.sql-toolbar-separator {
+    width: 1px;
+    height: 24px;
+    background: #e2e8f0;
+    margin: 0 8px;
+    border-radius: 1px;
+}
+
+/* SQL Editor Area */
+.sql-editor-area {
+    flex: 1;
+    display: flex;
+    background: #ffffff;
+    overflow: hidden;
+    position: relative;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.sql-line-numbers {
+    background: #fafbfc;
+    color: #64748b;
+    padding: 20px 16px 20px 12px;
+    font-size: 13px;
+    line-height: 1.8;
+    text-align: right;
+    user-select: none;
+    border-right: 1px solid #f1f5f9;
+    font-family: 'JetBrains Mono', 'SF Mono', 'Monaco', 'Consolas', monospace;
+    min-width: 60px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+.sql-line-numbers span {
+    display: block;
+    color: #94a3b8;
+    transition: color 0.3s ease;
+    padding: 2px 0;
+    font-size: 12px;
+}
+
+.sql-line-numbers span:hover {
+    color: #475569;
+}
+
+.sql-query-input {
+    flex: 1;
+    background: #ffffff;
+    color: #1e293b;
+    border: none;
+    padding: 20px 24px;
+    font-family: 'JetBrains Mono', 'SF Mono', 'Monaco', 'Consolas', monospace;
+    font-size: 14px;
+    line-height: 1.8;
+    resize: none;
+    white-space: pre;
+    overflow-wrap: normal;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 #f8fafc;
+    position: relative;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+    outline: none;
+    tab-size: 4;
+}
+
+/* SQL syntax highlighting improvements */
+.sql-query-input:focus {
+    background: #ffffff;
+    color: #0f172a;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+/* Custom scrollbar for webkit browsers */
+.sql-query-input::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.sql-query-input::-webkit-scrollbar-track {
+    background: #f8fafc;
+    border-radius: 4px;
+}
+
+.sql-query-input::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.sql-query-input::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+.sql-query-input::-webkit-scrollbar-corner {
+    background: #f8fafc;
+}
+
+/* SQL Results Panel */
+.sql-results-panel {
+    background: #ffffff;
+    border-top: 1px solid #f0f0f0;
+    min-height: 140px;
+    max-height: 240px;
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+}
+
+.sql-results-tabs {
+    display: flex;
+    background: #ffffff;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 0 8px;
+}
+
+.sql-results-tab {
+    padding: 12px 20px;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);
+    font-size: 13px;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    position: relative;
+    border-radius: 8px 8px 0 0;
+    margin-top: 4px;
+}
+
+.sql-results-tab:hover {
+    background: #f8fafc;
+    color: #334155;
+}
+
+.sql-results-tab.active {
+    background: #ffffff;
+    color: #0f172a;
+    border-bottom: 2px solid #3b82f6;
+    margin-bottom: -1px;
+    font-weight: 600;
+    box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.sql-results-content {
+    padding: 20px 24px;
+    overflow: auto;
+    flex: 1;
+    background: #ffffff;
+    font-family: 'JetBrains Mono', 'SF Mono', 'Monaco', 'Consolas', monospace;
+}
+
+.sql-results-table {
+    color: #1d4ed8;
+    white-space: pre;
+    font-size: 13px;
+    line-height: 1.6;
+    font-family: 'JetBrains Mono', 'SF Mono', 'Monaco', 'Consolas', monospace;
+    background: #ffffff;
+    padding: 0;
+    border-radius: 0;
+    border: none;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+}
+
+.sql-query-status {
+    color: #059669; /* Rich green for success */
+    font-size: 11px;
+    margin-top: 10px;
+    font-style: italic;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    font-weight: 500;
+    padding: 6px 12px;
+    background: #ecfdf5;
+    border-radius: 4px;
+    border-left: 3px solid #10b981;
+}
+
+/* SQL Status Bar */
+.sql-status-bar {
+    background: linear-gradient(to bottom, #3b82f6 0%, #2563eb 100%);
+    color: white;
+    padding: 6px 16px;
+    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 24px;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    font-weight: 500;
+    letter-spacing: 0.025em;
+}
+
+.sql-status-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.sql-status-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 10px;
+}
+
+/* ===== POWER BI CONTAINER STYLES (Keep for now, or remove if fully replaced) ===== */
+.powerbi-container {
+    background: #f8f9fa;
+    border: 1px solid #d1d1d1;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 
+        0 0 0 1px rgba(0, 0, 0, 0.1),
+        0 4px 20px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    position: relative;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 500px; /* Changed from height to min-height */
+    animation: fadeInUp 0.8s ease-out 0.2s forwards; /* Added animation with delay */
+    opacity: 0; /* Start hidden for animation */
+}
+
+.powerbi-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 0 0 1px rgba(0, 0, 0, 0.15),
+        0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Power BI Title Bar */
+.powerbi-header {
+    background: linear-gradient(to bottom, #2c2c2c 0%, #1a1a1a 100%);
+    color: #ffffff;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    font-family: 'Segoe UI', sans-serif;
+    height: 32px;
+    border-bottom: 1px solid #333333;
+    position: relative;
+    justify-content: space-between;
+}
+
+.powerbi-title-area {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    gap: 8px;
+}
+
+.powerbi-app-icon {
+    width: 16px;
+    height: 16px;
+    background: linear-gradient(45deg, #f2c811 0%, #e6a000 100%);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000000;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.powerbi-window-title {
+    font-size: 12px;
+    color: #ffffff;
+    font-weight: 400;
+}
+
+.powerbi-controls {
+    display: flex;
+    align-items: center;
+    height: 32px;
+}
+
+.powerbi-control-btn {
+    width: 46px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    color: #ffffff;
+    font-size: 10px;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+.powerbi-control-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.powerbi-control-btn.close:hover {
+    background: #e81123;
+    color: white;
+}
+
+/* Power BI Navigation */
+.powerbi-nav {
+    background: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+    padding: 8px 16px;
+    display: flex;
+    gap: 24px;
+}
+
+.powerbi-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    font-size: 12px;
+    color: #666666;
+}
+
+.powerbi-nav-item:hover {
+    background: #e9ecef;
+    color: #333333;
+}
+
+.powerbi-nav-item.active {
+    background: #0078d4;
+    color: #ffffff;
+}
+
+/* Power BI Canvas */
+.powerbi-canvas {
+    flex: 1;
+    background: #ffffff;
+    padding: 16px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* KPI Cards */
+.powerbi-cards-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Responsive columns */
+    gap: 16px;
+}
+
+.powerbi-kpi-card {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content */
+    text-align: center; /* Center text */
+}
+
+.powerbi-kpi-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.kpi-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #555555;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.kpi-header i {
+    font-size: 18px;
+    color: #0078d4;
+}
+
+.kpi-value {
+    font-size: 28px; /* Increased font size */
+    font-weight: 700;
+    color: #222222;
+    margin-bottom: 4px;
+    line-height: 1.2;
+}
+
+.kpi-subtitle {
+    font-size: 11px;
+    color: #777777;
+    line-height: 1.3;
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+
+/* For tablets and smaller desktops */
+@media (max-width: 992px) {
+    .about-content {
+        grid-template-columns: 1fr; /* Stack containers */
+        gap: 25px;
+    }
+
+    .excel-container,
+    .powerbi-container, /* Keep if powerbi is still used elsewhere or for reference */
+    .sql-container {
+        min-height: auto; /* Allow height to adjust to content */
+        /* Consider reducing complexity or font sizes if needed */
+    }
+
+    .excel-spreadsheet {
+        font-size: 12px; /* Slightly smaller font for spreadsheet */
+    }
+    .excel-cell, .excel-row-header, .excel-column-header {
+        font-size: 11px; /* Adjust cell font sizes */
+        padding: 5px 8px;
+        height: auto; /* Auto height for cells */
+    }
+     .excel-column-headers, .excel-data-rows {
+        grid-template-columns: 40px repeat(3, 1fr); /* Adjust column widths */
+    }
+
+
+    .powerbi-cards-row {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* Adjust for smaller KPI cards */
+        gap: 12px;
+    }
+
+    .kpi-value {
+        font-size: 24px;
+    }
+    .kpi-header i {
+        font-size: 16px;
+    }
+
+    .sql-container {
+        min-height: auto; /* Allow height to adjust to content */
+    }
+    .sql-query-input {
+        font-size: 12px;
+    }
+    .sql-line-numbers {
+        font-size: 11px;
+        padding: 6px 8px;
+    }
+    .sql-results-panel {
+        min-height: 80px;
+        max-height: 150px;
+    }
+    .sql-results-table {
+        font-size: 10px;
+    }
+}
+
+/* For mobile devices */
+@media (max-width: 768px) {
+    .about-content {
+        padding: 15px;
+        gap: 20px;
+    }
+
+    .excel-ribbon-content {
+        gap: 8px; /* Reduce gap in ribbon */
+        padding: 6px;
+        min-height: 40px;
+    }
+    .excel-ribbon-icon {
+        width: 18px;
+        height: 18px;
+        font-size: 10px;
+    }
+    .excel-ribbon-label {
+        font-size: 8px;
+    }
+    .excel-formula-bar {
+        font-size: 10px;
+    }
+    .excel-name-box, .excel-formula-input {
+        font-size: 10px;
+        height: 18px;
+    }
+     .excel-column-headers, .excel-data-rows {
+        grid-template-columns: 35px repeat(3, 1fr); /* Further adjust column widths */
+    }
+    .excel-cell, .excel-row-header, .excel-column-header {
+        font-size: 10px; /* Smaller font for cells on mobile */
+        padding: 4px 6px;
+    }
+
+
+    .powerbi-nav {
+        padding: 6px 10px;
+        gap: 12px; /* Smaller gap for nav items */
+    }
+    .powerbi-nav-item {
+        font-size: 11px;
+        padding: 6px 8px;
+    }
+    .powerbi-nav-item i {
+        font-size: 14px; /* Adjust icon size */
+    }
+
+    .powerbi-cards-row {
+        /* Ensures cards stack nicely, possibly 2 per row or 1 per row */
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 10px;
+    }
+
+    .powerbi-kpi-card {
+        padding: 12px;
+    }
+
+    .kpi-value {
+        font-size: 20px;
+    }
+    .kpi-subtitle {
+        font-size: 10px;
+    }
+    .kpi-header {
+        font-size: 12px;
+    }
+     .kpi-header i {
+        font-size: 14px;
+    }
+
+    .sql-toolbar {
+        padding: 5px 8px;
+        gap: 6px;
+        flex-wrap: wrap; /* Allow toolbar buttons to wrap */
+    }
+    .sql-toolbar-btn {
+        padding: 3px 8px;
+        font-size: 10px;
+    }
+    .sql-toolbar-btn i {
+        font-size: 11px;
+    }
+
+    .sql-query-input {
+        font-size: 11px;
+        padding: 6px;
+    }
+    .sql-line-numbers {
+        font-size: 10px;
+        padding: 6px;
+    }
+
+    .sql-results-panel {
+        font-size: 11px;
+    }
+    .sql-results-tab {
+        padding: 5px 10px;
+    }
+    .sql-results-table {
+        font-size: 9px;
+    }
+    .sql-query-status {
+        font-size: 10px;
+    }
+
+    /* Adjust title bars for smaller screens, including SQL */
+    .excel-header, .powerbi-header, .sql-header {
+        height: 28px;
+        font-size: 11px;
+    }
+    .excel-app-icon, .powerbi-app-icon, .sql-app-icon {
+        /* sql-app-icon might need specific size if different from others */
+        font-size: 14px; /* Adjust if needed */
+    }
+    .excel-window-title, .powerbi-window-title, .sql-window-title {
+        font-size: 11px;
+    }
+    .excel-control-btn, .powerbi-control-btn, .sql-control-btn {
+        width: 40px;
+        height: 100%; /* Ensure full height of the header */
+        font-size: 9px;
+    }
+    .sql-status-bar {
+        height: 22px;
+        font-size: 10px;
+        padding: 3px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-content {
+        padding: 10px;
+        gap: 15px;
+    }
+    .excel-container, .powerbi-container, .sql-container {
+        border-radius: 6px; /* Slightly smaller border radius */
+    }
+
+    /* Excel specific adjustments for very small screens */
+    .excel-file-tab {
+        font-size: 10px;
+        padding: 5px 8px;
+    }
+    .excel-ribbon-tabs {
+        padding-left: 4px;
+    }
+    .excel-ribbon-tab {
+        padding: 5px 8px;
+        font-size: 10px;
+    }
+     .excel-column-headers, .excel-data-rows {
+        grid-template-columns: 30px repeat(3, 1fr); /* Smallest column setup */
+    }
+    .excel-cell, .excel-row-header, .excel-column-header {
+        font-size: 9px;
+        padding: 3px 5px;
+    }
+    .excel-formula-input { /* Allow formula input to wrap if needed */
+        white-space: normal;
+        overflow-wrap: break-word;
+    }
+
+
+    /* Power BI specific adjustments for very small screens */
+    .powerbi-nav {
+        flex-wrap: wrap; /* Allow nav items to wrap */
+        justify-content: center;
+        gap: 8px;
+    }
+    .powerbi-nav-item {
+        font-size: 10px;
+        padding: 5px 7px;
+    }
+     .powerbi-nav-item i {
+        font-size: 12px;
+    }
+
+    .powerbi-cards-row {
+        grid-template-columns: 1fr; /* Stack all KPI cards */
+        gap: 8px;
+    }
+    .kpi-value {
+        font-size: 18px;
+    }
+    .kpi-subtitle {
+        font-size: 9px;
+    }
+    .kpi-header {
+        font-size: 11px;
+    }
+     .kpi-header i {
+        font-size: 12px;
+    }
+
+    /* SQL specific adjustments for very small screens */
+    .sql-toolbar {
+        gap: 4px;
+    }
+    .sql-toolbar-btn {
+        padding: 2px 6px;
+        font-size: 9px;
+    }
+     .sql-toolbar-btn i {
+        font-size: 10px;
+    }
+
+    .sql-query-input {
+        font-size: 10px;
+    }
+    .sql-line-numbers {
+        font-size: 9px;
+        padding: 5px;
+    }
+    .sql-results-panel {
+        min-height: 60px;
+        max-height: 120px;
+    }
+    .sql-results-tab {
+        padding: 4px 8px;
+    }
+    .sql-results-table {
+        font-size: 8px;
+    }
+    .sql-status-bar {
+        font-size: 9px;
+        padding: 2px 8px;
+    }
+}
+
+/* Ensure animations are only run once if you prefer */
+.excel-container.loaded,
+.powerbi-container.loaded, /* Keep if powerbi is still used */
+.sql-container.loaded {
+    animation: none; /* Optional: Stop animation after first load if a class 'loaded' is added via JS */
+}
+
+/* Excel cell selection cursor effect */
+.excel-cell.selected {
+    position: relative;
+    background: #ffffff;
+    border: 2px solid #4a90e2;
+    box-shadow: 
+        inset 0 0 0 1px #4a90e2,
+        0 0 5px rgba(74, 144, 226, 0.5);
+    margin: -1px;
+}
+
+.excel-cell.selected::after {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 16px;
+    background: #000000;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* Excel row/column selection effects */
+.excel-column-header.selected {
+    background: linear-gradient(to bottom, #cce7ff 0%, #99d5ff 50%, #66c2ff 51%, #33aaff 100%);
+    color: #003d6b;
+}
+
+.excel-row-header.selected {
+    background: linear-gradient(to bottom, #cce7ff 0%, #99d5ff 50%, #66c2ff 51%, #33aaff 100%);
+    color: #003d6b;
+}
+
+/* SQL cursor blinking effect */
+.sql-query-input::after {
+    content: '';
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 16px;
+    background: #d4d4d4;
+    animation: blink 1s infinite;
+}
+
+/* Additional Excel ribbon improvements */
+.excel-ribbon-tab::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: transparent;
+    transition: background-color 0.15s ease;
+}
+
+.excel-ribbon-tab.active::before {
+    background: #0078d4;
+}
+
+/* SQL minimap simulation */
+.sql-editor-area::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 80px;
+    height: 100%;
+    background: linear-gradient(to right, 
+        transparent 0%, 
+        rgba(45, 45, 48, 0.8) 10%, 
+        rgba(45, 45, 48, 0.9) 100%);
+    pointer-events: none;
+    border-left: 1px solid #3e3e42;
+}
+
+/* Add SQL connection indicator */
+.sql-header::before {
+    content: '●';
+    color: #4fc3f7;
+    font-size: 8px;
+    margin-right: 6px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Excel zoom control in status bar */
+.excel-status-bar::after {
+    content: '🔍 100%';
+    font-size: 10px;
+    padding-left: 8px;
+    border-left: 1px solid #bfbfbf;
+    margin-left: 8px;
+}
+
+/* SQL connection status */
+.sql-status-bar::before {
+    content: '● Connected';
+    color: #4fc3f7;
+    font-size: 10px;
+    margin-right: 8px;
+}
+
+/* ===== SQL TYPING EFFECT STYLES ===== */
+
+/* SQL typing cursor */
+.sql-cursor {
+    color: #d4d4d4;
+    font-weight: normal;
+    animation: sql-blink 1s infinite;
+}
+
+@keyframes sql-blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* SQL query input during typing */
+.sql-query-input {
+    position: relative;
+}
+
+/* SQL typing completion effect */
+.sql-typing-complete {
+    animation: sql-glow 0.5s ease-in-out;
+}
+
+@keyframes sql-glow {
+    0% { box-shadow: 0 0 5px rgba(79, 195, 247, 0.5); }
+    50% { box-shadow: 0 0 15px rgba(79, 195, 247, 0.8); }
+    100% { box-shadow: 0 0 5px rgba(79, 195, 247, 0.5); }
+}
+
+/* Enhanced SQL syntax highlighting for terminal-like theme */
+.sql-query-input .sql-keyword {
+    color: #1d4ed8 !important; /* Deep blue for keywords - enhanced visibility */
+    font-weight: 700;
+    text-shadow: 0 0 1px rgba(29, 78, 216, 0.3);
+}
+
+.sql-query-input .sql-column {
+    color: #047857 !important; /* Dark green for column names - terminal feel */
+    font-weight: 600;
+    text-shadow: 0 0 1px rgba(4, 120, 87, 0.2);
+}
+
+.sql-query-input .sql-table {
+    color: #b91c1c !important; /* Dark red for table names - strong contrast */
+    font-weight: 600;
+    text-shadow: 0 0 1px rgba(185, 28, 28, 0.2);
+}
+
+.sql-query-input .sql-string {
+    color: #c2410c !important; /* Dark orange for strings - clear visibility */
+    font-weight: 500;
+    text-shadow: 0 0 1px rgba(194, 65, 12, 0.2);
+}
+
+.sql-query-input .sql-operator {
+    color: #6b21a8 !important; /* Deep purple for operators - terminal accent */
+    font-weight: 700;
+    text-shadow: 0 0 1px rgba(107, 33, 168, 0.3);
+}
+
+.sql-query-input .sql-comment {
+    color: #64748b !important; /* Slate gray for comments */
+    font-style: italic;
+    font-weight: 400;
+}
+
+.sql-query-input .sql-comment {
+    color: #6b7280 !important; /* Gray for comments */
+    font-style: italic;
+}
+
+/* Enhanced syntax highlighting with better contrast */
+.sql-query-input span[style*="color: #569cd6"] {
+    color: #1e40af !important; /* Blue keywords */
+    font-weight: 600 !important;
+}
+
+.sql-query-input span[style*="color: #9cdcfe"] {
+    color: #059669 !important; /* Green columns */
+    font-weight: 500 !important;
+}
+
+.sql-query-input span[style*="color: #dcdcaa"] {
+    color: #dc2626 !important; /* Red tables */
+    font-weight: 500 !important;
+}
+
+.sql-query-input span[style*="color: #ce9178"] {
+    color: #ea580c !important; /* Orange strings */
+    font-weight: 400 !important;
+}
+
+/* ===== HERO-STYLE BACKGROUND ANIMATIONS FOR ABOUT SECTION ===== */
+
+/* About section with hero-style background */
+#about {
+    position: relative;
+    background: var(--color-dark, #0f0026);
+    overflow: hidden;
+    isolation: isolate;
+}
+
+/* Hero-style radial gradient background */
+#about::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: radial-gradient(ellipse at center, rgba(89, 178, 158, 0) 1%, rgba(54, 177, 149, 0) 40%, rgba(0, 175, 134, 0.15) 100%);
+    opacity: 0.8;
+    transition: opacity 1s ease-in-out;
+    z-index: 1;
+    animation: gradientPulse 4s ease-in-out infinite alternate;
+}
+
+/* Additional glow layer */
+#about::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(ellipse at 20% 20%, rgba(89, 178, 158, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(0, 255, 195, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(175, 227, 215, 0.1) 0%, transparent 70%);
+    opacity: 0.6;
+    z-index: 1;
+    animation: glowShift 6s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* Starfield background using CSS (hero-inspired) */
+.about-starfield {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(2px 2px at 20px 30px, #afe3d7, transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(175, 227, 215, 0.8), transparent),
+        radial-gradient(1px 1px at 90px 40px, rgba(175, 227, 215, 0.6), transparent),
+        radial-gradient(1px 1px at 130px 80px, #afe3d7, transparent),
+        radial-gradient(2px 2px at 160px 30px, rgba(175, 227, 215, 0.7), transparent),
+        radial-gradient(1px 1px at 190px 90px, rgba(0, 255, 195, 0.9), transparent),
+        radial-gradient(1px 1px at 220px 10px, rgba(175, 227, 215, 0.8), transparent),
+        radial-gradient(2px 2px at 250px 50px, #afe3d7, transparent),
+        radial-gradient(1px 1px at 280px 90px, rgba(175, 227, 215, 0.6), transparent),
+        radial-gradient(1px 1px at 320px 20px, rgba(0, 255, 195, 0.8), transparent);
+    background-repeat: repeat;
+    background-size: 350px 150px;
+    animation: starfieldMove 20s linear infinite, starfieldTwinkle 3s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0.4;
+}
+
+/* Hero-style sci-fi UI elements for About section */
+.about-sci-fi-gui {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 3;
+    opacity: 0.3;
+}
+
+.about-ui-corner {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    border: 1px solid rgba(89, 178, 158, 0.6);
+}
+
+.about-ui-corner.top-left {
+    top: 20px;
+    left: 20px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.about-ui-corner.top-right {
+    top: 20px;
+    right: 20px;
+    border-left: none;
+    border-bottom: none;
+}
+
+.about-ui-corner.bottom-left {
+    bottom: 20px;
+    left: 20px;
+    border-right: none;
+    border-top: none;
+}
+
+.about-ui-corner.bottom-right {
+    bottom: 20px;
+    right: 20px;
+    border-left: none;
+    border-top: none;
+}
+
+/* Central UI elements */
+.about-ui-cross {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    border: 1px solid rgba(89, 178, 158, 0.3);
+    animation: uiPulse 3s ease-in-out infinite;
+}
+
+.about-ui-cross::before,
+.about-ui-cross::after {
+    content: '';
+    position: absolute;
+    background: rgba(89, 178, 158, 0.4);
+}
+
+.about-ui-cross::before {
+    top: 50%;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    transform: translateY(-50%);
+}
+
+.about-ui-cross::after {
+    left: 50%;
+    top: 10%;
+    bottom: 10%;
+    width: 1px;
+    transform: translateX(-50%);
+}
+
+/* Animation keyframes */
+@keyframes gradientPulse {
+    0% {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+}
+
+@keyframes glowShift {
+    0%, 100% {
+        opacity: 0.4;
+        filter: blur(20px);
+    }
+    50% {
+        opacity: 0.8;
+        filter: blur(30px);
+    }
+}
+
+@keyframes starfieldMove {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+    100% {
+        transform: translateX(-350px) translateY(-150px);
+    }
+}
+
+@keyframes starfieldTwinkle {
+    0% {
+        opacity: 0.2;
+    }
+    100% {
+        opacity: 0.6;
+    }
+}
+
+@keyframes uiPulse {
+    0%, 100% {
+        opacity: 0.3;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+/* Ensure content stays above all background animations */
+#about .container {
+    position: relative;
+    z-index: 10;
+}
+
+#about .about-content {
+    position: relative;
+    z-index: 10;
+}
+
+/* Color variables matching hero theme */
+:root {
+    --color-teal: #59b29e;
+    --color-teal-2: #00ffc3;
+    --color-light: #afe3d7;
+    --color-dark: #0f0026;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .about-starfield {
+        background-size: 250px 100px;
+        animation-duration: 15s;
+    }
+    
+    .about-ui-corner {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .about-ui-cross {
+        width: 60px;
+        height: 60px;
+    }
+}

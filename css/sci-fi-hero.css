@@ -1,0 +1,790 @@
+/* Global containment rules - prevent any effects outside hero section */
+body {
+    overflow-x: hidden; /* Prevent horizontal scroll from effects */
+}
+
+/* Ensure all sections except hero have no particle/animation overflow */
+section:not(#home) {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    contain: layout style;
+}
+
+/* Prevent any canvas or animation elements outside hero */
+canvas:not(#starfield-canvas) {
+    display: none !important;
+}
+
+/* Prevent particles.js effects if accidentally initialized */
+.particles-js-canvas-el {
+    display: none !important;
+}
+
+/* Sci-Fi Hero Background Styles */
+:root {
+    --dw: 1920;
+    --dh: 1080;
+}
+
+/* SCSS Variables converted to CSS custom properties */
+:root {
+    --easing: cubic-bezier(0.21, 0.61, 0.35, 1);
+    --easing-bounce: cubic-bezier(0, 1.99, 0.6, 1.01);
+    --font-thin: "TTSquaresCondensed-Thin", monospace;
+    --color-teal: #59b29e;
+    --color-teal-2: #00ffc3;
+    --color-red: #f63b4c;
+    --color-blue: #476bf7;
+    --color-yellow: #f5f5c3;
+    --color-light: #afe3d7;
+    --color-dark: #0f0026;
+    --ui-ib: 3px solid var(--color-teal);
+    --ui-b: 1px solid var(--color-red);
+    --ui-image-padding: 15px;
+    --h: 9px;
+    --ui-bs: rgba(175, 227, 215, 0.15);
+    --ease-in-out-sine: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+@font-face {
+    font-family: 'TTSquaresCondensed-Thin';
+    src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/39132/TTSquaresCondensed-Thin.eot');
+    src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/39132/TTSquaresCondensed-Thin.eot?#iefix') format('embedded-opentype'), 
+         url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/39132/TTSquaresCondensed-Thin.woff2') format('woff2'), 
+         url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/39132/TTSquaresCondensed-Thin.woff') format('woff'), 
+         url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/39132/TTSquaresCondensed-Thin.ttf') format('truetype');
+}
+
+/* Hero section sci-fi overlay */
+#home.hero {
+    position: relative;
+    background: var(--color-dark);
+    overflow: hidden;
+    isolation: isolate; /* Creates new stacking context */
+    contain: layout style paint; /* CSS containment for performance */
+}
+
+#home.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: radial-gradient(ellipse at center, rgba(89, 178, 158, 0) 1%, rgba(54, 177, 149, 0) 40%, rgba(0, 175, 134, 0.15) 100%);
+    opacity: 0.8;
+    transition: opacity 1s ease-in-out;
+    z-index: 1;
+}
+
+/* Sci-fi UI Grid overlay - only in hero section */
+.sci-fi-gui {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: 15% 70% 15%;
+    grid-template-rows: 25% 50% 25%;
+    align-items: center;
+    justify-items: center;
+    user-select: none;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.sci-fi-gui .ui-grid {
+    position: relative;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    pointer-events: none;
+    grid-template-columns: 15% 70% 15%;
+    grid-template-rows: 25% 50% 25%;
+}
+
+.sci-fi-gui .ui-box {
+    grid-row: 2/3;
+    grid-column: 2/3;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    user-select: none;
+    pointer-events: none;
+}
+
+.sci-fi-gui .ui-fx {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: 1px solid rgba(89, 178, 158, 0.3);
+    user-select: none;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+}
+
+.sci-fi-gui .ui-corner {
+    width: 1vw;
+    height: 1vw;
+    position: absolute;
+}
+
+.sci-fi-gui .ui-corner:nth-of-type(1) {
+    top: -4px;
+    left: -4px;
+    border-left: var(--ui-b);
+    border-top: var(--ui-b);
+}
+
+.sci-fi-gui .ui-corner:nth-of-type(2) {
+    top: -4px;
+    right: -4px;
+    border-right: var(--ui-b);
+    border-top: var(--ui-b);
+}
+
+.sci-fi-gui .ui-corner:nth-of-type(3) {
+    bottom: -4px;
+    right: -4px;
+    border-bottom: var(--ui-b);
+    border-right: var(--ui-b);
+}
+
+.sci-fi-gui .ui-corner:nth-of-type(4) {
+    bottom: -4px;
+    left: -4px;
+    border-bottom: var(--ui-b);
+    border-left: var(--ui-b);
+}
+
+/* UI Cross */
+.ui-cross {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: all 0.6s ease-out;
+    opacity: 0.5;
+    z-index: 2;
+}
+
+.ui-cross .border-x {
+    position: absolute;
+    top: 10%;
+    bottom: 10%;
+    left: 50%;
+    width: 1px;
+    background: var(--ui-bs);
+}
+
+.ui-cross .border-x.f {
+    transform: rotate(110deg);
+}
+
+.ui-cross .border-x.l {
+    transform: rotate(-110deg);
+}
+
+.ui-cross .border-horz {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--ui-bs);
+}
+
+.ui-cross .border-vert {
+    position: absolute;
+    top: 10%;
+    bottom: 10%;
+    left: 50%;
+    width: 1px;
+    background: var(--ui-bs);
+}
+
+.ui-cross .dot {
+    border-radius: 100%;
+    width: 6px;
+    height: 6px;
+    background: rgba(175, 227, 215, 0.5);
+    position: absolute;
+    left: -2px;
+}
+
+.ui-cross .dot.t {
+    top: 0;
+}
+
+.ui-cross .dot.b {
+    bottom: 0;
+}
+
+.ui-cross .x-hair {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.ui-cross .line {
+    width: 1px;
+    height: 40%;
+    background: var(--ui-bs);
+    position: absolute;
+}
+
+.ui-cross .line:nth-of-type(1) {
+    top: 0;
+    left: 0;
+    transform-origin: 0 0;
+    transform: rotate(-45deg);
+}
+
+.ui-cross .line:nth-of-type(2) {
+    top: 0;
+    right: 0;
+    transform-origin: 100% 0;
+    transform: rotate(45deg);
+}
+
+.ui-cross .line:nth-of-type(3) {
+    bottom: 0;
+    left: 0;
+    transform-origin: 0% 100%;
+    transform: rotate(45deg);
+}
+
+.ui-cross .line:nth-of-type(4) {
+    bottom: 0;
+    right: 0;
+    transform-origin: 100% 100%;
+    transform: rotate(-45deg);
+}
+
+/* UI Borders */
+.ui-border {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    height: 80%;
+    z-index: 1;
+}
+
+.ui-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: rgba(89, 178, 158, 0.3);
+}
+
+.ui-border.l {
+    left: 3vw;
+}
+
+.ui-border.r {
+    right: 3vw;
+}
+
+.ui-border .cap {
+    width: 4px;
+    height: 4px;
+    border-width: 4px;
+    border-style: solid;
+    left: -5px;
+    position: absolute;
+}
+
+.ui-border .cap.t {
+    top: -2%;
+    border-color: var(--color-red) transparent transparent transparent;
+}
+
+.ui-border .cap.b {
+    bottom: -2%;
+    border-color: transparent transparent var(--color-red) transparent;
+}
+
+.ui-border .batt {
+    display: block;
+    width: 3px;
+    height: 12px;
+    background: var(--color-red);
+}
+
+/* UI Circles */
+.ui-circles {
+    justify-self: center;
+    align-self: center;
+}
+
+.ui-circles.l {
+    grid-row: 2/3;
+    grid-column: 1/2;
+}
+
+.ui-circles.r {
+    grid-row: 2/3;
+    grid-column: 3/4;
+}
+
+.circle {
+    width: 6px;
+    height: 6px;
+    border-radius: 100%;
+    border: 1px solid var(--color-teal);    display: block;
+    margin: 20px 0;
+}
+
+/* UI Tics */
+.ui-tics {
+    position: absolute;
+    left: 0;
+    right: 0;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ui-tics.t {
+    bottom: 15%;
+}
+
+.ui-tics.b {
+    top: 15%;
+    transform: scaleY(-1);
+}
+
+.ui-tics .tic {
+    background: rgba(89, 178, 158, 0.3);
+    width: 1px;
+    height: 10px;
+    position: relative;
+    display: inline-block;
+    margin: 0 3px;
+    white-space: nowrap;
+}
+
+.ui-tics .tic::before {
+    content: '';
+    width: inherit;
+    height: 2px;
+    left: 0;
+    background: var(--color-teal-2);
+    position: absolute;
+}
+
+/* Starfield background - only in hero section */
+#starfield {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    transition: opacity 0.6s ease-in-out;
+    overflow: hidden; /* Ensure no content escapes */
+    contain: layout style paint; /* CSS containment */
+}
+
+#starfield canvas {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Ensure canvas stays within bounds */
+}
+
+/* Ensure hero content is above UI elements */
+.hero-content {
+    position: relative;
+    z-index: 10;
+    background: rgba(15, 0, 38, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(89, 178, 158, 0.3);
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 
+        0 0 30px rgba(0, 255, 195, 0.1),
+        inset 0 0 30px rgba(89, 178, 158, 0.05);
+}
+
+.hero h1 {
+    color: var(--color-light);
+    text-shadow: 0 0 20px var(--color-teal-2);
+    font-family: var(--font-thin), 'Montserrat', sans-serif;
+}
+
+.hero-intro {
+    color: var(--color-teal-2) !important;
+    text-shadow: 0 0 10px var(--color-teal-2);
+}
+
+.typed {
+    color: var(--color-teal) !important;
+    text-shadow: 0 0 15px var(--color-teal);
+}
+
+.tagline {
+    color: var(--color-light) !important;
+}
+
+.tagline .highlight {
+    color: var(--color-teal-2) !important;
+    text-shadow: 0 0 10px var(--color-teal-2);
+}
+
+.hero-stats .stat-number {
+    color: var(--color-teal-2);
+    text-shadow: 0 0 15px var(--color-teal-2);
+}
+
+.hero-stats .stat-label {
+    color: var(--color-light);
+}
+
+.btn.primary-btn {
+    background: linear-gradient(45deg, var(--color-teal), var(--color-teal-2));
+    border: 1px solid var(--color-teal-2);
+    box-shadow: 0 0 20px rgba(0, 255, 195, 0.3);
+    transition: all 0.3s var(--easing);
+}
+
+.btn.primary-btn:hover {
+    box-shadow: 0 0 30px rgba(0, 255, 195, 0.6);
+    transform: translateY(-2px) scale(1.05);
+}
+
+.btn.secondary-btn {
+    border: 1px solid var(--color-teal);
+    color: var(--color-teal);
+    background: rgba(89, 178, 158, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+.btn.secondary-btn:hover {
+    background: var(--color-teal);
+    color: var(--color-dark);
+    box-shadow: 0 0 20px rgba(89, 178, 158, 0.5);
+}
+
+.social-links a {
+    color: var(--color-light);
+    transition: all 0.3s var(--easing);
+}
+
+.social-links a:hover {
+    color: var(--color-teal-2);
+    text-shadow: 0 0 10px var(--color-teal-2);
+    transform: scale(1.2);
+}
+
+.profile-image {
+    border: 2px solid var(--color-teal);
+    box-shadow: 0 0 30px rgba(89, 178, 158, 0.4);
+    border-radius: 50%;
+}
+
+/* Animation keyframes */
+@keyframes zoomFade {
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .sci-fi-gui {
+        grid-template-columns: 10% 80% 10%;
+    }
+    
+    .ui-border.l {
+        left: 2vw;
+    }
+    
+    .ui-border.r {
+        right: 2vw;
+    }
+    
+    .ui-inner-border {
+        width: 60vw;
+    }
+    
+    .ui-border {
+        height: 70%;
+    }
+}
+
+@media (max-width: 480px) {
+    .sci-fi-gui {
+        grid-template-columns: 5% 90% 5%;
+    }
+    
+    .ui-border {
+        height: 60%;
+    }
+}
+
+/* Sci-fi About Section Styles */
+#about.sci-fi-about {
+    position: relative;
+    background: var(--color-dark);
+    overflow: hidden;
+    isolation: isolate;
+    contain: layout style paint;
+    min-height: 100vh;
+}
+
+#about.sci-fi-about::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: radial-gradient(ellipse at center, rgba(89, 178, 158, 0) 1%, rgba(54, 177, 149, 0) 40%, rgba(0, 175, 134, 0.15) 100%);
+    opacity: 0.8;
+    transition: opacity 1s ease-in-out;
+    z-index: 1;
+}
+
+/* About section content styling */
+#about.sci-fi-about .container {
+    position: relative;
+    z-index: 10;
+}
+
+#about.sci-fi-about .section-title {
+    color: var(--color-teal);
+    text-shadow: 0 0 10px rgba(89, 178, 158, 0.5);
+    position: relative;
+    z-index: 10;
+}
+
+#about.sci-fi-about .about-content {
+    position: relative;
+    z-index: 10;
+}
+
+#about.sci-fi-about .about-info {
+    background: rgba(15, 0, 38, 0.8);
+    border: 1px solid rgba(89, 178, 158, 0.3);
+    border-left: 4px solid var(--color-teal);
+    color: var(--color-light);
+    backdrop-filter: blur(10px);
+}
+
+#about.sci-fi-about .about-info p {
+    color: var(--color-light);
+}
+
+#about.sci-fi-about .highlight-text {
+    color: var(--color-teal);
+    text-shadow: 0 0 5px rgba(89, 178, 158, 0.3);
+}
+
+#about.sci-fi-about .personal-details .detail-item {
+    color: var(--color-light);
+}
+
+#about.sci-fi-about .personal-details .detail-item i {
+    color: var(--color-teal);
+}
+
+#about.sci-fi-about .about-interests {
+    background: rgba(15, 0, 38, 0.8);
+    border: 1px solid rgba(89, 178, 158, 0.3);
+    color: var(--color-light);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 15px;
+}
+
+#about.sci-fi-about .about-interests h3 {
+    color: var(--color-teal);
+    text-shadow: 0 0 5px rgba(89, 178, 158, 0.3);
+}
+
+#about.sci-fi-about .interest-tags span {
+    background: rgba(89, 178, 158, 0.1);
+    border: 1px solid rgba(89, 178, 158, 0.3);
+    color: var(--color-teal);
+    transition: all 0.3s ease;
+}
+
+#about.sci-fi-about .interest-tags span:hover {
+    background: rgba(89, 178, 158, 0.2);
+    box-shadow: 0 0 10px rgba(89, 178, 158, 0.3);
+    transform: translateY(-2px);
+}
+
+#about.sci-fi-about .section-icon i {
+    color: var(--color-teal);
+    text-shadow: 0 0 10px rgba(89, 178, 158, 0.5);
+}
+
+/* About section starfield canvas */
+#about-starfield-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* About section sci-fi GUI - positioned to not interfere with content */
+#about.sci-fi-about .sci-fi-gui {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    grid-template-rows: 15% 70% 15%;
+    align-items: center;
+    justify-items: center;
+    user-select: none;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0.3;
+}
+
+#about.sci-fi-about .sci-fi-gui .ui-grid {
+    position: relative;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    pointer-events: none;
+    grid-template-columns: 10% 80% 10%;
+    grid-template-rows: 15% 70% 15%;
+}
+
+#about.sci-fi-about .sci-fi-gui .ui-box {
+    grid-row: 2/3;
+    grid-column: 2/3;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    user-select: none;
+    pointer-events: none;
+}
+
+#about.sci-fi-about .sci-fi-gui .ui-fx {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: 1px solid rgba(89, 178, 158, 0.2);
+    user-select: none;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+}
+
+#about.sci-fi-about .sci-fi-gui .ui-corner {
+    width: 1vw;
+    height: 1vw;
+    position: absolute;
+}
+
+#about.sci-fi-about .sci-fi-gui .ui-corner:nth-of-type(1) {
+    top: -4px;
+    left: -4px;
+    border-left: 1px solid rgba(246, 59, 76, 0.5);
+    border-top: 1px solid rgba(246, 59, 76, 0.5);
+}
+
+#about.sci-fi-about .sci-fi-gui .ui-corner:nth-of-type(2) {
+    top: -4px;
+    right: -4px;
+    border-right: 1px solid rgba(246, 59, 76, 0.5);
+    border-top: 1px solid rgba(246, 59, 76, 0.5);
+}
+
+#about.sci-fi-about .sci-fi-gui .ui-corner:nth-of-type(3) {
+    bottom: -4px;
+    right: -4px;
+    border-bottom: 1px solid rgba(246, 59, 76, 0.5);
+    border-right: 1px solid rgba(246, 59, 76, 0.5);
+}
+
+#about.sci-fi-about .sci-fi-gui .ui-corner:nth-of-type(4) {
+    bottom: -4px;
+    left: -4px;
+    border-bottom: 1px solid rgba(246, 59, 76, 0.5);
+    border-left: 1px solid rgba(246, 59, 76, 0.5);
+}
+
+/* UI Cross for about section */
+#about.sci-fi-about .ui-cross {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: all 0.6s ease-out;
+    opacity: 0.3;
+    z-index: 2;
+}
+
+#about.sci-fi-about .ui-cross .border-x {
+    position: absolute;
+    top: 20%;
+    bottom: 20%;
+    left: 50%;
+    width: 1px;
+    background: rgba(175, 227, 215, 0.1);
+}
+
+#about.sci-fi-about .ui-cross .border-x.f {
+    transform: rotate(110deg);
+}
+
+#about.sci-fi-about .ui-cross .border-x.l {
+    transform: rotate(-110deg);
+}

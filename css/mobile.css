@@ -1,0 +1,1767 @@
+/* Hide mobile navbar on desktop, show on mobile */
+.navbar-mobile {
+    display: none;
+}
+
+/* Improved mobile navbar formatting */
+@media (max-width: 768px) {
+    .navbar-mobile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 56px;
+        background: #f8f9fa;
+        z-index: 1001;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+        border-bottom: 1px solid #e5e5e5;
+    }
+    .nav-mobile-links {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 0;
+        list-style: none;
+        background: transparent;
+    }
+    .nav-mobile-links li {
+        flex: 1 1 0;
+        text-align: center;
+    }
+    .nav-mobile-links li a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.7rem;
+        color: #222;
+        padding: 0.35rem 0;
+        border-radius: 50%;
+        transition: background 0.2s, color 0.2s;
+        width: 44px;
+        height: 44px;
+        margin: 0 auto;
+    }
+    .nav-mobile-links li a:active,
+    .nav-mobile-links li a.active {
+        background: #007bff;
+        color: #fff;
+    }
+    .nav-mobile-links li a i {
+        pointer-events: none;
+    }
+    body {
+        padding-top: 0; /* Remove body padding to eliminate gap */
+    }
+
+    /* Hero section: fit perfectly within mobile viewport */
+    .hero {
+        width: 100vw;
+        height: 100vh !important; /* Exact viewport height */
+        max-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Center the container */
+        align-items: center;
+        padding-top: 56px !important; /* Account for navbar */
+        padding-bottom: 0 !important; /* Remove bottom padding */
+        box-sizing: border-box;
+        background: #fff;
+        overflow: hidden; /* Prevent scrolling to keep everything on screen */
+        margin: 0;
+    }
+    
+    .hero .container {
+        width: 100%;
+        max-width: 100%;
+        height: calc(100vh - 56px); /* Use available space minus navbar */
+        max-height: calc(100vh - 56px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly; /* Distribute all elements evenly */
+        flex-grow: 1;
+        padding: 0 15px; /* Only horizontal padding */
+        box-sizing: border-box;
+        margin: -15px 0 0 0; /* Negative top margin to move container up */
+    }
+    
+    .hero-content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start; /* Position content toward top */
+        margin: -140px 0 0 0; /* Negative top margin to move container up */
+        padding:0;
+        box-sizing: border-box;
+    }
+    
+    .hero-layout {
+        width: 100%;
+        max-width: 90vw; /* Use viewport width for better scaling */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start; /* Position elements toward top */
+        gap: 0; /* Remove gap to bring text closer to profile photo */
+        margin: 0 auto;
+    }
+    
+    .hero-image {
+        order: -1;
+        margin: -40px 0 0 0; /* Negative top margin to move profile image up */
+        flex-shrink: 0;
+        align-self: center;
+    }
+    
+    .profile-image-container {
+        width: clamp(90px, 22vw, 130px); /* Slightly smaller for more content space */
+        height: clamp(90px, 22vw, 130px); /* Slightly smaller for more content space */
+        border: 3px solid var(--primary-color, #2A7C96);
+        border-radius: 50%;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(42, 124, 150, 0.2);
+        margin: 0; /* Remove auto margin to eliminate any spacing */
+    }
+    
+    .profile-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+    
+    .hero-text {
+        text-align: center;
+        width: 100%;
+        margin: -35px 0 0 0; /* Increased negative margin to bring text much closer */
+        padding-top: 0; /* Ensure no top padding adds space */
+    }
+    
+    /* Optimize text sizes for mobile viewport */
+    .hero-intro {
+        font-size: clamp(0.9rem, 3.5vw, 1.1rem); /* Responsive font size */
+        margin: 0; /* Remove all margins to bring text as close as possible */
+        padding: 0; /* Remove all padding */
+        color: #333;
+    }
+    
+    .hero h1 {
+        font-size: clamp(1.8rem, 7vw, 2.5rem); /* Responsive font size */
+        margin-bottom: 5px; /* Reduced margin for compact layout */
+        line-height: 1.1; /* Tighter line height */
+        color: #0e153a;
+    }
+    
+    .typing-container {
+        min-height: auto; /* Allow height to adjust to content */
+        margin-bottom: 5px; /* Reduced margin for compact layout */
+        font-size: clamp(1rem, 4vw, 1.3rem); /* Responsive font size */
+        width: 100%;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .hero .tagline {
+        font-size: clamp(0.85rem, 3.2vw, 1rem); /* Responsive font size */
+        margin-bottom: 8px; /* Reduced margin for compact layout */
+        line-height: 1.3; /* Tighter line height */
+    }
+    
+    .hero-stats {
+        display: flex;
+        justify-content: center;
+        gap: clamp(12px, 3vw, 20px); /* Reduced gap for compact layout */
+        margin: 8px 0 0 0; /* Reduced margin for compact layout */
+        flex-wrap: wrap;
+    }
+    
+    .stat-number {
+        font-size: clamp(1rem, 3.5vw, 1.3rem); /* Responsive font size */
+        font-weight: bold;
+        color: var(--primary-color);
+    }
+    
+    .stat-label {
+        font-size: clamp(0.7rem, 2.5vw, 0.85rem); /* Responsive font size */
+        color: #666;
+    }
+    
+
+    
+    .hero-btns .btn {
+        width: 100%;
+        padding: clamp(10px, 3vw, 12px) clamp(16px, 4vw, 20px); /* Responsive padding */
+        font-size: clamp(0.8rem, 2.8vw, 0.95rem); /* Responsive font size */
+        border-radius: 30px; /* Increased border-radius for a softer look */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem; /* Adjusted gap */
+    }
+    
+    .social-links {
+        display: flex;
+        justify-content: center;
+        gap: clamp(10px, 3vw, 15px); /* Responsive gap */
+        margin-top: 12px; /* Adjusted margin */
+    }
+    
+    .social-links a {
+        width: clamp(30px, 8vw, 36px); /* Responsive size */
+        height: clamp(30px, 8vw, 36px); /* Responsive size */
+        border-radius: 50%;
+        background-color: var(--primary-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: clamp(0.85rem, 3vw, 1rem); /* Responsive icon size */
+        color: white;
+        transition: all 0.3s ease;
+        box-shadow: 0 3px 10px rgba(42, 124, 150, 0.3);
+    }
+    
+    .social-links a:hover,
+    .social-links a:active,
+    .social-links a:focus {
+        background: #007bff;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,123,255,0.4);
+    }
+    
+    /* Hide scroll-down on mobile */
+    .scroll-down {
+        display: none;
+    }
+    
+    .scroll-down .mouse {
+        width: 26px;
+        height: 40px;
+        border: 2px solid rgba(255, 255, 255, 0.6);
+        border-radius: 13px;
+        margin: 0 auto 5px;
+        position: relative;
+    }
+    
+    .scroll-down .mouse-wheel {
+        width: 4px;
+        height: 8px;
+        background: rgba(255, 255, 255, 0.8);
+        position: absolute;
+        top: 7px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 2px;
+        animation: scrollWheel 1.5s ease-out infinite;
+    }
+    
+    .scroll-down .scroll-text {
+        font-size: 0.7rem;
+        color: rgba(255, 255, 255, 0.7);
+        letter-spacing: 1px;
+    }
+    
+    /* Hide sci-fi elements on mobile to prevent overflow */
+    .sci-fi-gui {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        display: none !important;
+    }
+    .navbar-mobile {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        z-index: 1001;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+    .nav-mobile-links {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin: 0;
+        padding: 0.5rem 0;
+        list-style: none;
+    }
+    .nav-mobile-links li a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: #222;
+        padding: 0.25rem 0.5rem;
+        border-radius: 50%;
+        transition: background 0.2s, color 0.2s;
+    }
+    .nav-mobile-links li a:active,
+    .nav-mobile-links li a.active {
+        background: #007bff;
+        color: #fff;
+    }
+    body {
+        padding-top: 56px;
+    }
+}
+/* Mobile-specific enhancements - separate from main desktop styling */
+
+/* Mobile menu backdrop */
+.mobile-menu-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    animation: fadeIn 0.3s forwards;
+}
+
+/* Prevent scrolling when mobile menu is open */
+body.menu-open {
+    overflow: hidden;
+}
+
+/* Base responsive settings */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+iframe {
+    max-width: 100%;
+    border: 0;
+}
+
+/* Hamburger menu animation */
+.menu-toggle span.active:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle span.active:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle span.active:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+    html {
+        font-size: 16px;
+    }
+    
+    .container {
+        max-width: 90%;
+    }
+    
+    .dataviz-tabs__button, 
+    .statistical-tabs__button {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+    
+    /* About Me Section Responsive Styles */
+    .about-content {
+        grid-template-columns: 1fr !important;
+        gap: 30px !important;
+        padding: 0 20px !important;
+    }
+    
+    .excel-container,
+    .sql-container {
+        max-width: 100%;
+        overflow-x: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+    
+    /* Enhanced mobile menu */
+    .menu-toggle {
+        display: block;
+        z-index: 1001;
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background-color: var(--bg-white);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.4s ease;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        padding: 80px 0;
+        z-index: 1000;
+    }
+    
+    .navbar.scrolled .nav-links {
+        background-color: var(--dark-color);
+    }
+    
+    .nav-links.active {
+        right: 0;
+    }
+    
+    .nav-links li {
+        margin: 15px 0;
+    }
+    
+    .section-title {
+        font-size: clamp(1.8rem, 7vw, 2.5rem);
+    }
+    
+    .hero-btns {
+        display: none; /* Hide buttons on mobile */
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+    
+    /* Skills section with 2 columns and 4 rows layout */
+    .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .skill-item {
+        padding: 12px;
+        height: auto;
+        min-height: 140px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 0;
+    }
+    
+    .skill-icon {
+        font-size: 1.3rem;
+        margin-bottom: 6px;
+    }
+    
+    .skill-item h4 {
+        font-size: 0.9rem;
+        margin-bottom: 4px;
+    }
+    
+    .skill-item p {
+        font-size: 0.8rem;
+        line-height: 1.3;
+        margin-bottom: 8px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    
+    .skills-section .skill-icon {
+        width: 60px;
+        height: 60px;
+        background: rgba(0, 255, 195, 0.15);
+        border: 2px solid rgba(0, 255, 195, 0.4);
+        box-shadow: 0 0 15px rgba(0, 255, 195, 0.2);
+    }
+    
+    .skills-section .skill-icon i {
+        font-size: 2rem;
+        color: #00ffc3;
+        text-shadow: 0 0 20px rgba(0, 255, 195, 0.8), 0 0 40px rgba(0, 255, 195, 0.4);
+    }
+    
+    .skills-section .skill-item:hover .skill-icon {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(0, 255, 195, 0.4);
+    }
+    
+    /* Ensure specific technology colors are visible on mobile */
+    .skills-section .skill-item:nth-child(1) .skill-icon i,
+    .skills-section .skill-item:nth-child(2) .skill-icon i,
+    .skills-section .skill-item:nth-child(3) .skill-icon i,
+    .skills-section .skill-item:nth-child(4) .skill-icon i {
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 25px currentColor;
+    }
+    
+    .skills-section .star-field-container {
+        opacity: 0.7; /* Reduce intensity on mobile */
+    }
+    
+    .skills-section .stars-small,
+    .skills-section .stars-medium,
+    .skills-section .stars-large {
+        animation-duration: 15s, 18s, 22s; /* Slower animations for better performance */
+    }
+    
+    .skills-section .shooting-stars::before,
+    .skills-section .shooting-stars::after {
+        animation-duration: 4s, 5s;
+    }
+    
+    .skills-section .skill-item {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .skills-section .skills-carousel-item {
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(12px);
+    }
+    
+    .skills-section .section-title {
+        font-size: 1.8rem;
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+    }
+    
+    .skill-category h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.8rem;
+        padding-top: 0.5rem;
+    }
+    
+    .skill-level {
+        margin-top: auto;
+        height: 5px;
+    }
+    
+    /* Reset previous css that forced single column */
+    .skills-grid .skill-item:nth-child(2n+1),
+    .skills-grid .skill-item:nth-child(2n) {
+        grid-column: auto;
+    }
+    
+    .skill-category {
+        margin-bottom: 1.2rem;
+    }
+    
+    .about-content,
+    .contact-container,
+    .footer-content {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    /* Enhanced touch targets */
+    .btn, 
+    .dataviz-tabs__button, 
+    .statistical-tabs__button,
+    .dataviz-filter__select,
+    .statistical-filter__select,
+    .form-group input[type="submit"],
+    .contact-info .social-links a {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    .dataviz-tabs, 
+    .statistical-tabs {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .dataviz-card__info, 
+    .statistical-card__info {
+        flex-direction: column;
+    }
+    
+    .dataviz-card__frame-container,
+    .statistical-card__frame-container {
+        height: 300px;
+    }
+    
+    .hero-stats {
+        justify-content: center;
+    }
+    
+    .contact-form,
+    .contact-info {
+        width: 100%;
+        padding: 20px;
+    }
+    
+    /* Make timeline cards wider while preserving timeline */
+    .education-section .timeline-content {
+        width: 100%;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        padding: 15px;
+        background-color: var(--bg-white);
+    }
+    
+    /* Remove the white arrow in the middle of the timeline */
+    .education-section .timeline-content::before {
+        display: none;
+    }
+    
+    /* Enhanced Statistical Cards for better mobile experience */
+    .statistical-card {
+        margin-bottom: 30px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+    }
+
+    .statistical-card__header {
+        padding: 18px 20px;
+    }
+
+    .statistical-card__title {
+        font-size: 1.2rem;
+        line-height: 1.3;
+    }
+
+    .statistical-card__info {
+        flex-direction: column;
+        padding: 20px;
+    }
+    
+    .statistical-card__frame-container {
+        height: 350px;
+        padding-top: 0;
+        position: relative;
+        overflow: hidden;
+        background-color: #f9f9f9;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    .statistical-card__iframe-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+    
+    .statistical-card__iframe {
+        height: 100%;
+        width: 100%;
+        border: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .statistical-card__iframe.loaded {
+        opacity: 1;
+    }
+    
+    .statistical-card__loading {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.9);
+        z-index: 5;
+        transition: opacity 0.3s ease;
+    }
+    
+    .statistical-card__spinner {
+        width: 40px;
+        height: 40px;
+        border: 3px solid rgba(0, 0, 0, 0.1);
+        border-radius: 50%;
+        border-top-color: var(--primary-color);
+        animation: spin 1s linear infinite;
+        margin-bottom: 10px;
+    }
+    
+    .statistical-card__goal,
+    .statistical-card__tools,
+    .statistical-card__findings {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    .statistical-card__findings ul {
+        padding-left: 20px;
+    }
+    
+    .statistical-card__findings li {
+        margin-bottom: 10px;
+        line-height: 1.5;
+    }
+    
+    .statistical-card__links {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .statistical-card__link {
+        width: 100%;
+        justify-content: center;
+        padding: 12px;
+    }
+    
+    .statistical-tabs {
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    
+    .statistical-tabs__button {
+        margin: 5px;
+        padding: 12px 15px;
+        border-radius: 8px;
+        flex: 1 1 calc(50% - 10px);
+        max-width: calc(50% - 10px);
+        height: auto;
+        min-height: 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .statistical-tabs__button i {
+        margin-bottom: 5px;
+        font-size: 1.2rem;
+    }
+    
+    .statistical-modal__content {
+        width: 95%;
+        max-height: 90vh;
+        padding: 15px;
+        border-radius: 12px;
+    }
+    
+    .statistical-modal__frame-container {
+        height: 60vh;
+    }
+    
+    /* Improve viewing experience for statistical projects */
+    .statistical-section h3 {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+    
+    .statistical-section__description {
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Filter improvements */
+    .statistical-filter {
+        margin-bottom: 1.5rem;
+    }
+    
+    .statistical-filter__select {
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+    }
+}
+
+@media (max-width: 576px) {
+    html {
+        font-size: 12px;
+    }
+    
+    .nav-links {
+        width: 80%;
+    }
+    
+    /* Timeline adjustments for mobile */
+    .timeline::before {
+        left: 30px;
+    }
+    
+    .timeline-content {
+        margin-left: 50px;
+        width: calc(100% - 50px);
+        max-width: 100%;
+    }
+    
+    .timeline-content::before {
+        left: 35px;
+    }
+    
+    /* Education timeline cards for small screens */
+    .education-section .timeline-content {
+        width: 130%;
+        max-width: 100%;
+        margin-left: 0;
+        padding: 12px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        background-color: var(--bg-white);
+    }
+    
+    /* Ensure the white arrow stays hidden */
+    .education-section .timeline-content::before {
+        display: none;
+    }
+ 
+    .education-section .timeline-content h3 {
+        font-size: 1.1rem;
+        margin-bottom: 5px;
+    }
+    
+    .education-section .timeline-content h4 {
+        font-size: 1rem;
+        color: var(--primary-color);
+    }
+    
+    /* Adjust iframe heights for mobile */
+    .dataviz-card__iframe, 
+    .statistical-card__iframe {
+        height: 200px;
+    }
+    
+    /* Make modals more usable on small screens */
+    .dataviz-modal__content,
+    .statistical-modal__content {
+        width: 95%;
+        max-height: 80vh;
+        padding: 15px;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        padding: 12px;
+    }
+    
+    /* Further adjust skill items for smaller screens */
+    .skill-item {
+        min-height: 120px;
+        padding: 10px;
+    }
+    
+    .skill-icon {
+        font-size: 1.1rem;
+    }
+    
+    .skill-item h4 {
+        font-size: 0.8rem;
+    }
+    
+    .skill-item p {
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        font-size: 0.75rem;
+        line-height: 1.2;
+    }
+    
+    /* Further statistical card enhancements for smaller screens */
+    .statistical-card__frame-container {
+        height: 280px;
+    }
+    
+    .statistical-card__iframe {
+        height: 100%;
+    }
+    
+    .statistical-card__title {
+        font-size: 1.1rem;
+    }
+    
+    .statistical-tabs__button {
+        flex: 1 1 100%;
+        max-width: 100%;
+        margin: 5px 0;
+    }
+    
+    .statistical-card__tool-tags {
+        gap: 6px;
+    }
+    
+    .statistical-card__tool-tags span {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+    
+    .statistical-modal__frame-container {
+        height: 50vh;
+    }
+}
+
+/* Add a tiny phone breakpoint for extremely small devices */
+@media (max-width: 375px) {
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-stats {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .stat-item::after {
+        display: none;
+    }
+    
+    .nav-links {
+        width: 100%;
+    }
+    
+    .dataviz-tabs__button, 
+    .statistical-tabs__button {
+        width: 100%;
+    }
+    
+    .contact-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .statistical-card__frame-container {
+        height: 300px;
+    }
+    
+    .statistical-card__info {
+        padding: 15px;
+    }
+}
+
+/* Add support for viewport height units for small devices */
+@media (max-height: 700px) {
+    .hero {
+        height: auto;
+        min-height: 100vh;
+        padding: 100px 0 50px;
+    }
+    
+    .profile-image-container {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .nav-links {
+        padding: 60px 0;
+    }
+}
+
+/* Fix scrolling issues on iOS devices */
+@supports (-webkit-touch-callout: none) {
+    .hero {
+        height: -webkit-fill-available;
+    }
+}
+
+/* For print media */
+@media print {
+    .navbar, 
+    .menu-toggle,
+    .scroll-down,
+    .dataviz-tabs,
+    .statistical-tabs,
+    .dataviz-filter,
+    .statistical-filter,
+    .contact-form,
+    footer {
+        display: none;
+    }
+    
+    .hero {
+        height: auto;
+        min-height: 0;
+    }
+    
+    section {
+        padding: 20px 0;
+        page-break-inside: avoid;
+    }
+    
+    body {
+        font-size: 12pt;
+        line-height: 1.5;
+    }
+    
+    h1 {
+        font-size: 24pt;
+    }
+    
+    h2 {
+        font-size: 20pt;
+    }
+    
+    h3 {
+        font-size: 16pt;
+    }
+}
+
+/* Sci-fi About Section Mobile Styles */
+@media (max-width: 768px) {
+    #about.sci-fi-about .sci-fi-gui {
+        grid-template-columns: 5% 90% 5%;
+        grid-template-rows: 10% 80% 10%;
+        opacity: 0.2;
+    }
+    
+    #about.sci-fi-about .sci-fi-gui .ui-grid {
+        grid-template-columns: 5% 90% 5%;
+        grid-template-rows: 10% 80% 10%;
+    }
+    
+    #about.sci-fi-about .sci-fi-gui .ui-corner {
+        width: 8px;
+        height: 8px;
+    }
+    
+    #about.sci-fi-about .ui-cross .border-x {
+        top: 30%;
+        bottom: 30%;
+    }
+    
+    #about.sci-fi-about .about-info,
+    #about.sci-fi-about .about-interests {
+        background: rgba(15, 0, 38, 0.9);
+        border: 1px solid rgba(89, 178, 158, 0.4);
+        backdrop-filter: blur(15px);
+    }
+    
+    #about.sci-fi-about .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    #about.sci-fi-about .about-info p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    
+    #about.sci-fi-about .personal-details {
+        margin-top: 1.5rem;
+    }
+    
+    #about.sci-fi-about .personal-details .detail-item {
+        font-size: 0.9rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    #about.sci-fi-about .interest-tags {
+        justify-content: center;
+        gap: 0.5rem;
+    }
+    
+    #about.sci-fi-about .interest-tags span {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+    }
+    
+    /* Ensure starfield canvas works on mobile */
+    #about-starfield-canvas {
+        width: 100% !important;
+        height: 100% !important;
+    }
+}
+
+/* Data Visualization and Statistical Analysis Mobile Optimization - Only for phones */
+@media (max-width: 480px) {
+    /* Remove glass morphism white container on mobile */
+    .projects-section .white-container {
+        background: transparent !important;
+        box-shadow: none !important;
+        border: none !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+    }
+    
+    /* Ensure the container doesn't add extra padding */
+    .projects-section .container {
+        padding-left: 15px;
+        padding-right: 15px;
+        overflow-x: hidden;
+    }
+    
+    /* Data visualization and statistical analysis sections */
+    .dataviz-section {
+        margin-bottom: 25px;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        backdrop-filter: none !important;
+        padding: 20px 15px !important;
+        border-radius: 0 !important;
+    }
+    
+    /* Remove background effects and animations for mobile */
+    .dataviz-section::before {
+        display: none !important;
+    }
+    
+    .dataviz-section:hover {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        transform: none !important;
+    }
+    
+    .dataviz-section__title {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+        padding: 0 15px;
+        text-align: center;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        backdrop-filter: none !important;
+        border-radius: 0 !important;
+        color: #333 !important;
+    }
+    
+    /* Remove title background effects for mobile */
+    .dataviz-section__title::before {
+        display: none !important;
+    }
+    
+    .dataviz-section__title:hover {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        transform: none !important;
+        color: #333 !important;
+    }
+    
+    /* Optimize cards without white container background for mobile */
+    .projects-section .dataviz-card {
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        margin-bottom: 15px;
+        background-color: #ffffff;
+    }
+    
+    .projects-section .dataviz-card__frame-container {
+        height: 280px;
+    }
+}
+
+/* Projects Section */
+@media (max-width: 768px) {
+    /* Projects Section */
+    .projects-grid {
+        grid-template-columns: 1fr; /* Single column for mobile */
+        gap: 20px;
+    }
+
+    .project-card {
+        margin-bottom: 20px;
+    }
+
+    .project-content h3 {
+        font-size: 1.1rem;
+    }
+
+    .project-content p {
+        font-size: 0.9rem;
+    }
+
+    .dataviz-layout {
+        flex-direction: column; /* Stack sidebar and preview vertically */
+    }
+
+    .dataviz-sidebar {
+        flex: 0 0 auto; /* Allow sidebar to take its content height */
+        width: 100%; /* Full width for sidebar */
+        margin-bottom: 20px;
+    }
+
+    .dataviz-preview {
+        width: 100%; /* Full width for preview */
+    }
+
+    .preview-header {
+        flex-direction: column; /* Stack title and actions */
+        align-items: flex-start; /* Align items to the start */
+    }
+
+    .preview-title {
+        margin-bottom: 10px; /* Add space below title */
+    }
+    
+    .preview-actions {
+        width: 100%;
+        justify-content: space-between; /* Distribute buttons */
+    }
+
+    .preview-iframe-wrapper {
+        min-height: 300px; /* Adjust iframe height for mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .project-content h3 {
+        font-size: 1rem;
+    }
+
+    .project-tags span {
+        font-size: 0.75rem;
+        padding: 3px 8px;
+    }
+
+    .preview-title {
+        font-size: 1.1rem;
+    }
+
+    .preview-btn {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+    .preview-btn i {
+        font-size: 0.8rem;
+    }
+     .enlarge-dashboard-btn svg {
+        width: 14px; 
+        height: 14px; 
+    }
+    .dataviz-project-item {
+        padding: 12px;
+    }
+    .project-details h4 {
+        font-size: 1rem;
+    }
+    .project-tools span {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .dataviz-card__frame-container {
+        padding-top: 75%; /* Adjust aspect ratio for smaller screens, e.g., 4:3 */
+        position: relative; /* Ensure child absolute positioning works correctly */
+    }
+
+    .dataviz-card__iframe-wrapper {
+        position: absolute; /* Keep absolute to fill parent */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%; 
+    }
+
+    .dataviz-card__iframe {
+        position: absolute; /* Keep absolute to fill parent */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 1; /* Ensure iframe is visible */
+    }
+
+    .dataviz-card__loading {
+        /* Optionally hide or adjust loading indicator for mobile if iframe loads quickly */
+        display: none; /* Example: hide loading indicator on mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .dataviz-card__frame-container {
+        padding-top: 100%; /* Adjust aspect ratio for very small screens, e.g., 1:1 */
+    }
+}
+
+/* About Me Section Responsive Styles */
+@media (max-width: 1024px) {
+    .about-content {
+        grid-template-columns: 1fr !important;
+        gap: 30px !important;
+        padding: 0 20px !important;
+    }
+    
+    .excel-container,
+    .sql-container {
+        max-width: 100%;
+        overflow-x: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-section .section-title {
+        font-size: clamp(1.8rem, 6vw, 2.5rem) !important;
+        margin-bottom: 40px !important;
+    }
+
+    .about-section .section-description {
+        padding: 15px !important;
+        margin-bottom: 25px !important;
+        font-size: 0.95rem !important;
+    }
+
+    .about-content {
+        grid-template-columns: 1fr !important;
+        gap: 25px !important;
+        padding: 0 15px !important;
+    }
+
+    .excel-container,
+    .sql-container,
+    .about-info,
+    .about-interests {
+        width: 100%;
+        margin-bottom: 20px;
+        overflow-x: auto;
+    }
+
+    /* Excel container responsive adjustments */
+    .excel-header {
+        height: 28px !important;
+        font-size: 11px !important;
+    }
+
+    .excel-window-title {
+        font-size: 10px !important;
+    }
+
+    .excel-control-btn {
+        width: 35px !important;
+        height: 28px !important;
+        font-size: 9px !important;
+    }
+
+    .excel-app-icon {
+        width: 14px !important;
+        height: 14px !important;
+        font-size: 8px !important;
+    }
+
+    .excel-file-tab {
+        padding: 4px 8px !important;
+        font-size: 10px !important;
+    }
+
+    .excel-ribbon-content {
+        padding: 5px 8px !important;
+        min-height: 40px !important;
+        gap: 8px !important;
+    }
+
+    .excel-ribbon-tab {
+        padding: 4px 8px !important;
+        font-size: 10px !important;
+    }
+
+    .excel-ribbon-icon {
+        width: 18px !important;
+        height: 18px !important;
+        font-size: 10px !important;
+    }
+
+    .excel-ribbon-label {
+        font-size: 8px !important;
+    }
+
+    .excel-formula-bar {
+        padding: 3px 6px !important;
+        gap: 5px !important;
+    }
+
+    .excel-name-box {
+        width: 60px !important;
+        height: 18px !important;
+        font-size: 9px !important;
+        padding: 0 4px !important;
+    }
+
+    .excel-formula-input {
+        height: 18px !important;
+        font-size: 9px !important;
+        padding: 0 4px !important;
+    }
+
+    .excel-column-headers {
+        grid-template-columns: 35px repeat(3, minmax(60px, 1fr)) !important;
+    }
+
+    .excel-data-rows {
+        grid-template-columns: 35px repeat(3, minmax(60px, 1fr)) !important;
+    }
+
+    .excel-column-header,
+    .excel-row-header,
+    .excel-cell {
+        font-size: 9px !important;
+        padding: 3px 4px !important;
+        height: 22px !important;
+    }
+
+    .excel-status-bar {
+        padding: 3px 8px !important;
+        font-size: 9px !important;
+        height: 18px !important;
+    }
+
+    /* Personal details responsive styles */
+    .personal-details {
+        margin-top: 20px !important;
+        padding-top: 15px !important;
+        gap: 12px !important;
+    }
+
+    .detail-item {
+        padding: 10px 12px !important;
+        border-radius: 8px !important;
+    }
+
+    .detail-item .icon-wrapper {
+        width: 28px !important;
+        height: 28px !important;
+        margin-right: 10px !important;
+    }
+
+    .detail-item .icon-wrapper i {
+        font-size: 0.8rem !important;
+    }
+
+    .detail-item .detail-value {
+        font-size: 0.85rem !important;
+        line-height: 1.3 !important;
+    }
+
+    /* About interests responsive styles */
+    .about-interests {
+        padding: 25px 20px !important;
+    }
+
+    .about-interests h3 {
+        font-size: 1.3rem !important;
+        margin-bottom: 20px !important;
+    }
+
+    .interest-tags {
+        gap: 8px !important;
+        justify-content: center;
+    }
+
+    .interest-tags span {
+        padding: 6px 10px !important;
+        font-size: 0.8rem !important;
+    }
+
+    /* About info responsive styles */
+    .about-info {
+        padding: 25px 20px !important;
+    }
+
+    .about-info p {
+        font-size: 0.95rem !important;
+        line-height: 1.6 !important;
+        margin-bottom: 20px !important;
+    }
+
+    .section-icon {
+        width: 50px !important;
+        height: 50px !important;
+        margin-bottom: 20px !important;
+    }
+
+    .section-icon i {
+        font-size: 1.5rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-section .section-title {
+        font-size: clamp(1.5rem, 5vw, 2rem) !important;
+        margin-bottom: 30px !important;
+    }
+
+    .about-section .section-description {
+        padding: 12px !important;
+        margin-bottom: 20px !important;
+        font-size: 0.9rem !important;
+    }
+
+    .about-content {
+        gap: 20px !important;
+        padding: 0 10px !important;
+    }
+
+    .excel-container,
+    .sql-container,
+    .about-info,
+    .about-interests {
+        margin-bottom: 15px;
+    }
+
+    /* Further Excel adjustments for very small screens */
+    .excel-header {
+        height: 26px !important;
+    }
+
+    .excel-control-btn {
+        width: 30px !important;
+        height: 26px !important;
+    }
+
+    .excel-app-icon {
+        width: 12px !important;
+        height: 12px !important;
+        font-size: 7px !important;
+    }
+
+    .excel-window-title {
+        font-size: 9px !important;
+    }
+
+    .excel-file-tab {
+        padding: 3px 6px !important;
+        font-size: 9px !important;
+    }
+
+    .excel-ribbon-content {
+        padding: 4px 6px !important;
+        min-height: 35px !important;
+        gap: 6px !important;
+    }
+
+    .excel-ribbon-tab {
+        padding: 3px 6px !important;
+        font-size: 9px !important;
+    }
+
+    .excel-ribbon-icon {
+        width: 16px !important;
+        height: 16px !important;
+        font-size: 9px !important;
+    }
+
+    .excel-ribbon-label {
+        display: none !important;
+    }
+
+    .excel-name-box {
+        width: 50px !important;
+        height: 16px !important;
+        font-size: 8px !important;
+    }
+
+    .excel-formula-input {
+        height: 16px !important;
+        font-size: 8px !important;
+    }
+
+    .excel-column-headers {
+        grid-template-columns: 30px repeat(3, minmax(50px, 1fr)) !important;
+    }
+
+    .excel-data-rows {
+        grid-template-columns: 30px repeat(3, minmax(50px, 1fr)) !important;
+    }
+
+    .excel-column-header,
+    .excel-row-header,
+    .excel-cell {
+        font-size: 8px !important;
+        padding: 2px 3px !important;
+        height: 20px !important;
+    }
+
+    .excel-status-bar {
+        padding: 2px 6px !important;
+        font-size: 8px !important;
+        height: 16px !important;
+    }
+
+    /* Personal details for very small screens */
+    .detail-item {
+        padding: 8px 10px !important;
+    }
+
+    .detail-item .icon-wrapper {
+        width: 24px !important;
+        height: 24px !important;
+        margin-right: 8px !important;
+    }
+
+    .detail-item .icon-wrapper i {
+        font-size: 0.7rem !important;
+    }
+
+    .detail-item .detail-value {
+        font-size: 0.75rem !important;
+    }
+
+    /* About interests for very small screens */
+    .about-interests {
+        padding: 20px 15px !important;
+    }
+
+    .about-interests h3 {
+        font-size: 1.2rem !important;
+        margin-bottom: 15px !important;
+    }
+
+    .interest-tags span {
+        padding: 5px 8px !important;
+        font-size: 0.75rem !important;
+    }
+
+    /* About info for very small screens */
+    .about-info {
+        padding: 20px 15px !important;
+    }
+
+    .about-info p {
+        font-size: 0.9rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 15px !important;
+    }
+
+    .section-icon {
+        width: 45px !important;
+        height: 45px !important;
+        margin-bottom: 15px !important;
+    }
+
+    .section-icon i {
+        font-size: 1.3rem !important;
+    }
+}
+
+/* Mobile Tab Navigation for Data Visualization */
+.mobile-dataviz-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+    padding: 0 15px;
+}
+
+.mobile-tab {
+    flex: 1;
+    min-width: calc(50% - 4px);
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 12px 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-tab.active {
+    background: #2A7C96;
+    border-color: #2A7C96;
+    color: white;
+}
+
+.mobile-tab:hover:not(.active) {
+    background: #e9ecef;
+    border-color: #2A7C96;
+}
+
+.tab-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 2px;
+    line-height: 1.2;
+}
+
+.tab-subtitle {
+    font-size: 0.7rem;
+    opacity: 0.8;
+    line-height: 1.1;
+}    .mobile-tab.active .tab-subtitle {
+        opacity: 0.9;
+    }
+    
+    /* Show preview actions (buttons) on mobile */
+    .preview-actions {
+        display: flex !important;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+    
+    /* Style preview buttons for mobile */
+    .preview-btn {
+        flex: 0 0 auto;
+        padding: 8px 12px;
+        font-size: 0.85rem;
+        border-radius: 6px;
+        border: 1px solid #ddd;
+        background: #f8f9fa;
+        color: #333;
+        transition: all 0.2s ease;
+        min-height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .preview-btn:hover {
+        background: #e9ecef;
+        border-color: #2A7C96;
+    }
+    
+    .preview-btn.nav-btn {
+        min-width: 40px;
+    }
+    
+    .enlarge-dashboard-btn {
+        background: #2A7C96 !important;
+        color: white !important;
+        border-color: #2A7C96 !important;
+    }
+    
+    .enlarge-dashboard-btn:hover {
+        background: #1e5a6b !important;
+    }
+    
+    /* Keep sidebar hidden on mobile since we're using tabs */
+.dataviz-sidebar {
+    display: none !important;
+}
+
+/* Make preview take full width */
+.dataviz-preview {
+    width: 100% !important;
+    flex: 1;
+}
+
+/* Simplify preview header on mobile */
+.preview-header {
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px 8px 0 0;
+}
+
+.preview-title {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 0;
+}

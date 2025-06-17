@@ -1,0 +1,402 @@
+/* Star Field Animation for Skills Section - Inspired by CodePen */
+
+/* Skills section with star field background */
+.skills-section {
+    position: relative;
+    background: #0f0026;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.star-field-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.skills-section .container {
+    position: relative;
+    z-index: 10;
+}
+
+/* Star field base styles */
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* Small stars */
+.stars-small {
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 160px 30px, #fff, transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: zoom 20s infinite linear;
+    opacity: 0.5;
+}
+
+/* Medium stars */
+.stars-medium {
+    background-image: 
+        radial-gradient(1px 1px at 40px 60px, #fff, transparent),
+        radial-gradient(1px 1px at 120px 50px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(2px 2px at 160px 90px, #fff, transparent);
+    background-repeat: repeat;
+    background-size: 200px 120px;
+    animation: zoom 25s infinite linear;
+    opacity: 0.7;
+}
+
+/* Large stars */
+.stars-large {
+    background-image: 
+        radial-gradient(2px 2px at 36px 2px, #fff, transparent),
+        radial-gradient(2px 2px at 166px 16px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 123px 82px, #fff, transparent),
+        radial-gradient(3px 3px at 200px 100px, rgba(255,255,255,0.9), transparent);
+    background-repeat: repeat;
+    background-size: 250px 150px;
+    animation: zoom 30s infinite linear;
+    opacity: 0.9;
+}
+
+/* Shooting stars */
+.shooting-stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.shooting-stars::before,
+.shooting-stars::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #fff, transparent);
+    border-radius: 1px;
+    animation: shooting 3s infinite linear;
+    opacity: 0;
+    box-shadow: 0 0 6px 2px rgba(255, 255, 255, 0.3);
+}
+
+.shooting-stars::before {
+    top: 10%;
+    left: -100px;
+    animation-delay: 0s;
+    animation-duration: 6s;
+}
+
+.shooting-stars::after {
+    top: 70%;
+    left: -100px;
+    animation-delay: 3s;
+    animation-duration: 8s;
+}
+
+/* Keyframe animations */
+@keyframes zoom {
+    from {
+        transform: translateZ(0px);
+        opacity: 0.5;
+    }
+    to {
+        transform: translateZ(1000px);
+        opacity: 0;
+    }
+}
+
+@keyframes shooting {
+    0% {
+        opacity: 0;
+        width: 0;
+        transform: translateX(-100px) translateY(0);
+    }
+    10% {
+        opacity: 1;
+        width: 100px;
+    }
+    90% {
+        opacity: 1;
+        width: 100px;
+    }
+    100% {
+        opacity: 0;
+        width: 0;
+        transform: translateX(300px) translateY(-200px);
+    }
+}
+
+/* Skills section content styling with star field */
+.skills-section .section-title {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    position: relative;
+    z-index: 10;
+}
+
+.skills-section .skill-category h3 {
+    color: #fff;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.skills-section .skill-item {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.skills-section .skill-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+}
+
+.skills-section .skill-item h4 {
+    color: #fff;
+}
+
+.skills-section .skill-item p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.skills-section .skill-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    background: rgba(0, 255, 195, 0.1);
+    border: 2px solid rgba(0, 255, 195, 0.3);
+    border-radius: 50%;
+    margin: 0 auto 1.5rem auto;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 10;
+    padding: 15px;
+}
+
+/* Brand logo image styling */
+.skills-section .skill-icon .skill-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+    transition: all 0.3s ease;
+}
+
+.skills-section .skill-item:hover .skill-icon .skill-logo {
+    filter: drop-shadow(0 0 15px rgba(0, 255, 195, 0.6)) drop-shadow(0 0 25px rgba(255, 255, 255, 0.4));
+    transform: scale(1.1);
+}
+
+/* Specific icon colors for different technologies */
+.skills-section .skill-item:nth-child(1) .skill-icon i { /* Power BI */
+    color: #f2c811;
+    text-shadow: 0 0 15px rgba(242, 200, 17, 0.6);
+}
+
+.skills-section .skill-item:nth-child(2) .skill-icon i { /* Excel */
+    color: #1d6f42;
+    text-shadow: 0 0 15px rgba(29, 111, 66, 0.6);
+}
+
+.skills-section .skill-item:nth-child(3) .skill-icon i { /* Python */
+    color: #3776ab;
+    text-shadow: 0 0 15px rgba(55, 118, 171, 0.6);
+}
+
+.skills-section .skill-item:nth-child(4) .skill-icon i { /* R */
+    color: #276dc3;
+    text-shadow: 0 0 15px rgba(39, 109, 195, 0.6);
+}
+
+/* Skills carousel styling */
+.skills-carousel-container {
+    position: relative;
+    z-index: 10;
+}
+
+.skills-carousel-title {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.skills-carousel-item {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.skills-carousel-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+}
+
+.skills-carousel-item-text {
+    color: #fff;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+/* Enhanced star effects */
+.stars-small::before,
+.stars-medium::before,
+.stars-large::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    animation-delay: -10s;
+}
+
+/* Additional shooting stars for more dynamic effect */
+.shooting-stars {
+    background-image: 
+        radial-gradient(1px 1px at 50% 50%, rgba(255,255,255,0.8), transparent),
+        radial-gradient(2px 2px at 25% 75%, rgba(255,255,255,0.6), transparent);
+    background-size: 300px 200px;
+    animation: twinkle 4s infinite ease-in-out alternate;
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .stars-small,
+    .stars-medium,
+    .stars-large {
+        animation-duration: 15s, 20s, 25s;
+    }
+    
+    .shooting-stars::before,
+    .shooting-stars::after {
+        animation-duration: 4s, 6s;
+    }
+    
+    .skills-section .skill-item {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(15px);
+    }
+}
+
+/* Performance optimization */
+.star-field-container {
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+.stars {
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+/* High priority icon visibility fixes */
+.skills-section .skill-icon i {
+    color: #00ffc3 !important;
+    font-size: 2.5rem !important;
+    text-shadow: 0 0 15px rgba(0, 255, 195, 0.8), 0 0 30px rgba(0, 255, 195, 0.4) !important;
+    transition: all 0.3s ease !important;
+    display: block !important;
+    margin-bottom: 0 !important;
+}
+
+/* Override for technology-specific colors with exact official brand colors */
+.skills-section .skills-grid .skill-item:nth-child(1) .skill-icon i {
+    color: #F2C811 !important; /* Power BI - Official Microsoft Yellow */
+    text-shadow: 0 0 20px rgba(242, 200, 17, 0.8), 0 0 35px rgba(242, 200, 17, 0.4) !important;
+}
+
+.skills-section .skills-grid .skill-item:nth-child(2) .skill-icon i {
+    color: #217346 !important; /* Excel - Official Microsoft Green */
+    text-shadow: 0 0 20px rgba(33, 115, 70, 0.8), 0 0 35px rgba(33, 115, 70, 0.4) !important;
+}
+
+.skills-section .skills-grid .skill-item:nth-child(3) .skill-icon i {
+    color: #FFD43B !important; /* Python - Official Yellow (primary color) */
+    text-shadow: 0 0 20px rgba(255, 212, 59, 0.8), 0 0 35px rgba(55, 118, 171, 0.3) !important;
+    background: linear-gradient(45deg, #FFD43B, #3776AB) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+.skills-section .skills-grid .skill-item:nth-child(4) .skill-icon i {
+    color: #1A65C7 !important; /* R - Official R Foundation Blue */
+    text-shadow: 0 0 20px rgba(26, 101, 199, 0.8), 0 0 35px rgba(26, 101, 199, 0.4) !important;
+}
+
+/* Second skill category icons with exact brand colors */
+.skills-section .skill-category:nth-child(2) .skills-grid .skill-item:nth-child(1) .skill-icon i {
+    color: #CC2927 !important; /* SQL Server - Official Microsoft Red */
+    text-shadow: 0 0 20px rgba(204, 41, 39, 0.8), 0 0 35px rgba(204, 41, 39, 0.4) !important;
+}
+
+.skills-section .skill-category:nth-child(2) .skills-grid .skill-item:nth-child(2) .skill-icon i {
+    color: #1F4788 !important; /* SPSS - Official IBM Blue */
+    text-shadow: 0 0 20px rgba(31, 71, 136, 0.8), 0 0 35px rgba(31, 71, 136, 0.4) !important;
+}
+
+.skills-section .skill-category:nth-child(2) .skills-grid .skill-item:nth-child(3) .skill-icon i {
+    color: #FF6B35 !important; /* Statistical Methods - Vibrant Analytics Orange */
+    text-shadow: 0 0 20px rgba(255, 107, 53, 0.8), 0 0 35px rgba(255, 107, 53, 0.4) !important;
+}
+
+.skills-section .skill-category:nth-child(2) .skills-grid .skill-item:nth-child(4) .skill-icon i {
+    color: #F05032 !important; /* Git - Official Orange */
+    text-shadow: 0 0 20px rgba(240, 80, 50, 0.8), 0 0 35px rgba(240, 80, 50, 0.4) !important;
+}
+
+/* Special Python gradient effect fallback */
+.skills-section .skills-grid .skill-item:nth-child(3) .skill-icon i::before {
+    content: '\f3e2';
+    position: absolute;
+    color: #3776AB !important;
+    opacity: 0.3;
+    transform: scale(1.1);
+    z-index: -1;
+}
+
+/* Hover effects with maximum specificity */
+.skills-section .skill-item:hover .skill-icon i {
+    color: #ffffff !important;
+    text-shadow: 0 0 25px rgba(255, 255, 255, 0.9), 0 0 45px currentColor !important;
+    transform: scale(1.1) !important;
+}
+
+/* Fallback bright colors if specific selectors don't work */
+.skills-section i.fas,
+.skills-section i.fab {
+    color: #00ffc3 !important;
+    text-shadow: 0 0 20px rgba(0, 255, 195, 0.8) !important;
+    font-size: 2.5rem !important;
+}

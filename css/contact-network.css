@@ -1,0 +1,546 @@
+/* Data Command Center Contact Section */
+.contact-section {
+    background: linear-gradient(135deg, #0a0e1a 0%, #1a1f2e 50%, #0a0e1a 100%);
+    position: relative;
+    overflow: hidden;
+    min-height: 700px;
+    padding: 80px 0;
+    font-family: 'Courier New', monospace;
+}
+
+.contact-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 15% 20%, rgba(0, 255, 127, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 85% 80%, rgba(255, 69, 0, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(0, 191, 255, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+/* Radar Grid Background */
+.radar-grid {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    border: 2px solid rgba(0, 255, 127, 0.2);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.radar-grid::before,
+.radar-grid::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgba(0, 255, 127, 0.15);
+    border-radius: 50%;
+}
+
+.radar-grid::before {
+    width: 400px;
+    height: 400px;
+}
+
+.radar-grid::after {
+    width: 200px;
+    height: 200px;
+}
+
+/* Radar Sweep Animation */
+.radar-sweep {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    transform: translate(-50%, -50%);
+    background: conic-gradient(
+        transparent 0deg,
+        transparent 270deg,
+        rgba(0, 255, 127, 0.3) 315deg,
+        rgba(0, 255, 127, 0.6) 330deg,
+        rgba(0, 255, 127, 0.3) 345deg,
+        transparent 360deg
+    );
+    border-radius: 50%;
+    animation: radarSweep 4s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes radarSweep {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.contact-section .section-title {
+    text-align: center;
+    color: #00ff7f;
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 10;
+    font-family: 'Courier New', monospace;
+    text-shadow: 0 0 20px rgba(0, 255, 127, 0.5);
+    letter-spacing: 2px;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #00bfff;
+    font-size: 1rem;
+    margin-bottom: 60px;
+    font-family: 'Courier New', monospace;
+    opacity: 0.9;
+    position: relative;
+    z-index: 10;
+    animation: commandBlink 2s ease-in-out infinite;
+}
+
+@keyframes commandBlink {
+    0%, 50%, 100% { opacity: 0.9; }
+    25%, 75% { opacity: 0.6; }
+}
+
+.section-subtitle::after {
+    content: '█';
+    animation: cursorBlink 1s infinite;
+    margin-left: 5px;
+}
+
+@keyframes cursorBlink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+.network-container {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Network Canvas */
+.network-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.network-canvas svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Connection Lines */
+.connection-line {
+    stroke: #2A7C96;
+    stroke-width: 2;
+    stroke-dasharray: 5, 5;
+    opacity: 0.6;
+    animation: flowData 3s ease-in-out infinite;
+}
+
+@keyframes flowData {
+    0%, 100% { 
+        stroke-dashoffset: 0;
+        opacity: 0.4;
+    }
+    50% { 
+        stroke-dashoffset: 10;
+        opacity: 0.8;
+    }
+}
+
+/* Analyst's Toolkit Nodes */
+.network-node {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2A7C96, #90e0ef);
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 
+        0 8px 32px rgba(42, 124, 150, 0.3),
+        inset 0 2px 8px rgba(255, 255, 255, 0.1);
+    transition: all 0.4s ease;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+}
+
+.network-node::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(transparent, rgba(255,255,255,0.1), transparent);
+    animation: nodeRotate 8s linear infinite;
+    z-index: 1;
+}
+
+.network-node * {
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes nodeRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.network-node:hover {
+    transform: scale(1.15);
+    box-shadow: 
+        0 15px 50px rgba(42, 124, 150, 0.6),
+        inset 0 2px 15px rgba(255, 255, 255, 0.3);
+    border-color: rgba(144, 224, 239, 0.8);
+}
+
+.network-node:hover::before {
+    animation-duration: 2s;
+}
+
+.network-node .tool-icon {
+    font-size: 2.2rem;
+    margin-bottom: 8px;
+    opacity: 0.95;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.network-node .node-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.2;
+    opacity: 0.9;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.network-node .tool-insight {
+    font-size: 0.65rem;
+    opacity: 0.7;
+    margin-top: 2px;
+    font-style: italic;
+}
+
+/* Tool-Specific Node Positions & Themes */
+.node-powerbi {
+    top: 50px;
+    left: 80px;
+    background: linear-gradient(135deg, #F2C811, #FFEB3B);
+    color: #333;
+    animation: nodeFloat 4s ease-in-out infinite;
+}
+
+.node-excel {
+    top: 180px;
+    left: 30px;
+    background: linear-gradient(135deg, #217346, #4CAF50);
+    animation: nodeFloat 4.5s ease-in-out infinite reverse;
+}
+
+.node-sql {
+    bottom: 60px;
+    left: 100px;
+    background: linear-gradient(135deg, #336791, #5DADE2);
+    animation: nodeFloat 3.8s ease-in-out infinite;
+}
+
+.node-python {
+    top: 70px;
+    right: 60px;
+    background: linear-gradient(135deg, #306998, #FFD43B);
+    animation: nodeFloat 4.2s ease-in-out infinite reverse;
+}
+
+.node-linkedin {
+    top: 200px;
+    right: 20px;
+    background: linear-gradient(135deg, #0077B5, #00A0DC);
+    animation: nodeFloat 3.5s ease-in-out infinite;
+}
+
+.node-github {
+    bottom: 80px;
+    right: 80px;
+    background: linear-gradient(135deg, #333333, #666666);
+    animation: nodeFloat 4.8s ease-in-out infinite reverse;
+}
+
+@keyframes nodeFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(2deg); }
+}
+
+/* Central Data Dashboard */
+.central-panel {
+    position: relative;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    width: 400px;
+    max-width: 90vw;
+    overflow: hidden;
+}
+
+.central-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #F2C811, #217346, #336791, #306998);
+    animation: dataProgress 3s ease-in-out infinite;
+}
+
+@keyframes dataProgress {
+    0%, 100% { transform: translateX(-100%); }
+    50% { transform: translateX(100%); }
+}
+
+.central-panel h3 {
+    color: #0e153a;
+    margin-bottom: 8px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.panel-subtitle {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 25px;
+    font-family: 'Courier New', monospace;
+}
+
+.form-metrics {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    padding: 10px;
+    background: rgba(42, 124, 150, 0.05);
+    border-radius: 8px;
+}
+
+.metric {
+    text-align: center;
+    font-size: 0.75rem;
+}
+
+.metric-value {
+    font-weight: bold;
+    color: #2A7C96;
+    font-size: 1.1rem;
+    display: block;
+}
+
+.metric-label {
+    color: #666;
+    font-size: 0.7rem;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid rgba(42, 124, 150, 0.2);
+    border-radius: 12px;
+    font-family: var(--font-main);
+    font-size: 0.95rem;
+    background: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.form-group::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #F2C811, #217346, #336791, #306998);
+    transition: width 0.3s ease;
+}
+
+.form-group:focus-within::after {
+    width: 100%;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #2A7C96;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 0 3px rgba(42, 124, 150, 0.1);
+    transform: translateY(-2px);
+}
+
+.form-group textarea {
+    height: 100px;
+    resize: none;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #2A7C96, #90e0ef);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(42, 124, 150, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.submit-btn::before {
+    content: 'EXECUTE QUERY';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+}
+
+.submit-btn:hover::before {
+    opacity: 1;
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(42, 124, 150, 0.4);
+    background: linear-gradient(135deg, #1f5f73, #7dd3f0);
+}
+
+.submit-btn:hover .btn-text {
+    opacity: 0;
+}
+
+/* Data Flow Indicators */
+.data-indicator {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #90e0ef;
+    border-radius: 50%;
+    opacity: 0;
+    animation: dataFlow 2s ease-in-out infinite;
+    box-shadow: 0 0 12px #90e0ef;
+}
+
+.data-indicator:nth-child(odd) {
+    animation-delay: -1s;
+}
+
+@keyframes dataFlow {
+    0% { opacity: 0; transform: scale(0.5); }
+    50% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0.5); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .network-container {
+        height: 400px;
+        padding: 20px;
+    }
+    
+    .network-node {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .network-node i {
+        font-size: 1.2rem;
+        margin-bottom: 4px;
+    }
+    
+    .network-node .node-label {
+        font-size: 0.65rem;
+    }
+    
+    .central-panel {
+        width: 280px;
+        padding: 25px;
+    }
+    
+    .contact-section .section-title {
+        font-size: 2rem;
+        margin-bottom: 40px;
+    }
+    
+    /* Adjust node positions for mobile */
+    .node-email { top: 30px; left: 20px; }
+    .node-phone { top: 120px; left: 10px; }
+    .node-location { bottom: 30px; left: 30px; }
+    .node-linkedin { top: 40px; right: 20px; }
+    .node-github { top: 130px; right: 10px; }
+    .node-kaggle { bottom: 40px; right: 30px; }
+}
+
+@media (max-width: 480px) {
+    .network-node {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .network-node i {
+        font-size: 1rem;
+    }
+    
+    .network-node .node-label {
+        font-size: 0.6rem;
+    }
+    
+    .central-panel {
+        width: 260px;
+        padding: 20px;
+    }
+}

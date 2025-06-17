@@ -1,0 +1,1512 @@
+/* Jupyter Notebook Education Theme - Enhanced Professional Look */
+/* This CSS creates an authentic Jupyter notebook appearance with professional dark theme */
+
+.education-section.jupyter-education-theme {
+    background: 
+        linear-gradient(135deg, 
+            #0a0a0f 0%, 
+            #1a0f2e 15%, 
+            #0f1a2e 30%, 
+            #16213e 45%, 
+            #0f3460 60%, 
+            #1a2e3f 75%, 
+            #0a0f23 90%, 
+            #0f0f1a 100%),
+        radial-gradient(ellipse at top left, rgba(59, 130, 246, 0.1) 0%, transparent 70%),
+        radial-gradient(ellipse at bottom right, rgba(236, 72, 153, 0.08) 0%, transparent 70%),
+        radial-gradient(ellipse at center, rgba(16, 185, 129, 0.05) 0%, transparent 50%);
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+    color: #dcdfe1;
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    background-size: 100% 100%, 80% 80%, 70% 70%, 60% 60%;
+    background-attachment: fixed;
+    animation: backgroundPulse 8s ease-in-out infinite alternate;
+}
+
+/* Advanced animated background with particle effects */
+.education-section.jupyter-education-theme::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.2) 0%, rgba(59, 130, 246, 0.05) 40%, transparent 70%),
+        radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.18) 0%, rgba(139, 92, 246, 0.04) 35%, transparent 65%),
+        radial-gradient(circle at 40% 80%, rgba(16, 185, 129, 0.15) 0%, rgba(16, 185, 129, 0.03) 30%, transparent 60%),
+        radial-gradient(circle at 85% 20%, rgba(249, 115, 22, 0.12) 0%, rgba(249, 115, 22, 0.02) 25%, transparent 55%),
+        radial-gradient(circle at 15% 85%, rgba(236, 72, 153, 0.1) 0%, transparent 45%),
+        radial-gradient(circle at 60% 15%, rgba(34, 197, 94, 0.08) 0%, transparent 40%);
+    animation: advancedFloat 25s ease-in-out infinite;
+    z-index: 1;
+    filter: blur(0.5px);
+}
+
+.education-section.jupyter-education-theme::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(45deg, 
+            transparent 0%, 
+            rgba(59, 130, 246, 0.03) 25%, 
+            transparent 50%, 
+            rgba(139, 92, 246, 0.02) 75%, 
+            transparent 100%),
+        linear-gradient(-45deg, 
+            transparent 0%, 
+            rgba(16, 185, 129, 0.02) 30%, 
+            transparent 60%, 
+            rgba(249, 115, 22, 0.015) 90%, 
+            transparent 100%),
+        linear-gradient(90deg, 
+            transparent 0%, 
+            rgba(236, 72, 153, 0.01) 50%, 
+            transparent 100%);
+    animation: advancedShift 20s linear infinite;
+    z-index: 1;
+    opacity: 0.8;
+}
+
+/* Create floating particles effect */
+.education-section.jupyter-education-theme .container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+        radial-gradient(circle at 75% 75%, rgba(59, 130, 246, 0.2) 1px, transparent 1px),
+        radial-gradient(circle at 45% 65%, rgba(139, 92, 246, 0.15) 1px, transparent 1px),
+        radial-gradient(circle at 85% 35%, rgba(16, 185, 129, 0.1) 1px, transparent 1px),
+        radial-gradient(circle at 15% 85%, rgba(249, 115, 22, 0.12) 1px, transparent 1px);
+    background-size: 150px 150px, 200px 200px, 120px 120px, 180px 180px, 160px 160px;
+    animation: particlesFloat 30s linear infinite;
+    z-index: 1;
+    pointer-events: none;
+}
+
+@keyframes backgroundPulse {
+    0% {
+        filter: brightness(1) saturate(1);
+    }
+    100% {
+        filter: brightness(1.1) saturate(1.2);
+    }
+}
+
+@keyframes advancedFloat {
+    0%, 100% {
+        transform: translateY(0px) translateX(0px) scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    25% {
+        transform: translateY(-30px) translateX(20px) scale(1.1) rotate(1deg);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translateY(-10px) translateX(-15px) scale(0.9) rotate(-0.5deg);
+        opacity: 0.9;
+    }
+    75% {
+        transform: translateY(20px) translateX(10px) scale(1.05) rotate(0.5deg);
+        opacity: 0.85;
+    }
+}
+
+@keyframes advancedShift {
+    0% {
+        transform: translateX(-200px) translateY(-50px) rotate(0deg);
+        opacity: 0.5;
+    }
+    25% {
+        transform: translateX(50px) translateY(30px) rotate(1deg);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translateX(200px) translateY(-20px) rotate(-0.5deg);
+        opacity: 0.6;
+    }
+    75% {
+        transform: translateX(-100px) translateY(40px) rotate(0.8deg);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateX(-200px) translateY(-50px) rotate(0deg);
+        opacity: 0.5;
+    }
+}
+
+@keyframes particlesFloat {
+    0% {
+        transform: translateY(0px) translateX(0px);
+    }
+    33% {
+        transform: translateY(-20px) translateX(15px);
+    }
+    66% {
+        transform: translateY(10px) translateX(-10px);
+    }
+    100% {
+        transform: translateY(0px) translateX(0px);
+    }
+}
+
+@keyframes notebookGlow {
+    0% {
+        opacity: 0.5;
+        filter: brightness(1) hue-rotate(0deg);
+    }
+    50% {
+        opacity: 0.8;
+        filter: brightness(1.2) hue-rotate(30deg);
+    }
+    100% {
+        opacity: 0.6;
+        filter: brightness(1.1) hue-rotate(60deg);
+    }
+}
+
+@keyframes headerGlow {
+    0% { 
+        opacity: 0.6;
+        transform: scaleX(0.8);
+    }
+    50% {
+        opacity: 1;
+        transform: scaleX(1.1);
+    }
+    100% { 
+        opacity: 0.8;
+        transform: scaleX(0.9);
+    }
+}
+
+.education-section.jupyter-education-theme .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Hide any default "Education" section title that might appear */
+.education-section.jupyter-education-theme .section-title:not(.notebook-title .section-title) {
+    display: none !important;
+}
+
+/* Hide any standalone headings that might say "Education" */
+.education-section.jupyter-education-theme > .container > h2:first-child {
+    display: none !important;
+}
+
+/* Jupyter Header - Enhanced with Glass Morphism */
+.jupyter-header {
+    background: linear-gradient(180deg, 
+        rgba(45, 51, 59, 0.85) 0%, 
+        rgba(34, 39, 46, 0.9) 100%);
+    border: 1px solid rgba(88, 166, 255, 0.3);
+    border-radius: 12px 12px 0 0;
+    padding: 15px 25px;
+    margin-bottom: 0;
+    box-shadow: 
+        0 8px 32px rgba(0,0,0,0.7),
+        0 4px 16px rgba(88, 166, 255, 0.2),
+        inset 0 1px 0 rgba(255,255,255,0.15),
+        inset 0 0 30px rgba(88, 166, 255, 0.05);
+    position: relative;
+    backdrop-filter: blur(20px) saturate(1.2);
+    border-bottom: 2px solid rgba(88, 166, 255, 0.1);
+}
+
+.jupyter-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(59, 130, 246, 0.6), 
+        rgba(139, 92, 246, 0.5), 
+        rgba(16, 185, 129, 0.4), 
+        rgba(249, 115, 22, 0.5), 
+        rgba(236, 72, 153, 0.4), 
+        transparent);
+    animation: headerGlow 4s ease-in-out infinite alternate;
+    border-radius: 12px 12px 0 0;
+}
+
+.jupyter-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.jupyter-logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.jupyter-logo img {
+    filter: brightness(1.1) saturate(1.2);
+    transition: filter 0.2s ease;
+}
+
+.jupyter-logo img:hover {
+    filter: brightness(1.3) saturate(1.3);
+}
+
+.notebook-title {
+    flex: 1;
+    text-align: center;
+    position: relative;
+}
+
+.notebook-title .section-title {
+    color: #f97316;
+    font-size: 1.8rem;
+    margin: 0;
+    font-weight: 600;
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: -0.02em;
+    text-shadow: 0 0 10px rgba(249, 115, 22, 0.3);
+    position: relative;
+}
+
+/* Remove the colored underline from the notebook title */
+.notebook-title .section-title::after {
+    display: none !important;
+}
+
+.notebook-subtitle {
+    color: #8b949e;
+    font-size: 0.9rem;
+    margin-top: 4px;
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    opacity: 0.8;
+}
+
+.jupyter-status {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.kernel-status {
+    background: linear-gradient(135deg, #238636, #2ea043);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 16px;
+    font-size: 0.75rem;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-weight: 500;
+    box-shadow: 
+        0 2px 4px rgba(35, 134, 54, 0.3),
+        inset 0 1px 0 rgba(255,255,255,0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.kernel-status::before {
+    content: '●';
+    margin-right: 6px;
+    color: #7ee787;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Jupyter Notebook Container - Enhanced Glass Morphism */
+.jupyter-notebook {
+    background: linear-gradient(145deg, 
+        rgba(13, 17, 23, 0.85) 0%,
+        rgba(22, 27, 34, 0.9) 30%,
+        rgba(16, 20, 26, 0.88) 70%,
+        rgba(13, 17, 23, 0.85) 100%);
+    border: 1px solid rgba(88, 166, 255, 0.25);
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    min-height: 600px;
+    box-shadow: 
+        0 20px 60px rgba(0,0,0,0.8),
+        0 8px 24px rgba(31, 111, 235, 0.15),
+        inset 0 1px 0 rgba(255,255,255,0.08),
+        inset 0 0 40px rgba(88, 166, 255, 0.05),
+        inset 0 0 80px rgba(139, 92, 246, 0.02);
+    overflow: hidden;
+    backdrop-filter: blur(25px) saturate(1.3);
+    position: relative;
+}
+
+.jupyter-notebook::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 15% 25%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 85% 75%, rgba(139, 92, 246, 0.06) 0%, transparent 45%),
+        radial-gradient(circle at 45% 45%, rgba(16, 185, 129, 0.04) 0%, transparent 40%),
+        radial-gradient(circle at 75% 25%, rgba(249, 115, 22, 0.05) 0%, transparent 35%),
+        radial-gradient(circle at 25% 85%, rgba(236, 72, 153, 0.03) 0%, transparent 30%);
+    pointer-events: none;
+    animation: notebookGlow 12s ease-in-out infinite alternate;
+}
+
+/* Jupyter Cell Styles - Enhanced */
+.jupyter-cell {
+    border-left: 4px solid transparent;
+    position: relative;
+    margin: 0;
+    transition: all 0.3s ease;
+    background: rgba(13, 17, 23, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+.jupyter-cell:hover {
+    border-left-color: #3b82f6;
+    background: rgba(13, 17, 23, 0.9);
+    transform: translateX(5px);
+    box-shadow: 
+        0 8px 25px rgba(59, 130, 246, 0.15),
+        inset 0 0 20px rgba(59, 130, 246, 0.05);
+}
+
+.jupyter-cell.markdown-cell {
+    border-left-color: #238636;
+}
+
+.jupyter-cell.markdown-cell:hover {
+    border-left-color: #2ea043;
+    background: rgba(35, 134, 54, 0.08);
+    box-shadow: inset 0 0 20px rgba(35, 134, 54, 0.1);
+}
+
+.jupyter-cell.code-cell {
+    border-left-color: #1f6feb;
+}
+
+.jupyter-cell.code-cell:hover {
+    border-left-color: #58a6ff;
+}
+
+/* Cell Toolbar - Enhanced Professional Look */
+.cell-toolbar {
+    background: linear-gradient(180deg, #22272e 0%, #1c2128 100%);
+    border-bottom: 1px solid #444c56;
+    padding: 10px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    position: relative;
+}
+
+.cell-toolbar::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(68, 76, 86, 0.5), transparent);
+}
+
+.cell-type {
+    color: #8b949e;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-weight: 600;
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    background: rgba(139, 148, 158, 0.1);
+    border-radius: 4px;
+    border: 1px solid rgba(139, 148, 158, 0.2);
+}
+
+.cell-controls {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.run-btn {
+    background: linear-gradient(135deg, #238636, #2ea043);
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    box-shadow: 
+        0 2px 4px rgba(35, 134, 54, 0.3),
+        inset 0 1px 0 rgba(255,255,255,0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.run-btn:hover {
+    background: linear-gradient(135deg, #2ea043, #3fb950);
+    transform: translateY(-1px);
+    box-shadow: 
+        0 4px 8px rgba(35, 134, 54, 0.4),
+        inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
+.run-btn:active {
+    transform: translateY(0);
+}
+
+/* Markdown Content - Enhanced Typography */
+.markdown-content {
+    padding: 24px;
+    color: #e6edf3;
+    background: linear-gradient(135deg,
+        rgba(13, 17, 23, 0.6) 0%,
+        rgba(22, 27, 34, 0.65) 50%,
+        rgba(16, 21, 28, 0.6) 100%);
+    line-height: 1.7;
+    border-radius: 8px;
+    backdrop-filter: blur(8px);
+}
+
+.markdown-content h3 {
+    color: #58a6ff;
+    margin-bottom: 16px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: -0.02em;
+    text-shadow: 0 0 10px rgba(88, 166, 255, 0.3);
+    position: relative;
+}
+
+.markdown-content h3::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(90deg, #58a6ff, transparent);
+    border-radius: 1px;
+}
+
+.markdown-content p {
+    color: #c9d1d9;
+    line-height: 1.6;
+    margin-bottom: 16px;
+    font-size: 0.95rem;
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+}
+
+/* Timeline Container within Markdown Cell - Enhanced */
+.timeline-markdown {
+    padding: 28px;
+    background: linear-gradient(135deg,
+        rgba(22, 27, 34, 0.8) 0%,
+        rgba(33, 38, 45, 0.85) 25%,
+        rgba(28, 33, 40, 0.9) 50%,
+        rgba(22, 27, 34, 0.85) 75%,
+        rgba(16, 21, 28, 0.8) 100%);
+    border-radius: 16px;
+    margin: 24px 0;
+    border: 1px solid rgba(88, 166, 255, 0.2);
+    backdrop-filter: blur(15px) brightness(1.05);
+    box-shadow: 
+        0 8px 32px rgba(0,0,0,0.4),
+        0 4px 16px rgba(31, 111, 235, 0.1),
+        inset 0 1px 0 rgba(255,255,255,0.08),
+        inset 0 0 20px rgba(88, 166, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.timeline-markdown::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 15% 25%, rgba(88, 166, 255, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 85% 75%, rgba(35, 134, 54, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* Enhanced Code Cell Styles */
+.cell-input {
+    display: flex;
+    background: #0d1117;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 0;
+}
+
+.input-prompt {
+    background: linear-gradient(180deg, #1c2128 0%, #161b22 100%);
+    color: #1f6feb;
+    padding: 16px 12px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-weight: 600;
+    min-width: 90px;
+    text-align: right;
+    border-right: 1px solid #30363d;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    position: relative;
+}
+
+.input-prompt::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, #1f6feb, transparent);
+}
+
+.code-content {
+    flex: 1;
+    padding: 16px 20px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    color: #e6edf3;
+    background: #0d1117;
+    line-height: 1.6;
+    font-size: 0.9rem;
+}
+
+.cell-output {
+    display: flex;
+    background: #0d1117;
+    border-top: 1px solid #30363d;
+    border-radius: 0 0 8px 8px;
+    overflow: hidden;
+}
+
+.output-prompt {
+    background: linear-gradient(180deg, #1c2128 0%, #161b22 100%);
+    color: #f85149;
+    padding: 16px 12px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-weight: 600;
+    min-width: 90px;
+    text-align: right;
+    border-right: 1px solid #30363d;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    position: relative;
+}
+
+.output-prompt::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, #f85149, transparent);
+}
+
+.output-content {
+    flex: 1;
+    padding: 16px 20px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    color: #e6edf3;
+    background: #0d1117;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* Code Syntax Highlighting */
+.comment { color: #8b949e; }
+.keyword { color: #ff7b72; }
+.string { color: #a5d6ff; }
+.number { color: #79c0ff; }
+.variable { color: #ffa657; }
+
+/* Enhanced Ultra-Professional Timeline Card Styles */
+.education-section.jupyter-education-theme .timeline-item {
+    margin-bottom: 50px;
+    position: relative;
+    opacity: 0;
+    animation: slideInUp 0.8s ease forwards;
+    transform: perspective(1000px);
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px) rotateX(10deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) rotateX(0deg);
+    }
+}
+
+.education-section.jupyter-education-theme .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+.education-section.jupyter-education-theme .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+.education-section.jupyter-education-theme .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+.education-section.jupyter-education-theme .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+.education-section.jupyter-education-theme .timeline-item:nth-child(5) { animation-delay: 0.5s; }
+
+.education-section.jupyter-education-theme .timeline-content {
+    background: linear-gradient(145deg, 
+        rgba(22, 27, 34, 0.98) 0%, 
+        rgba(33, 38, 45, 0.96) 15%,
+        rgba(28, 33, 40, 0.97) 30%,
+        rgba(35, 40, 47, 0.95) 45%,
+        rgba(30, 35, 42, 0.96) 60%,
+        rgba(25, 30, 37, 0.97) 75%,
+        rgba(22, 27, 34, 0.98) 100%);
+    border: 1px solid transparent;
+    background-clip: padding-box;
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 
+        0 25px 70px rgba(0,0,0,0.7),
+        0 12px 40px rgba(0,0,0,0.5),
+        0 6px 20px rgba(0,0,0,0.3),
+        0 2px 8px rgba(88, 166, 255, 0.1),
+        inset 0 1px 0 rgba(255,255,255,0.12),
+        inset 0 -1px 0 rgba(0,0,0,0.25),
+        inset 0 0 20px rgba(88, 166, 255, 0.03);
+    backdrop-filter: blur(25px) saturate(1.3) brightness(1.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    transform: translateZ(0);
+}
+
+/* Enhanced gradient border effect with color variation */
+.education-section.jupyter-education-theme .timeline-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(88, 166, 255, 0.4) 0%,
+        rgba(255, 183, 77, 0.3) 20%,
+        rgba(35, 134, 54, 0.25) 40%,
+        rgba(249, 115, 22, 0.2) 60%,
+        rgba(139, 92, 246, 0.25) 80%,
+        rgba(88, 166, 255, 0.4) 100%);
+    border-radius: 20px;
+    padding: 1px;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: exclude;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    animation: borderRotate 10s linear infinite;
+}
+
+@keyframes borderRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Shimmer effect on hover */
+.education-section.jupyter-education-theme .timeline-content::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(88, 166, 255, 0.1) 50%,
+        transparent 100%);
+    transition: left 0.6s ease;
+    pointer-events: none;
+}
+
+.education-section.jupyter-education-theme .timeline-content:hover {
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 
+        0 35px 90px rgba(0,0,0,0.8),
+        0 20px 50px rgba(31, 111, 235, 0.25),
+        0 12px 30px rgba(88, 166, 255, 0.15),
+        0 6px 15px rgba(0,0,0,0.4),
+        inset 0 2px 4px rgba(255,255,255,0.18),
+        inset 0 -2px 4px rgba(0,0,0,0.35),
+        inset 0 0 30px rgba(88, 166, 255, 0.08);
+    backdrop-filter: blur(30px) saturate(1.4) brightness(1.15);
+}
+
+.education-section.jupyter-education-theme .timeline-content:hover::before {
+    opacity: 0.8;
+}
+
+.education-section.jupyter-education-theme .timeline-content:hover::after {
+    left: 100%;
+}
+
+/* Enhanced Date Badge with Professional Typography */
+.education-section.jupyter-education-theme .timeline-date {
+    background: linear-gradient(135deg, #1f6feb 0%, #58a6ff 100%);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    box-shadow: 
+        0 8px 24px rgba(31, 111, 235, 0.4),
+        0 4px 12px rgba(0,0,0,0.3),
+        inset 0 1px 0 rgba(255,255,255,0.3),
+        inset 0 -1px 0 rgba(0,0,0,0.2);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.education-section.jupyter-education-theme .timeline-date::before {
+    content: '📅';
+    font-size: 0.9rem;
+    filter: brightness(1.2);
+}
+
+.education-section.jupyter-education-theme .timeline-date::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.education-section.jupyter-education-theme .timeline-content:hover .timeline-date::after {
+    left: 100%;
+}
+
+/* Enhanced Main Title with Professional Typography */
+.education-section.jupyter-education-theme .timeline-content h3 {
+    color: #f0f6fc !important;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    background: linear-gradient(135deg, #f0f6fc 0%, #e6edf3 50%, #c9d1d9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+}
+
+.education-section.jupyter-education-theme .timeline-content h3::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #58a6ff, #79c0ff);
+    border-radius: 2px;
+    transition: width 0.4s ease;
+}
+
+.education-section.jupyter-education-theme .timeline-content:hover h3::after {
+    width: 60px;
+}
+
+.education-section.jupyter-education-theme .timeline-content h4 {
+    color: #8b949e !important;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: 0.01em;
+    line-height: 1.4;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+.education-section.jupyter-education-theme .timeline-content:hover h4 {
+    opacity: 1;
+}
+
+/* Enhanced Provider Logo */
+.education-section.jupyter-education-theme .timeline-content .provider-logo {
+    height: 24px;
+    width: auto;
+    border-radius: 6px;
+    box-shadow: 
+        0 4px 12px rgba(0,0,0,0.3),
+        0 2px 6px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    filter: brightness(1.1) saturate(1.1);
+}
+
+.education-section.jupyter-education-theme .timeline-content:hover .provider-logo {
+    transform: scale(1.1);
+    filter: brightness(1.3) saturate(1.3);
+    box-shadow: 
+        0 6px 20px rgba(0,0,0,0.4),
+        0 3px 10px rgba(0,0,0,0.3);
+}
+
+/* Enhanced Description with Professional Typography */
+.education-section.jupyter-education-theme .timeline-content p {
+    color: #c9d1d9 !important;
+    line-height: 1.6;
+    margin-bottom: 24px;
+    font-size: 0.95rem;
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    opacity: 0.95;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+/* Ultra-Professional Certificate Link with Enhanced Typography */
+.education-section.jupyter-education-theme .cert-link {
+    color: #58a6ff !important;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 14px 28px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, 
+        rgba(88, 166, 255, 0.15) 0%,
+        rgba(88, 166, 255, 0.08) 50%,
+        rgba(88, 166, 255, 0.15) 100%);
+    border: 2px solid rgba(88, 166, 255, 0.3);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 0.9rem;
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: 0.025em;
+    text-transform: none;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    box-shadow: 
+        0 6px 20px rgba(88, 166, 255, 0.2),
+        0 3px 10px rgba(0,0,0,0.2),
+        inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+.education-section.jupyter-education-theme .cert-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent 0%,
+        rgba(88, 166, 255, 0.2) 50%,
+        transparent 100%);
+    transition: left 0.6s ease;
+}
+
+.education-section.jupyter-education-theme .cert-link:hover {
+    color: #79c0ff !important;
+    background: linear-gradient(135deg, 
+        rgba(88, 166, 255, 0.25) 0%,
+        rgba(88, 166, 255, 0.15) 50%,
+        rgba(88, 166, 255, 0.25) 100%);
+    border-color: rgba(88, 166, 255, 0.6);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 
+        0 12px 30px rgba(88, 166, 255, 0.3),
+        0 6px 15px rgba(0,0,0,0.3),
+        inset 0 2px 4px rgba(255,255,255,0.15);
+}
+
+.education-section.jupyter-education-theme .cert-link:hover::before {
+    left: 100%;
+}
+
+.education-section.jupyter-education-theme .cert-link:active {
+    transform: translateY(-1px) scale(1.02);
+}
+
+.education-section.jupyter-education-theme .cert-link i {
+    color: #58a6ff;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    filter: drop-shadow(0 2px 4px rgba(88, 166, 255, 0.3));
+}
+
+.education-section.jupyter-education-theme .cert-link:hover i {
+    transform: scale(1.2) rotate(5deg);
+    color: #79c0ff;
+    filter: drop-shadow(0 4px 8px rgba(88, 166, 255, 0.5));
+}
+
+/* Keep original timeline line and logo styling */
+.education-section.jupyter-education-theme .timeline-line {
+    /* Keep original positioning and styling, just enhance visibility */
+    box-shadow: 0 0 10px rgba(88, 166, 255, 0.3);
+}
+
+/* Hide timeline markers but show only the img icons */
+.education-section.jupyter-education-theme .timeline-marker {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.education-section.jupyter-education-theme .timeline-icon {
+    background: linear-gradient(135deg, rgba(0, 255, 195, 0.1), rgba(89, 178, 158, 0.1)) !important;
+    border: 2px solid var(--highlight-color) !important;
+    border-radius: 50% !important;
+    box-shadow: 0 0 15px rgba(0, 255, 195, 0.2) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+/* Hide timeline icon pseudo-elements (circles and animations) */
+.education-section.jupyter-education-theme .timeline-icon::before,
+.education-section.jupyter-education-theme .timeline-icon::after {
+    display: block !important;
+}
+
+/* Keep timeline logos (img) visible */
+.education-section.jupyter-education-theme .timeline-logo {
+    display: block !important;
+}
+
+.education-section.jupyter-education-theme .timeline-dot {
+    display: none !important;
+}
+
+.education-section.jupyter-education-theme .marker {
+    display: none !important;
+}
+
+.education-section.jupyter-education-theme .timeline-point {
+    display: none !important;
+}
+
+/* Hide any pseudo-element markers */
+.education-section.jupyter-education-theme .timeline-item::before,
+.education-section.jupyter-education-theme .timeline-item::after {
+    display: none !important;
+}
+
+.education-section.jupyter-education-theme .timeline-content h3 {
+    /* Ensure timeline headings are visible in dark theme */
+    color: inherit !important;
+}
+
+.education-section.jupyter-education-theme .timeline-content h4 {
+    /* Ensure timeline subheadings are visible in dark theme */
+    color: inherit !important;
+}
+
+.education-section.jupyter-education-theme .timeline-content p {
+    /* Ensure timeline text is visible in dark theme */
+    color: inherit !important;
+}
+
+.education-section.jupyter-education-theme .cert-link {
+    /* Ensure certificate links are visible and styled */
+    color: #58a6ff !important;
+}
+
+.education-section.jupyter-education-theme .cert-link:hover {
+    color: #79c0ff !important;
+}
+
+/* Content alignment for 1st & 3rd cards - RIGHT side positioning and text alignment */
+.education-section.jupyter-education-theme .timeline-item-left .timeline-content {
+    margin-left: auto;
+    margin-right: 0;
+    max-width: 480px;
+    text-align: right;
+}
+
+/* Specific text alignment for 1st & 3rd cards (RIGHT-aligned) */
+.education-section.jupyter-education-theme .timeline-item-left .timeline-content h3,
+.education-section.jupyter-education-theme .timeline-item-left .timeline-content h4,
+.education-section.jupyter-education-theme .timeline-item-left .timeline-content p {
+    text-align: right !important;
+}
+
+/* Ensure h4 flexbox aligns to the right for 1st & 3rd cards */
+.education-section.jupyter-education-theme .timeline-item-left .timeline-content h4 {
+    justify-content: flex-end !important;
+    text-align: right !important;
+}
+
+.education-section.jupyter-education-theme .timeline-item-left .timeline-date {
+    margin-left: auto;
+    margin-right: 0;
+    text-align: right;
+}
+
+.education-section.jupyter-education-theme .timeline-item-left .cert-link {
+    margin-left: auto;
+    margin-right: 0;
+    display: inline-block;
+    text-align: right;
+}
+
+/* Additional Professional Enhancements */
+
+/* Add subtle background particle effect */
+.education-section.jupyter-education-theme::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 20% 20%, rgba(88, 166, 255, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 123, 114, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 40% 60%, rgba(35, 134, 54, 0.02) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.jupyter-notebook {
+    position: relative;
+    z-index: 2;
+}
+
+/* Enhance scrollbar for webkit browsers */
+.jupyter-notebook::-webkit-scrollbar {
+    width: 8px;
+}
+
+.jupyter-notebook::-webkit-scrollbar-track {
+    background: #161b22;
+    border-radius: 4px;
+}
+
+.jupyter-notebook::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #30363d, #21262d);
+    border-radius: 4px;
+    border: 1px solid #444c56;
+}
+
+.jupyter-notebook::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #444c56, #30363d);
+}
+
+/* Add professional loading state animation */
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.education-section.jupyter-education-theme .timeline-content::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(88, 166, 255, 0.05), 
+        transparent);
+    animation: shimmer 3s infinite;
+    pointer-events: none;
+}
+
+/* Enhanced focus states for accessibility */
+.run-btn:focus,
+.cert-link:focus {
+    outline: 2px solid #58a6ff;
+    outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+    .education-section.jupyter-education-theme {
+        background: white !important;
+        color: black !important;
+        box-shadow: none !important;
+    }
+    
+    .jupyter-header,
+    .jupyter-notebook,
+    .timeline-content {
+        background: white !important;
+        border-color: #ccc !important;
+        box-shadow: none !important;
+    }
+    
+    .run-btn,
+    .cell-controls {
+        display: none !important;
+    }
+}
+
+/* Enhanced Mobile Responsiveness */
+@media (max-width: 1200px) {
+    .education-section.jupyter-education-theme .timeline-content {
+        max-width: 420px;
+        padding: 28px;
+    }
+    
+    .education-section.jupyter-education-theme .timeline-item-left .timeline-content {
+        max-width: 420px;
+    }
+}
+
+@media (max-width: 992px) {
+    .education-section.jupyter-education-theme {
+        padding: 70px 0;
+    }
+    
+    .education-section.jupyter-education-theme .timeline-content {
+        max-width: 380px;
+        padding: 24px;
+    }
+    
+    .education-section.jupyter-education-theme .timeline-item-left .timeline-content {
+        max-width: 380px;
+    }
+    
+    .education-section.jupyter-education-theme .timeline-content h3 {
+        font-size: 1.4rem;
+    }
+    
+    .education-section.jupyter-education-theme .timeline-content h4 {
+        font-size: 1.05rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .education-section.jupyter-education-theme {
+        padding: 60px 0;
+    }
+    
+    /* Reset timeline alignment for mobile - all cards centered */
+    .education-section.jupyter-education-theme .timeline-item-left .timeline-content,
+    .education-section.jupyter-education-theme .timeline-item-right .timeline-content {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        max-width: 100% !important;
+        text-align: center !important;
+    }
+    
+    /* Reset text alignment for mobile */
+    .education-section.jupyter-education-theme .timeline-item-left .timeline-content h3,
+    .education-section.jupyter-education-theme .timeline-item-left .timeline-content h4,
+    .education-section.jupyter-education-theme .timeline-item-left .timeline-content p {
+        text-align: center !important;
+    }
+    
+    .education-section.jupyter-education-theme .timeline-item-left .timeline-content h4 {
+        justify-content: center !important;
+    }
+    
+    .education-section.jupyter-education-theme .timeline-item-left .timeline-date,
+    .education-section.jupyter-education-theme .timeline-item-left .cert-link {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    
+    .jupyter-header {
+        padding: 12px 16px;
+        border-radius: 6px 6px 0 0;
+    }
+    
+    .jupyter-controls {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+    
+    .notebook-title .section-title {
+        font-size: 1.4rem;
+    }
+    
+    .jupyter-status {
+        justify-content: center;
+    }
+    
+    .cell-toolbar {
+        padding: 8px 12px;
+        flex-direction: column;
+        gap: 8px;
+        align-items: flex-start;
+    }
+    
+    .markdown-content {
+        padding: 16px;
+    }
+    
+    .timeline-markdown {
+        padding: 16px;
+        margin: 16px 0;
+    }
+    
+    .education-section.jupyter-education-theme .timeline-content {
+        padding: 20px;
+        margin: 0 10px;
+    }
+    
+    .education-section.jupyter-education-theme .timeline-content h3 {
+        font-size: 1.2rem;
+    }
+    
+    .education-section.jupyter-education-theme .timeline-content h4 {
+        font-size: 1rem;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .education-section.jupyter-education-theme .timeline-icon {
+        width: 50px !important;
+        height: 50px !important;
+    }
+    
+    .education-section.jupyter-education-theme .timeline-logo {
+        width: 30px !important;
+        height: 30px !important;
+    }
+    
+    .input-prompt, .output-prompt {
+        min-width: 70px;
+        padding: 12px 8px;
+        font-size: 0.75rem;
+    }
+    
+    .code-content, .output-content {
+        padding: 12px 16px;
+        font-size: 0.85rem;
+    }
+    
+    .cert-link {
+        padding: 8px 16px !important;
+        font-size: 0.8rem !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .education-section.jupyter-education-theme {
+        padding: 50px 0;
+    }
+    
+    .education-section.jupyter-education-theme .timeline-content {
+        padding: 18px;
+        margin: 0 8px;
+    }
+    
+    .education-section.jupyter-education-theme .timeline-content h3 {
+        font-size: 1.1rem;
+        line-height: 1.3;
+    }
+    
+    .education-section.jupyter-education-theme .timeline-content h4 {
+        font-size: 0.95rem;
+    }
+    
+    .education-section.jupyter-education-theme .timeline-content p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+    
+    .education-section.jupyter-education-theme .timeline-date {
+        padding: 8px 16px;
+        font-size: 0.75rem;
+    }
+    
+    .education-section.jupyter-education-theme .cert-link {
+        padding: 10px 20px !important;
+        font-size: 0.85rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .jupyter-header {
+        padding: 10px 12px;
+    }
+    
+    .notebook-title .section-title {
+        font-size: 1.2rem;
+    }
+    
+    .education-section.jupyter-education-theme .timeline-content {
+        padding: 16px;
+        margin: 0 5px;
+    }
+    
+    .education-section.jupyter-education-theme .timeline-content h3 {
+        font-size: 1rem;
+    }
+    
+    .education-section.jupyter-education-theme .timeline-content h4 {
+        font-size: 0.9rem;
+    }
+    
+    .education-section.jupyter-education-theme .timeline-content p {
+        font-size: 0.85rem;
+    }
+    
+    .education-section.jupyter-education-theme .timeline-icon {
+        width: 45px !important;
+        height: 45px !important;
+    }
+    
+    .education-section.jupyter-education-theme .timeline-logo {
+        width: 26px !important;
+        height: 26px !important;
+    }
+    
+    .education-section.jupyter-education-theme .timeline-date {
+        padding: 6px 12px;
+        font-size: 0.7rem;
+    }
+    
+    .education-section.jupyter-education-theme .cert-link {
+        padding: 8px 16px !important;
+        font-size: 0.8rem !important;
+        gap: 6px;
+    }
+}
+
+@media (max-width: 360px) {
+    .education-section.jupyter-education-theme {
+        padding: 40px 0;
+    }
+    
+    .jupyter-header {
+        padding: 8px 10px;
+    }
+    
+    .notebook-title .section-title {
+        font-size: 1.1rem;
+    }
+    
+    .education-section.jupyter-education-theme .timeline-content {
+        padding: 14px;
+        margin: 0 3px;
+    }
+    
+    .education-section.jupyter-education-theme .timeline-content h3 {
+        font-size: 0.95rem;
+    }
+    
+    .education-section.jupyter-education-theme .timeline-content h4 {
+        font-size: 0.85rem;
+    }
+    
+    .education-section.jupyter-education-theme .timeline-content p {
+        font-size: 0.8rem;
+    }
+    
+    .education-section.jupyter-education-theme .timeline-icon {
+        width: 40px !important;
+        height: 40px !important;
+    }
+    
+    .education-section.jupyter-education-theme .timeline-logo {
+        width: 24px !important;
+        height: 24px !important;
+    }
+    
+    .education-section.jupyter-education-theme .timeline-date {
+        padding: 5px 10px;
+        font-size: 0.65rem;
+    }
+    
+    .education-section.jupyter-education-theme .cert-link {
+        padding: 6px 12px !important;
+        font-size: 0.75rem !important;
+    }
+}
+
+/* Landscape phone orientation */
+@media (max-width: 896px) and (orientation: landscape) {
+    .education-section.jupyter-education-theme {
+        padding: 40px 0;
+    }
+    
+    .education-section.jupyter-education-theme .timeline-content {
+        padding: 16px;
+        max-width: 90%;
+    }
+    
+    .education-section.jupyter-education-theme .timeline-content h3 {
+        font-size: 1.1rem;
+    }
+}
+
+/* High DPI / Retina displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .education-section.jupyter-education-theme .timeline-logo {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Print styles */
+@media print {
+    .education-section.jupyter-education-theme {
+        background: white !important;
+        color: black !important;
+        box-shadow: none !important;
+    }
+    
+    .jupyter-header,
+    .jupyter-notebook,
+    .timeline-content {
+        background: white !important;
+        border-color: #ccc !important;
+        box-shadow: none !important;
+    }
+    
+    .run-btn,
+    .cell-controls {
+        display: none !important;
+    }
+}

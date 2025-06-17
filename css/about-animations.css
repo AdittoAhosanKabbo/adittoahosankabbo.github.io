@@ -1,0 +1,438 @@
+/* CodePen-inspired animations for About Me section */
+
+/* Base styles for the about section - FIXED: allow scrolling */
+.about-section {
+    position: relative;
+    overflow: visible !important;
+    --highlight-color: #00ffc3;
+    --accent-color: #7d15ff;
+}
+
+/* SCROLL FIX: Ensure all animation elements don't block scrolling */
+.about-starfield,
+.about-sci-fi-gui,
+.sci-fi-gui,
+.css-stars,
+.twinkle-stars,
+#about-starfield-canvas {
+    pointer-events: none !important;
+    position: absolute !important;
+    z-index: 1 !important;
+}
+
+/* Ensure content is above background elements */
+.about-section .container {
+    position: relative;
+    z-index: 10;
+}
+
+/* Animated grid background - REMOVED */
+
+/* Removed scan line effect for cleaner look */
+
+/* Glowing section title - more subtle */
+.about-section .section-title {
+    position: relative;
+    text-shadow: 0 0 8px rgba(0, 255, 195, 0.5);
+    animation: subtleGlowPulse 4s infinite alternate;
+}
+
+@keyframes subtleGlowPulse {
+    0% {
+        text-shadow: 0 0 8px rgba(0, 255, 195, 0.4);
+    }
+    100% {
+        text-shadow: 0 0 12px rgba(0, 255, 195, 0.6);
+    }
+}
+
+/* Professional typing effect for highlighted text */
+.highlight-text {
+    position: relative;
+    display: inline-block;
+    color: var(--highlight-color);
+    font-weight: 600;
+    text-shadow: 0 0 6px rgba(0, 255, 195, 0.3);
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.highlight-text::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        rgba(0, 255, 195, 0.15) 0%, 
+        rgba(125, 21, 255, 0.1) 100%);
+    animation: highlightBg var(--typing-duration, 1.2s) ease forwards;
+    animation-delay: var(--typing-delay, 0.2s);
+    z-index: -1;
+    border-radius: 2px;
+}
+
+.highlight-text::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -2px;
+    width: 2px;
+    height: 100%;
+    background-color: var(--highlight-color);
+    animation: cursorBlink 0.8s step-end infinite, 
+               typingCursor var(--typing-duration, 1.2s) steps(var(--char-count, 12)) forwards;
+    animation-delay: var(--typing-delay, 0.2s), var(--typing-delay, 0.2s);
+    opacity: 0;
+}
+
+/* Apply different delays and durations to each highlight text */
+.about-info p:nth-of-type(1) .highlight-text:nth-of-type(1) {
+    --typing-delay: 0.2s;
+    --typing-duration: 1s;
+    --char-count: 14; /* "Data Enthusiast" */
+}
+.about-info p:nth-of-type(1) .highlight-text:nth-of-type(2) {
+    --typing-delay: 1.3s;
+    --typing-duration: 0.8s;
+    --char-count: 8; /* "Power BI" */
+}
+.about-info p:nth-of-type(1) .highlight-text:nth-of-type(3) {
+    --typing-delay: 2.2s;
+    --typing-duration: 0.6s;
+    --char-count: 3; /* "SQL" */
+}
+.about-info p:nth-of-type(1) .highlight-text:nth-of-type(4) {
+    --typing-delay: 2.9s;
+    --typing-duration: 0.8s;
+    --char-count: 6; /* "Python" */
+}
+.about-info p:nth-of-type(1) .highlight-text:nth-of-type(5) {
+    --typing-delay: 3.8s;
+    --typing-duration: 0.5s;
+    --char-count: 1; /* "R" */
+}
+.about-info p:nth-of-type(2) .highlight-text:nth-of-type(1) {
+    --typing-delay: 4.4s;
+    --typing-duration: 1.2s;
+    --char-count: 20; /* "statistical knowledge" */
+}
+.about-info p:nth-of-type(2) .highlight-text:nth-of-type(2) {
+    --typing-delay: 5.7s;
+    --typing-duration: 1.4s;
+    --char-count: 24; /* "data analysis expertise" */
+}
+
+@keyframes typingCursor {
+    0% { 
+        opacity: 1;
+        left: 0; 
+    }
+    100% { 
+        opacity: 1;
+        left: 100%; 
+    }
+}
+
+@keyframes cursorBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+@keyframes highlightBg {
+    0% { width: 0; }
+    100% { width: 100%; }
+}
+
+/* Enhanced section icons with subtle animation */
+.section-icon {
+    position: relative;
+    margin-bottom: 20px;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    width: 80px;
+    height: 80px;
+    border: 2px solid rgba(89, 178, 158, 0.4); /* Hero teal border */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    background: linear-gradient(135deg, 
+        rgba(89, 178, 158, 0.1), 
+        rgba(0, 255, 195, 0.05)
+    ); /* Hero teal gradient background */
+}
+
+.section-icon i {
+    font-size: 2.5rem;
+    color: var(--highlight-color);
+    display: inline-block;
+    animation: subtleIconMovement 6s ease-in-out infinite;
+    filter: drop-shadow(0 0 5px rgba(0, 255, 195, 0.5));
+}
+
+@keyframes subtleIconMovement {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Animated border ring effect for section icons */
+.section-icon::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    background: linear-gradient(45deg, 
+        rgba(89, 178, 158, 0.6),    /* Hero teal */
+        rgba(0, 255, 195, 0.4),     /* Hero teal-2 */
+        rgba(175, 227, 215, 0.3),   /* Hero light */
+        rgba(89, 178, 158, 0.6)     /* Hero teal */
+    ) border-box;
+    mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    animation: heroIconBorder 3s linear infinite;
+    opacity: 0.8;
+}
+
+@keyframes heroIconBorder {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Hover effects for section icons */
+.section-icon:hover {
+    transform: scale(1.05);
+    border-color: rgba(0, 255, 195, 0.6);
+    background: linear-gradient(135deg, 
+        rgba(89, 178, 158, 0.2), 
+        rgba(0, 255, 195, 0.1)
+    );
+    transition: all 0.3s ease;
+}
+
+.section-icon:hover::before {
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* Enhanced glow behind the section icon with hero colors */
+.section-icon::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, 
+        rgba(89, 178, 158, 0.3), 
+        rgba(0, 255, 195, 0.2), 
+        rgba(175, 227, 215, 0.1), 
+        transparent 70%
+    ); /* Hero teal gradient glow */
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    animation: subtleGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes subtleGlow {
+    0% {
+        opacity: 0.3;
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+    100% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+/* Enhanced personal details with animated borders */
+.personal-details {
+    position: relative;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 30px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 255, 195, 0.2);
+}
+
+/* Animated border effect */
+.personal-details::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 255, 195, 0.2),
+        transparent
+    );
+    transform: rotate(45deg) translate(-100%, -25%);
+    animation: borderFlow 3s linear infinite;
+}
+
+@keyframes borderFlow {
+    0% {
+        transform: rotate(45deg) translate(-100%, -25%);
+    }
+    100% {
+        transform: rotate(45deg) translate(0%, 125%);
+    }
+}
+
+.personal-details:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3),
+                0 0 15px rgba(0, 255, 195, 0.3);
+}
+
+/* Animated detail items with entrance effect */
+.detail-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: fadeInRight 0.5s forwards;
+}
+
+.detail-item:nth-child(1) {
+    animation-delay: 0.3s;
+}
+
+.detail-item:nth-child(2) {
+    animation-delay: 0.6s;
+}
+
+.detail-item:nth-child(3) {
+    animation-delay: 0.9s;
+}
+
+@keyframes fadeInRight {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.detail-item i {
+    font-size: 1.2rem;
+    color: var(--highlight-color);
+    margin-right: 15px;
+    transform: translateZ(0);
+    transition: all 0.3s ease;
+}
+
+.detail-item:hover i {
+    transform: scale(1.2);
+    text-shadow: 0 0 10px rgba(0, 255, 195, 0.8);
+}
+
+.detail-item span {
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.detail-item:hover span {
+    letter-spacing: 1px;
+}
+
+/* Interest tags with clean professional style */
+.interest-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.interest-tags span {
+    padding: 8px 15px;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 255, 195, 0.2);
+    border-radius: 20px;
+    color: #fff;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.interest-tags span::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 255, 195, 0.1),
+        rgba(125, 21, 255, 0.1)
+    );
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+}
+
+.interest-tags span:hover {
+    transform: translateY(-3px);
+    border-color: rgba(0, 255, 195, 0.4);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2),
+                0 0 5px rgba(0, 255, 195, 0.2);
+}
+
+.interest-tags span:hover::before {
+    opacity: 1;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Remove floating particle effect on hover for interest tags */
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    .section-icon i {
+        font-size: 2rem;
+    }
+    
+    .section-icon::before {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .interest-tags span {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+    
+    .detail-item i {
+        font-size: 1rem;
+    }
+    
+    .about-section::before {
+        background-size: 30px 30px;
+    }
+}

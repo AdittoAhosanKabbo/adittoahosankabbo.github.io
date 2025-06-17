@@ -1,0 +1,346 @@
+/* Star Field Animation for Skills Section - Inspired by CodePen */
+
+/* Skills section with star field background - FIXED: allow scrolling */
+.skills-section {
+    position: relative;
+    background: #0f0026;
+    overflow: visible !important;
+    z-index: 1;
+}
+
+.star-field-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.skills-section .container {
+    position: relative;
+    z-index: 10;
+}
+
+/* SCROLL FIX: Ensure all star field elements don't block scrolling */
+.star-field-container,
+.stars,
+.shooting-stars,
+.dynamic-shooting-star {
+    pointer-events: none !important;
+    position: absolute !important;
+}
+
+/* Star field base styles */
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* Small stars */
+.stars-small {
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 160px 30px, #fff, transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: zoom 20s infinite linear;
+    opacity: 0.5;
+}
+
+/* Medium stars */
+.stars-medium {
+    background-image: 
+        radial-gradient(3px 3px at 20px 30px, #fff, transparent),
+        radial-gradient(3px 3px at 40px 70px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(2px 2px at 90px 40px, #fff, transparent),
+        radial-gradient(2px 2px at 130px 80px, rgba(255,255,255,0.7), transparent);
+    background-repeat: repeat;
+    background-size: 300px 150px;
+    animation: zoom 30s infinite linear reverse;
+    opacity: 0.3;
+}
+
+/* Large stars */
+.stars-large {
+    background-image: 
+        radial-gradient(4px 4px at 20px 30px, #fff, transparent),
+        radial-gradient(4px 4px at 40px 70px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(3px 3px at 90px 40px, #fff, transparent);
+    background-repeat: repeat;
+    background-size: 400px 200px;
+    animation: zoom 40s infinite linear;
+    opacity: 0.2;
+}
+
+/* Zoom animation */
+@keyframes zoom {
+    from {
+        transform: scale(0) rotate(0deg);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    to {
+        transform: scale(1) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Shooting stars layer */
+.shooting-stars {
+    position: absolute;
+    top: 0;
+    left: -100px;
+    width: calc(100% + 200px);
+    height: 100%;
+    z-index: 2;
+}
+
+.shooting-star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 6px #fff, 0 0 12px #fff;
+    opacity: 0;
+}
+
+.shooting-star::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -300px;
+    width: 300px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+}
+
+/* Skills content styling */
+.skills-section .section-title {
+    color: #fff;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 10;
+}
+
+.skills-section .skill-category h3 {
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 10;
+}
+
+.skills-section .skill-item {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 10;
+}
+
+.skills-section .skill-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(0, 255, 195, 0.3);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 255, 195, 0.2);
+}
+
+.skills-section .skill-item h4 {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.skills-section .skill-item p {
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+}
+
+.skills-section .skill-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    background: rgba(0, 255, 195, 0.1);
+    border: 2px solid rgba(0, 255, 195, 0.3);
+    border-radius: 50%;
+    margin: 0 auto 1.5rem auto;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 10;
+    padding: 15px;
+}
+
+/* Brand logo image styling */
+.skills-section .skill-icon .skill-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+    transition: all 0.3s ease;
+}
+
+.skills-section .skill-item:hover .skill-icon .skill-logo {
+    filter: drop-shadow(0 0 15px rgba(0, 255, 195, 0.6)) drop-shadow(0 0 25px rgba(255, 255, 255, 0.4));
+    transform: scale(1.1);
+}
+
+.skills-section .skill-icon::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: linear-gradient(45deg, rgba(0, 255, 195, 0.2), rgba(255, 255, 255, 0.1));
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.skills-section .skill-item:hover .skill-icon {
+    background: rgba(0, 255, 195, 0.2);
+    border-color: rgba(0, 255, 195, 0.6);
+    box-shadow: 0 0 25px rgba(0, 255, 195, 0.4);
+    transform: translateY(-5px);
+}
+
+.skills-section .skill-item:hover .skill-icon::before {
+    opacity: 1;
+}
+
+/* Skills carousel styling */
+.skills-carousel-container {
+    position: relative;
+    z-index: 10;
+}
+
+.skills-carousel-title {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.skills-carousel-item {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.skills-carousel-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+}
+
+.skills-carousel-item-text {
+    color: #fff;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    .skills-section .skill-icon {
+        width: 60px;
+        height: 60px;
+        padding: 10px;
+    }
+    
+    .skills-section .skill-icon .skill-logo {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .stars-small {
+        background-size: 150px 75px;
+    }
+    
+    .stars-medium {
+        background-size: 200px 100px;
+    }
+    
+    .stars-large {
+        background-size: 250px 125px;
+    }
+}
+
+/* Brand-specific logo optimizations */
+.skills-section .skill-icon .skill-logo[src*="POWERBI"] {
+    filter: brightness(1.2) drop-shadow(0 0 10px rgba(242, 200, 17, 0.4));
+}
+
+.skills-section .skill-icon .skill-logo[src*="EXCEL"] {
+    filter: brightness(1.1) drop-shadow(0 0 10px rgba(33, 115, 70, 0.4));
+}
+
+.skills-section .skill-icon .skill-logo[src*="PYTHON"] {
+    filter: brightness(1.2) drop-shadow(0 0 10px rgba(55, 118, 171, 0.4));
+}
+
+.skills-section .skill-icon .skill-logo[src*="R.png"] {
+    filter: brightness(1.2) drop-shadow(0 0 10px rgba(26, 101, 199, 0.4));
+}
+
+.skills-section .skill-icon .skill-logo[src*="SQL"] {
+    filter: brightness(1.2) drop-shadow(0 0 10px rgba(204, 41, 39, 0.4));
+}
+
+.skills-section .skill-icon .skill-logo[src*="SPSS"] {
+    filter: brightness(1.2) drop-shadow(0 0 10px rgba(31, 71, 136, 0.4));
+}
+
+.skills-section .skill-icon .skill-logo[src*="TABLEU"] {
+    filter: brightness(1.2) drop-shadow(0 0 10px rgba(255, 107, 53, 0.4));
+}
+
+.skills-section .skill-icon .skill-logo[src*="Git"] {
+    filter: brightness(1.2) drop-shadow(0 0 10px rgba(240, 80, 50, 0.4));
+}
+
+/* Hover effects for specific brand logos */
+.skills-section .skill-item:hover .skill-icon .skill-logo[src*="POWERBI"] {
+    filter: brightness(1.4) drop-shadow(0 0 20px rgba(242, 200, 17, 0.8)) drop-shadow(0 0 30px rgba(255, 255, 255, 0.4));
+}
+
+.skills-section .skill-item:hover .skill-icon .skill-logo[src*="EXCEL"] {
+    filter: brightness(1.3) drop-shadow(0 0 20px rgba(33, 115, 70, 0.8)) drop-shadow(0 0 30px rgba(255, 255, 255, 0.4));
+}
+
+.skills-section .skill-item:hover .skill-icon .skill-logo[src*="PYTHON"] {
+    filter: brightness(1.4) drop-shadow(0 0 20px rgba(55, 118, 171, 0.8)) drop-shadow(0 0 30px rgba(255, 212, 59, 0.4));
+}
+
+.skills-section .skill-item:hover .skill-icon .skill-logo[src*="R.png"] {
+    filter: brightness(1.4) drop-shadow(0 0 20px rgba(26, 101, 199, 0.8)) drop-shadow(0 0 30px rgba(255, 255, 255, 0.4));
+}
+
+.skills-section .skill-item:hover .skill-icon .skill-logo[src*="SQL"] {
+    filter: brightness(1.4) drop-shadow(0 0 20px rgba(204, 41, 39, 0.8)) drop-shadow(0 0 30px rgba(255, 255, 255, 0.4));
+}
+
+.skills-section .skill-item:hover .skill-icon .skill-logo[src*="SPSS"] {
+    filter: brightness(1.4) drop-shadow(0 0 20px rgba(31, 71, 136, 0.8)) drop-shadow(0 0 30px rgba(255, 255, 255, 0.4));
+}
+
+.skills-section .skill-item:hover .skill-icon .skill-logo[src*="TABLEU"] {
+    filter: brightness(1.4) drop-shadow(0 0 20px rgba(255, 107, 53, 0.8)) drop-shadow(0 0 30px rgba(255, 255, 255, 0.4));
+}
+
+.skills-section .skill-item:hover .skill-icon .skill-logo[src*="Git"] {
+    filter: brightness(1.4) drop-shadow(0 0 20px rgba(240, 80, 50, 0.8)) drop-shadow(0 0 30px rgba(255, 255, 255, 0.4));
+}

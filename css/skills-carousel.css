@@ -1,0 +1,181 @@
+/* Skills Logo Carousel - inspired by espressosys.com */
+.skills-carousel-container {
+    width: 100%;
+    overflow: hidden;
+    background: transparent; /* Remove white background */
+    padding: 30px 0;
+    position: relative;
+    margin: 20px 0 40px;
+    border-top: 1px solid rgba(0, 255, 195, 0.15); /* Sci-fi glow border */
+    border-bottom: 1px solid rgba(0, 255, 195, 0.15); /* Sci-fi glow border */
+    box-shadow: 0 10px 30px rgba(0, 255, 195, 0.1);
+}
+
+/* Add subtle pattern overlay - sci-fi style */
+.skills-carousel-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(rgba(0, 255, 195, 0.05) 1px, transparent 1px),
+        radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-position: 0 0, 15px 15px;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.skills-carousel-title {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+    color: #ffffff; /* White text for dark background */
+    text-shadow: 0 0 10px rgba(0, 255, 195, 0.5); /* Sci-fi glow */
+    font-family: var(--font-heading);
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.skills-carousel-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, rgba(0, 255, 195, 0.3), rgba(0, 255, 195, 0.8), rgba(0, 255, 195, 0.3));
+    box-shadow: 0 0 10px rgba(0, 255, 195, 0.5);
+    border-radius: 5px;
+}
+
+.skills-carousel {
+    display: flex;
+    animation: scroll 20s linear infinite;
+    width: max-content;
+    position: relative;
+    z-index: 1;
+}
+
+.skills-carousel:hover {
+    animation-play-state: paused;
+}
+
+.skills-carousel-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 200px;
+    margin: 0 40px;
+    opacity: 0.9;
+    transition: all 0.3s ease;
+    position: relative;
+    /* Add slight floating animation with different delays */
+    animation: float 6s ease-in-out infinite;
+    animation-delay: calc(var(--item-index, 0) * 0.5s);
+}
+
+/* Set different animation delays for each item */
+.skills-carousel-item:nth-child(1) { --item-index: 0; }
+.skills-carousel-item:nth-child(2) { --item-index: 1; }
+.skills-carousel-item:nth-child(3) { --item-index: 2; }
+.skills-carousel-item:nth-child(4) { --item-index: 3; }
+.skills-carousel-item:nth-child(5) { --item-index: 4; }
+.skills-carousel-item:nth-child(6) { --item-index: 5; }
+.skills-carousel-item:nth-child(7) { --item-index: 6; }
+.skills-carousel-item:nth-child(8) { --item-index: 7; }
+.skills-carousel-item:nth-child(9) { --item-index: 8; }
+
+.skills-carousel-item:hover {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+.skills-carousel-item img.skills-logo {
+    height: auto;
+    width: 60px;
+    max-height: 60px;
+    object-fit: contain;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.1));
+    margin-right: 5px;
+}
+
+.skills-carousel-item:hover img.skills-logo {
+    transform: scale(1.15);
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.2));
+}
+
+.skills-carousel-item-text {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-left: 12px;
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff; /* White text for dark sci-fi theme */
+    text-shadow: 0 0 8px rgba(0, 255, 195, 0.5); /* Sci-fi glow */
+    transition: all 0.3s ease;
+}
+
+/* Update responsive styling for logo images */
+@media (max-width: 768px) {
+    .skills-carousel-item {
+        min-width: 150px;
+        margin: 0 20px;
+    }
+    
+    .skills-carousel-item img.skills-logo {
+        height: auto;
+        width: 48px;
+        max-height: 48px;
+    }
+    
+    .skills-carousel-item-text {
+        font-size: 1rem;
+    }
+    
+    @keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(calc(-190px * 6)); /* Adjusted for mobile */
+        }
+    }
+}
+
+/* The scrolling animation */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(var(--carousel-width, -1440px)); /* Using the JS calculated width with fallback */
+    }
+}
+
+/* Add sci-fi themed fade effect on the edges */
+.skills-carousel-container::before,
+.skills-carousel-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 100%;
+    z-index: 2;
+}
+
+.skills-carousel-container::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(15, 0, 38, 1), rgba(15, 0, 38, 0));
+}
+
+.skills-carousel-container::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(15, 0, 38, 1), rgba(15, 0, 38, 0));
+}
+

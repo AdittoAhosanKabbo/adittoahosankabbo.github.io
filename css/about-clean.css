@@ -1,0 +1,1414 @@
+/* Clean About Me Section Styles */
+
+.about-section {
+    position: relative;
+    padding: 100px 0;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+    overflow: hidden;
+    --highlight-color: #00ffc3;
+    --text-color: #ffffff;
+    --text-secondary: #b0b0b0;
+}
+
+/* Subtle background pattern */
+.about-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 80%, rgba(89, 178, 158, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(0, 255, 195, 0.03) 0%, transparent 50%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Clean section title */
+.about-section .section-title {
+    color: var(--text-color);
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 80px;
+    letter-spacing: -1px;
+    position: relative;
+    z-index: 2;
+}
+
+.about-section .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--highlight-color), transparent);
+    border-radius: 2px;
+}
+
+/* Remove the white transparent circle behind the title */
+.about-section .section-title::before {
+    display: none;
+}
+
+/* Remove white transparent circle behind About Me title */
+#about.sci-fi-about .section-title::before,
+#about .section-title::before,
+.about-section .section-title::before {
+    display: none !important;
+    content: none !important;
+}
+
+/* Clean about content layout */
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+/* Clean about info styling */
+.about-info {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(89, 178, 158, 0.1);
+    border-radius: 12px;
+    padding: 40px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.about-info:hover {
+    border-color: rgba(89, 178, 158, 0.3);
+    background: rgba(255, 255, 255, 0.03);
+    transform: translateY(-5px);
+}
+
+/* Clean section icons */
+.section-icon {
+    width: 60px;
+    height: 60px;
+    border: 2px solid rgba(89, 178, 158, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 30px;
+    background: rgba(89, 178, 158, 0.05);
+    transition: all 0.3s ease;
+}
+
+.section-icon:hover {
+    border-color: var(--highlight-color);
+    background: rgba(0, 255, 195, 0.1);
+    transform: scale(1.05);
+}
+
+.section-icon i {
+    font-size: 1.8rem;
+    color: var(--highlight-color);
+}
+
+/* Clean typography */
+.about-info p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+}
+
+.about-info p:last-child {
+    margin-bottom: 30px;
+}
+
+/* Highlight text styling */
+.highlight-text {
+    color: var(--highlight-color);
+    font-weight: 600;
+    position: relative;
+}
+
+/* Professional Personal Details Cards - Ultra Compact Version */
+.personal-details {
+    margin-top: 8px;
+    padding-top: 6px;
+    border-top: 1px solid rgba(89, 178, 158, 0.2);
+    display: grid;
+    gap: 4px;
+}
+
+.detail-item {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(89, 178, 158, 0.1);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.detail-item:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(89, 178, 158, 0.3);
+    transform: translateY(-2px);
+}
+
+.detail-item .icon-wrapper {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: transparent;
+    border: 2px solid rgba(0, 255, 195, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 8px;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.detail-item:hover .icon-wrapper {
+    background: transparent;
+    border-color: var(--highlight-color);
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(0, 255, 195, 0.3);
+}
+
+.detail-item .icon-wrapper i {
+    color: var(--highlight-color);
+    font-size: 0.7rem;
+    font-weight: 900;
+    font-family: "Font Awesome 6 Free" !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.detail-item .detail-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Hide labels - no longer needed */
+.detail-item .detail-label {
+    display: none;
+}
+
+.detail-item .detail-value {
+    color: var(--text-color);
+    font-size: 0.95rem;
+    font-weight: 500;
+    word-break: break-word;
+    line-height: 1.3;
+    margin: 0;
+}
+
+/* Specific icon styling */
+.detail-item .icon-wrapper i.fa-map-marker-alt::before {
+    content: "\f3c5";
+}
+
+.detail-item .icon-wrapper i.fa-envelope::before {
+    content: "\f0e0";
+}
+
+.detail-item .icon-wrapper i.fa-phone::before {
+    content: "\f095";
+}
+
+/* Clean about interests */
+.about-interests {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(89, 178, 158, 0.1);
+    border-radius: 12px;
+    padding: 40px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.about-interests:hover {
+    border-color: rgba(89, 178, 158, 0.3);
+    background: rgba(255, 255, 255, 0.03);
+    transform: translateY(-5px);
+}
+
+.about-interests h3 {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* Remove the line after Interest Areas heading */
+.about-interests h3::after {
+    display: none;
+}
+
+/* Remove line after Interest Areas heading */
+#about.sci-fi-about .about-interests h3::after,
+#about .about-interests h3::after {
+    display: none !important;
+    content: none !important;
+}
+
+/* Clean interest tags */
+.interest-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+}
+
+.interest-tags span {
+    background: rgba(89, 178, 158, 0.1);
+    border: 1px solid rgba(89, 178, 158, 0.3);
+    color: var(--text-color);
+    padding: 8px 16px;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.interest-tags span:hover {
+    background: rgba(0, 255, 195, 0.15);
+    border-color: var(--highlight-color);
+    color: var(--highlight-color);
+    transform: translateY(-2px);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 0 20px;
+    }
+    
+    .about-info,
+    .about-interests {
+        padding: 30px 25px;
+    }
+    
+    .about-section .section-title {
+        font-size: 2.5rem;
+        margin-bottom: 60px;
+    }
+    
+    .interest-tags {
+        gap: 8px;
+    }
+    
+    .interest-tags span {
+        font-size: 0.85rem;
+        padding: 6px 12px;
+    }
+      /* Mobile personal details */
+    .detail-item {
+        padding: 16px;
+    }
+    
+    .detail-item .icon-wrapper {
+        width: 36px;
+        height: 36px;
+        margin-right: 14px;
+    }
+    
+    .detail-item .icon-wrapper i {
+        font-size: 1rem;
+    }
+    
+    .detail-item .detail-label {
+        font-size: 0.8rem;
+    }
+    
+    .detail-item .detail-value {
+        font-size: 0.9rem;
+    }
+}
+
+/* Tablet responsiveness */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .education-timeline {
+        max-width: 1200px;
+        padding: 0 25px;
+    }
+    
+    .timeline-item {
+        width: 50%;
+        padding: 15px;
+        margin-bottom: 18px;
+    }
+    
+    .timeline-item-left {
+        padding-right: 50px;
+    }
+    
+    .timeline-item-right {
+        padding-left: 50px;
+    }
+    
+    .timeline-content {
+        padding: 18px 20px;
+    }
+    
+    .timeline-content h3 {
+        font-size: 1.2rem;
+    }
+    
+    .timeline-content h4 {
+        font-size: 0.95rem;
+    }
+    
+    .timeline-content p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+}
+
+/* Large desktop optimization */
+@media (min-width: 1400px) {
+    .education-timeline {
+        max-width: 1800px;
+        padding: 0 40px;
+    }
+    
+    .timeline-item {
+        width: 52%;
+        padding: 18px;
+    }
+    
+    .timeline-item-left {
+        padding-right: 70px;
+    }
+    
+    .timeline-item-right {
+        left: 48%;
+        padding-left: 70px;
+    }
+    
+    .timeline-content {
+        padding: 22px 28px;
+    }
+}
+
+/* Override conflicting styles */
+#about.sci-fi-about .personal-details,
+#about .personal-details {
+    margin-top: 40px !important;
+    padding-top: 30px !important;
+    border-top: 1px solid rgba(89, 178, 158, 0.2) !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: none !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-bottom: 0 !important;
+    display: grid !important;
+    gap: 16px !important;
+}
+
+#about.sci-fi-about .detail-item,
+#about .detail-item {
+    background: rgba(255, 255, 255, 0.02) !important;
+    border: 1px solid rgba(89, 178, 158, 0.1) !important;
+    border-radius: 12px !important;
+    padding: 20px !important;
+    display: flex !important;
+    align-items: center !important;
+    margin-bottom: 0 !important;
+}
+
+#about.sci-fi-about .detail-item .icon-wrapper,
+#about .detail-item .icon-wrapper {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    background: transparent !important;
+    border: 2px solid rgba(0, 255, 195, 0.3) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-right: 16px !important;
+    flex-shrink: 0 !important;
+}
+
+#about.sci-fi-about .detail-item .icon-wrapper i,
+#about .detail-item .icon-wrapper i {
+    color: var(--highlight-color) !important;
+    font-size: 1.1rem !important;
+    font-weight: 900 !important;
+    font-family: "Font Awesome 6 Free" !important;
+    width: auto !important;
+    margin-right: 0 !important;
+}
+
+#about.sci-fi-about .detail-item .detail-content,
+#about .detail-item .detail-content {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+#about.sci-fi-about .detail-item .detail-label,
+#about .detail-item .detail-label {
+    color: var(--text-secondary) !important;
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    margin-bottom: 2px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    opacity: 0.8 !important;
+}
+
+#about.sci-fi-about .detail-item .detail-value,
+#about .detail-item .detail-value {
+    color: var(--text-color) !important;
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+}
+
+/* Force remove any background from icon wrappers */
+.detail-item .icon-wrapper,
+.detail-item .icon-wrapper:hover,
+.detail-item .icon-wrapper:focus,
+.detail-item .icon-wrapper:active {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+}
+
+/* Force transparent backgrounds for all icon elements */
+#about.sci-fi-about .detail-item .icon-wrapper,
+#about .detail-item .icon-wrapper,
+#about.sci-fi-about .detail-item .icon-wrapper:hover,
+#about .detail-item .icon-wrapper:hover {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+}
+
+#about.sci-fi-about .detail-item .icon-wrapper i,
+#about .detail-item .icon-wrapper i,
+#about.sci-fi-about .detail-item .icon-wrapper .fas,
+#about .detail-item .icon-wrapper .fas,
+#about.sci-fi-about .detail-item .icon-wrapper .fa,
+#about .detail-item .icon-wrapper .fa {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+}
+
+/* Ultra-compact personal details overrides */
+#about.sci-fi-about .personal-details,
+#about .personal-details {
+    margin-top: 8px !important;
+    padding-top: 6px !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+#about.sci-fi-about .detail-item,
+#about .detail-item {
+    padding: 8px 12px !important;
+    margin-bottom: 0 !important;
+    min-height: auto !important;
+}
+
+#about.sci-fi-about .detail-item .icon-wrapper,
+#about .detail-item .icon-wrapper {
+    width: 24px !important;
+    height: 24px !important;
+    margin-right: 8px !important;
+}
+
+#about.sci-fi-about .detail-item .icon-wrapper i,
+#about .detail-item .icon-wrapper i {
+    font-size: 0.7rem !important;
+}
+
+/* Remove any excessive spacing in the about section */
+#about.sci-fi-about .row,
+#about .row {
+    margin-bottom: 0 !important;
+}
+
+#about.sci-fi-about .col-lg-6,
+#about .col-lg-6 {
+    padding-bottom: 0 !important;
+}
+
+/* Micro-compact additional overrides */
+#about.sci-fi-about .detail-item .detail-value,
+#about .detail-item .detail-value {
+    font-size: 0.9rem !important;
+    line-height: 1.25 !important;
+    margin: 0 !important;
+}
+
+#about.sci-fi-about .detail-item .detail-content,
+#about .detail-item .detail-content {
+    gap: 0 !important;
+    margin: 0 !important;
+}
+
+/* Force minimal border thickness */
+#about.sci-fi-about .detail-item .icon-wrapper,
+#about .detail-item .icon-wrapper {
+    border-width: 1px !important;
+}
+
+/* Enhanced Sci-Fi About Section - Match Hero Section Style */
+#about.sci-fi-about {
+    background: var(--color-dark);
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    contain: layout style paint;
+    min-height: 100vh;
+}
+
+/* Enhanced radial gradient background similar to hero */
+#about.sci-fi-about::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: radial-gradient(ellipse at center, rgba(89, 178, 158, 0.05) 1%, rgba(54, 177, 149, 0.03) 40%, rgba(0, 175, 134, 0.15) 100%);
+    opacity: 0.9;
+    transition: opacity 1s ease-in-out;
+    z-index: 1;
+}
+
+
+
+/* Enhanced section title with more sci-fi glow */
+#about.sci-fi-about .section-title {
+    color: var(--color-teal);
+    text-shadow: 
+        0 0 5px rgba(89, 178, 158, 0.5),
+        0 0 10px rgba(89, 178, 158, 0.3),
+        0 0 15px rgba(89, 178, 158, 0.2);
+    position: relative;
+    z-index: 10;
+    font-family: var(--font-thin), monospace;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Enhanced content cards with better sci-fi styling */
+#about.sci-fi-about .about-info,
+#about.sci-fi-about .about-interests {
+    background: rgba(15, 0, 38, 0.9);
+    border: 1px solid rgba(89, 178, 158, 0.4);
+    backdrop-filter: blur(15px);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Add sci-fi corner accents to cards */
+#about.sci-fi-about .about-info::before,
+#about.sci-fi-about .about-interests::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border-top: 2px solid var(--color-teal);
+    border-left: 2px solid var(--color-teal);
+    z-index: 1;
+}
+
+#about.sci-fi-about .about-info::after,
+#about.sci-fi-about .about-interests::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    border-bottom: 2px solid var(--color-teal);
+    border-right: 2px solid var(--color-teal);
+    z-index: 1;
+}
+
+/* Enhanced personal details with sci-fi styling */
+#about.sci-fi-about .personal-details .detail-item {
+    background: rgba(15, 0, 38, 0.6);
+    border: 1px solid rgba(89, 178, 158, 0.3);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Add sci-fi pulse animation to icons */
+#about.sci-fi-about .detail-item .icon-wrapper {
+    background: rgba(89, 178, 158, 0.1);
+    border: 1px solid rgba(89, 178, 158, 0.4);
+    animation: sci-fi-pulse 3s ease-in-out infinite;
+}
+
+@keyframes sci-fi-pulse {
+    0%, 100% { 
+        box-shadow: 0 0 5px rgba(89, 178, 158, 0.3);
+        transform: scale(1);
+    }
+    50% { 
+        box-shadow: 0 0 15px rgba(89, 178, 158, 0.6);
+        transform: scale(1.05);
+    }
+}
+
+/* Enhanced hover effects */
+#about.sci-fi-about .detail-item:hover {
+    background: rgba(15, 0, 38, 0.8);
+    border-color: var(--color-teal);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(89, 178, 158, 0.2);
+}
+
+/* Sci-fi glitch effect on highlight text */
+#about.sci-fi-about .highlight-text {
+    color: var(--color-teal);
+    text-shadow: 
+        0 0 5px rgba(89, 178, 158, 0.5),
+        0 0 10px rgba(89, 178, 158, 0.3);
+    position: relative;
+    animation: subtle-glitch 4s ease-in-out infinite;
+}
+
+@keyframes subtle-glitch {
+    0%, 90%, 100% { transform: translate(0); }
+    95% { transform: translate(-1px, 1px); }
+    97% { transform: translate(1px, -1px); }
+}
+
+/* Enhanced section icons */
+#about.sci-fi-about .section-icon {
+    background: rgba(89, 178, 158, 0.1);
+    border: 2px solid rgba(89, 178, 158, 0.4);
+    animation: icon-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes icon-glow {
+    from { 
+        box-shadow: 0 0 10px rgba(89, 178, 158, 0.3);
+        border-color: rgba(89, 178, 158, 0.4);
+    }
+    to { 
+        box-shadow: 0 0 20px rgba(89, 178, 158, 0.6);
+        border-color: rgba(89, 178, 158, 0.7);
+    }
+}
+
+/* Enhanced interest tags */
+#about.sci-fi-about .interest-tags span {
+    background: rgba(89, 178, 158, 0.1);
+    border: 1px solid rgba(89, 178, 158, 0.3);
+    color: var(--color-teal);
+    text-shadow: 0 0 5px rgba(89, 178, 158, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+#about.sci-fi-about .interest-tags span::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(89, 178, 158, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+#about.sci-fi-about .interest-tags span:hover::before {
+    left: 100%;
+}
+
+#about.sci-fi-about .interest-tags span:hover {
+    background: rgba(89, 178, 158, 0.2);
+    box-shadow: 0 0 15px rgba(89, 178, 158, 0.4);
+    transform: translateY(-2px);
+    text-shadow: 0 0 8px rgba(89, 178, 158, 0.5);
+}
+
+/* Provider Logo Styling (inline with text) */
+.provider-logo {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    margin-right: 8px;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+/* Sci-Fi GUI Elements for Education Section */
+#education.sci-fi-education .sci-fi-gui {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.1;
+}
+
+#education.sci-fi-education .ui-grid {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#education.sci-fi-education .ui-box {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 100px;
+    height: 100px;
+    border: 1px solid rgba(0, 255, 195, 0.3);
+    background: rgba(0, 0, 0, 0.1);
+}
+
+#education.sci-fi-education .ui-fx {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#education.sci-fi-education .ui-corner {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(0, 255, 195, 0.5);
+}
+
+#education.sci-fi-education .ui-corner:nth-child(1) {
+    top: -2px;
+    left: -2px;
+    border-right: none;
+    border-bottom: none;
+}
+
+#education.sci-fi-education .ui-corner:nth-child(2) {
+    top: -2px;
+    right: -2px;
+    border-left: none;
+    border-bottom: none;
+}
+
+#education.sci-fi-education .ui-corner:nth-child(3) {
+    bottom: -2px;
+    left: -2px;
+    border-right: none;
+    border-top: none;
+}
+
+#education.sci-fi-education .ui-corner:nth-child(4) {
+    bottom: -2px;
+    right: -2px;
+    border-left: none;
+    border-top: none;
+}
+
+#education.sci-fi-education .ui-cross {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    width: 40px;
+    height: 40px;
+}
+
+#education.sci-fi-education .border-x {
+    position: absolute;
+    background: rgba(0, 255, 195, 0.4);
+}
+
+#education.sci-fi-education .border-x.f {
+    width: 100%;
+    height: 1px;
+    top: 50%;
+    left: 0;
+}
+
+#education.sci-fi-education .border-x.l {
+    width: 1px;
+    height: 100%;
+    top: 0;
+    left: 50%;
+}
+
+
+
+/* Education Section - Timeline Layout with About Me Section Style */
+
+.education-section {
+    position: relative;
+    padding: 80px 0 60px;
+    background: linear-gradient(135deg, #1a0033 0%, #0d1b2a 50%, #003d52 100%);
+    overflow: hidden;
+    --highlight-color: #00ffc3;
+    --text-color: #ffffff;
+    --text-secondary: #b0b0b0;
+}
+
+/* Subtle background pattern */
+.education-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 15% 85%, rgba(0, 255, 195, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 85% 15%, rgba(89, 178, 158, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(71, 107, 247, 0.04) 0%, transparent 70%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Clean section title */
+.education-section .section-title {
+    color: var(--text-color);
+    font-size: 2.8rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 50px;
+    letter-spacing: -1px;
+    position: relative;
+    z-index: 2;
+}
+
+.education-section .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--highlight-color), transparent);
+    border-radius: 2px;
+}
+
+/* Remove the white transparent circle behind the title */
+.education-section .section-title::before {
+    display: none;
+}
+
+/* Remove white transparent circle behind Education title */
+#education.sci-fi-education .section-title::before,
+#education .section-title::before,
+.education-section .section-title::before {
+    display: none !important;
+    content: none !important;
+}
+
+/* Timeline Container */
+.education-timeline {
+    position: relative;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 30px;
+    z-index: 2;
+}
+
+/* Central Timeline Line */
+.timeline-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, 
+        transparent 0%, 
+        var(--highlight-color) 10%, 
+        rgba(89, 178, 158, 0.8) 50%, 
+        var(--highlight-color) 90%, 
+        transparent 100%);
+    transform: translateX(-50%);
+    z-index: 1;
+    box-shadow: 0 0 10px rgba(0, 255, 195, 0.3);
+}
+
+/* Timeline Item */
+.timeline-item {
+    position: relative;
+    width: 50%;
+    padding: 15px;
+    margin-bottom: 20px;
+    z-index: 2;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Animation for timeline items */
+.timeline-item:nth-child(2) { animation-delay: 0.1s; }
+.timeline-item:nth-child(3) { animation-delay: 0.2s; }
+.timeline-item:nth-child(4) { animation-delay: 0.3s; }
+.timeline-item:nth-child(5) { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Left side items */
+.timeline-item-left {
+    left: 0;
+    text-align: right;
+    padding-right: 60px;
+}
+
+/* Right side items */
+.timeline-item-right {
+    left: 50%;
+    text-align: left;
+    padding-left: 60px;
+}
+
+/* Timeline Marker */
+.timeline-marker {
+    position: absolute;
+    top: 20px;
+    width: 50px;
+    height: 50px;
+    z-index: 3;
+}
+
+.timeline-item-left .timeline-marker {
+    right: -25px;
+}
+
+.timeline-item-right .timeline-marker {
+    left: -25px;
+}
+
+/* Timeline Icon */
+.timeline-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, rgba(0, 255, 195, 0.1), rgba(89, 178, 158, 0.1));
+    border: 2px solid var(--highlight-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(0, 255, 195, 0.2);
+}
+
+.timeline-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(0, 255, 195, 0.4);
+    border-color: rgba(0, 255, 195, 1);
+}
+
+.timeline-icon i {
+    font-size: 1.5rem;
+    color: var(--highlight-color);
+    z-index: 1;
+}
+
+/* Pulsing animation for timeline icons */
+.timeline-icon::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 2px solid var(--highlight-color);
+    border-radius: 50%;
+    opacity: 0;
+    animation: pulse-ring 2s ease-out infinite;
+}
+
+@keyframes pulse-ring {
+    0% {
+        transform: scale(0.8);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.4);
+        opacity: 0;
+    }
+}
+
+/* Timeline Content */
+.timeline-content {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(89, 178, 158, 0.1);
+    border-radius: 12px;
+    padding: 20px 25px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    position: relative;
+    min-height: auto;
+}
+
+.timeline-content:hover {
+    border-color: rgba(89, 178, 158, 0.3);
+    background: rgba(255, 255, 255, 0.03);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 255, 195, 0.1);
+}
+
+/* Arrow pointing to timeline */
+.timeline-content::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    width: 0;
+    height: 0;
+    border: 12px solid transparent;
+}
+
+.timeline-item-left .timeline-content::before {
+    right: -12px;
+    border-left: 12px solid rgba(255, 255, 255, 0.02);
+}
+
+.timeline-item-right .timeline-content::before {
+    left: -12px;
+    border-right: 12px solid rgba(255, 255, 255, 0.02);
+}
+
+/* Timeline Date */
+.timeline-date {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--highlight-color), rgba(89, 178, 158, 0.8));
+    color: #0a0a0a;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(0, 255, 195, 0.2);
+}
+
+/* Enhanced Typography for Education Section */
+.education-section .timeline-content p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.education-section .timeline-content h3 {
+    color: var(--highlight-color);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+    line-height: 1.3;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: -0.5px;
+}
+
+.education-section .timeline-content h4 {
+    color: var(--text-color);
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 12px;
+    opacity: 0.9;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.2px;
+}
+
+/* Timeline Content Typography */
+.timeline-content h3 {
+    color: var(--highlight-color);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+    line-height: 1.3;
+}
+
+.timeline-content h4 {
+    color: var(--text-color);
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 12px;
+    opacity: 0.9;
+}
+
+.timeline-content p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+}
+
+/* Certificate Link */
+.cert-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(89, 178, 158, 0.1);
+    border: 1px solid rgba(89, 178, 158, 0.3);
+    color: var(--highlight-color);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-top: 8px;
+}
+
+.cert-link:hover {
+    background: rgba(0, 255, 195, 0.15);
+    border-color: var(--highlight-color);
+    color: var(--highlight-color);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(0, 255, 195, 0.3);
+}
+
+.cert-link i {
+    font-size: 0.8rem;
+}
+
+/* Mobile responsiveness for timeline */
+@media (max-width: 768px) {
+    .education-section {
+        padding: 60px 0 40px;
+    }
+    
+    .education-timeline {
+        padding: 0 15px;
+    }
+    
+    .timeline-line {
+        left: 25px;
+    }
+    
+    .timeline-item {
+        width: 100%;
+        left: 0 !important;
+        text-align: left !important;
+        padding: 15px 15px 15px 65px;
+        margin-bottom: 25px;
+    }
+    
+    .timeline-marker {
+        left: 0 !important;
+        right: auto !important;
+        top: 15px;
+    }
+    
+    .timeline-content::before {
+        left: -12px !important;
+        right: auto !important;
+        border-right: 12px solid rgba(255, 255, 255, 0.02) !important;
+        border-left: none !important;
+        top: 15px;
+    }
+    
+    .timeline-content {
+        padding: 18px 15px;
+    }
+    
+    .education-section .section-title {
+        font-size: 2.2rem;
+        margin-bottom: 40px;
+    }
+    
+    .timeline-icon {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .timeline-icon i {
+        font-size: 1rem;
+    }
+}
+
+/* Tablet responsiveness */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .education-timeline {
+        max-width: 1200px;
+        padding: 0 25px;
+    }
+    
+    .timeline-item {
+        width: 50%;
+        padding: 15px;
+        margin-bottom: 18px;
+    }
+    
+    .timeline-item-left {
+        padding-right: 50px;
+    }
+    
+    .timeline-item-right {
+        padding-left: 50px;
+    }
+    
+    .timeline-content {
+        padding: 18px 20px;
+    }
+    
+    .timeline-content h3 {
+        font-size: 1.2rem;
+    }
+    
+    .timeline-content h4 {
+        font-size: 0.95rem;
+    }
+    
+    .timeline-content p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+}
+
+/* Large desktop optimization */
+@media (min-width: 1400px) {
+    .education-timeline {
+        max-width: 1800px;
+        padding: 0 40px;
+    }
+    
+    .timeline-item {
+        width: 52%;
+        padding: 18px;
+    }
+    
+    .timeline-item-left {
+        padding-right: 70px;
+    }
+    
+    .timeline-item-right {
+        left: 48%;
+        padding-left: 70px;
+    }
+    
+    .timeline-content {
+        padding: 22px 28px;
+    }
+}
+
+/* Override conflicting styles */
+#education.sci-fi-education .timeline-content,
+#education .timeline-content {
+    background: rgba(255, 255, 255, 0.02) !important;
+    border: 1px solid rgba(89, 178, 158, 0.1) !important;
+    border-radius: 12px !important;
+}
+
+/* Remove any unwanted circular decorations from timeline content */
+.timeline-content::after {
+    display: none !important;
+}
+
+.timeline-content > *::before,
+.timeline-content > *::after {
+    display: none !important;
+}
+
+/* Ensure no background circles appear */
+.timeline-content {
+    background-image: none !important;
+}
+
+/* Remove any unwanted decorative elements in Education section */
+#education.sci-fi-education .timeline-content::before,
+#education.sci-fi-education .timeline-content::after,
+#education.sci-fi-education .timeline-item::before,
+#education.sci-fi-education .timeline-item::after,
+#education.sci-fi-education .education-timeline::before,
+#education.sci-fi-education .education-timeline::after {
+    background-image: none !important;
+    background: none !important;
+    content: none !important;
+    display: none !important;
+}
+
+/* Ensure no floating circles or decorative elements */
+#education.sci-fi-education .css-stars,
+#education.sci-fi-education .twinkle-stars,
+#education.sci-fi-education .sci-fi-gui {
+    display: none !important;
+}
+
+/* Override any inherited star or decorative styles */
+#education *[class*="star"],
+#education *[class*="circle"],
+#education *[class*="css-"] {
+    display: none !important;
+}
+
+/* Timeline Logo Styling */
+.timeline-logo {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.timeline-icon:hover .timeline-logo {
+    transform: scale(1.05);
+}
+
+/* Match Skills Section Title Text Format with Education Title */
+.skills-section .section-title {
+    color: var(--text-color);
+    font-size: 2.8rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 50px;
+    letter-spacing: -1px;
+    position: relative;
+    z-index: 2;
+}
+
+.skills-section .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--highlight-color), transparent);
+    border-radius: 2px;
+}
+
+/* Remove any circles behind the skills title */
+.skills-section .section-title::before {
+    display: none;
+}
+
+/* Skills section variables for consistent styling */
+.skills-section {
+    --highlight-color: #00ffc3; /* Same highlight color as education section */
+    --text-color: #ffffff;
+    --text-secondary: #b0b0b0;
+}
