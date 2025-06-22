@@ -13,10 +13,9 @@ document.addEventListener('DOMContentLoaded', function() {
       // Project navigation state
     let currentProjectIndex = 0;
     let allProjectCards = [];
-    
-    // Initialize modal buttons (hidden by default)
-    if (modalGithub) modalGithub.style.display = 'none';
-    if (modalLinkedin) modalLinkedin.style.display = 'none';    // Project links mapping
+      // Initialize modal buttons (hidden by default)
+    if (modalGithub) modalGithub.classList.add('social-btn-hidden');
+    if (modalLinkedin) modalLinkedin.classList.add('social-btn-hidden');// Project links mapping
     const projectLinks = {        'Inventory Management': {
             github: 'https://github.com/AdittoAhosanKabbo/Inventory_Management_PowerBi_Project',
             linkedin: 'https://www.linkedin.com/posts/adittoahosankabbo_inventory-analaysis-dashboard-activity-7321133843392970752-fg6f?utm_source=share&utm_medium=member_desktop&rcm=ACoAADYmlAcBDC-p4HWCs6yFwh5eDLA4vA0uquE'
@@ -55,27 +54,31 @@ document.addEventListener('DOMContentLoaded', function() {
               // Set project links and handle visibility
             const links = projectLinks[projectTitle];
             console.log('Project:', projectTitle, 'Links:', links); // Debug log
-            
-            if (links) {
+              if (links) {
                 // Always show GitHub button (all projects have GitHub links)
-                modalGithub.style.display = 'flex';
+                modalGithub.classList.remove('social-btn-hidden');
+                modalGithub.classList.add('social-btn-visible');
                 modalGithub.onclick = () => window.open(links.github, '_blank');
                 console.log('GitHub button shown for:', projectTitle); // Debug log
                 
                 // Handle LinkedIn button visibility
                 if (links.linkedin && links.linkedin !== '#') {
-                    modalLinkedin.style.display = 'flex';
+                    modalLinkedin.classList.remove('social-btn-hidden');
+                    modalLinkedin.classList.add('social-btn-visible');
                     modalLinkedin.onclick = () => window.open(links.linkedin, '_blank');
                     console.log('LinkedIn button shown for:', projectTitle); // Debug log
                 } else {
-                    modalLinkedin.style.display = 'none';
+                    modalLinkedin.classList.remove('social-btn-visible');
+                    modalLinkedin.classList.add('social-btn-hidden');
                     modalLinkedin.onclick = null;
                     console.log('LinkedIn button hidden for:', projectTitle); // Debug log
                 }
             } else {
                 // Fallback: hide both buttons if no links found
-                modalGithub.style.display = 'none';
-                modalLinkedin.style.display = 'none';
+                modalGithub.classList.remove('social-btn-visible');
+                modalGithub.classList.add('social-btn-hidden');
+                modalLinkedin.classList.remove('social-btn-visible');
+                modalLinkedin.classList.add('social-btn-hidden');
                 console.log('No links found for:', projectTitle); // Debug log
             }
             
@@ -93,8 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const iframeSrc = this.getAttribute('data-iframe-src');
             window.open(iframeSrc, '_blank');
         });
-    });
-      // Update navigation buttons state with enhanced visual feedback
+    });    // Update navigation buttons state with enhanced visual feedback
     function updateNavigationButtons() {
         if (modalPrevBtn && modalNextBtn) {
             const isPrevDisabled = currentProjectIndex === 0;
@@ -103,24 +105,21 @@ document.addEventListener('DOMContentLoaded', function() {
             modalPrevBtn.disabled = isPrevDisabled;
             modalNextBtn.disabled = isNextDisabled;
             
-            // Add visual feedback with smooth transitions
-            modalPrevBtn.style.transition = 'all 0.3s ease';
-            modalNextBtn.style.transition = 'all 0.3s ease';
-            
+            // Add visual feedback with smooth transitions using CSS classes
             if (isPrevDisabled) {
-                modalPrevBtn.style.opacity = '0.4';
-                modalPrevBtn.style.transform = 'scale(0.9)';
+                modalPrevBtn.classList.remove('btn-enabled');
+                modalPrevBtn.classList.add('btn-disabled');
             } else {
-                modalPrevBtn.style.opacity = '1';
-                modalPrevBtn.style.transform = 'scale(1)';
+                modalPrevBtn.classList.remove('btn-disabled');
+                modalPrevBtn.classList.add('btn-enabled');
             }
             
             if (isNextDisabled) {
-                modalNextBtn.style.opacity = '0.4';
-                modalNextBtn.style.transform = 'scale(0.9)';
+                modalNextBtn.classList.remove('btn-enabled');
+                modalNextBtn.classList.add('btn-disabled');
             } else {
-                modalNextBtn.style.opacity = '1';
-                modalNextBtn.style.transform = 'scale(1)';
+                modalNextBtn.classList.remove('btn-disabled');
+                modalNextBtn.classList.add('btn-enabled');
             }
         }
     }
@@ -130,48 +129,53 @@ document.addEventListener('DOMContentLoaded', function() {
             currentProjectIndex = index;
             const projectCard = allProjectCards[index];
             const enlargeBtn = projectCard.querySelector('.simple-enlarge-btn');
-            
-            if (enlargeBtn) {
-                // Add loading state
-                modalIframe.style.opacity = '0.3';
-                modalIframe.style.transition = 'opacity 0.2s ease';
+              if (enlargeBtn) {
+                // Add loading state using CSS classes
+                modalIframe.classList.remove('modal-content-loaded');
+                modalIframe.classList.add('modal-content-loading');
                 
                 const iframeSrc = enlargeBtn.getAttribute('data-iframe-src');
                 const projectTitle = projectCard.querySelector('.simple-project-title').textContent;
                 
-                // Update modal content with animation
-                modalTitle.style.opacity = '0.7';
+                // Update modal content with animation using CSS classes
+                modalTitle.classList.add('modal-title-transitioning');
                 setTimeout(() => {
                     modalTitle.textContent = projectTitle;
-                    modalTitle.style.opacity = '1';
+                    modalTitle.classList.remove('modal-title-transitioning');
+                    modalTitle.classList.add('modal-title-ready');
                 }, 100);
                 
                 // Load new iframe content
                 modalIframe.src = iframeSrc;
                 
-                // Reset iframe opacity when loaded
+                // Reset iframe opacity when loaded using CSS classes
                 modalIframe.onload = function() {
-                    this.style.opacity = '1';
-                    this.style.transition = 'opacity 0.3s ease';
+                    this.classList.remove('modal-content-loading');
+                    this.classList.add('modal-content-loaded');
                 };
                 
                 // Update social buttons with smooth transition
                 setTimeout(() => {
                     const links = projectLinks[projectTitle];
                     if (links) {
-                        modalGithub.style.display = 'flex';
+                        modalGithub.classList.remove('social-btn-hidden');
+                        modalGithub.classList.add('social-btn-visible');
                         modalGithub.onclick = () => window.open(links.github, '_blank');
                         
                         if (links.linkedin && links.linkedin !== '#') {
-                            modalLinkedin.style.display = 'flex';
+                            modalLinkedin.classList.remove('social-btn-hidden');
+                            modalLinkedin.classList.add('social-btn-visible');
                             modalLinkedin.onclick = () => window.open(links.linkedin, '_blank');
                         } else {
-                            modalLinkedin.style.display = 'none';
+                            modalLinkedin.classList.remove('social-btn-visible');
+                            modalLinkedin.classList.add('social-btn-hidden');
                             modalLinkedin.onclick = null;
                         }
                     } else {
-                        modalGithub.style.display = 'none';
-                        modalLinkedin.style.display = 'none';
+                        modalGithub.classList.remove('social-btn-visible');
+                        modalGithub.classList.add('social-btn-hidden');
+                        modalLinkedin.classList.remove('social-btn-visible');
+                        modalLinkedin.classList.add('social-btn-hidden');
                     }
                 }, 50);
                 
@@ -181,14 +185,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
       // Modal navigation event listeners with enhanced responsiveness
-    if (modalPrevBtn) {
-        modalPrevBtn.addEventListener('click', function(e) {
+    if (modalPrevBtn) {        modalPrevBtn.addEventListener('click', function(e) {
             e.preventDefault();
             if (currentProjectIndex > 0 && !this.disabled) {
-                // Add click feedback
-                this.style.transform = 'scale(1.05)';
+                // Add click feedback using CSS class
+                this.classList.add('btn-active-feedback');
                 setTimeout(() => {
-                    this.style.transform = '';
+                    this.classList.remove('btn-active-feedback');
                 }, 150);
                 
                 navigateToProject(currentProjectIndex - 1);
@@ -199,29 +202,28 @@ document.addEventListener('DOMContentLoaded', function() {
         modalPrevBtn.addEventListener('touchstart', function(e) {
             e.preventDefault();
             if (!this.disabled) {
-                this.style.transform = 'scale(1.1)';
+                this.classList.add('btn-touch-feedback');
             }
         });
         
         modalPrevBtn.addEventListener('touchend', function(e) {
             e.preventDefault();
             if (!this.disabled) {
-                this.style.transform = '';
+                this.classList.remove('btn-touch-feedback');
                 if (currentProjectIndex > 0) {
                     navigateToProject(currentProjectIndex - 1);
                 }
             }
         });
     }
-    
-    if (modalNextBtn) {
+      if (modalNextBtn) {
         modalNextBtn.addEventListener('click', function(e) {
             e.preventDefault();
             if (currentProjectIndex < allProjectCards.length - 1 && !this.disabled) {
-                // Add click feedback
-                this.style.transform = 'scale(1.05)';
+                // Add click feedback using CSS class
+                this.classList.add('btn-active-feedback');
                 setTimeout(() => {
-                    this.style.transform = '';
+                    this.classList.remove('btn-active-feedback');
                 }, 150);
                 
                 navigateToProject(currentProjectIndex + 1);
@@ -232,14 +234,14 @@ document.addEventListener('DOMContentLoaded', function() {
         modalNextBtn.addEventListener('touchstart', function(e) {
             e.preventDefault();
             if (!this.disabled) {
-                this.style.transform = 'scale(1.1)';
+                this.classList.add('btn-touch-feedback');
             }
         });
         
         modalNextBtn.addEventListener('touchend', function(e) {
             e.preventDefault();
             if (!this.disabled) {
-                this.style.transform = '';
+                this.classList.remove('btn-touch-feedback');
                 if (currentProjectIndex < allProjectCards.length - 1) {
                     navigateToProject(currentProjectIndex + 1);
                 }
@@ -272,33 +274,23 @@ document.addEventListener('DOMContentLoaded', function() {
             if (e.key === 'Escape') {
                 closeModal();
             } else if (e.key === 'ArrowLeft') {
-                e.preventDefault();
-                if (currentProjectIndex > 0 && modalPrevBtn && !modalPrevBtn.disabled) {
-                    // Add visual feedback for keyboard navigation
-                    modalPrevBtn.style.transform = 'scale(1.1)';
-                    modalPrevBtn.style.background = '#3498db';
-                    modalPrevBtn.style.color = 'white';
+                e.preventDefault();                if (currentProjectIndex > 0 && modalPrevBtn && !modalPrevBtn.disabled) {
+                    // Add visual feedback for keyboard navigation using CSS class
+                    modalPrevBtn.classList.add('btn-keyboard-feedback');
                     
                     setTimeout(() => {
-                        modalPrevBtn.style.transform = '';
-                        modalPrevBtn.style.background = '';
-                        modalPrevBtn.style.color = '';
+                        modalPrevBtn.classList.remove('btn-keyboard-feedback');
                     }, 200);
                     
                     navigateToProject(currentProjectIndex - 1);
                 }
             } else if (e.key === 'ArrowRight') {
                 e.preventDefault();
-                if (currentProjectIndex < allProjectCards.length - 1 && modalNextBtn && !modalNextBtn.disabled) {
-                    // Add visual feedback for keyboard navigation
-                    modalNextBtn.style.transform = 'scale(1.1)';
-                    modalNextBtn.style.background = '#3498db';
-                    modalNextBtn.style.color = 'white';
+                if (currentProjectIndex < allProjectCards.length - 1 && modalNextBtn && !modalNextBtn.disabled) {                    // Add visual feedback for keyboard navigation using CSS class
+                    modalNextBtn.classList.add('btn-keyboard-feedback');
                     
                     setTimeout(() => {
-                        modalNextBtn.style.transform = '';
-                        modalNextBtn.style.background = '';
-                        modalNextBtn.style.color = '';
+                        modalNextBtn.classList.remove('btn-keyboard-feedback');
                     }, 200);
                     
                     navigateToProject(currentProjectIndex + 1);
@@ -306,12 +298,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
-    
-    // Add loading state for iframes
+      // Add loading state for iframes
     const iframes = document.querySelectorAll('.simple-iframe');
     iframes.forEach(iframe => {
         iframe.addEventListener('load', function() {
-            this.style.opacity = '1';
+            this.classList.add('modal-content-loaded');
         });
     });
     
@@ -328,22 +319,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
         });
-    });
-      // Add hover effects for better user experience
+    });    // Add hover effects for better user experience
     const projectCardsForHover = document.querySelectorAll('.simple-project-card');
     projectCardsForHover.forEach(card => {
         card.addEventListener('mouseenter', function() {
-            const iframe = this.querySelector('.simple-iframe');
-            if (iframe) {
-                iframe.style.transform = 'scale(1.02)';
-            }
+            this.classList.add('project-card-hover');
+            this.classList.remove('project-card-normal');
         });
         
         card.addEventListener('mouseleave', function() {
-            const iframe = this.querySelector('.simple-iframe');
-            if (iframe) {
-                iframe.style.transform = 'scale(1)';
-            }
+            this.classList.add('project-card-normal');
+            this.classList.remove('project-card-hover');
         });
     });
     
@@ -353,55 +339,22 @@ document.addEventListener('DOMContentLoaded', function() {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
         };
-        
-        const observer = new IntersectionObserver((entries) => {
+          const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.classList.remove('card-hidden');
+                    entry.target.classList.add('card-visible');
                 }
             });
         }, observerOptions);
-        
+          
         projectCardsForHover.forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            card.classList.add('card-hidden');
             observer.observe(card);
         });
     }
-});
 
-// Utility functions for better performance
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-// Add resize handler for responsive modal
-window.addEventListener('resize', debounce(() => {
-    const modal = document.getElementById('simpleDatavizModal');
-    if (modal.classList.contains('active')) {
-        // Adjust modal size if needed
-        const modalContent = modal.querySelector('.simple-modal-content');
-        if (window.innerWidth < 768) {
-            modalContent.style.width = '98%';
-            modalContent.style.height = '95%';
-        } else {
-            modalContent.style.width = '95%';
-            modalContent.style.height = '90%';
-        }
-    }
-}, 250));
-
-// Add swipe gesture support for mobile
+    // Add swipe gesture support for mobile
     let touchStartX = 0;
     let touchEndX = 0;
     let isSwiping = false;
@@ -423,29 +376,27 @@ window.addEventListener('resize', debounce(() => {
         modal.addEventListener('touchend', function(e) {
             if (isSwiping && modal.classList.contains('active')) {
                 touchEndX = e.changedTouches[0].screenX;
-                handleSwipeGesture();
+                handleSwipe();
                 isSwiping = false;
+                touchStartX = 0;
+                touchEndX = 0;
             }
         }, { passive: true });
-    }
-    
-    function handleSwipeGesture() {
-        const swipeThreshold = 50; // Minimum distance for swipe
-        const swipeDistance = touchEndX - touchStartX;
         
-        if (Math.abs(swipeDistance) > swipeThreshold) {
-            if (swipeDistance > 0) {
+        function handleSwipe() {
+            const swipeThreshold = 100; // Minimum distance for a swipe
+            const swipeDistance = touchEndX - touchStartX;
+            
+            // Determine swipe direction and check if it meets threshold
+            if (Math.abs(swipeDistance) < swipeThreshold) return;
+              if (swipeDistance > 0) {
                 // Swipe right - go to previous project
                 if (currentProjectIndex > 0 && modalPrevBtn && !modalPrevBtn.disabled) {
-                    // Add visual feedback
-                    modalPrevBtn.style.transform = 'scale(1.2)';
-                    modalPrevBtn.style.background = '#3498db';
-                    modalPrevBtn.style.color = 'white';
+                    // Add visual feedback using CSS class
+                    modalPrevBtn.classList.add('btn-swipe-feedback');
                     
                     setTimeout(() => {
-                        modalPrevBtn.style.transform = '';
-                        modalPrevBtn.style.background = '';
-                        modalPrevBtn.style.color = '';
+                        modalPrevBtn.classList.remove('btn-swipe-feedback');
                     }, 300);
                     
                     navigateToProject(currentProjectIndex - 1);
@@ -453,15 +404,10 @@ window.addEventListener('resize', debounce(() => {
             } else {
                 // Swipe left - go to next project
                 if (currentProjectIndex < allProjectCards.length - 1 && modalNextBtn && !modalNextBtn.disabled) {
-                    // Add visual feedback
-                    modalNextBtn.style.transform = 'scale(1.2)';
-                    modalNextBtn.style.background = '#3498db';
-                    modalNextBtn.style.color = 'white';
-                    
-                    setTimeout(() => {
-                        modalNextBtn.style.transform = '';
-                        modalNextBtn.style.background = '';
-                        modalNextBtn.style.color = '';
+                    // Add visual feedback using CSS class
+                    modalNextBtn.classList.add('btn-swipe-feedback');
+                      setTimeout(() => {
+                        modalNextBtn.classList.remove('btn-swipe-feedback');
                     }, 300);
                     
                     navigateToProject(currentProjectIndex + 1);
@@ -469,3 +415,35 @@ window.addEventListener('resize', debounce(() => {
             }
         }
     }
+});
+
+// Utility functions for better performance
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Add resize handler for responsive modal
+window.addEventListener('resize', debounce(() => {
+    const modal = document.getElementById('simpleDatavizModal');
+    if (modal && modal.classList.contains('active')) {
+        // Adjust modal size if needed using CSS classes
+        const modalContent = modal.querySelector('.simple-modal-content');
+        if (modalContent) {
+            if (window.innerWidth < 768) {
+                modalContent.classList.remove('modal-desktop');
+                modalContent.classList.add('modal-mobile');
+            } else {
+                modalContent.classList.remove('modal-mobile');
+                modalContent.classList.add('modal-desktop');
+            }
+        }
+    }
+}, 250));

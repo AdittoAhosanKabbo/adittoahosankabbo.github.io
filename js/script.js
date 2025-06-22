@@ -8,16 +8,10 @@ const contactForm = document.getElementById('contactForm');
 let isScrolling = false;
 
 // Event Listeners
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize the website
+document.addEventListener('DOMContentLoaded', () => {    // Initialize the website
     initWebsite();
-      // Particles.js is disabled - using custom starfield effect instead
+    // Particles.js is disabled - using custom starfield effect instead
     // This prevents any unwanted particle/bubble effects outside the hero section
-    
-    // Start typing animation
-    if (typedTextElement && cursor) {
-        setTimeout(typeText, 1000);
-    }
     
     // Only initialize non-critical features when browser is idle
     if ('requestIdleCallback' in window) {
@@ -176,44 +170,6 @@ function initWebsite() {
     if (menuToggle) {
         menuToggle.setAttribute('aria-expanded', 'false');
         menuToggle.setAttribute('aria-label', 'Toggle navigation menu');
-    }
-}
-
-// Type text animation
-function typeText() {
-    if (charIndex < textArray[textArrayIndex].length) {
-        if (!cursor.classList.contains('typing')) {
-            cursor.classList.add('typing');
-        }
-        
-        typedTextElement.textContent += textArray[textArrayIndex].charAt(charIndex);
-        charIndex++;
-        setTimeout(typeText, 100);
-    } else {
-        cursor.classList.remove('typing');
-        setTimeout(eraseText, 2000);
-    }
-}
-
-// Erase text animation
-function eraseText() {
-    if (charIndex > 0) {
-        if (!cursor.classList.contains('typing')) {
-            cursor.classList.add('typing');
-        }
-        
-        typedTextElement.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
-        charIndex--;
-        setTimeout(eraseText, 50);
-    } else {
-        cursor.classList.remove('typing');
-        textArrayIndex++;
-        
-        if (textArrayIndex >= textArray.length) {
-            textArrayIndex = 0;
-        }
-        
-        setTimeout(typeText, 1000);
     }
 }
 

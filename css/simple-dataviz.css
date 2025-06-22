@@ -710,3 +710,106 @@
         color: white;
     }
 }
+
+/* CSS Classes to replace inline styles for better performance */
+
+/* Button states */
+.btn-disabled {
+    opacity: 0.4 !important;
+    transform: scale(0.9) !important;
+    transition: all 0.3s ease;
+}
+
+.btn-enabled {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+    transition: all 0.3s ease;
+}
+
+.btn-active-feedback {
+    transform: scale(1.05) !important;
+    transition: transform 0.15s ease;
+}
+
+.btn-touch-feedback {
+    transform: scale(1.1) !important;
+}
+
+.btn-keyboard-feedback {
+    transform: scale(1.1) !important;
+    background: #3498db !important;
+    color: white !important;
+    transition: all 0.2s ease;
+}
+
+.btn-swipe-feedback {
+    transform: scale(1.2) !important;
+    background: #3498db !important;
+    color: white !important;
+    transition: all 0.3s ease;
+}
+
+/* Modal content states */
+.modal-content-loading {
+    opacity: 0.3 !important;
+    transition: opacity 0.2s ease;
+}
+
+.modal-content-loaded {
+    opacity: 1 !important;
+    transition: opacity 0.3s ease;
+}
+
+.modal-title-transitioning {
+    opacity: 0.7 !important;
+    transition: opacity 0.1s ease;
+}
+
+.modal-title-ready {
+    opacity: 1 !important;
+    transition: opacity 0.1s ease;
+}
+
+/* Social button states */
+.social-btn-hidden {
+    display: none !important;
+}
+
+.social-btn-visible {
+    display: flex !important;
+}
+
+/* Project card hover effects */
+.project-card-hover .simple-iframe {
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+}
+
+.project-card-normal .simple-iframe {
+    transform: scale(1);
+    transition: transform 0.3s ease;
+}
+
+/* Animation classes for intersection observer */
+.card-hidden {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.card-visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Modal responsive classes */
+.modal-mobile {
+    width: 98% !important;
+    height: 95% !important;
+}
+
+.modal-desktop {
+    width: 95% !important;
+    height: 90% !important;
+}

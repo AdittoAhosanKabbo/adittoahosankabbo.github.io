@@ -1120,11 +1120,11 @@ Aditto A. Kabbo  | Data Analyst | SQL               | 2+         | Advanced Anal
                                     </button>
                                     <button class="dataviz-card__new-tab-btn" aria-label="Open in new tab" title="Open in new tab">
                                         <i class="fas fa-external-link-alt"></i>
-                                    </button>
-                                    <button id="enlargePcaBtn" class="enlarge-dashboard-btn" aria-label="Enlarge PCA Analysis" data-iframe-src="https://rpubs.com/publish/claim/1153071/3e72adca433242628b45b9a67b65d27c">
+                                    </button>                                    <button id="enlargePcaBtn" class="enlarge-dashboard-btn" aria-label="Enlarge PCA Analysis" data-iframe-src="https://rpubs.com/publish/claim/1153071/3e72adca433242628b45b9a67b65d27c">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
-                                    </svg>
+                                        </svg>
+                                    </button>
                                 </div>
                             </div>
                             
@@ -1407,28 +1407,39 @@ Aditto A. Kabbo  | Data Analyst | SQL               | 2+         | Advanced Anal
                 rootMargin: '200px 0px',
                 threshold: 0.01
             });
-            
-            // Apply to all iframe containers
+              // Apply to all iframe containers
             document.querySelectorAll('.dataviz-card__frame-container')
                 .forEach(container => iframeObserver.observe(container));
             
-            var typed = new Typed('#typed', {
-                stringsElement: '#typed-strings',
-                typeSpeed: 60,
-                backSpeed: 30,
-                backDelay: 1500,
-                startDelay: 1000,
-                loop: true,
-                showCursor: true,
-                cursorChar: '|'
-            });
-            
-            // Data Visualization and Statistical Analysis Sections with optimized event handling
+            // Initialize Typed.js for typing animation
+            if (typeof Typed !== 'undefined') {
+                var typed = new Typed('#typed', {
+                    stringsElement: '#typed-strings',
+                    typeSpeed: 60,
+                    backSpeed: 30,
+                    backDelay: 1500,
+                    startDelay: 1000,
+                    loop: true,
+                    showCursor: true,
+                    cursorChar: '|'
+                });
+            } else {
+                console.error('Typed.js library not loaded');
+            }
+              // Data Visualization and Statistical Analysis Sections with optimized event handling
             const tabButtons = document.querySelectorAll('.dataviz-tabs__button');
             const tabPanels = document.querySelectorAll('.dataviz-content__panel');
             const filterSelects = document.querySelectorAll('.dataviz-filter__select');
             
-            // Get all available visualizations in order
+            // Modal elements
+            const modal = document.querySelector('.dataviz-modal');
+            const modalPrevButton = document.querySelector('.dataviz-modal__nav--prev');
+            const modalNextButton = document.querySelector('.dataviz-modal__nav--next');
+            
+            // Variables for modal functionality
+            let availableVisualizations = [];
+            let currentModalIndex = 0;
+              // Get all available visualizations in order
             function updateAvailableVisualizations() {
                 availableVisualizations = [];
                 const visibleCards = document.querySelectorAll('.dataviz-card');
@@ -1448,18 +1459,20 @@ Aditto A. Kabbo  | Data Analyst | SQL               | 2+         | Advanced Anal
                     }
                 });
             }
-            
-            // Update navigation button states
+              // Update navigation button states
             function updateNavigationButtons() {
                 if (availableVisualizations.length <= 1) {
-                    modalPrevButton.style.display = 'none';
-                    modalNextButton.style.display = 'none';
+                    if (modalPrevButton) modalPrevButton.style.display = 'none';
+                    if (modalNextButton) modalNextButton.style.display = 'none';
                 } else {
-                    modalPrevButton.style.display = 'flex';
-                    modalNextButton.style.display = 'flex';
-                    
-                    modalPrevButton.disabled = currentModalIndex === 0;
-                    modalNextButton.disabled = currentModalIndex === availableVisualizations.length - 1;
+                    if (modalPrevButton) {
+                        modalPrevButton.style.display = 'flex';
+                        modalPrevButton.disabled = currentModalIndex === 0;
+                    }
+                    if (modalNextButton) {
+                        modalNextButton.style.display = 'flex';
+                        modalNextButton.disabled = currentModalIndex === availableVisualizations.length - 1;
+                    }
                 }
             }
             
@@ -1636,19 +1649,22 @@ Aditto A. Kabbo  | Data Analyst | SQL               | 2+         | Advanced Anal
                     }
                 });
             });
+              // Navigation button event listeners
+            if (modalPrevButton) {
+                modalPrevButton.addEventListener('click', () => {
+                    if (currentModalIndex > 0) {
+                        loadVisualizationInModal(currentModalIndex - 1);
+                    }
+                });
+            }
             
-            // Navigation button event listeners
-            modalPrevButton.addEventListener('click', () => {
-                if (currentModalIndex > 0) {
-                    loadVisualizationInModal(currentModalIndex - 1);
-                }
-            });
-            
-            modalNextButton.addEventListener('click', () => {
-                if (currentModalIndex < availableVisualizations.length - 1) {
-                    loadVisualizationInModal(currentModalIndex + 1);
-                }
-            });
+            if (modalNextButton) {
+                modalNextButton.addEventListener('click', () => {
+                    if (currentModalIndex < availableVisualizations.length - 1) {
+                        loadVisualizationInModal(currentModalIndex + 1);
+                    }
+                });
+            }
             // Card Navigation Buttons functionality is kept
             
             // Close modal with clean up of event listeners
@@ -2244,13 +2260,14 @@ Aditto A. Kabbo  | Data Analyst | SQL               | 2+         | Advanced Anal
             const modalNextBtn = document.getElementById('modalNextBtn');
             const githubRepoLink = document.getElementById('githubRepoLink');
             const linkedinPostLink = document.getElementById('linkedinPostLink');
-            
-            // Project GitHub repository URLs
+              // Project GitHub repository URLs
             const projectRepos = {
                 'inventory-management': 'https://github.com/AdittoAhosanKabbo/Inventory_Management_PowerBi_Project',
                 'market-trends': 'https://github.com/adittoahosankabbo/data-projects/tree/main/market-trends',
                 'sales-dashboard': 'https://github.com/adittoahosankabbo/data-projects/tree/main/sales-dashboard',
-                'covid-analysis': 'https://github.com/adittoahosankabbo/data-projects/tree/main/covid-analysis'
+                'covid-analysis': 'https://github.com/adittoahosankabbo/data-projects/tree/main/covid-analysis',
+                'factor-analysis': 'https://github.com/AdittoAhosanKabbo/Dimension_Reduction/blob/main/Factor%20_Analaysis/Pythonipynbfile/Factor_Analaysis_(placedata_tf).ipynb',
+                'pca-analysis': 'https://github.com/AdittoAhosanKabbo/Dimension_Reduction'
             };
 
             // Project LinkedIn post URLs
@@ -2258,8 +2275,32 @@ Aditto A. Kabbo  | Data Analyst | SQL               | 2+         | Advanced Anal
                 'inventory-management': 'https://www.linkedin.com/posts/adittoahosankabbo_inventory-analaysis-dashboard-activity-7321133843392970752-fg6f?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAADYmlAcBDC-p4HWCs6yFwh5eDLA4vA0uquE',
                 'market-trends': 'https://www.linkedin.com/posts/aditto-ahosan-kabbo_markettrends-dataviz-d3js-activity-7123456789012345679',
                 'sales-dashboard': 'https://www.linkedin.com/posts/aditto-ahosan-kabbo_salesdashboard-tableau-datavisualization-activity-7123456789012345680',
-                'covid-analysis': 'https://www.linkedin.com/posts/aditto-ahosan-kabbo_covid19analysis-tableau-datascience-activity-7123456789012345681'
+                'covid-analysis': 'https://www.linkedin.com/posts/aditto-ahosan-kabbo_covid19analysis-tableau-datascience-activity-7123456789012345681',
+                'factor-analysis': '#',
+                'pca-analysis': '#'
             };
+
+            // Statistical Analysis projects configuration
+            const statisticalProjects = [
+                {
+                    id: 'factor-analysis',
+                    title: 'Factor Analysis',
+                    iframeSrc: 'https://nbviewer.org/github/AdittoAhosanKabbo/Dimension_Reduction/blob/main/Factor%20_Analaysis/Pythonipynbfile/Factor_Analaysis_(placedata_tf).ipynb',
+                    buttonId: 'enlargeFactorAnalysisBtn',
+                    tabId: 'factor-analysis'
+                },
+                {
+                    id: 'pca-analysis',
+                    title: 'Principal Component Analysis: Customer Segmentation',
+                    iframeSrc: 'https://rpubs.com/publish/claim/1153071/3e72adca433242628b45b9a67b65d27c',
+                    buttonId: 'enlargePcaBtn',
+                    tabId: 'pca-analysis'
+                }
+            ];
+
+            // Modal state tracking
+            let currentModalType = null; // 'dataviz' or 'statistical'
+            let currentStatisticalIndex = 0;
 
             // --- Function to open the modal ---
             const openModal = (iframeSrc) => {
@@ -2322,92 +2363,148 @@ Aditto A. Kabbo  | Data Analyst | SQL               | 2+         | Advanced Anal
                     iframeWrapper.innerHTML = '';
                 }, 400); 
             };
-            
-            // --- Function to get current project index ---
+              // --- Function to get current project index ---
             const getCurrentProjectIndex = () => {
-                const projectItems = document.querySelectorAll('.dataviz-project-item');
-                for (let i = 0; i < projectItems.length; i++) {
-                    if (projectItems[i].classList.contains('active')) {
-                        return i;
+                if (currentModalType === 'statistical') {
+                    return currentStatisticalIndex;
+                } else {
+                    const projectItems = document.querySelectorAll('.dataviz-project-item');
+                    for (let i = 0; i < projectItems.length; i++) {
+                        if (projectItems[i].classList.contains('active')) {
+                            return i;
+                        }
                     }
+                    return 0;
                 }
-                return 0;
             };
             
             // --- Function to navigate to a project ---
             const navigateToProject = (index) => {
-                const projectItems = document.querySelectorAll('.dataviz-project-item');
-                if (index >= 0 && index < projectItems.length) {
-                    projectItems[index].click();
-                    
-                    // Update modal content with new project
-                    const activePanel = document.querySelector('.preview-panel.active');
-                    if (activePanel) {
-                        const projectId = activePanel.dataset.preview;
+                if (currentModalType === 'statistical') {
+                    // Navigate statistical analysis projects
+                    if (index >= 0 && index < statisticalProjects.length && index !== currentStatisticalIndex) {
+                        currentStatisticalIndex = index;
+                        const project = statisticalProjects[index];
                         
-                        // Update GitHub repo link
-                        if (githubRepoLink && projectRepos[projectId]) {
-                            githubRepoLink.href = projectRepos[projectId];
-                            githubRepoLink.title = `View ${projectId} project on GitHub`;
-                        }
-                        
-                        // Update LinkedIn post link
-                        if (linkedinPostLink && linkedinPosts[projectId]) {
-                            linkedinPostLink.href = linkedinPosts[projectId];
-                            linkedinPostLink.title = `View ${projectId} LinkedIn post`;
-                            console.log("LinkedIn link updated during navigation:", linkedinPostLink.href);
-                        } else {
-                            console.log("LinkedIn link update failed during navigation:", { linkedinPostLink, projectId, posts: linkedinPosts });
-                        }
-                        
-                        const activeIframe = activePanel.querySelector('.preview-iframe');
-                        if (activeIframe && activeIframe.src) {
-                            // Update the modal iframe
-                            const modalIframe = iframeWrapper.querySelector('iframe');
-                            if (modalIframe) {
-                                // Show loading indicator
-                                loadingIndicator.style.display = 'block';
-                                modalIframe.classList.remove('loaded');
-                                
-                                // Update iframe source
-                                modalIframe.src = activeIframe.src;
-                                
-                                // Update iframe title
-                                const title = activeIframe.getAttribute('title') || 'Dashboard View';
-                                const projectTitle = document.querySelector('.preview-title').textContent || title;
-                                modalIframe.setAttribute('title', 'Enlarged ' + projectTitle);
-                                
-                                // Hide loading indicator when iframe loads
-                                modalIframe.addEventListener('load', () => {
-                                    loadingIndicator.style.display = 'none';
-                                    modalIframe.classList.add('loaded');
-                                });
+                        // Update modal content
+                        const modalIframe = iframeWrapper.querySelector('iframe');
+                        if (modalIframe) {
+                            // Show loading indicator
+                            loadingIndicator.style.display = 'block';
+                            modalIframe.classList.remove('loaded');
+                            
+                            // Update iframe source
+                            modalIframe.src = project.iframeSrc;
+                            modalIframe.setAttribute('title', 'Enlarged ' + project.title);
+                            
+                            // Update GitHub and LinkedIn links
+                            if (githubRepoLink && projectRepos[project.id]) {
+                                githubRepoLink.href = projectRepos[project.id];
+                                githubRepoLink.title = `View ${project.title} on GitHub`;
+                            }
+                            
+                            if (linkedinPostLink && linkedinPosts[project.id] && linkedinPosts[project.id] !== '#') {
+                                linkedinPostLink.href = linkedinPosts[project.id];
+                                linkedinPostLink.title = `View ${project.title} LinkedIn post`;
+                                linkedinPostLink.style.display = '';
+                            } else {
+                                linkedinPostLink.style.display = 'none';
+                            }
+                            
+                            // Hide loading indicator when iframe loads
+                            modalIframe.addEventListener('load', () => {
+                                loadingIndicator.style.display = 'none';
+                                modalIframe.classList.add('loaded');
+                            });
+                            
+                            // Switch to corresponding tab
+                            const targetTab = document.querySelector(`[data-tab="${project.tabId}"]`);
+                            if (targetTab) {
+                                targetTab.click();
                             }
                         }
                     }
-                    
-                    // Update navigation buttons
-                    updateModalNavigationButtons();
+                } else {
+                    // Navigate data visualization projects (existing logic)
+                    const projectItems = document.querySelectorAll('.dataviz-project-item');
+                    if (index >= 0 && index < projectItems.length) {
+                        projectItems[index].click();
+                        
+                        // Update modal content with new project
+                        const activePanel = document.querySelector('.preview-panel.active');
+                        if (activePanel) {
+                            const projectId = activePanel.dataset.preview;
+                            
+                            // Update GitHub repo link
+                            if (githubRepoLink && projectRepos[projectId]) {
+                                githubRepoLink.href = projectRepos[projectId];
+                                githubRepoLink.title = `View ${projectId} project on GitHub`;
+                            }
+                            
+                            // Update LinkedIn post link
+                            if (linkedinPostLink && linkedinPosts[projectId]) {
+                                linkedinPostLink.href = linkedinPosts[projectId];
+                                linkedinPostLink.title = `View ${projectId} LinkedIn post`;
+                                linkedinPostLink.style.display = '';
+                            }
+                            
+                            const activeIframe = activePanel.querySelector('.preview-iframe');
+                            if (activeIframe && activeIframe.src) {
+                                // Update the modal iframe
+                                const modalIframe = iframeWrapper.querySelector('iframe');
+                                if (modalIframe) {
+                                    // Show loading indicator
+                                    loadingIndicator.style.display = 'block';
+                                    modalIframe.classList.remove('loaded');
+                                    
+                                    // Update iframe source
+                                    modalIframe.src = activeIframe.src;
+                                    
+                                    // Update iframe title
+                                    const title = activeIframe.getAttribute('title') || 'Dashboard View';
+                                    const projectTitle = document.querySelector('.preview-title').textContent || title;
+                                    modalIframe.setAttribute('title', 'Enlarged ' + projectTitle);
+                                    
+                                    // Hide loading indicator when iframe loads
+                                    modalIframe.addEventListener('load', () => {
+                                        loadingIndicator.style.display = 'none';
+                                        modalIframe.classList.add('loaded');
+                                    });
+                                }
+                            }
+                        }
+                    }
                 }
+                
+                // Update navigation buttons
+                updateModalNavigationButtons();
             };
             
             // --- Function to update modal navigation buttons ---
             const updateModalNavigationButtons = () => {
                 const currentIndex = getCurrentProjectIndex();
-                const projectItems = document.querySelectorAll('.dataviz-project-item');
+                let totalProjects;
+                
+                if (currentModalType === 'statistical') {
+                    totalProjects = statisticalProjects.length;
+                } else {
+                    const projectItems = document.querySelectorAll('.dataviz-project-item');
+                    totalProjects = projectItems.length;
+                }
                 
                 if (modalPrevBtn) {
                     modalPrevBtn.disabled = currentIndex === 0;
                 }
                 
                 if (modalNextBtn) {
-                    modalNextBtn.disabled = currentIndex === projectItems.length - 1;
+                    modalNextBtn.disabled = currentIndex === totalProjects - 1;
                 }
-            };
-
-            // --- Event Listeners ---
+            };            // --- Event Listeners ---
             if (openModalButton) {
                 openModalButton.addEventListener('click', () => {
+                    // Set modal type to data visualization
+                    currentModalType = 'dataviz';
+                    
                     // Get the current active preview panel to get the correct iframe src
                     const activePanel = document.querySelector('.preview-panel.active');
                     let iframeSrc = openModalButton.dataset.iframeSrc;
@@ -2434,25 +2531,21 @@ Aditto A. Kabbo  | Data Analyst | SQL               | 2+         | Advanced Anal
             const enlargeFactorAnalysisBtn = document.getElementById('enlargeFactorAnalysisBtn');
             if (enlargeFactorAnalysisBtn) {
                 enlargeFactorAnalysisBtn.addEventListener('click', () => {
+                    // Set modal type to statistical and current index
+                    currentModalType = 'statistical';
+                    currentStatisticalIndex = 0; // Factor Analysis is index 0
+                    
                     let iframeSrc = enlargeFactorAnalysisBtn.dataset.iframeSrc;
                     if (iframeSrc) {
-                        // Hide LinkedIn button for Factor Analysis
-                        if (linkedinPostLink) {
-                            linkedinPostLink.style.display = 'none';
+                        // Set GitHub link for Factor Analysis
+                        if (githubRepoLink) {
+                            githubRepoLink.href = projectRepos['factor-analysis'];
+                            githubRepoLink.title = "View Factor Analysis on GitHub";
                         }
                         
-                        // Set correct GitHub link for Factor Analysis
-                        if (githubRepoLink) {
-                            const factorAnalysisGithubLink = "https://github.com/AdittoAhosanKabbo/Dimension_Reduction/blob/main/Factor%20_Analaysis/Pythonipynbfile/Factor_Analaysis_(placedata_tf).ipynb";
-                            githubRepoLink.href = factorAnalysisGithubLink;
-                            githubRepoLink.title = "View Factor Analysis on GitHub";
-                            console.log("Factor Analysis GitHub link set to:", githubRepoLink.href);
-                            
-                            // Add a direct click handler to ensure the link works
-                            githubRepoLink.onclick = function(e) {
-                                window.open(factorAnalysisGithubLink, '_blank');
-                                e.preventDefault();
-                            };
+                        // Hide LinkedIn button for Factor Analysis (no LinkedIn post)
+                        if (linkedinPostLink) {
+                            linkedinPostLink.style.display = 'none';
                         }
                         
                         openModal(iframeSrc);
@@ -2464,12 +2557,22 @@ Aditto A. Kabbo  | Data Analyst | SQL               | 2+         | Advanced Anal
             const enlargePcaBtn = document.getElementById('enlargePcaBtn');
             if (enlargePcaBtn) {
                 enlargePcaBtn.addEventListener('click', () => {
+                    // Set modal type to statistical and current index
+                    currentModalType = 'statistical';
+                    currentStatisticalIndex = 1; // PCA is index 1
+                    
                     let iframeSrc = enlargePcaBtn.dataset.iframeSrc;
                     if (iframeSrc) {
-                        // Hide LinkedIn button for PCA
+                        // Set GitHub link for PCA
+                        if (githubRepoLink) {
+                            githubRepoLink.href = projectRepos['pca-analysis'];
+                            githubRepoLink.title = "View PCA Analysis on GitHub";                        }
+                        
+                        // Hide LinkedIn button for PCA (no LinkedIn post)
                         if (linkedinPostLink) {
                             linkedinPostLink.style.display = 'none';
                         }
+                        
                         openModal(iframeSrc);
                     }
                 });
@@ -2501,8 +2604,7 @@ Aditto A. Kabbo  | Data Analyst | SQL               | 2+         | Advanced Anal
                     }
                 });
             }
-            
-            // Modal navigation button event listeners
+              // Modal navigation button event listeners
             if (modalPrevBtn) {
                 modalPrevBtn.addEventListener('click', () => {
                     const currentIndex = getCurrentProjectIndex();
@@ -2515,8 +2617,16 @@ Aditto A. Kabbo  | Data Analyst | SQL               | 2+         | Advanced Anal
             if (modalNextBtn) {
                 modalNextBtn.addEventListener('click', () => {
                     const currentIndex = getCurrentProjectIndex();
-                    const projectItems = document.querySelectorAll('.dataviz-project-item');
-                    if (currentIndex < projectItems.length - 1) {
+                    let totalProjects;
+                    
+                    if (currentModalType === 'statistical') {
+                        totalProjects = statisticalProjects.length;
+                    } else {
+                        const projectItems = document.querySelectorAll('.dataviz-project-item');
+                        totalProjects = projectItems.length;
+                    }
+                    
+                    if (currentIndex < totalProjects - 1) {
                         navigateToProject(currentIndex + 1);
                     }
                 });
@@ -2537,8 +2647,16 @@ Aditto A. Kabbo  | Data Analyst | SQL               | 2+         | Advanced Anal
                         }
                     } else if (event.key === 'ArrowRight') {
                         const currentIndex = getCurrentProjectIndex();
-                        const projectItems = document.querySelectorAll('.dataviz-project-item');
-                        if (currentIndex < projectItems.length - 1) {
+                        let totalProjects;
+                        
+                        if (currentModalType === 'statistical') {
+                            totalProjects = statisticalProjects.length;
+                        } else {
+                            const projectItems = document.querySelectorAll('.dataviz-project-item');
+                            totalProjects = projectItems.length;
+                        }
+                        
+                        if (currentIndex < totalProjects - 1) {
                             navigateToProject(currentIndex + 1);
                         }
                     }
