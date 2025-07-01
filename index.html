@@ -36,12 +36,10 @@ Performance notes:
     <link rel="stylesheet" href="css/skills-starfield-clean.css">
     <!-- Sci-Fi Hero styles -->
     <link rel="stylesheet" href="css/sci-fi-hero.css">
-    <!-- About section animations CSS -->
-    <link rel="stylesheet" href="css/about-animations.css">
-    <!-- About holographic effects CSS -->
-    <link rel="stylesheet" href="css/about-holographic.css">
-    <!-- Clean About section CSS - clean formatting -->
+    <!-- Clean About section styles - matching hero section -->
     <link rel="stylesheet" href="css/about-clean.css">
+    <link rel="stylesheet" href="css/about-clean-background.css">
+    <link rel="stylesheet" href="css/about-border-fix.css">
     <!-- Excel and Power BI About section styles -->
     <link rel="stylesheet" href="css/about-excel-powerbi.css">
     <!-- Terminal Contact Section CSS -->
@@ -288,42 +286,85 @@ Performance notes:
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about-section sci-fi-about">
-        <canvas id="about-starfield-canvas"></canvas>
-        
-        <!-- CSS-based animated stars -->
-        <div class="css-stars"></div>
-        <div class="twinkle-stars"></div>
-        
-        <!-- Hero-style background animations -->
-        <div class="about-starfield"></div>
-        <div class="about-sci-fi-gui">
-            <div class="about-ui-corner top-left"></div>
-            <div class="about-ui-corner top-right"></div>
-            <div class="about-ui-corner bottom-left"></div>
-            <div class="about-ui-corner bottom-right"></div>
-            <div class="about-ui-cross"></div>
+    <section id="about" class="about-section">
+        <!-- Starfield Background - matching hero section -->
+        <div id="about-starfield">
+            <canvas id="about-starfield-canvas"></canvas>
         </div>
         
+        <!-- Sci-Fi UI Overlay - matching hero section -->
         <div class="sci-fi-gui">
-            <div class="ui-grid">
-                <div class="ui-box">
-                    <div class="ui-fx">
-                        <div class="ui-corner"></div>
-                        <div class="ui-corner"></div>
-                        <div class="ui-corner"></div>
-                        <div class="ui-corner"></div>
-                    </div>
-                    <div class="ui-cross">
-                        <div class="border-x f"></div>
-                        <div class="border-x l"></div>
-                    </div>
+            <!-- UI Cross -->
+            <div class="ui-cross">
+                <div class="border-x f"></div>
+                <div class="border-x l"></div>
+                <div class="border-horz"></div>
+                <div class="border-vert">
+                    <div class="dot t"></div>
+                    <div class="dot b"></div>
+                </div>
+                <div class="x-hair">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+            </div>
+            
+            <!-- UI Borders -->
+            <div class="ui-border l">
+                <div class="cap t"></div>
+                <div class="cap b"></div>
+                <div class="batt"></div>
+            </div>
+            <div class="ui-border r">
+                <div class="cap t"></div>
+                <div class="cap b"></div>
+                <div class="batt"></div>
+            </div>
+            
+            <!-- UI Tics -->
+            <div class="ui-tics t">
+                <div class="tic"></div>
+                <div class="tic"></div>
+                <div class="tic"></div>
+                <div class="tic"></div>
+                <div class="tic"></div>
+            </div>
+            <div class="ui-tics b">
+                <div class="tic"></div>
+                <div class="tic"></div>
+                <div class="tic"></div>
+                <div class="tic"></div>
+                <div class="tic"></div>
+            </div>
+            
+            <!-- UI Circles -->
+            <div class="ui-circles l">
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+            </div>
+            <div class="ui-circles r">
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+            </div>
+            
+            <!-- UI Box with corners -->
+            <div class="ui-box">
+                <div class="ui-fx">
+                    <div class="ui-corner"></div>
+                    <div class="ui-corner"></div>
+                    <div class="ui-corner"></div>
+                    <div class="ui-corner"></div>
                 </div>
             </div>
         </div>
+        
         <div class="container">
             <h2 class="section-title">About Me</h2>
-            <div class="section-description" style="color: #ffffff; background: rgba(42, 124, 150, 0.1); padding: 20px; border-radius: 8px; border-left: 4px solid #2A7C96; margin-bottom: 30px; backdrop-filter: blur(5px);">
+            <div class="section-description" style="color: #ffffff; background: rgba(42, 124, 150, 0.1); padding: 20px; border-radius: 8px; margin-bottom: 30px; backdrop-filter: blur(5px);">
                 <p style="font-size: 1rem; line-height: 1.5; margin: 0; text-align: center; font-weight: 400;">Seeking opportunities to apply statistical knowledge and data analysis expertise in a professional setting. I'm driven by the challenges of extracting meaningful patterns from complex datasets and communicating those findings effectively.</p>
             </div>
             <div class="about-content">
@@ -542,13 +583,7 @@ Aditto A. Kabbo  | Data Analyst | SQL               | 2+         | Advanced Anal
 
     <!-- Skills Section -->
     <section id="skills" class="skills-section">
-        <!-- Animated Star Field Background -->
-        <div class="star-field-container">
-            <div class="stars stars-small"></div>
-            <div class="stars stars-medium"></div>
-            <div class="stars stars-large"></div>
-            <div class="shooting-stars"></div>
-        </div>
+        <!-- Background animation removed -->
         
         <div class="container">
             <h2 class="section-title">Technical Skills</h2>
@@ -1318,9 +1353,9 @@ Aditto A. Kabbo  | Data Analyst | SQL               | 2+         | Advanced Anal
     <script src="js/skills-starfield.js" defer></script>
     <script src="js/navbar-transform.js" defer></script>
     <script src="js/starfield.js" defer></script>
+    <script src="js/about-starfield.js" defer></script>
     <script src="js/sci-fi-animations.js" defer></script>
-    <script src="js/about-animations.js" defer></script>
-    <script src="js/about-holographic.js" defer></script>
+    <!-- Removed animation scripts for better performance -->
     <script src="js/contact-terminal.js" defer></script>
     <script src="js/emailjs-debug.js" defer></script>
     <script>

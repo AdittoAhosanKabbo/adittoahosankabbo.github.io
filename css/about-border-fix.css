@@ -1,0 +1,46 @@
+/* Remove all UI elements from About section background */
+
+/* Hide the entire sci-fi GUI in about section except for the starfield */
+#about .sci-fi-gui {
+    display: none;
+}
+
+/* Ensure section description doesn't have left border */
+#about .section-description {
+    border-left: none !important;
+}
+
+/* Keep only the starfield effect in the background */
+#about-starfield {
+    opacity: 0.8; /* Slightly reduce opacity for better readability */
+}
+
+/* Make sure no other UI elements appear */
+#about .ui-tics,
+#about .ui-circles,
+#about .ui-cross,
+#about .ui-border,
+#about .ui-box {
+    display: none;
+}
+
+/* Remove any potential remaining lines */
+#about .line,
+#about .tic,
+#about .circle,
+#about .dot {
+    display: none;
+}
+
+/* Remove any borders from containers */
+#about .excel-container,
+#about .sql-container {
+    border: none !important;
+}
+
+/* Make About Me section title white */
+#about .section-title,
+.about-section .section-title {
+    color: #ffffff !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3) !important;
+}
