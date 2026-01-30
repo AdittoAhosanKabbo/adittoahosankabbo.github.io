@@ -1,0 +1,471 @@
+/* Custom Styles & Overrides */
+/* Most styling will be handled by Tailwind classes */
+
+/* Smooth scrolling behavior */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    /* Cleaner, more modern font than Inter */
+    background-color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in-right {
+    animation: fadeInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.2s;
+    /* Staggered start */
+    opacity: 0;
+    /* Initial state hidden */
+}
+
+/* Glassmorphism Utilities */
+.glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* 
+    DESKTOP ZOOM SIMULATION (Safe CSS Approach) 
+    Why this works safely:
+    1. We scale the base 'rem' unit by adjusting the Root Font Size.
+       Standard is 16px. 80% is ~12.8px.
+       Since Tailwind uses 'rem' for padding, margin, width, and font-size,
+       the entire UI scales down proportionally without blur.
+    2. We update the max-container width to match the visual scale,
+       ensuring proper whitespace ratios are maintained.
+    3. We target 'min-width: 1024px' (Desktop/Laptop) to avoid affection Mobile/Tablets.
+*/
+/* 
+    DESKTOP ZOOM SIMULATION (Safe CSS Approach) 
+    Why this works safely:
+    1. We scale the base 'rem' unit by adjusting the Root Font Size to 80% (approx 12.8px).
+       Since Tailwind uses 'rem' for almost everything (padding, margin, font-size, width),
+       the entire UI scales down proportionally without blur or layout shifts.
+    2. We update the max-container widths (xl and 2xl) to approximately 80% of their original pixel values.
+       This ensures the layout width shrinks to match the smaller text/elements, 
+       maintaining the correct whitespace and density.
+    3. We target 'min-width: 1024px' (Desktop) to ensure Mobile/Tablet views remain standard 100%.
+*/
+/* Standard Container to match Tailwind's max-w-screen-xl but simpler to override */
+.section-container {
+    max-width: 1280px;
+    width: 100%;
+}
+
+@media (min-width: 1024px) {
+
+    /* 
+       GLOBAL DESKTOP SCALING
+       We scale the root font size to 80% on desktop screens (>1024px).
+       This creates a unified, "zoomed out" aesthetic across all pages 
+       (Home, About, Projects), ensuring consistencty.
+    */
+    html {
+        font-size: 80%;
+    }
+
+    /* 
+       Container Scaling:
+       To complete the "Zoom" effect, we must also scale the specific 
+       pixel-based container widths down by ~20%.
+       
+       XL (1280px * 0.8) = 1024px
+       2XL (1536px * 0.8) = 1228px (~1230px)
+       
+       This ensures the layout feels tighter and matches the text scale.
+    */
+    .max-w-screen-xl,
+    .section-container {
+        max-width: 1024px !important;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .max-w-screen-2xl {
+        max-width: 1230px !important;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+
+/* Ensure smooth scrolling lands correctly with the fixed header */
+section {
+    scroll-margin-top: 120px;
+}
+
+/* Skills Section */
+.skills-section {
+    padding: 6rem 1.5rem;
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.skills-container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.skills-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.skill-category {
+    margin-bottom: 3rem;
+}
+
+.skill-category h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    /* Fits 4 columns on desktop */
+    gap: 2rem;
+}
+
+.skill-item {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 1.5rem;
+    /* Larger radius for modern look */
+    padding: 2rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center content horizontally */
+    text-align: center;
+    /* Center text */
+    gap: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    border-color: #0f172a;
+    /* Black border on hover */
+}
+
+.skill-icon {
+    width: 5rem;
+    height: 5rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8fafc;
+    border-radius: 50%;
+    /* Circular icon container */
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.skill-item:hover .skill-icon {
+    border-color: #cbd5e1;
+    transform: scale(1.05);
+    background: #fff;
+}
+
+.skill-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: all 0.3s ease;
+}
+
+.skill-item:hover .skill-icon img {
+    transform: scale(1.1);
+}
+
+.skill-item h4 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0;
+}
+
+.skill-item p {
+    font-size: 0.875rem;
+    color: #64748b;
+    margin: 0;
+    line-height: 1.5;
+    max-width: 90%;
+}
+
+.skill-level {
+    display: none;
+}
+
+/* Skills Carousel */
+.skills-carousel-container {
+    margin-top: 5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.skills-carousel-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #334155;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.skills-carousel-track-wrapper {
+    overflow: hidden;
+    width: 100%;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.skills-carousel {
+    display: flex;
+    gap: 4rem;
+    width: max-content;
+    animation: scroll 30s linear infinite;
+    padding: 1rem 0;
+}
+
+.skills-carousel-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+    min-width: 80px;
+    transition: transform 0.3s;
+}
+
+.skills-carousel-item:hover {
+    transform: scale(1.1);
+}
+
+.skills-logo {
+    width: 3.5rem;
+    height: 3.5rem;
+    object-fit: contain;
+    filter: none;
+    opacity: 1;
+    transition: transform 0.3s;
+}
+
+.skills-carousel-item:hover .skills-logo {
+    transform: scale(1.1);
+}
+
+.skills-carousel-item-text {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #64748b;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-50% - 2rem));
+        /* Adjust based on gap */
+    }
+}
+
+/* =========================================
+   Enlarge Modal Styles
+   ========================================= */
+.modal-overlay {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Dark overlay */
+    z-index: 9999;
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    width: 95vw;
+    height: 90vh;
+    border-radius: 14px;
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Close Button (Handled by Tailwind in HTML) */
+/* .modal-close-btn removed to allow flex positioning */
+
+/* Iframe Container */
+.modal-iframe-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 100;
+}
+
+.modal-iframe-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+/* Navigation Buttons (Handled by CSS) */
+.modal-navigation {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+    z-index: 10005;
+    pointer-events: none;
+}
+
+.modal-nav-btn {
+    pointer-events: auto;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: rgba(0, 120, 212, 0.8);
+    color: white;
+    border: 1px solid rgba(0, 120, 212, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.modal-nav-btn:hover {
+    background-color: rgba(0, 120, 212, 1);
+    transform: scale(1.1);
+}
+
+/* Loading State */
+.modal-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 50;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3b82f6;
+    /* Blue-500 */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

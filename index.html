@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aditto Ahosan Kabbo | Data Analyst & Data Science Portfolio</title>
+    <meta name="description"
+        content="Portfolio of Aditto Ahosan Kabbo, a Data Analyst and Machine Learning specialist. Explore projects in Python, SQL, Power BI, and R, focusing on data-driven insights and statistical analysis.">
+    <meta name="keywords"
+        content="Data Analyst, Data Science, Machine Learning, Portfolio, Aditto Ahosan Kabbo, Python, SQL, Power BI, R, Statistics, Data Visualization">
+    <meta name="author" content="Aditto Ahosan Kabbo">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://adittoahosankabbo.github.io/">
+    <meta property="og:title" content="Aditto Ahosan Kabbo | Data Analyst & Data Science Portfolio">
+    <meta property="og:description"
+        content="Portfolio of Aditto Ahosan Kabbo, a Data Analyst and Machine Learning specialist. Explore projects in Python, SQL, Power BI, and R.">
+    <meta property="og:image" content="assets/images/aakpro.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://adittoahosankabbo.github.io/">
+    <meta property="twitter:title" content="Aditto Ahosan Kabbo | Data Analyst & Data Science Portfolio">
+    <meta property="twitter:description"
+        content="Portfolio of Aditto Ahosan Kabbo, a Data Analyst and Machine Learning specialist. Explore projects in Python, SQL, Power BI, and R.">
+    <meta property="twitter:image" content="assets/images/aakpro.png">
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS (via CDN for instant development) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        // Data Analyst Palette
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9', // Sky blue - trustworthy & modern
+                            600: '#0284c7',
+                            900: '#0c4a6e',
+                        },
+                        dark: '#0f172a',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-white text-slate-800 antialiased selection:bg-brand-500 selection:text-white">
+    <!-- Navigation -->
+    <nav id="navbar"
+        class="fixed z-50 transition-all duration-500 ease-in-out w-full top-0 border-b border-transparent bg-transparent py-4">
+        <div id="nav-container"
+            class="max-w-screen-2xl mx-auto flex flex-wrap lg:flex-nowrap items-center justify-between px-6 lg:px-12 transition-all duration-500">
+
+            <!-- Left: Minimalist Logo -->
+            <a href="index.html" class="flex items-center gap-1 group shrink-0">
+                <span class="text-2xl font-bold text-slate-900 tracking-tight">Aditto</span>
+                <span
+                    class="text-2xl font-light text-slate-500 group-hover:text-slate-900 transition-colors">Ahosan</span>
+                <span class="w-2 h-2 rounded-full bg-blue-500 mb-1 ml-0.5 animate-pulse"></span>
+            </a>
+
+            <!-- Mobile Toggle -->
+            <button data-collapse-toggle="navbar-default" type="button"
+                class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-slate-500 rounded-xl lg:hidden hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-100 transition-all"
+                aria-controls="navbar-default" aria-expanded="false" id="menu-toggle">
+                <span class="sr-only">Open main menu</span>
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+
+            <!-- Right: Clean Links -->
+            <div class="hidden w-full lg:block lg:w-auto" id="navbar-default">
+                <ul
+                    class="font-medium flex flex-col p-4 lg:p-0 mt-4 border border-slate-100 rounded-2xl bg-white lg:bg-transparent lg:border-0 lg:shadow-none lg:flex-row lg:items-center space-y-6 lg:space-y-0 lg:space-x-10 rtl:space-x-reverse lg:mt-0 shadow-xl">
+
+                    <!-- Link Item (Home - Active) -->
+                    <li>
+                        <a href="index.html"
+                            class="relative block w-fit py-2 text-base font-bold text-slate-900 transition-colors group whitespace-nowrap">
+                            Home
+                            <span
+                                class="absolute left-0 bottom-1 w-full h-[2px] bg-slate-900 transition-all duration-300"></span>
+                        </a>
+                    </li>
+
+                    <!-- Link Item (About Me) -->
+                    <li class="relative group/dropdown">
+                        <a href="about.html"
+                            class="relative block w-fit py-2 text-base font-medium text-slate-500 hover:text-slate-900 transition-colors group flex items-center gap-1 whitespace-nowrap">
+                            About Me
+                            <i
+                                class="fas fa-chevron-down text-[10px] text-slate-400 group-hover:text-slate-900 transition-colors pt-0.5"></i>
+                            <span
+                                class="absolute left-0 bottom-1 w-0 h-[2px] bg-slate-900 transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+
+                        <!-- Dropdown Menu -->
+                        <ul
+                            class="absolute left-1/2 -translate-x-1/2 top-full pt-4 w-48 opacity-0 invisible group-hover/dropdown:opacity-100 group-hover/dropdown:visible transition-all duration-300 z-50 transform group-hover/dropdown:translate-y-0 translate-y-2 pointer-events-none group-hover/dropdown:pointer-events-auto">
+                            <div
+                                class="bg-white border border-slate-100 rounded-xl shadow-xl overflow-hidden ring-1 ring-slate-900/5">
+                                <li>
+                                    <a href="about.html#skills"
+                                        class="block px-5 py-3.5 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors border-b border-slate-50 whitespace-nowrap">
+                                        Skills
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="about.html#education"
+                                        class="block px-5 py-3.5 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors border-b border-slate-50 whitespace-nowrap">
+                                        Education
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="about.html#certifications"
+                                        class="block px-5 py-3.5 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors whitespace-nowrap">
+                                        Certifications
+                                    </a>
+                                </li>
+                            </div>
+                        </ul>
+                    </li>
+
+                    <!-- Projects -->
+                    <li>
+                        <a href="project.html"
+                            class="relative block w-fit py-2 text-base font-medium text-slate-500 hover:text-slate-900 transition-colors group whitespace-nowrap">
+                            Projects
+                            <span
+                                class="absolute left-0 bottom-1 w-0 h-[2px] bg-slate-900 transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="blogs.html"
+                            class="relative block w-fit py-2 text-base font-medium text-slate-500 hover:text-slate-900 transition-colors group whitespace-nowrap">
+                            Blogs
+                            <span
+                                class="absolute left-0 bottom-1 w-0 h-[2px] bg-slate-900 transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="notes.html"
+                            class="relative block w-fit py-2 text-base font-medium text-slate-500 hover:text-slate-900 transition-colors group whitespace-nowrap">
+                            Notes
+                            <span
+                                class="absolute left-0 bottom-1 w-0 h-[2px] bg-slate-900 transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                    </li>
+
+                    <!-- CTA Button -->
+                    <li class="lg:pl-6 mt-2 lg:mt-0">
+                        <a href="contact.html"
+                            class="block py-3 px-7 text-sm font-bold text-slate-900 uppercase tracking-widest rounded-full border border-slate-200 hover:border-slate-900 hover:bg-slate-900 hover:text-white transition-all duration-300 whitespace-nowrap">
+                            Let's Talk
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero / Absolute About Section -->
+    <section id="home" class="min-h-screen flex items-center pt-32 pb-20 bg-[#fafafa] relative overflow-hidden">
+
+        <!-- Background Decor: Subtle Gradient Mesh -->
+        <div
+            class="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-50/50 rounded-full blur-[100px] -z-10 animate-pulse">
+        </div>
+        <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-slate-100/50 rounded-full blur-[100px] -z-10"></div>
+
+        <!-- Dot Grid for Texture -->
+        <div class="absolute inset-0 z-0 opacity-[0.4]"
+            style="background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 40px 40px;"></div>
+
+        <div
+            class="max-w-screen-xl w-full mx-auto px-6 lg:px-12 grid lg:grid-cols-[350px_1fr] gap-12 lg:gap-24 items-start relative z-10">
+
+            <!-- LEFT COLUMN: Profile Card (Sticky Effect) -->
+            <div
+                class="flex flex-col items-center lg:items-start space-y-6 animate-fade-in-up lg:sticky lg:top-32 relative">
+
+                <!-- Profile Image -->
+                <div
+                    class="relative w-full max-w-[300px] aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl shadow-slate-200/50 border-[6px] border-white group transition-transform duration-500 hover:-translate-y-2">
+                    <img src="assets/images/aakpro.png" alt="Aditto Ahosan Kabbo"
+                        class="w-full h-full object-cover transition-all duration-700 ease-in-out scale-105 group-hover:scale-110"
+                        onerror="this.src='https://via.placeholder.com/400x500/f1f5f9/94a3b8?text=Aditto'">
+
+                    <!-- Glassmorphism Badge -->
+                    <div class="absolute bottom-4 left-4 right-4">
+                        <div
+                            class="bg-white/80 backdrop-blur-md border border-white/40 p-3 rounded-xl shadow-lg flex items-center justify-between">
+                            <span class="text-xs font-bold text-slate-800 uppercase tracking-wider">Status</span>
+                            <span
+                                class="flex items-center text-xs font-medium text-green-600 bg-green-50 px-2 py-1 rounded-md border border-green-100">
+                                <span class="w-1.5 h-1.5 bg-green-500 rounded-full mr-1.5 animate-pulse"></span>
+                                Available
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Name/Title Block -->
+                <div
+                    class="text-center lg:text-left space-y-3 w-full bg-white p-6 rounded-2xl border border-slate-100 shadow-sm relative overflow-hidden md:max-w-[300px]">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-slate-900"></div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Data Analyst</h2>
+                        <p class="text-sm font-medium text-slate-500 mt-1">Statistics Student @ PUST</p>
+                    </div>
+
+                    <!-- Mini Skills Tags -->
+                    <div class="flex flex-wrap gap-1.5 pt-2 justify-center lg:justify-start">
+                        <span
+                            class="px-2 py-0.5 bg-slate-50 text-[12px] font-semibold text-slate-700 rounded border border-slate-100">Python</span>
+                        <span
+                            class="px-2 py-0.5 bg-slate-50 text-[12px] font-semibold text-slate-700 rounded border border-slate-100">SQL</span>
+                        <span
+                            class="px-2 py-0.5 bg-slate-50 text-[12px] font-semibold text-slate-700 rounded border border-slate-100">Excel</span>
+                        <span
+                            class="px-2 py-0.5 bg-slate-50 text-[12px] font-semibold text-slate-700 rounded border border-slate-100">Power
+                            BI</span>
+                        <span
+                            class="px-2 py-0.5 bg-slate-50 text-[12px] font-semibold text-slate-700 rounded border border-slate-100">ML/AI</span>
+                    </div>
+                </div>
+
+                <!-- Social Icons (Clean Row) -->
+                <!-- Social Icons (Clean Row) -->
+                <div class="flex items-center justify-center lg:justify-start gap-4 w-full md:max-w-[300px]">
+                    <!-- LinkedIn -->
+                    <a href="https://linkedin.com/in/adittoahosankabbo" target="_blank"
+                        class="flex-1 h-12 flex items-center justify-center rounded-xl bg-[#0077b5] text-white hover:bg-[#0077b5]/10 hover:text-[#0077b5] transition-all shadow-md hover:shadow-sm hover:-translate-y-1 border border-[#0077b5]/20 group">
+                        <i class="fab fa-linkedin-in text-xl group-hover:scale-110 transition-transform"></i>
+                    </a>
+                    <!-- GitHub -->
+                    <a href="https://github.com/AdittoAhosanKabbo" target="_blank"
+                        class="flex-1 h-12 flex items-center justify-center rounded-xl bg-[#333] text-white hover:bg-[#333]/10 hover:text-[#333] transition-all shadow-md hover:shadow-sm hover:-translate-y-1 border border-[#333]/20 group">
+                        <i class="fab fa-github text-xl group-hover:scale-110 transition-transform"></i>
+                    </a>
+                    <!-- Kaggle -->
+                    <a href="https://kaggle.com/adittoahosankabbo" target="_blank"
+                        class="flex-1 h-12 flex items-center justify-center rounded-xl bg-[#20BEFF] text-white hover:bg-[#20BEFF]/10 hover:text-[#20BEFF] transition-all shadow-md hover:shadow-sm hover:-translate-y-1 border border-[#20BEFF]/20 group">
+                        <i class="fab fa-kaggle text-xl group-hover:scale-110 transition-transform"></i>
+                    </a>
+                    <!-- Email -->
+                    <a href="mailto:aditahosankabbo@gmail.com"
+                        class="flex-1 h-12 flex items-center justify-center rounded-xl bg-[#EA4335] text-white hover:bg-[#EA4335]/10 hover:text-[#EA4335] transition-all shadow-md hover:shadow-sm hover:-translate-y-1 border border-[#EA4335]/20 group">
+                        <i class="fas fa-envelope text-xl group-hover:scale-110 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN: Bio & Content -->
+            <div class="space-y-10 lg:pt-4 animate-fade-in-right text-center lg:text-left">
+
+                <div class="space-y-2">
+                    <div class="flex items-center justify-center lg:justify-start gap-3 mb-2">
+                        <span class="h-[2px] w-12 bg-gradient-to-r from-slate-900 to-transparent"></span>
+                        <span class="text-sm font-bold tracking-[0.2em] text-slate-500 uppercase">Welcome to my
+                            portfolio</span>
+                    </div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 tracking-tight leading-tight">
+                        Hi, I'm <span
+                            class="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-slate-700 to-slate-900">Aditto
+                            Ahosan Kabbo
+                            <svg class="absolute w-full h-3 -bottom-1 left-0 text-slate-200 -z-10" viewBox="0 0 100 10"
+                                preserveAspectRatio="none">
+                                <path d="M0 5 Q 50 10 100 5" stroke="currentColor" stroke-width="8" fill="none" />
+                            </svg>
+                        </span>
+                    </h1>
+                </div>
+
+                <!-- Bio Text (Card Style) -->
+                <div
+                    class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 space-y-6 text-lg text-slate-700 leading-loose font-normal relative text-left">
+                    <!-- Quote Icon Decor -->
+                    <i class="fas fa-quote-right absolute top-6 right-6 text-slate-100 text-4xl"></i>
+
+                    <p>
+                        I’m a passionate <strong class="font-bold text-slate-900">Data Analyst</strong> from
+                        Bangladesh,
+                        currently pursuing a Bachelor’s
+                        degree in Statistics at <strong class="font-bold text-slate-900">Pabna University of Science
+                            and
+                            Technology (PUST)</strong>. My
+                        mission is to transform raw data into meaningful stories and build intelligent, data-driven
+                        solutions.
+                    </p>
+                    <p>
+                        I specialize in tools like <strong class="font-bold text-slate-900">Power BI, Excel, SQL,
+                            Python, and R</strong>, with growing
+                        expertise
+                        in <strong class="font-bold text-slate-900">Machine Learning, Deep Learning, Computer Vision
+                            &
+                            AI</strong>. Whether it's creating
+                        impactful dashboards or solving
+                        complex
+                        statistical problems, I am dedicated to continuous learning and delivering excellence.
+                    </p>
+                </div>
+
+                <!-- Call to Action Area -->
+                <div class="flex flex-col items-center sm:flex-row sm:justify-center lg:justify-start gap-4 pt-2">
+                    <!-- Primary: CV -->
+                    <a href="https://drive.google.com/file/d/1XifShorXffBsU6EVl-ehTwfF-5uTZz1L/view?usp=drive_link"
+                        target="_blank"
+                        class="inline-flex items-center justify-center px-7 py-3.5 text-sm font-bold tracking-wide text-white uppercase bg-slate-900 rounded-xl hover:bg-slate-800 transition-all hover:shadow-xl hover:-translate-y-1 shadow-lg shadow-slate-900/20 relative overflow-hidden group">
+                        <span
+                            class="absolute top-0 left-0 w-full h-full bg-white/10 -translate-x-full skew-x-12 group-hover:animate-shine"></span>
+                        <i class="fas fa-download mr-2.5"></i> Download CV
+                    </a>
+
+                    <!-- Secondary: Resume -->
+                    <a href="https://drive.google.com/file/d/1LBX1-y_vXexAxQQMJGzYK0nX2Mis5XBq/view?usp=drive_link"
+                        target="_blank"
+                        class="inline-flex items-center justify-center px-7 py-3.5 text-sm font-bold tracking-wide text-brand-700 uppercase bg-brand-50 border border-brand-100 rounded-xl hover:bg-brand-100 hover:border-brand-200 transition-all hover:shadow-md hover:-translate-y-1 group">
+                        <i class="fas fa-file-alt mr-2.5"></i> Download Resume
+                    </a>
+
+                    <!-- Tertiary: Projects -->
+                    <a href="project.html"
+                        class="inline-flex items-center justify-center px-7 py-3.5 text-sm font-bold tracking-wide text-slate-500 uppercase bg-transparent hover:text-slate-900 transition-colors group">
+                        View Projects
+                        <i
+                            class="fas fa-arrow-right ml-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"></i>
+                    </a>
+                </div>
+
+                <!-- Signature / Contact Hint -->
+                <div class="flex items-center gap-2 text-sm text-slate-400 font-medium pt-4">
+                    <span class="w-8 h-[1px] bg-slate-300"></span>
+                    <span>Feel free to <a href="contact.html"
+                            class="text-slate-900 underline decoration-slate-300 underline-offset-4 hover:decoration-slate-900 transition-all">contact
+                            me</a> for collaborations.</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- Selected Works Section -->
+    <section id="selected-works" class="py-24 bg-white border-t border-slate-100 relative z-20">
+        <div class="max-w-screen-xl mx-auto px-6 lg:px-12">
+
+            <!-- Section Header -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                <div class="max-w-xl">
+                    <span class="text-sm font-bold tracking-widest text-slate-400 uppercase mb-2 block">Portfolio
+                        Highlights</span>
+                    <h3 class="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">
+                        Selected <span class="italic font-serif font-light text-slate-600">Works</span>
+                    </h3>
+                </div>
+                <a href="project.html"
+                    class="group flex items-center gap-2 text-sm font-bold text-slate-900 uppercase tracking-widest hover:opacity-70 transition-opacity">
+                    View All Projects
+                    <i class="fas fa-arrow-right -rotate-45 group-hover:rotate-0 transition-transform duration-300"></i>
+                </a>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid md:grid-cols-3 gap-8">
+
+                <!-- Project 1: Voice Signal Separation -->
+                <a href="project.html"
+                    class="group flex flex-col h-full bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:bg-white hover:border-slate-900 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 relative overflow-hidden">
+
+
+                    <!-- Content -->
+                    <div class="flex-1">
+                        <h4 class="text-xl font-bold text-slate-900 mb-3">
+                            Voice Separation</h4>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-6">
+                            Solved the "Cocktail Party Problem" using ICA to isolate distinct voice signals from mixed
+                            audio sources.
+                        </p>
+                    </div>
+
+                    <!-- Footer / CTA -->
+                    <div
+                        class="pt-6 border-t border-slate-200 mt-auto flex items-center justify-between group-hover:border-slate-100 transition-colors">
+                        <span class="text-xs font-bold text-slate-900 uppercase tracking-wider">Machine Learning</span>
+                        <div
+                            class="w-8 h-8 rounded-full bg-slate-200 text-slate-900 flex items-center justify-center group-hover:bg-slate-900 group-hover:text-white transition-colors">
+                            <i class="fas fa-arrow-right -rotate-45 group-hover:rotate-0 transition-transform"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Project 2: Inventory Dashboard -->
+                <a href="project.html"
+                    class="group flex flex-col h-full bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:bg-white hover:border-slate-900 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 relative overflow-hidden">
+
+
+                    <div class="flex-1">
+                        <h4 class="text-xl font-bold text-slate-900 mb-3">
+                            Inventory Dashboard</h4>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-6">
+                            Interactive Power BI solution identifying warehouse inefficiencies to drastically reduce
+                            holding costs.
+                        </p>
+                    </div>
+
+                    <div
+                        class="pt-6 border-t border-slate-200 mt-auto flex items-center justify-between group-hover:border-slate-100 transition-colors">
+                        <span class="text-xs font-bold text-slate-900 uppercase tracking-wider">Power BI</span>
+                        <div
+                            class="w-8 h-8 rounded-full bg-slate-200 text-slate-900 flex items-center justify-center group-hover:bg-slate-900 group-hover:text-white transition-colors">
+                            <i class="fas fa-arrow-right -rotate-45 group-hover:rotate-0 transition-transform"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Project 3: FoodPanda Analysis -->
+                <a href="project.html"
+                    class="group flex flex-col h-full bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:bg-white hover:border-slate-900 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 relative overflow-hidden">
+
+
+                    <div class="flex-1">
+                        <h4 class="text-xl font-bold text-slate-900 mb-3">
+                            FoodPanda Analysis</h4>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-6">
+                            Key metric analysis of delivery performance and customer trends to drive operational
+                            improvements.
+                        </p>
+                    </div>
+
+                    <div
+                        class="pt-6 border-t border-slate-200 mt-auto flex items-center justify-between group-hover:border-slate-100 transition-colors">
+                        <span class="text-xs font-bold text-slate-900 uppercase tracking-wider">Excel</span>
+                        <div
+                            class="w-8 h-8 rounded-full bg-slate-200 text-slate-900 flex items-center justify-center group-hover:bg-slate-900 group-hover:text-white transition-colors">
+                            <i class="fas fa-arrow-right -rotate-45 group-hover:rotate-0 transition-transform"></i>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+
+            <!-- Bottom CTA -->
+            <div class="mt-16 text-center">
+                <a href="project.html"
+                    class="inline-flex items-center gap-3 px-8 py-4 bg-slate-900 text-white rounded-full font-bold uppercase tracking-widest hover:bg-slate-800 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                    Explore All Works
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-50 py-12">
+        <div class="max-w-screen-xl mx-auto px-6 lg:px-12">
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+
+                <!-- Left: Identity (Start) -->
+                <div class="flex items-center justify-center md:justify-start gap-2 text-base">
+                    <span class="font-bold text-slate-900 text-lg">Aditto.</span>
+                    <span class="text-slate-300">|</span>
+                    <span class="text-slate-400 font-medium">© 2026</span>
+                </div>
+
+                <!-- Center: Social Icons (Center) -->
+                <div class="flex justify-center gap-4">
+                    <a href="https://linkedin.com/in/adittoahosankabbo" target="_blank"
+                        class="w-11 h-11 flex items-center justify-center rounded-full bg-slate-50 text-slate-500 hover:bg-[#0077b5] hover:text-white transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-md">
+                        <i class="fab fa-linkedin-in text-sm"></i>
+                    </a>
+                    <a href="https://github.com/AdittoAhosanKabbo" target="_blank"
+                        class="w-11 h-11 flex items-center justify-center rounded-full bg-slate-50 text-slate-500 hover:bg-[#333] hover:text-white transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-md">
+                        <i class="fab fa-github text-sm"></i>
+                    </a>
+                    <a href="https://kaggle.com/adittoahosankabbo" target="_blank"
+                        class="w-11 h-11 flex items-center justify-center rounded-full bg-slate-50 text-slate-500 hover:bg-[#20BEFF] hover:text-white transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-md">
+                        <i class="fab fa-kaggle text-sm"></i>
+                    </a>
+                    <a href="mailto:aditahosankabbo@gmail.com"
+                        class="w-11 h-11 flex items-center justify-center rounded-full bg-slate-50 text-slate-500 hover:bg-red-500 hover:text-white transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-md">
+                        <i class="fas fa-envelope text-sm"></i>
+                    </a>
+                </div>
+
+                <!-- Right: Navigation (End) -->
+                <nav class="flex justify-center md:justify-end gap-6 text-base font-medium text-slate-500">
+                    <a href="about.html" class="hover:text-slate-900 transition-colors">About</a>
+                    <a href="project.html" class="hover:text-slate-900 transition-colors">Projects</a>
+                    <a href="blogs.html" class="hover:text-slate-900 transition-colors">Blogs</a>
+                    <a href="notes.html" class="hover:text-slate-900 transition-colors">Notes</a>
+                </nav>
+
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

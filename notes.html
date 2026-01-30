@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes | Aditto Ahosan Kabbo - Study Materials & Cheat Sheets</title>
+    <meta name="description"
+        content="Access study notes, cheat sheets, and quick references for Data Science, Statistics, and Programming. Curated by Aditto Ahosan Kabbo.">
+    <meta name="keywords"
+        content="Data Science Notes, Statistics Cheat Sheets, Programming References, Study Materials, Aditto Ahosan Kabbo Notes">
+    <meta name="author" content="Aditto Ahosan Kabbo">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://adittoahosankabbo.github.io/notes.html">
+    <meta property="og:title" content="Notes | Aditto Ahosan Kabbo - Study Materials & Cheat Sheets">
+    <meta property="og:description"
+        content="Access study notes, cheat sheets, and quick references for Data Science, Statistics, and Programming.">
+    <meta property="og:image" content="assets/images/aakpro.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://adittoahosankabbo.github.io/notes.html">
+    <meta property="twitter:title" content="Notes | Aditto Ahosan Kabbo - Study Materials & Cheat Sheets">
+    <meta property="twitter:description"
+        content="Access study notes, cheat sheets, and quick references for Data Science, Statistics, and Programming.">
+    <meta property="twitter:image" content="assets/images/aakpro.png">
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS (via CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            900: '#0c4a6e',
+                        },
+                        dark: '#0f172a',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-white text-slate-800 antialiased selection:bg-brand-500 selection:text-white" style="zoom: 80%">
+    <!-- Navigation -->
+    <nav id="navbar"
+        class="fixed z-50 transition-all duration-500 ease-in-out w-full top-0 border-b border-transparent bg-transparent py-4">
+        <div id="nav-container"
+            class="max-w-screen-2xl mx-auto flex flex-wrap lg:flex-nowrap items-center justify-between px-6 lg:px-12 transition-all duration-500">
+
+            <!-- Left: Minimalist Logo -->
+            <a href="index.html" class="flex items-center gap-1 group shrink-0">
+                <span class="text-2xl font-bold text-slate-900 tracking-tight">Aditto</span>
+                <span
+                    class="text-2xl font-light text-slate-500 group-hover:text-slate-900 transition-colors">Ahosan</span>
+                <span class="w-2 h-2 rounded-full bg-blue-500 mb-1 ml-0.5 animate-pulse"></span>
+            </a>
+
+            <!-- Mobile Toggle -->
+            <button data-collapse-toggle="navbar-default" type="button"
+                class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-slate-500 rounded-xl lg:hidden hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-100 transition-all"
+                aria-controls="navbar-default" aria-expanded="false" id="menu-toggle">
+                <span class="sr-only">Open main menu</span>
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+
+            <!-- Right: Clean Links -->
+            <div class="hidden w-full lg:block lg:w-auto" id="navbar-default">
+                <ul
+                    class="font-medium flex flex-col p-4 lg:p-0 mt-4 border border-slate-100 rounded-2xl bg-white lg:bg-transparent lg:border-0 lg:shadow-none lg:flex-row lg:items-center space-y-6 lg:space-y-0 lg:space-x-10 rtl:space-x-reverse lg:mt-0 shadow-xl">
+
+                    <!-- Link Item (Home) -->
+                    <li>
+                        <a href="index.html"
+                            class="relative block w-fit py-2 text-base font-medium text-slate-500 hover:text-slate-900 transition-colors group whitespace-nowrap">
+                            Home
+                            <span
+                                class="absolute left-0 bottom-1 w-0 h-[2px] bg-slate-900 transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                    </li>
+
+                    <!-- Link Item (About Me) -->
+                    <li class="relative group/dropdown">
+                        <a href="about.html"
+                            class="relative block w-fit py-2 text-base font-medium text-slate-500 hover:text-slate-900 transition-colors group flex items-center gap-1 whitespace-nowrap">
+                            About Me
+                            <i
+                                class="fas fa-chevron-down text-[10px] text-slate-400 group-hover:text-slate-900 transition-colors pt-0.5"></i>
+                            <span
+                                class="absolute left-0 bottom-1 w-0 h-[2px] bg-slate-900 transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+
+                        <!-- Dropdown Menu -->
+                        <ul
+                            class="absolute left-1/2 -translate-x-1/2 top-full pt-4 w-48 opacity-0 invisible group-hover/dropdown:opacity-100 group-hover/dropdown:visible transition-all duration-300 z-50 transform group-hover/dropdown:translate-y-0 translate-y-2 pointer-events-none group-hover/dropdown:pointer-events-auto">
+                            <div
+                                class="bg-white border border-slate-100 rounded-xl shadow-xl overflow-hidden ring-1 ring-slate-900/5">
+                                <li>
+                                    <a href="about.html#skills"
+                                        class="block px-5 py-3.5 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors border-b border-slate-50 whitespace-nowrap">
+                                        Skills
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="about.html#education"
+                                        class="block px-5 py-3.5 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors border-b border-slate-50 whitespace-nowrap">
+                                        Education
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="about.html#certifications"
+                                        class="block px-5 py-3.5 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors whitespace-nowrap">
+                                        Certifications
+                                    </a>
+                                </li>
+                            </div>
+                        </ul>
+                    </li>
+
+                    <!-- Projects -->
+                    <li>
+                        <a href="project.html"
+                            class="relative block w-fit py-2 text-base font-medium text-slate-500 hover:text-slate-900 transition-colors group whitespace-nowrap">
+                            Projects
+                            <span
+                                class="absolute left-0 bottom-1 w-0 h-[2px] bg-slate-900 transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                    </li>
+                    <!-- Blogs -->
+                    <li>
+                        <a href="blogs.html"
+                            class="relative block w-fit py-2 text-base font-medium text-slate-500 hover:text-slate-900 transition-colors group whitespace-nowrap">
+                            Blogs
+                            <span
+                                class="absolute left-0 bottom-1 w-0 h-[2px] bg-slate-900 transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                    </li>
+
+                    <!-- Notes (Active) -->
+                    <li>
+                        <a href="notes.html"
+                            class="relative block w-fit py-2 text-base font-bold text-slate-900 transition-colors group whitespace-nowrap">
+                            Notes
+                            <span
+                                class="absolute left-0 bottom-1 w-full h-[2px] bg-slate-900 transition-all duration-300"></span>
+                        </a>
+                    </li>
+
+                    <!-- CTA Button -->
+                    <li class="lg:pl-6 mt-2 lg:mt-0">
+                        <a href="contact.html"
+                            class="block py-3 px-7 text-sm font-bold text-slate-900 uppercase tracking-widest rounded-full border border-slate-200 hover:border-slate-900 hover:bg-slate-900 hover:text-white transition-all duration-300 whitespace-nowrap">
+                            Let's Talk
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <div class="pt-32">
+        <!-- Notes Header -->
+        <section class="relative py-20 bg-slate-50 overflow-hidden">
+            <!-- Background Gradients -->
+            <div
+                class="absolute top-0 left-0 w-[500px] h-[500px] bg-emerald-50/60 rounded-full blur-[100px] -z-10 translate-x-1/3">
+            </div>
+            <div
+                class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-slate-100/80 rounded-full blur-[100px] -z-10 -translate-x-1/3">
+            </div>
+
+            <div class="max-w-screen-xl mx-auto px-6 lg:px-12 text-center relative z-10">
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full border border-slate-100 mb-6 shadow-sm">
+                    <span class="text-xs font-bold tracking-widest text-emerald-600 uppercase">Study Materials</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 tracking-tight mb-6">My Notes</h1>
+                <p class="text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed">
+                    A collection of cheat sheets, quick references, and study notes on Statistics, Data Science, and
+                    Programming.
+                </p>
+            </div>
+        </section>
+
+        <!-- Notes Grid -->
+        <section class="py-24 bg-white">
+            <div class="max-w-screen-xl mx-auto px-6 lg:px-12">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                    <!-- Empty State / Upcoming -->
+                    <div class="col-span-full py-16 text-center">
+                        <div
+                            class="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm text-slate-400">
+                            <i class="fas fa-folder-open text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-3">Notes Compiling...</h3>
+                        <p class="text-slate-500 max-w-md mx-auto">
+                            I am currently organizing my study materials and cheat sheets.
+                            Check back soon for high-quality downloadable resources!
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-50 py-12">
+        <div class="max-w-screen-xl mx-auto px-6 lg:px-12">
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+
+                <!-- Left: Identity (Start) -->
+                <div class="flex items-center justify-center md:justify-start gap-2 text-base">
+                    <a href="index.html" class="flex items-center gap-2 group transition-opacity hover:opacity-80">
+                        <span class="font-bold text-slate-900 text-lg">Aditto.</span>
+                        <span class="text-slate-300">|</span>
+                        <span class="text-slate-400 font-medium">© 2026</span>
+                    </a>
+                </div>
+
+                <!-- Center: Social Icons (Center) -->
+                <div class="flex justify-center gap-4">
+                    <a href="https://linkedin.com/in/adittoahosankabbo" target="_blank"
+                        class="w-11 h-11 flex items-center justify-center rounded-full bg-slate-50 text-slate-500 hover:bg-[#0077b5] hover:text-white transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-md">
+                        <i class="fab fa-linkedin-in text-sm"></i>
+                    </a>
+                    <a href="https://github.com/AdittoAhosanKabbo" target="_blank"
+                        class="w-11 h-11 flex items-center justify-center rounded-full bg-slate-50 text-slate-500 hover:bg-[#333] hover:text-white transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-md">
+                        <i class="fab fa-github text-sm"></i>
+                    </a>
+                    <a href="https://kaggle.com/adittoahosankabbo" target="_blank"
+                        class="w-11 h-11 flex items-center justify-center rounded-full bg-slate-50 text-slate-500 hover:bg-[#20BEFF] hover:text-white transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-md">
+                        <i class="fab fa-kaggle text-sm"></i>
+                    </a>
+                    <a href="mailto:aditahosankabbo@gmail.com"
+                        class="w-11 h-11 flex items-center justify-center rounded-full bg-slate-50 text-slate-500 hover:bg-red-500 hover:text-white transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-md">
+                        <i class="fas fa-envelope text-sm"></i>
+                    </a>
+                </div>
+
+                <!-- Right: Navigation (End) -->
+                <nav class="flex justify-center md:justify-end gap-6 text-base font-medium text-slate-500">
+                    <a href="about.html" class="hover:text-slate-900 transition-colors">About</a>
+                    <a href="project.html" class="hover:text-slate-900 transition-colors">Projects</a>
+                    <a href="blogs.html" class="hover:text-slate-900 transition-colors">Blogs</a>
+                    <a href="notes.html" class="hover:text-slate-900 transition-colors">Notes</a>
+                </nav>
+
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

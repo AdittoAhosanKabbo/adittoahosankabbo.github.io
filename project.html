@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Aditto Ahosan Kabbo - Data Analyst Portfolio</title>
+    <meta name="description"
+        content="Explore the data analysis and machine learning projects of Aditto Ahosan Kabbo. Featuring case studies in Python, SQL, Power BI, and R, solving real-world business and research problems.">
+    <meta name="keywords"
+        content="Data Analyst Projects, Machine Learning Portfolio, Power BI Dashboards, SQL Projects, Python Data Analysis, R Programming, Case Studies">
+    <meta name="author" content="Aditto Ahosan Kabbo">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://adittoahosankabbo.github.io/project.html">
+    <meta property="og:title" content="Projects | Aditto Ahosan Kabbo - Data Analyst Portfolio">
+    <meta property="og:description"
+        content="Explore the data analysis and machine learning projects of Aditto Ahosan Kabbo. Featuring case studies in Python, SQL, Power BI, and R.">
+    <meta property="og:image" content="assets/images/aakpro.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://adittoahosankabbo.github.io/project.html">
+    <meta property="twitter:title" content="Projects | Aditto Ahosan Kabbo - Data Analyst Portfolio">
+    <meta property="twitter:description"
+        content="Explore the data analysis and machine learning projects of Aditto Ahosan Kabbo. Featuring case studies in Python, SQL, Power BI, and R.">
+    <meta property="twitter:image" content="assets/images/aakpro.png">
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS (via CDN for instant development) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        // Data Analyst Palette
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9', // Sky blue - trustworthy & modern
+                            600: '#0284c7',
+                            900: '#0c4a6e',
+                        },
+                        dark: '#0f172a',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-white text-slate-800 antialiased selection:bg-brand-500 selection:text-white">
+    <!-- Navigation -->
+    <nav id="navbar"
+        class="fixed z-50 transition-all duration-500 ease-in-out w-full top-0 border-b border-transparent bg-transparent py-4">
+        <div id="nav-container"
+            class="max-w-screen-2xl mx-auto flex flex-wrap lg:flex-nowrap items-center justify-between px-6 lg:px-12 transition-all duration-500">
+
+            <!-- Left: Minimalist Logo -->
+            <a href="index.html" class="flex items-center gap-1 group shrink-0">
+                <span class="text-2xl font-bold text-slate-900 tracking-tight">Aditto</span>
+                <span
+                    class="text-2xl font-light text-slate-500 group-hover:text-slate-900 transition-colors">Ahosan</span>
+                <span class="w-2 h-2 rounded-full bg-blue-500 mb-1 ml-0.5 animate-pulse"></span>
+            </a>
+
+            <!-- Mobile Toggle -->
+            <button data-collapse-toggle="navbar-default" type="button"
+                class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-slate-500 rounded-xl lg:hidden hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-100 transition-all"
+                aria-controls="navbar-default" aria-expanded="false" id="menu-toggle">
+                <span class="sr-only">Open main menu</span>
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+
+            <!-- Right: Clean Links -->
+            <div class="hidden w-full lg:block lg:w-auto" id="navbar-default">
+                <ul
+                    class="font-medium flex flex-col p-4 lg:p-0 mt-4 border border-slate-100 rounded-2xl bg-white lg:bg-transparent lg:border-0 lg:shadow-none lg:flex-row lg:items-center space-y-6 lg:space-y-0 lg:space-x-10 rtl:space-x-reverse lg:mt-0 shadow-xl">
+
+                    <!-- Link Item (Home) -->
+                    <li>
+                        <a href="index.html"
+                            class="relative block w-fit py-2 text-base font-medium text-slate-500 hover:text-slate-900 transition-colors group whitespace-nowrap">
+                            Home
+                            <span
+                                class="absolute left-0 bottom-1 w-0 h-[2px] bg-slate-900 transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                    </li>
+
+                    <!-- Link Item (About Me) -->
+                    <li class="relative group/dropdown">
+                        <a href="about.html"
+                            class="relative block w-fit py-2 text-base font-medium text-slate-500 hover:text-slate-900 transition-colors group flex items-center gap-1 whitespace-nowrap">
+                            About Me
+                            <i
+                                class="fas fa-chevron-down text-[10px] text-slate-400 group-hover:text-slate-900 transition-colors pt-0.5"></i>
+                            <span
+                                class="absolute left-0 bottom-1 w-0 h-[2px] bg-slate-900 transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+
+                        <!-- Dropdown Menu -->
+                        <ul
+                            class="absolute left-1/2 -translate-x-1/2 top-full pt-4 w-48 opacity-0 invisible group-hover/dropdown:opacity-100 group-hover/dropdown:visible transition-all duration-300 z-50 transform group-hover/dropdown:translate-y-0 translate-y-2 pointer-events-none group-hover/dropdown:pointer-events-auto">
+                            <div
+                                class="bg-white border border-slate-100 rounded-xl shadow-xl overflow-hidden ring-1 ring-slate-900/5">
+                                <li>
+                                    <a href="about.html#skills"
+                                        class="block px-5 py-3.5 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors border-b border-slate-50 whitespace-nowrap">
+                                        Skills
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="about.html#education"
+                                        class="block px-5 py-3.5 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors border-b border-slate-50 whitespace-nowrap">
+                                        Education
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="about.html#certifications"
+                                        class="block px-5 py-3.5 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors whitespace-nowrap">
+                                        Certifications
+                                    </a>
+                                </li>
+                            </div>
+                        </ul>
+                    </li>
+
+                    <!-- Projects (Active) -->
+                    <li>
+                        <a href="project.html"
+                            class="relative block w-fit py-2 text-base font-bold text-slate-900 transition-colors group whitespace-nowrap">
+                            Projects
+                            <span
+                                class="absolute left-0 bottom-1 w-full h-[2px] bg-slate-900 transition-all duration-300"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="blogs.html"
+                            class="relative block w-fit py-2 text-base font-medium text-slate-500 hover:text-slate-900 transition-colors group whitespace-nowrap">
+                            Blogs
+                            <span
+                                class="absolute left-0 bottom-1 w-0 h-[2px] bg-slate-900 transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="notes.html"
+                            class="relative block w-fit py-2 text-base font-medium text-slate-500 hover:text-slate-900 transition-colors group whitespace-nowrap">
+                            Notes
+                            <span
+                                class="absolute left-0 bottom-1 w-0 h-[2px] bg-slate-900 transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                    </li>
+
+                    <!-- CTA Button -->
+                    <li class="lg:pl-6 mt-2 lg:mt-0">
+                        <a href="contact.html"
+                            class="block py-3 px-7 text-sm font-bold text-slate-900 uppercase tracking-widest rounded-full border border-slate-200 hover:border-slate-900 hover:bg-slate-900 hover:text-white transition-all duration-300 whitespace-nowrap">
+                            Let's Talk
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container (Padded for fixed navbar) -->
+    <div class="pt-32">
+        <!-- Projects Section -->
+        <section id="projects" class="pb-24 bg-slate-50 relative overflow-hidden">
+            <!-- Background Elements -->
+            <div
+                class="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-50/50 rounded-full blur-3xl pointer-events-none -translate-y-1/2 translate-x-1/2">
+            </div>
+
+            <div class="max-w-[1400px] w-full mx-auto px-6 relative z-10">
+                <!-- Main Projects Section -->
+                <section id="projects" class="projects-section pb-24">
+                    <div class="text-center mb-16">
+                        <!-- Badge -->
+                        <div
+                            class="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm border border-slate-100 mb-6">
+                            <span class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
+                            <span class="text-xs font-bold tracking-widest text-slate-900 uppercase">My Portfolio</span>
+                        </div>
+
+                        <h2 class="text-4xl md:text-5xl font-black text-slate-900 tracking-tight mb-6">Projects</h2>
+                        <p class="text-lg text-slate-500 max-w-2xl mx-auto">
+                            Explore my portfolio of data-driven insights, interactive dashboards, and analytical
+                            solutions.
+                        </p>
+                    </div>
+
+                    <!-- Subsection A: Data Visualization -->
+                    <div class="simple-dataviz-section">
+                        <h3 class="text-2xl font-bold text-slate-900 mb-8 border-l-4 border-blue-500 pl-4">Data
+                            Visualization</h3>
+
+                        <div class="simple-projects-grid grid grid-cols-1 md:grid-cols-2 gap-8 my-12">
+                            <!-- Project 0: FoodPanda Sales Analysis (Excel) -->
+                            <div
+                                class="simple-project-card bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-xl transition-all">
+                                <div class="simple-project-header flex justify-between items-start mb-4">
+                                    <div>
+                                        <h4 class="text-3xl font-bold text-slate-900">FoodPanda Sales</h4>
+                                        <span
+                                            class="simple-tool-tag inline-block mt-1 px-3 py-1 bg-green-50 text-green-700 text-sm font-semibold rounded border border-green-100">Advanced
+                                            Excel</span>
+                                    </div>
+                                    <div class="simple-preview-controls flex gap-2">
+                                        <button class="p-2 text-slate-400 hover:text-green-600 transition-colors"
+                                            title="Enlarge"
+                                            data-iframe-src="assets/images/FOODPANDA%20SALES/Foodpanda_sales_01.png">
+                                            <i class="fas fa-expand"></i>
+                                        </button>
+                                        <a href="https://github.com/AdittoAhosanKabbo/FoodPanda_Sales_Analysis_Excel_Project"
+                                            target="_blank"
+                                            class="p-2 text-slate-400 hover:text-green-600 transition-colors"
+                                            title="View Repository">
+                                            <i class="fab fa-github text-xl"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Fiverr Style Gallery Container -->
+                                <div class="mb-6 group">
+                                    <!-- Main Preview -->
+                                    <div
+                                        class="simple-project-preview w-full aspect-video bg-slate-50 rounded-xl overflow-hidden border border-slate-200 relative flex items-center justify-center group">
+                                        <!-- Slider Container -->
+                                        <div id="excelSlider"
+                                            class="w-full h-full flex overflow-x-auto snap-x snap-mandatory scroll-smooth"
+                                            style="scrollbar-width: none; -ms-overflow-style: none;">
+                                            <img src="assets/images/FOODPANDA%20SALES/foodpandasalescov.png"
+                                                class="min-w-full h-full object-contain snap-center flex-shrink-0"
+                                                loading="lazy">
+                                            <img src="assets/images/FOODPANDA%20SALES/Foodpanda_sales_01.png"
+                                                class="min-w-full h-full object-contain snap-center flex-shrink-0"
+                                                loading="lazy">
+                                            <img src="assets/images/FOODPANDA%20SALES/Foodpanda_sales_02.png"
+                                                class="min-w-full h-full object-contain snap-center flex-shrink-0"
+                                                loading="lazy">
+                                            <img src="assets/images/FOODPANDA%20SALES/Foodpanda_sales_03.png"
+                                                class="min-w-full h-full object-contain snap-center flex-shrink-0"
+                                                loading="lazy">
+                                            <img src="assets/images/FOODPANDA%20SALES/INSIGHTS.png"
+                                                class="min-w-full h-full object-contain snap-center flex-shrink-0"
+                                                loading="lazy">
+                                            <video
+                                                src="assets/images/FOODPANDA%20SALES/FOODPANDA%20SALES%20ANALYSIS.mp4"
+                                                class="min-w-full h-full object-contain snap-center flex-shrink-0"
+                                                controls preload="none"
+                                                poster="assets/images/FOODPANDA%20SALES/foodpandasalescov.png"></video>
+                                        </div>
+
+                                        <!-- Arrows (Hover Reveal) -->
+                                        <button id="excelPrevBtn"
+                                            class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-md flex items-center justify-center text-slate-700 opacity-0 group-hover:opacity-100 transition-all hover:scale-110 hover:text-green-600 z-10 cursor-pointer">
+                                            <i class="fas fa-chevron-left"></i>
+                                        </button>
+                                        <button id="excelNextBtn"
+                                            class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-md flex items-center justify-center text-slate-700 opacity-0 group-hover:opacity-100 transition-all hover:scale-110 hover:text-green-600 z-10 cursor-pointer">
+                                            <i class="fas fa-chevron-right"></i>
+                                        </button>
+                                    </div>
+
+                                    <!-- Thumbnails -->
+                                    <div class="flex gap-2 mt-3 overflow-x-auto py-1 px-1 custom-scrollbar">
+                                        <div
+                                            class="excel-thumb w-20 h-14 rounded-md overflow-hidden cursor-pointer border-2 border-green-500 opacity-100 hover:opacity-100 transition-all box-content">
+                                            <img src="assets/images/FOODPANDA%20SALES/foodpandasalescov.png"
+                                                class="w-full h-full object-cover" loading="lazy">
+                                        </div>
+                                        <div
+                                            class="excel-thumb w-20 h-14 rounded-md overflow-hidden cursor-pointer border-2 border-transparent opacity-60 hover:opacity-100 transition-all box-content">
+                                            <img src="assets/images/FOODPANDA%20SALES/Foodpanda_sales_01.png"
+                                                class="w-full h-full object-cover" loading="lazy">
+                                        </div>
+                                        <div
+                                            class="excel-thumb w-20 h-14 rounded-md overflow-hidden cursor-pointer border-2 border-transparent opacity-60 hover:opacity-100 transition-all box-content">
+                                            <img src="assets/images/FOODPANDA%20SALES/Foodpanda_sales_02.png"
+                                                class="w-full h-full object-cover" loading="lazy">
+                                        </div>
+                                        <div
+                                            class="excel-thumb w-20 h-14 rounded-md overflow-hidden cursor-pointer border-2 border-transparent opacity-60 hover:opacity-100 transition-all box-content">
+                                            <img src="assets/images/FOODPANDA%20SALES/Foodpanda_sales_03.png"
+                                                class="w-full h-full object-cover" loading="lazy">
+                                        </div>
+                                        <div
+                                            class="excel-thumb w-20 h-14 rounded-md overflow-hidden cursor-pointer border-2 border-transparent opacity-60 hover:opacity-100 transition-all box-content">
+                                            <img src="assets/images/FOODPANDA%20SALES/INSIGHTS.png"
+                                                class="w-full h-full object-cover" loading="lazy">
+                                        </div>
+                                        <div
+                                            class="excel-thumb w-20 h-14 rounded-md overflow-hidden cursor-pointer border-2 border-transparent opacity-60 hover:opacity-100 transition-all box-content">
+                                            <video
+                                                src="assets/images/FOODPANDA%20SALES/FOODPANDA%20SALES%20ANALYSIS.mp4"
+                                                muted class="w-full h-full object-cover"></video>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <p class="text-slate-700 text-lg mb-6 leading-relaxed">
+                                    A complete Excel-based analytics solution for sales, customer behavior, and delivery
+                                    insights
+                                </p>
+
+                                <div class="simple-project-links flex gap-3">
+                                    <a href="https://github.com/AdittoAhosanKabbo/FoodPanda_Sales_Analysis_Excel_Project"
+                                        target="_blank"
+                                        class="flex-1 py-3 text-center text-lg font-bold text-slate-700 bg-slate-50 rounded-lg hover:bg-slate-900 hover:text-white transition-colors border border-slate-200">
+                                        <i class="fab fa-github mr-2"></i> GitHub
+                                    </a>
+                                    <a href="https://www.kaggle.com/code/adittoahosankabbo/foodpanda-sales-analysis-excel"
+                                        target="_blank"
+                                        class="flex-1 py-3 text-center text-lg font-bold text-sky-600 bg-sky-50 rounded-lg hover:bg-sky-500 hover:text-white transition-colors border border-sky-100">
+                                        <i class="fab fa-kaggle mr-2"></i> Kaggle
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project 1: Inventory Management -->
+                            <div
+                                class="simple-project-card bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-xl transition-all">
+                                <div class="simple-project-header flex justify-between items-start mb-4">
+                                    <div>
+                                        <h4 class="text-3xl font-bold text-slate-900">Inventory Management</h4>
+                                        <span
+                                            class="simple-tool-tag inline-block mt-1 px-3 py-1 bg-yellow-50 text-yellow-700 text-sm font-semibold rounded border border-yellow-100">Power
+                                            BI</span>
+                                    </div>
+                                    <div class="simple-preview-controls flex gap-2">
+                                        <button
+                                            class="w-10 h-10 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-500 hover:text-blue-600 hover:border-blue-400 hover:shadow-md transition-all ease-out"
+                                            title="Enlarge Video & Dashboard"
+                                            data-iframe-src="assets/images/FOODPANDA%20SALES/inventory_management_video.mp4"
+                                            data-dashboard-src="https://app.powerbi.com/view?r=eyJrIjoiMTc3MDA2N2UtYmU3Mi00ZjFiLWExNWEtMWE5NDI4NjYxNmJhIiwidCI6IjQ2NTRiNmYxLTBlNDctNDU3OS1hOGExLTAyZmU5ZDk0M2M3YiIsImMiOjl9">
+                                            <i class="fas fa-expand"></i>
+                                        </button>
+                                        <a href="https://app.powerbi.com/view?r=eyJrIjoiMTc3MDA2N2UtYmU3Mi00ZjFiLWExNWEtMWE5NDI4NjYxNmJhIiwidCI6IjQ2NTRiNmYxLTBlNDctNDU3OS1hOGExLTAyZmU5ZDk0M2M3YiIsImMiOjl9"
+                                            target="_blank"
+                                            class="w-10 h-10 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-500 hover:text-blue-600 hover:border-blue-400 hover:shadow-md transition-all ease-out"
+                                            title="Open Dashboard in New Tab">
+                                            <i class="fas fa-external-link-alt"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="simple-project-preview w-full aspect-video bg-black rounded-xl overflow-hidden mb-4 border border-slate-100 relative group">
+                                    <!-- Video (Default) -->
+                                    <video id="vid-inventory" class="w-full h-full object-contain" controls loop
+                                        preload="none" poster="assets/images/FOODPANDA%20SALES/inventory_thumnail.png"
+                                        src="assets/images/FOODPANDA%20SALES/inventory_management_video.mp4"></video>
+
+                                    <!-- Iframe (Hidden) -->
+                                    <iframe id="iframe-inventory" class="simple-iframe w-full h-full hidden"
+                                        src="https://app.powerbi.com/view?r=eyJrIjoiMTc3MDA2N2UtYmU3Mi00ZjFiLWExNWEtMWE5NDI4NjYxNmJhIiwidCI6IjQ2NTRiNmYxLTBlNDctNDU3OS1hOGExLTAyZmU5ZDk0M2M3YiIsImMiOjl9"
+                                        frameborder="0" allowFullScreen="true"></iframe>
+
+                                    <!-- Unique Toggle Control -->
+                                    <div
+                                        class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-md border border-white/20 rounded-full p-1.5 flex shadow-xl z-20 scale-95 opacity-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300">
+                                        <button onclick="toggleProjectView('inventory', 'video')"
+                                            id="btn-inventory-video"
+                                            class="px-4 py-1.5 rounded-full text-xs font-bold bg-slate-900 text-white shadow-sm transition-all transform scale-105">Video</button>
+                                        <button onclick="toggleProjectView('inventory', 'iframe')"
+                                            id="btn-inventory-iframe"
+                                            class="px-4 py-1.5 rounded-full text-xs font-bold text-slate-600 hover:bg-slate-200 transition-all opacity-80 hover:opacity-100">Live
+                                            Dashboard</button>
+                                    </div>
+                                </div>
+
+                                <p class="text-slate-700 text-lg mb-6 leading-relaxed">
+
+                                    Interactive Inventory Management Dashboard built using Power BI to optimize stock
+                                    levels, enhance supplier performance, and improve warehouse efficiency through
+                                    data-driven insights.
+                                </p>
+
+                                <div class="simple-project-links flex gap-3">
+                                    <a href="https://github.com/AdittoAhosanKabbo/Inventory_Management_PowerBi_Project"
+                                        target="_blank"
+                                        class="flex-1 py-3 text-center text-lg font-bold text-slate-700 bg-slate-50 rounded-lg hover:bg-slate-900 hover:text-white transition-colors border border-slate-200">
+                                        <i class="fab fa-github mr-2"></i> GitHub
+                                    </a>
+                                    <a href="https://www.linkedin.com/posts/adittoahosankabbo_inventory-analaysis-dashboard-activity-7321133843392970752-fg6f?utm_source=share&utm_medium=member_desktop&rcm=ACoAADYmlAcBDC-p4HWCs6yFwh5eDLA4vA0uquE"
+                                        target="_blank"
+                                        class="flex-1 py-3 text-center text-lg font-bold text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-600 hover:text-white transition-colors border border-blue-100">
+                                        <i class="fab fa-linkedin mr-2"></i> LinkedIn
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project 2: HR Analytics -->
+                            <div
+                                class="simple-project-card bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-xl transition-all">
+                                <div class="simple-project-header flex justify-between items-start mb-4">
+                                    <div>
+                                        <h4 class="text-3xl font-bold text-slate-900">HR Analytics</h4>
+                                        <span
+                                            class="simple-tool-tag inline-block mt-1 px-3 py-1 bg-yellow-50 text-yellow-700 text-sm font-semibold rounded border border-yellow-100">Power
+                                            BI</span>
+                                    </div>
+                                    <div class="simple-preview-controls flex gap-2">
+                                        <button
+                                            class="w-10 h-10 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-500 hover:text-blue-600 hover:border-blue-400 hover:shadow-md transition-all ease-out"
+                                            title="Enlarge Video & Dashboard"
+                                            data-iframe-src="assets/images/FOODPANDA%20SALES/hr%20analytics.mp4"
+                                            data-dashboard-src="https://app.powerbi.com/view?r=eyJrIjoiNWMzNTI1OTMtYWFjNy00YzE4LTg4ZDgtNjRhNGY2NDJjNTQxIiwidCI6IjYwMTQzNDU2LTYxYjYtNGZkYy04Y2Q1LTFiNWQwNzA5NTA5NiIsImMiOjEwfQ%3D%3D&pageName=0f30f9a45c28fa0912c6">
+                                            <i class="fas fa-expand"></i>
+                                        </button>
+                                        <a href="https://app.powerbi.com/view?r=eyJrIjoiNWMzNTI1OTMtYWFjNy00YzE4LTg4ZDgtNjRhNGY2NDJjNTQxIiwidCI6IjYwMTQzNDU2LTYxYjYtNGZkYy04Y2Q1LTFiNWQwNzA5NTA5NiIsImMiOjEwfQ%3D%3D&pageName=0f30f9a45c28fa0912c6"
+                                            target="_blank"
+                                            class="w-10 h-10 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-500 hover:text-blue-600 hover:border-blue-400 hover:shadow-md transition-all ease-out"
+                                            title="Open Dashboard in New Tab">
+                                            <i class="fas fa-external-link-alt"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="simple-project-preview w-full aspect-video bg-black rounded-xl overflow-hidden mb-4 border border-slate-100 relative group">
+                                    <!-- Video (Default) -->
+                                    <video id="vid-hr" class="w-full h-full object-contain" controls loop
+                                        poster="assets/images/FOODPANDA%20SALES/hr%20analytics%20pbi%20cover.png"
+                                        src="assets/images/FOODPANDA%20SALES/hr%20analytics.mp4"></video>
+
+                                    <!-- Iframe (Hidden) -->
+                                    <iframe id="iframe-hr" class="simple-iframe w-full h-full hidden"
+                                        src="https://app.powerbi.com/view?r=eyJrIjoiNWMzNTI1OTMtYWFjNy00YzE4LTg4ZDgtNjRhNGY2NDJjNTQxIiwidCI6IjYwMTQzNDU2LTYxYjYtNGZkYy04Y2Q1LTFiNWQwNzA5NTA5NiIsImMiOjEwfQ%3D%3D&pageName=0f30f9a45c28fa0912c6"
+                                        frameborder="0" allowFullScreen="true"></iframe>
+
+                                    <!-- Unique Toggle Control -->
+                                    <div
+                                        class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-md border border-white/20 rounded-full p-1.5 flex shadow-xl z-20 scale-95 opacity-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300">
+                                        <button onclick="toggleProjectView('hr', 'video')" id="btn-hr-video"
+                                            class="px-4 py-1.5 rounded-full text-xs font-bold bg-slate-900 text-white shadow-sm transition-all transform scale-105">Video</button>
+                                        <button onclick="toggleProjectView('hr', 'iframe')" id="btn-hr-iframe"
+                                            class="px-4 py-1.5 rounded-full text-xs font-bold text-slate-600 hover:bg-slate-200 transition-all opacity-80 hover:opacity-100">Live
+                                            Dashboard</button>
+                                    </div>
+                                </div>
+
+                                <p class="text-slate-700 text-lg mb-6 leading-relaxed">
+
+                                    Track and analyze key HR metrics like attrition, employee demographics, and
+                                    performance trends, enabling data-driven talent strategies.
+                                </p>
+
+                                <div class="simple-project-links flex gap-3">
+                                    <a href="https://github.com/AdittoAhosanKabbo/HR_Analytics_Power_Bi_Project"
+                                        target="_blank"
+                                        class="flex-1 py-3 text-center text-lg font-bold text-slate-700 bg-slate-50 rounded-lg hover:bg-slate-900 hover:text-white transition-colors border border-slate-200">
+                                        <i class="fab fa-github mr-2"></i> GitHub
+                                    </a>
+                                    <a href="https://www.linkedin.com/posts/adittoahosankabbo_hranalytics-powerbi-datavisualization-activity-7334990081918676993-oG9q?utm_source=share&utm_medium=member_desktop&rcm=ACoAADYmlAcBDC-p4HWCs6yFwh5eDLA4vA0uquE"
+                                        target="_blank"
+                                        class="flex-1 py-3 text-center text-lg font-bold text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-600 hover:text-white transition-colors border border-blue-100">
+                                        <i class="fab fa-linkedin mr-2"></i> LinkedIn
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project 3: Sales Analysis -->
+                            <div
+                                class="simple-project-card bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-xl transition-all">
+                                <div class="simple-project-header flex justify-between items-start mb-4">
+                                    <div>
+                                        <h4 class="text-3xl font-bold text-slate-900">Sales Analysis</h4>
+                                        <span
+                                            class="simple-tool-tag inline-block mt-1 px-2 py-0.5 bg-yellow-50 text-yellow-700 text-xs font-semibold rounded border border-yellow-100">Power
+                                            BI</span>
+                                    </div>
+                                    <div class="simple-preview-controls flex gap-2">
+                                        <button
+                                            class="w-10 h-10 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-500 hover:text-blue-600 hover:border-blue-400 hover:shadow-md transition-all ease-out"
+                                            title="Enlarge Dashboard"
+                                            data-iframe-src="https://app.powerbi.com/view?r=eyJrIjoiZTVhYjU0NmUtZGJlZS00Zjc5LWFhN2YtYzY5Mzg4YTgzMjE0IiwidCI6IjYwMTQzNDU2LTYxYjYtNGZkYy04Y2Q1LTFiNWQwNzA5NTA5NiIsImMiOjEwfQ%3D%3D">
+                                            <i class="fas fa-expand"></i>
+                                        </button>
+                                        <a href="https://app.powerbi.com/view?r=eyJrIjoiZTVhYjU0NmUtZGJlZS00Zjc5LWFhN2YtYzY5Mzg4YTgzMjE0IiwidCI6IjYwMTQzNDU2LTYxYjYtNGZkYy04Y2Q1LTFiNWQwNzA5NTA5NiIsImMiOjEwfQ%3D%3D"
+                                            target="_blank"
+                                            class="w-10 h-10 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-500 hover:text-blue-600 hover:border-blue-400 hover:shadow-md transition-all ease-out"
+                                            title="Open in New Tab">
+                                            <i class="fas fa-external-link-alt"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="simple-project-preview w-full aspect-video bg-slate-100 rounded-xl overflow-hidden mb-4 border border-slate-100 relative">
+                                    <iframe class="simple-iframe w-full h-full"
+                                        src="https://app.powerbi.com/view?r=eyJrIjoiZTVhYjU0NmUtZGJlZS00Zjc5LWFhN2YtYzY5Mzg4YTgzMjE0IiwidCI6IjYwMTQzNDU2LTYxYjYtNGZkYy04Y2Q1LTFiNWQwNzA5NTA5NiIsImMiOjEwfQ%3D%3D"
+                                        frameborder="0" allowFullScreen="true"></iframe>
+                                </div>
+
+                                <p class="text-slate-700 text-lg mb-6 leading-relaxed">
+                                    Sales analysis dashboard featuring interactive visualizations of sales
+                                    trends, performance metrics, and regional comparisons.
+                                </p>
+
+                                <div class="simple-project-links flex gap-3">
+                                    <a href="#" target="_blank"
+                                        class="flex-1 py-3 text-center text-lg font-bold text-slate-700 bg-slate-50 rounded-lg hover:bg-slate-900 hover:text-white transition-colors border border-slate-200">
+                                        <i class="fab fa-github mr-2"></i> GitHub
+                                    </a>
+                                    <a href="#"
+                                        class="flex-1 py-3 text-center text-lg font-bold text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-600 hover:text-white transition-colors border border-blue-100">
+                                        <i class="fab fa-linkedin mr-2"></i> LinkedIn
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project 4: Upcoming / Placeholder -->
+                            <div
+                                class="simple-project-card bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-xl transition-all border-dashed border-2">
+                                <div class="h-full flex flex-col items-center justify-center text-center py-12">
+                                    <div
+                                        class="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center mb-4 text-slate-300">
+                                        <i class="fas fa-plus text-2xl"></i>
+                                    </div>
+                                    <h4 class="text-xl font-bold text-slate-400">New Project Incoming</h4>
+                                    <p class="text-slate-400 text-sm mt-2">Working on something exciting to showcase
+                                        here soon.</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Subsection B: Machine Learning / AI -->
+                    <div class="ml-ai-section mt-20">
+                        <h3 class="text-2xl font-bold text-slate-900 mb-8 border-l-4 border-blue-500 pl-4">Machine
+                            Learning / AI</h3>
+
+                        <div class="simple-projects-grid grid grid-cols-1 md:grid-cols-2 gap-8 my-12">
+                            <!-- Project: Voice Separation (ICA) -->
+                            <!-- Project: Voice Separation (ICA) - Monochrome Premium -->
+                            <div
+                                class="simple-project-card bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-xl transition-all group">
+                                <div class="simple-project-header flex justify-between items-start mb-4">
+                                    <div>
+                                        <h4 class="text-3xl font-bold text-slate-900 mb-1">
+                                            Voice Separation Using ICA
+                                        </h4>
+                                        <h5 class="text-sm font-semibold text-slate-500 mb-3 uppercase tracking-wider">
+                                            The "Cocktail Party Problem" Solved</h5>
+
+                                        <!-- Tech Stack Tags (Monochrome) -->
+                                        <div class="flex flex-wrap gap-2 mt-2">
+                                            <span
+                                                class="px-2 py-1 bg-slate-900 text-white text-xs font-bold rounded border border-slate-900">Python</span>
+                                            <span
+                                                class="px-2 py-1 bg-white text-slate-900 text-xs font-bold rounded border border-slate-900">NumPy</span>
+                                            <span
+                                                class="px-2 py-1 bg-white text-slate-900 text-xs font-bold rounded border border-slate-900">Pandas</span>
+                                            <span
+                                                class="px-2 py-1 bg-white text-slate-900 text-xs font-bold rounded border border-slate-900">Matplotlib</span>
+                                            <span
+                                                class="px-2 py-1 bg-white text-slate-900 text-xs font-bold rounded border border-slate-900">PyDub</span>
+                                            <span
+                                                class="px-2 py-1 bg-white text-slate-900 text-xs font-bold rounded border border-slate-900">Audio
+                                                Processing</span>
+                                        </div>
+                                    </div>
+                                    <div class="simple-preview-controls flex gap-2">
+                                        <button class="p-2 text-slate-400 hover:text-slate-900 transition-colors"
+                                            title="Enlarge Video"
+                                            data-iframe-src="assets/images/FOODPANDA%20SALES/ica.mp4">
+                                            <i class="fas fa-expand"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="simple-project-preview w-full aspect-video bg-black rounded-xl overflow-hidden mb-4 border border-slate-100 relative group shadow-inner">
+                                    <video class="w-full h-full object-contain" controls loop muted preload="none"
+                                        poster="assets/images/FOODPANDA%20SALES/ICA%20THUBMNAIL.png"
+                                        src="assets/images/FOODPANDA%20SALES/ica.mp4"></video>
+                                </div>
+
+                                <!-- Algorithm Pipeline Visual: Cocktail Party Flow (Descriptive) -->
+                                <div class="mb-8">
+                                    <div
+                                        class="flex items-start justify-between bg-slate-50 rounded-xl p-5 border border-slate-100 relative overflow-hidden">
+
+                                        <!-- Step 1: Original Sources -->
+                                        <div class="text-center z-10 w-16">
+                                            <div
+                                                class="w-10 h-10 mx-auto bg-white rounded-full border border-slate-200 flex items-center justify-center mb-2 shadow-sm">
+                                                <i class="fas fa-users text-slate-400 text-sm"></i>
+                                            </div>
+                                            <p
+                                                class="text-[10px] font-bold text-slate-900 uppercase tracking-wide mb-0.5">
+                                                Sources</p>
+                                            <p class="text-[9px] text-slate-500 font-medium leading-tight">Simultaneous
+                                                Speech</p>
+                                        </div>
+
+                                        <!-- Arrow -->
+                                        <div class="flex-1 h-px bg-slate-300 mx-1 relative top-5">
+                                            <i
+                                                class="fas fa-chevron-right absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 text-slate-300 text-[10px]"></i>
+                                        </div>
+
+                                        <!-- Step 2: Mixtures -->
+                                        <div class="text-center z-10 w-16">
+                                            <div
+                                                class="w-10 h-10 mx-auto bg-white rounded-full border border-slate-200 flex items-center justify-center mb-2 shadow-sm">
+                                                <i class="fas fa-microphone-lines text-slate-600 text-sm"></i>
+                                            </div>
+                                            <p
+                                                class="text-[10px] font-bold text-slate-900 uppercase tracking-wide mb-0.5">
+                                                Mixtures</p>
+                                            <p class="text-[9px] text-slate-500 font-medium leading-tight">Overlapped
+                                                Recordings</p>
+                                        </div>
+
+                                        <!-- Arrow -->
+                                        <div class="flex-1 h-px bg-slate-300 mx-1 relative top-5">
+                                            <i
+                                                class="fas fa-chevron-right absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 text-slate-300 text-[10px]"></i>
+                                        </div>
+
+                                        <!-- Step 3: ICA Process -->
+                                        <div class="text-center z-10 w-16">
+                                            <div
+                                                class="w-12 h-12 mx-auto bg-slate-900 rounded-full flex items-center justify-center mb-2 shadow-md relative group/process cursor-pointer overflow-hidden transform hover:scale-110 transition-transform">
+                                                <span class="text-white font-bold text-xs relative z-10">ICA</span>
+                                                <div
+                                                    class="absolute inset-0 bg-white/10 translate-y-full group-hover/process:translate-y-0 transition-transform duration-300">
+                                                </div>
+                                            </div>
+                                            <p
+                                                class="text-[10px] font-bold text-slate-900 uppercase tracking-wide mb-0.5">
+                                                Processing</p>
+                                            <p class="text-[9px] text-slate-500 font-medium leading-tight">Statistical
+                                                Unmixing</p>
+                                        </div>
+
+                                        <!-- Arrow -->
+                                        <div class="flex-1 h-px bg-slate-300 mx-1 relative top-5">
+                                            <i
+                                                class="fas fa-chevron-right absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 text-slate-300 text-[10px]"></i>
+                                        </div>
+
+                                        <!-- Step 4: Separated Output -->
+                                        <div class="text-center z-10 w-16">
+                                            <div
+                                                class="w-10 h-10 mx-auto bg-white rounded-full border border-slate-200 flex items-center justify-center mb-2 shadow-sm">
+                                                <i class="fas fa-wave-square text-slate-800 text-sm"></i>
+                                            </div>
+                                            <p
+                                                class="text-[10px] font-bold text-slate-900 uppercase tracking-wide mb-0.5">
+                                                Outcome</p>
+                                            <p class="text-[9px] text-slate-500 font-medium leading-tight">Isolated
+                                                Voices</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <p class="text-slate-700 text-lg mb-6 leading-relaxed">
+                                    Can a machine "hear" like a human? This project demonstrates the power of
+                                    <span class="font-bold text-slate-900">Independent Component Analysis
+                                        (ICA)</span>
+                                    to isolate overlapping voices from mixed audio source—combining advanced
+                                    mathematics with audio processing.
+                                </p>
+
+                                <div class="simple-project-links flex gap-3">
+                                    <a href="https://www.kaggle.com/code/adittoahosankabbo/ica-cocktail-party-problem"
+                                        target="_blank"
+                                        class="flex-1 py-3 text-center text-lg font-bold text-sky-600 bg-sky-50 rounded-lg hover:bg-sky-500 hover:text-white transition-colors border border-sky-100 shadow-sm">
+                                        <i class="fab fa-kaggle mr-2"></i> Explore on Kaggle
+                                    </a>
+                                    <a href="https://www.linkedin.com/posts/adittoahosankabbo_ica-independentcomponentanalysis-cocktailpartyproblem-activity-7362224967372955649-OheP?utm_source=share&utm_medium=member_desktop&rcm=ACoAADYmlAcBDC-p4HWCs6yFwh5eDLA4vA0uquE"
+                                        class="hidden">
+                                        LinkedIn
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </section>
+    </div>
+    <!-- Enlarge Preview Modal -->
+    <div id="myModal" class="modal-overlay">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header flex justify-between items-center px-6 py-4 border-b border-slate-100 bg-white"
+                style="z-index: 20000;">
+                <!-- Left: Title -->
+                <h3 class="modal-title text-2xl font-bold text-slate-800 tracking-tight">Project Title</h3>
+
+                <!-- Right: Controls Group -->
+                <div class="flex items-center gap-3" style="z-index: 20002; pointer-events: auto;">
+                    <!-- GitHub -->
+                    <a href="#" target="_blank"
+                        class="github-repo-link flex items-center justify-center w-10 h-10 bg-slate-50 rounded-lg text-slate-700 hover:text-white hover:bg-slate-900 transition-all shadow-sm transform hover:scale-105"
+                        title="View Code">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <!-- LinkedIn -->
+                    <a href="#" target="_blank"
+                        class="linkedin-post-link flex items-center justify-center w-10 h-10 bg-slate-50 rounded-lg text-blue-600 hover:text-white hover:bg-blue-600 transition-all shadow-sm transform hover:scale-105"
+                        title="View Post">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                    <!-- Separator -->
+                    <div class="w-px h-6 bg-slate-200 mx-1"></div>
+                    <!-- Close -->
+                    <button
+                        class="modal-close-btn relative top-auto right-auto w-10 h-10 bg-slate-50 rounded-lg text-slate-500 hover:text-red-500 hover:bg-red-50 hover:rotate-90 transition-all flex items-center justify-center shadow-sm"
+                        onclick="closeModal()">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Loading State -->
+            <div class="modal-loading">
+                <div class="spinner"></div>
+                <p class="mt-4 text-slate-500 font-medium animate-pulse">Loading Dashboard...</p>
+            </div>
+
+            <!-- Content Area -->
+            <div id="iframeWrapper" class="modal-iframe-container"></div>
+
+            <!-- Navigation (CSS-driven Layout) -->
+            <div class="modal-navigation">
+                <button id="modalPrevBtn" class="modal-nav-btn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button id="modalNextBtn" class="modal-nav-btn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-50 py-12">
+        <div class="max-w-screen-xl mx-auto px-6 lg:px-12">
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+
+                <!-- Left: Identity (Start) -->
+                <div class="flex items-center justify-center md:justify-start gap-2 text-base">
+                    <a href="index.html" class="flex items-center gap-2 group transition-opacity hover:opacity-80">
+                        <span class="font-bold text-slate-900 text-lg">Aditto.</span>
+                        <span class="text-slate-300">|</span>
+                        <span class="text-slate-400 font-medium">© 2026</span>
+                    </a>
+                </div>
+
+                <!-- Center: Social Icons (Center) -->
+                <div class="flex justify-center gap-4">
+                    <a href="https://linkedin.com/in/adittoahosankabbo" target="_blank"
+                        class="w-11 h-11 flex items-center justify-center rounded-full bg-slate-50 text-slate-500 hover:bg-[#0077b5] hover:text-white transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-md">
+                        <i class="fab fa-linkedin-in text-sm"></i>
+                    </a>
+                    <a href="https://github.com/AdittoAhosanKabbo" target="_blank"
+                        class="w-11 h-11 flex items-center justify-center rounded-full bg-slate-50 text-slate-500 hover:bg-[#333] hover:text-white transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-md">
+                        <i class="fab fa-github text-sm"></i>
+                    </a>
+                    <a href="https://kaggle.com/adittoahosankabbo" target="_blank"
+                        class="w-11 h-11 flex items-center justify-center rounded-full bg-slate-50 text-slate-500 hover:bg-[#20BEFF] hover:text-white transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-md">
+                        <i class="fab fa-kaggle text-sm"></i>
+                    </a>
+                    <a href="mailto:aditahosankabbo@gmail.com"
+                        class="w-11 h-11 flex items-center justify-center rounded-full bg-slate-50 text-slate-500 hover:bg-red-500 hover:text-white transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-md">
+                        <i class="fas fa-envelope text-sm"></i>
+                    </a>
+                </div>
+
+                <!-- Right: Navigation (End) -->
+                <nav class="flex justify-center md:justify-end gap-6 text-base font-medium text-slate-500">
+                    <a href="about.html" class="hover:text-slate-900 transition-colors">About</a>
+                    <a href="project.html" class="hover:text-slate-900 transition-colors">Projects</a>
+                    <a href="blogs.html" class="hover:text-slate-900 transition-colors">Blogs</a>
+                    <a href="notes.html" class="hover:text-slate-900 transition-colors">Notes</a>
+                </nav>
+
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

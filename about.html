@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me | Aditto Ahosan Kabbo - Data Analyst</title>
+    <meta name="description"
+        content="Learn more about Aditto Ahosan Kabbo, a passionate Data Analyst with a background in Statistics. Discover my skills, education, certifications, and journey in Data Science and Machine Learning.">
+    <meta name="keywords"
+        content="About Aditto Ahosan Kabbo, Data Analyst Bio, Statistics Background, Data Science Skills, Education, Certifications, Portfolio">
+    <meta name="author" content="Aditto Ahosan Kabbo">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://adittoahosankabbo.github.io/about.html">
+    <meta property="og:title" content="About Me | Aditto Ahosan Kabbo - Data Analyst">
+    <meta property="og:description"
+        content="Learn more about Aditto Ahosan Kabbo, a passionate Data Analyst with a background in Statistics. Discover my skills, education, and certifications.">
+    <meta property="og:image" content="assets/images/aakpro.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://adittoahosankabbo.github.io/about.html">
+    <meta property="twitter:title" content="About Me | Aditto Ahosan Kabbo - Data Analyst">
+    <meta property="twitter:description"
+        content="Learn more about Aditto Ahosan Kabbo, a passionate Data Analyst with a background in Statistics. Discover my skills, education, and certifications.">
+    <meta property="twitter:image" content="assets/images/aakpro.png">
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS (via CDN for instant development) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        // Data Analyst Palette
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9', // Sky blue - trustworthy & modern
+                            600: '#0284c7',
+                            900: '#0c4a6e',
+                        },
+                        dark: '#0f172a',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-white text-slate-800 antialiased selection:bg-brand-500 selection:text-white">
+    <!-- Navigation -->
+    <nav id="navbar"
+        class="fixed z-50 transition-all duration-500 ease-in-out w-full top-0 border-b border-transparent bg-transparent py-4">
+        <div id="nav-container"
+            class="max-w-screen-2xl mx-auto flex flex-wrap lg:flex-nowrap items-center justify-between px-6 lg:px-12 transition-all duration-500">
+
+            <!-- Left: Minimalist Logo -->
+            <a href="index.html" class="flex items-center gap-1 group shrink-0">
+                <span class="text-2xl font-bold text-slate-900 tracking-tight">Aditto</span>
+                <span
+                    class="text-2xl font-light text-slate-500 group-hover:text-slate-900 transition-colors">Ahosan</span>
+                <span class="w-2 h-2 rounded-full bg-blue-500 mb-1 ml-0.5 animate-pulse"></span>
+            </a>
+
+            <!-- Mobile Toggle -->
+            <button data-collapse-toggle="navbar-default" type="button"
+                class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-slate-500 rounded-xl lg:hidden hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-100 transition-all"
+                aria-controls="navbar-default" aria-expanded="false" id="menu-toggle">
+                <span class="sr-only">Open main menu</span>
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+
+            <!-- Right: Clean Links -->
+            <div class="hidden w-full lg:block lg:w-auto" id="navbar-default">
+                <ul
+                    class="font-medium flex flex-col p-4 lg:p-0 mt-4 border border-slate-100 rounded-2xl bg-white lg:bg-transparent lg:border-0 lg:shadow-none lg:flex-row lg:items-center space-y-6 lg:space-y-0 lg:space-x-10 rtl:space-x-reverse lg:mt-0 shadow-xl">
+
+                    <!-- Link Item (Home) -->
+                    <li>
+                        <a href="index.html"
+                            class="relative block w-fit py-2 text-base font-medium text-slate-500 hover:text-slate-900 transition-colors group whitespace-nowrap">
+                            Home
+                            <span
+                                class="absolute left-0 bottom-1 w-0 h-[2px] bg-slate-900 transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                    </li>
+
+                    <!-- Link Item (About Me - Active) -->
+                    <li class="relative group/dropdown">
+                        <a href="about.html"
+                            class="relative block w-fit py-2 text-base font-bold text-slate-900 transition-colors group flex items-center gap-1 whitespace-nowrap">
+                            About Me
+                            <i
+                                class="fas fa-chevron-down text-[10px] text-slate-400 group-hover:text-slate-900 transition-colors pt-0.5"></i>
+                            <span
+                                class="absolute left-0 bottom-1 w-full h-[2px] bg-slate-900 transition-all duration-300"></span>
+                        </a>
+
+                        <!-- Dropdown Menu -->
+                        <ul
+                            class="absolute left-1/2 -translate-x-1/2 top-full pt-4 w-48 opacity-0 invisible group-hover/dropdown:opacity-100 group-hover/dropdown:visible transition-all duration-300 z-50 transform group-hover/dropdown:translate-y-0 translate-y-2 pointer-events-none group-hover/dropdown:pointer-events-auto">
+                            <div
+                                class="bg-white border border-slate-100 rounded-xl shadow-xl overflow-hidden ring-1 ring-slate-900/5">
+                                <li>
+                                    <a href="#skills"
+                                        class="block px-5 py-3.5 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors border-b border-slate-50 whitespace-nowrap">
+                                        Skills
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#education"
+                                        class="block px-5 py-3.5 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors border-b border-slate-50 whitespace-nowrap">
+                                        Education
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#certifications"
+                                        class="block px-5 py-3.5 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors whitespace-nowrap">
+                                        Certifications
+                                    </a>
+                                </li>
+                            </div>
+                        </ul>
+                    </li>
+
+                    <!-- Projects -->
+                    <li>
+                        <a href="project.html"
+                            class="relative block w-fit py-2 text-base font-medium text-slate-500 hover:text-slate-900 transition-colors group whitespace-nowrap">
+                            Projects
+                            <span
+                                class="absolute left-0 bottom-1 w-0 h-[2px] bg-slate-900 transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="blogs.html"
+                            class="relative block w-fit py-2 text-base font-medium text-slate-500 hover:text-slate-900 transition-colors group whitespace-nowrap">
+                            Blogs
+                            <span
+                                class="absolute left-0 bottom-1 w-0 h-[2px] bg-slate-900 transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="notes.html"
+                            class="relative block w-fit py-2 text-base font-medium text-slate-500 hover:text-slate-900 transition-colors group whitespace-nowrap">
+                            Notes
+                            <span
+                                class="absolute left-0 bottom-1 w-0 h-[2px] bg-slate-900 transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                    </li>
+
+                    <!-- CTA Button -->
+                    <li class="lg:pl-6 mt-2 lg:mt-0">
+                        <a href="contact.html"
+                            class="block py-3 px-7 text-sm font-bold text-slate-900 uppercase tracking-widest rounded-full border border-slate-200 hover:border-slate-900 hover:bg-slate-900 hover:text-white transition-all duration-300 whitespace-nowrap">
+                            Let's Talk
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="pt-32 pb-12 bg-slate-50 border-b border-slate-200">
+        <div class="max-w-screen-xl mx-auto px-6 text-center">
+            <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 tracking-tight mb-4">About Me</h1>
+            <p class="text-lg text-slate-500 max-w-2xl mx-auto">
+                Discover my journey, the skills I've mastered, and the qualifications that drive my passion for Data
+                Analysis.
+            </p>
+        </div>
+    </header>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section">
+        <div class="skills-container">
+            <h2 class="skills-title">Technical Skills</h2>
+
+            <!-- Skills Grid -->
+            <div class="space-y-16">
+                <!-- Row 1: Data Analysis -->
+                <div class="skill-category w-full">
+                    <h3 class="text-center w-full mb-8">Data Analysis & Visualization</h3>
+                    <div class="skills-grid">
+                        <!-- Power BI -->
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <img src="assets/images/LOGO/POWERBI.jpg" alt="Power BI">
+                            </div>
+                            <h4>Power BI</h4>
+                            <p>Dashboard Creation, Data Modeling, DAX Formulas</p>
+                            <div class="skill-level" style="--skill-progress: 0.9"></div>
+                        </div>
+
+                        <!-- Excel -->
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <img src="assets/images/LOGO/EXCEL LOGO.png" alt="Excel">
+                            </div>
+                            <h4>Excel/Google Sheets</h4>
+                            <p>Advanced Functions, Pivot Tables, Data Analysis</p>
+                            <div class="skill-level" style="--skill-progress: 0.95"></div>
+                        </div>
+
+                        <!-- Python -->
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <img src="assets/images/LOGO/PYTHON (1).png" alt="Python">
+                            </div>
+                            <h4>Python</h4>
+                            <p>Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn</p>
+                            <div class="skill-level" style="--skill-progress: 0.85"></div>
+                        </div>
+
+                        <!-- R -->
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <img src="assets/images/LOGO/R.png" alt="R">
+                            </div>
+                            <h4>R</h4>
+                            <p>Statistical Analysis and Visualization</p>
+                            <div class="skill-level" style="--skill-progress: 0.8"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 2: Database & Methods -->
+                <div class="skill-category w-full">
+                    <h3 class="text-center w-full mb-8">Database & Statistical Methods</h3>
+                    <div class="skills-grid">
+                        <!-- SQL -->
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <img src="assets/images/LOGO/SQL LOGO.png" alt="SQL">
+                            </div>
+                            <h4>SQL</h4>
+                            <p>Data Querying, Database Management, MS SQL Server</p>
+                            <div class="skill-level" style="--skill-progress: 0.85"></div>
+                        </div>
+
+                        <!-- SPSS -->
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <img src="assets/images/LOGO/SPSS.png" alt="SPSS">
+                            </div>
+                            <h4>SPSS</h4>
+                            <p>Statistical Analysis, Hypothesis Testing, Regression</p>
+                            <div class="skill-level" style="--skill-progress: 0.75"></div>
+                        </div>
+
+                        <!-- Tableau -->
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <img src="assets/images/LOGO/TABLEU.png" alt="Tableau">
+                            </div>
+                            <h4>Tableau</h4>
+                            <p>Data Visualization, Statistical Dashboards</p>
+                            <div class="skill-level" style="--skill-progress: 0.7"></div>
+                        </div>
+
+                        <!-- Development Tools -->
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <img src="assets/images/LOGO/Git_icon.svg.png" alt="Git">
+                            </div>
+                            <h4>Development Tools</h4>
+                            <p>Git, GitHub, Jupyter, VS Code, Kaggle</p>
+                            <div class="skill-level" style="--skill-progress: 0.7"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Infinite Carousel -->
+            <div class="skills-carousel-container">
+                <div class="skills-carousel-title">Technologies I Work With</div>
+                <div class="skills-carousel-track-wrapper">
+                    <div class="skills-carousel">
+                        <!-- Original Set -->
+                        <div class="skills-carousel-item">
+                            <img src="assets/images/LOGO/PYTHON (1).png" alt="Python" class="skills-logo">
+                            <span class="skills-carousel-item-text">Python</span>
+                        </div>
+                        <div class="skills-carousel-item">
+                            <img src="assets/images/LOGO/R.png" alt="R" class="skills-logo">
+                            <span class="skills-carousel-item-text">R</span>
+                        </div>
+                        <div class="skills-carousel-item">
+                            <img src="assets/images/LOGO/POWERBI.jpg" alt="Power BI" class="skills-logo">
+                            <span class="skills-carousel-item-text">Power BI</span>
+                        </div>
+                        <div class="skills-carousel-item">
+                            <img src="assets/images/LOGO/EXCEL LOGO.png" alt="Excel" class="skills-logo">
+                            <span class="skills-carousel-item-text">Excel</span>
+                        </div>
+                        <div class="skills-carousel-item">
+                            <img src="assets/images/LOGO/SQL LOGO.png" alt="SQL" class="skills-logo">
+                            <span class="skills-carousel-item-text">SQL</span>
+                        </div>
+                        <div class="skills-carousel-item">
+                            <img src="assets/images/LOGO/SPSS.png" alt="SPSS" class="skills-logo">
+                            <span class="skills-carousel-item-text">SPSS</span>
+                        </div>
+                        <div class="skills-carousel-item">
+                            <img src="assets/images/LOGO/JUPYTER.png" alt="Jupyter" class="skills-logo">
+                            <span class="skills-carousel-item-text">Jupyter</span>
+                        </div>
+                        <div class="skills-carousel-item">
+                            <img src="assets/images/LOGO/Git_icon.svg.png" alt="Git" class="skills-logo">
+                            <span class="skills-carousel-item-text">Git</span>
+                        </div>
+                        <div class="skills-carousel-item">
+                            <img src="assets/images/LOGO/TABLEU.png" alt="Tableau" class="skills-logo">
+                            <span class="skills-carousel-item-text">Tableau</span>
+                        </div>
+
+                        <!-- Duplicate Set for Seamless Loop -->
+                        <div class="skills-carousel-item">
+                            <img src="assets/images/LOGO/PYTHON (1).png" alt="Python" class="skills-logo">
+                            <span class="skills-carousel-item-text">Python</span>
+                        </div>
+                        <div class="skills-carousel-item">
+                            <img src="assets/images/LOGO/R.png" alt="R" class="skills-logo">
+                            <span class="skills-carousel-item-text">R</span>
+                        </div>
+                        <div class="skills-carousel-item">
+                            <img src="assets/images/LOGO/POWERBI.jpg" alt="Power BI" class="skills-logo">
+                            <span class="skills-carousel-item-text">Power BI</span>
+                        </div>
+                        <div class="skills-carousel-item">
+                            <img src="assets/images/LOGO/EXCEL LOGO.png" alt="Excel" class="skills-logo">
+                            <span class="skills-carousel-item-text">Excel</span>
+                        </div>
+                        <div class="skills-carousel-item">
+                            <img src="assets/images/LOGO/SQL LOGO.png" alt="SQL" class="skills-logo">
+                            <span class="skills-carousel-item-text">SQL</span>
+                        </div>
+                        <div class="skills-carousel-item">
+                            <img src="assets/images/LOGO/SPSS.png" alt="SPSS" class="skills-logo">
+                            <span class="skills-carousel-item-text">SPSS</span>
+                        </div>
+                        <div class="skills-carousel-item">
+                            <img src="assets/images/LOGO/JUPYTER.png" alt="Jupyter" class="skills-logo">
+                            <span class="skills-carousel-item-text">Jupyter</span>
+                        </div>
+                        <div class="skills-carousel-item">
+                            <img src="assets/images/LOGO/Git_icon.svg.png" alt="Git" class="skills-logo">
+                            <span class="skills-carousel-item-text">Git</span>
+                        </div>
+                        <div class="skills-carousel-item">
+                            <img src="assets/images/LOGO/TABLEU.png" alt="Tableau" class="skills-logo">
+                            <span class="skills-carousel-item-text">Tableau</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education"
+        class="py-24 bg-gradient-to-br from-gray-50 via-white to-gray-100/50 relative overflow-hidden">
+        <!-- Background Decorative Elements -->
+        <div class="absolute top-20 right-0 w-96 h-96 bg-gray-200/40 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-10 left-0 w-72 h-72 bg-gray-200/30 rounded-full blur-3xl pointer-events-none">
+        </div>
+
+        <div class="section-container mx-auto px-6 relative z-10">
+            <!-- Section Header - Black & White -->
+            <div class="text-center mb-16">
+                <!-- Icons Row -->
+                <div class="flex justify-center items-center gap-5 mb-8">
+                    <div
+                        class="w-14 h-14 bg-black rounded-2xl flex items-center justify-center shadow-xl transform -rotate-12 hover:rotate-0 transition-all duration-300">
+                        <i class="fas fa-book-open text-white text-xl"></i>
+                    </div>
+                    <div
+                        class="w-20 h-20 bg-black rounded-3xl flex items-center justify-center shadow-2xl transform hover:scale-105 transition-all duration-300">
+                        <i class="fas fa-graduation-cap text-white text-3xl"></i>
+                    </div>
+                    <div
+                        class="w-14 h-14 bg-black rounded-2xl flex items-center justify-center shadow-xl transform rotate-12 hover:rotate-0 transition-all duration-300">
+                        <i class="fas fa-university text-white text-xl"></i>
+                    </div>
+                </div>
+                <!-- Badge -->
+                <div class="inline-flex items-center gap-3 px-5 py-2 bg-black rounded-full mb-6 shadow-lg">
+                    <span class="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                    <span class="text-white text-sm font-semibold tracking-wider">ACADEMIC JOURNEY</span>
+                </div>
+                <!-- Title -->
+                <h2 class="text-4xl md:text-5xl font-black tracking-tight mb-4 text-black">Education</h2>
+                <p class="text-gray-500 text-lg max-w-xl mx-auto">
+                    My academic background and qualifications
+                </p>
+                <!-- Divider -->
+                <div class="flex items-center justify-center gap-3 mt-8">
+                    <div class="w-16 h-px bg-gradient-to-r from-transparent to-gray-400"></div>
+                    <div class="w-3 h-3 bg-black rounded-full"></div>
+                    <div class="w-16 h-px bg-gradient-to-l from-transparent to-gray-400"></div>
+                </div>
+            </div>
+            <!-- Timeline Container -->
+            <div class="lg:col-span-2 space-y-8 pl-6 border-l-4 border-gray-300 ml-4 relative">
+                <!-- Gradient Line Overlay -->
+                <div
+                    class="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-black via-gray-500 to-gray-300 -translate-x-[2px]">
+                </div>
+
+                <!-- Item 1: PUST (Current) -->
+                <div class="relative group">
+                    <!-- Timeline Dot with Pulse -->
+                    <div class="absolute -left-[29px] top-2 z-10">
+                        <div class="w-6 h-6 rounded-full bg-black shadow-lg flex items-center justify-center">
+                            <div class="w-2 h-2 bg-white rounded-full"></div>
+                        </div>
+                        <div class="absolute inset-0 w-6 h-6 rounded-full bg-black animate-ping opacity-20"></div>
+                    </div>
+
+                    <!-- Card -->
+                    <div
+                        class="bg-white rounded-2xl p-8 border border-gray-100 shadow-xl hover:shadow-2xl transition-all duration-300 group-hover:-translate-y-1">
+                        <div class="flex flex-col md:flex-row gap-8 items-start">
+                            <!-- Logo -->
+                            <div class="w-36 h-36 shrink-0 rounded-xl overflow-hidden">
+                                <img src="assets/images/pust.jpg" alt="PUST" class="w-full h-full object-contain">
+                            </div>
+
+                            <div class="flex-1">
+                                <div class="flex flex-wrap justify-between items-start gap-4 mb-4">
+                                    <div>
+                                        <h3 class="text-2xl font-black text-black leading-tight">Pabna University of
+                                            Science and Technology</h3>
+                                        <p class="text-lg font-bold text-gray-700 mt-1">Bachelor of Science (B.Sc.) in
+                                            Statistics</p>
+                                    </div>
+                                    <span
+                                        class="px-4 py-1.5 bg-black text-white text-xs font-bold tracking-wider rounded-full shadow-md">2022
+                                        - 2026</span>
+                                </div>
+                                <div class="flex items-center gap-2 mt-2">
+                                    <span class="text-slate-500 font-medium">CGPA:</span>
+                                    <span class="text-lg font-bold text-slate-900">3.57</span>
+                                    <span class="text-slate-400">/</span>
+                                    <span class="text-slate-600">4.00</span>
+                                    <span class="text-xs text-slate-400 ml-1">(till 4th semester)</span>
+                                </div>
+
+                                <!-- Skills / Coursework -->
+                                <div class="mt-5 pt-4 border-t border-slate-100">
+                                    <p class="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-3">
+                                        Relevant Coursework & Skills</p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span
+                                            class="px-3 py-1.5 bg-white text-slate-700 text-xs font-medium rounded-lg border border-slate-200 shadow-sm">Probability
+                                            Theory</span>
+                                        <span
+                                            class="px-3 py-1.5 bg-white text-slate-700 text-xs font-medium rounded-lg border border-slate-200 shadow-sm">Regression
+                                            Analysis</span>
+                                        <span
+                                            class="px-3 py-1.5 bg-white text-slate-700 text-xs font-medium rounded-lg border border-slate-200 shadow-sm">Multivariate
+                                            Analysis</span>
+                                        <span
+                                            class="px-3 py-1.5 bg-white text-slate-700 text-xs font-medium rounded-lg border border-slate-200 shadow-sm">Data
+                                            Mining</span>
+                                        <span
+                                            class="px-3 py-1.5 bg-white text-gray-700 text-xs font-semibold rounded-lg border border-gray-200 shadow-sm hover:border-black transition-colors">R
+                                            Language</span>
+                                        <span
+                                            class="px-3 py-1.5 bg-white text-gray-700 text-xs font-semibold rounded-lg border border-gray-200 shadow-sm hover:border-black transition-colors">Python</span>
+                                        <span
+                                            class="px-3 py-1.5 bg-white text-slate-700 text-xs font-medium rounded-lg border border-slate-200 shadow-sm">Sampling
+                                            Techniques</span>
+                                        <span
+                                            class="px-3 py-1.5 bg-white text-slate-700 text-xs font-medium rounded-lg border border-slate-200 shadow-sm">Time
+                                            Series Analysis
+                                        </span><span
+                                            class="px-3 py-1.5 bg-white text-slate-700 text-xs font-medium rounded-lg border border-slate-200 shadow-sm">Experimental
+                                            Design</span>
+                                        <span
+                                            class="px-3 py-1.5 bg-white text-slate-700 text-xs font-medium rounded-lg border border-slate-200 shadow-sm">Linear
+                                            Algebra</span>
+                                        <span
+                                            class="px-3 py-1.5 bg-white text-slate-700 text-xs font-medium rounded-lg border border-slate-200 shadow-sm">Advanced
+                                            Calculus
+                                        </span>
+
+
+                                        <span
+                                            class="px-3 py-1.5 bg-white text-slate-700 text-xs font-medium rounded-lg border border-slate-200 shadow-sm">Biostatistics</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2: Rajshahi College -->
+                <div class="relative group">
+                    <!-- Timeline Dot -->
+                    <div class="absolute -left-[29px] top-2 z-10">
+                        <div class="w-6 h-6 rounded-full bg-gray-700 shadow-md flex items-center justify-center">
+                            <div class="w-2 h-2 bg-white rounded-full"></div>
+                        </div>
+                    </div>
+
+                    <!-- Card -->
+                    <div
+                        class="bg-white rounded-2xl p-8 border border-gray-100 shadow-xl hover:shadow-2xl transition-all duration-300 group-hover:-translate-y-1">
+                        <div class="flex flex-col md:flex-row gap-8 items-start">
+                            <!-- Logo -->
+                            <div class="w-36 h-36 shrink-0 rounded-xl overflow-hidden">
+                                <img src="assets/images/rc.jpg" alt="Rajshahi College logo"
+                                    class="w-full h-full object-contain" />
+                            </div>
+
+                            <div class="flex-1">
+                                <div class="flex flex-wrap justify-between items-start gap-4 mb-4">
+                                    <div>
+                                        <h3 class="text-xl font-black text-black">Rajshahi College, Rajshahi</h3>
+                                        <p class="text-base font-bold text-gray-700 mt-1">Higher Secondary Certificate
+                                            (HSC)</p>
+                                    </div>
+                                    <span
+                                        class="px-4 py-1.5 bg-gray-100 text-gray-800 text-xs font-bold tracking-wider rounded-full border border-gray-200">2018
+                                        - 2020</span>
+                                </div>
+                                <p class="text-sm font-medium text-gray-500 mb-4">Science Group</p>
+                                <div class="flex items-center gap-2 mt-2">
+                                    <span class="text-slate-500 font-medium">GPA:</span>
+                                    <span class="text-lg font-bold text-black">5.00</span>
+                                    <span class="text-slate-400">/</span>
+                                    <span class="text-slate-600">5.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3: Rajshahi Collegiate School -->
+                <div class="relative group">
+                    <!-- Timeline Dot -->
+                    <div class="absolute -left-[29px] top-2 z-10">
+                        <div class="w-6 h-6 rounded-full bg-gray-500 shadow-md flex items-center justify-center">
+                            <div class="w-2 h-2 bg-white rounded-full"></div>
+                        </div>
+                    </div>
+
+                    <!-- Card -->
+                    <div
+                        class="bg-white rounded-2xl p-8 border border-gray-100 shadow-xl hover:shadow-2xl transition-all duration-300 group-hover:-translate-y-1">
+                        <div class="flex flex-col md:flex-row gap-8 items-start">
+                            <!-- Logo -->
+                            <div class="w-36 h-36 shrink-0 rounded-xl overflow-hidden">
+                                <img src="assets/images/rcs.jpg" alt="Rajshahi Collegiate School"
+                                    class="w-full h-full object-contain">
+                            </div>
+
+                            <div class="flex-1">
+                                <div class="flex flex-wrap justify-between items-start gap-4 mb-4">
+                                    <div>
+                                        <h3 class="text-xl font-black text-black">Rajshahi Collegiate School</h3>
+                                        <p class="text-base font-bold text-gray-700 mt-1">Secondary School Certificate
+                                            (SSC)</p>
+                                    </div>
+                                    <span
+                                        class="px-4 py-1.5 bg-gray-100 text-gray-800 text-xs font-bold tracking-wider rounded-full border border-gray-200">2010
+                                        - 2018</span>
+                                </div>
+                                <p class="text-sm font-medium text-gray-500 mb-4">Science Group</p>
+                                <div class="flex items-center gap-3 mt-2">
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-slate-500 font-medium">GPA:</span>
+                                        <span class="text-lg font-bold text-black">5.00</span>
+                                        <span class="text-slate-400">/</span>
+                                        <span class="text-slate-600">5.00</span>
+                                    </div>
+                                    <span
+                                        class="px-2.5 py-1 text-xs font-bold uppercase tracking-wide bg-black text-white rounded-lg shadow-sm">
+                                        <i class="fas fa-award mr-1"></i>Board Scholarship
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+
+
+    <!-- Certifications Section -->
+    <section id="certifications"
+        class="py-28 bg-gradient-to-br from-gray-50 via-white to-gray-100/50 relative overflow-hidden">
+
+        <!-- Background Blobs -->
+        <div
+            class="absolute top-0 right-0 w-[600px] h-[600px] bg-gray-200/50 rounded-full blur-3xl pointer-events-none">
+        </div>
+        <div
+            class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gray-200/40 rounded-full blur-3xl pointer-events-none">
+        </div>
+
+        <div class="section-container mx-auto px-6 relative z-10">
+            <!-- Section Header - Black & White -->
+            <div class="text-center mb-20">
+                <!-- Icons Row -->
+                <div class="flex justify-center items-center gap-5 mb-8">
+                    <div
+                        class="w-14 h-14 bg-black rounded-2xl flex items-center justify-center shadow-xl transform -rotate-12 hover:rotate-0 transition-all duration-300">
+                        <i class="fas fa-award text-white text-xl"></i>
+                    </div>
+                    <div
+                        class="w-20 h-20 bg-black rounded-3xl flex items-center justify-center shadow-2xl transform hover:scale-105 transition-all duration-300">
+                        <i class="fas fa-certificate text-white text-3xl"></i>
+                    </div>
+                    <div
+                        class="w-14 h-14 bg-black rounded-2xl flex items-center justify-center shadow-xl transform rotate-12 hover:rotate-0 transition-all duration-300">
+                        <i class="fas fa-medal text-white text-xl"></i>
+                    </div>
+                </div>
+
+                <!-- Badge Counter -->
+                <div class="inline-flex items-center gap-3 px-6 py-3 bg-black rounded-full mb-8 shadow-lg">
+                    <span class="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                    <span class="text-white text-sm font-semibold tracking-wider">6 VERIFIED CREDENTIALS</span>
+                    <i class="fas fa-check-circle text-white"></i>
+                </div>
+
+                <!-- Main Title -->
+                <h2 class="text-5xl md:text-6xl font-black tracking-tight mb-6 text-black">
+                    My Certifications
+                </h2>
+                <p class="text-gray-500 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+                    Professional credentials validating expertise in
+                    <span class="font-bold text-black">Data Analysis</span>,
+                    <span class="font-bold text-black">Programming</span> &
+                    <span class="font-bold text-black">Research</span>
+                </p>
+
+                <!-- Divider -->
+                <div class="flex items-center justify-center gap-3 mt-10">
+                    <div class="w-20 h-px bg-gradient-to-r from-transparent to-gray-400"></div>
+                    <div class="w-3 h-3 bg-black rounded-full"></div>
+                    <div class="w-20 h-px bg-gradient-to-l from-transparent to-gray-400"></div>
+                </div>
+            </div>
+
+            <!-- Certifications Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+
+                <!-- Certification 1: Microsoft Word & Excel (EDGE Project) -->
+                <div
+                    class="bg-white/80 backdrop-blur-xl rounded-3xl overflow-hidden border border-emerald-100 shadow-xl shadow-emerald-100/50 hover:shadow-2xl hover:shadow-emerald-200/50 hover:-translate-y-3 hover:border-emerald-300 transition-all duration-500 group relative">
+                    <!-- Corner Ribbon -->
+                    <div
+                        class="absolute top-6 -right-8 bg-gradient-to-r from-emerald-500 to-teal-500 text-white text-xs font-bold px-10 py-1.5 rotate-45 shadow-lg z-20">
+                        VERIFIED
+                    </div>
+                    <!-- Large Certificate Image -->
+                    <div
+                        class="w-full h-auto md:h-[420px] bg-gradient-to-br from-white via-emerald-50/30 to-teal-50/30 flex items-center justify-center relative">
+                        <img src="assets/images/certificates/exceledgecourse.png" alt="ICT Division EDGE Certificate"
+                            class="w-full h-auto md:h-full object-contain drop-shadow-xl group-hover:scale-[1.02] transition-transform duration-500">
+                    </div>
+                    <!-- Content -->
+                    <div class="p-6 border-t border-emerald-100 bg-gradient-to-b from-white to-emerald-50/30">
+                        <div class="flex items-start justify-between mb-3">
+                            <div>
+                                <h3
+                                    class="text-xl font-bold text-slate-900 mb-1 group-hover:text-emerald-600 transition-colors">
+                                    Microsoft Word & Excel</h3>
+                                <p class="text-emerald-600 font-semibold text-sm">EDGE Project</p>
+                            </div>
+                            <div
+                                class="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-lg shadow-emerald-500/20 border border-emerald-100 p-2">
+                                <img src="assets/images/LOGO/EXCEL LOGO.png" alt="Excel"
+                                    class="w-full h-full object-contain">
+                            </div>
+                        </div>
+                        <p class="text-slate-500 font-medium">ICT Division, Bangladesh</p>
+                        <p class="text-slate-400 text-sm mt-1 flex items-center gap-2">
+                            <i class="fas fa-calendar-alt"></i> Issued: Aug 2025
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span
+                                class="px-3 py-1.5 text-xs font-semibold bg-gradient-to-r from-emerald-50 to-teal-50 text-emerald-700 rounded-full border border-emerald-200 shadow-sm">Microsoft
+                                Word</span>
+                            <span
+                                class="px-3 py-1.5 text-xs font-semibold bg-gradient-to-r from-emerald-50 to-teal-50 text-emerald-700 rounded-full border border-emerald-200 shadow-sm">Microsoft
+                                Excel</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certification 2: Intermediate SQL -->
+                <div
+                    class="bg-white/80 backdrop-blur-xl rounded-3xl overflow-hidden border border-purple-100 shadow-xl shadow-purple-100/50 hover:shadow-2xl hover:shadow-purple-200/50 hover:-translate-y-3 hover:border-purple-300 transition-all duration-500 group relative">
+                    <!-- Corner Ribbon -->
+                    <div
+                        class="absolute top-6 -right-8 bg-gradient-to-r from-purple-500 to-violet-500 text-white text-xs font-bold px-10 py-1.5 rotate-45 shadow-lg z-20">
+                        VERIFIED
+                    </div>
+                    <!-- Large Certificate Image -->
+                    <div
+                        class="w-full h-auto md:h-[420px] bg-gradient-to-br from-white via-purple-50/30 to-violet-50/30 flex items-center justify-center relative">
+                        <img src="assets/images/certificates/sql certificate.png" alt="DataCamp SQL Certificate"
+                            class="w-full h-auto md:h-full object-contain drop-shadow-xl group-hover:scale-[1.02] transition-transform duration-500">
+                    </div>
+                    <!-- Content -->
+                    <div class="p-6 border-t border-purple-100 bg-gradient-to-b from-white to-purple-50/30">
+                        <div class="flex items-start justify-between mb-3">
+                            <div>
+                                <h3
+                                    class="text-xl font-bold text-slate-900 mb-1 group-hover:text-purple-600 transition-colors">
+                                    Intermediate SQL</h3>
+                                <p class="text-purple-600 font-semibold text-sm">Database Fundamentals</p>
+                            </div>
+                            <div
+                                class="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-lg shadow-purple-500/20 border border-purple-100 p-2">
+                                <img src="assets/images/LOGO/SQL LOGO.png" alt="SQL"
+                                    class="w-full h-full object-contain">
+                            </div>
+                        </div>
+                        <p class="text-slate-500 font-medium">DataCamp</p>
+                        <p class="text-slate-400 text-sm mt-1 flex items-center gap-2">
+                            <i class="fas fa-calendar-alt"></i> Issued: Jul 2025
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span
+                                class="px-3 py-1.5 text-xs font-semibold bg-gradient-to-r from-purple-50 to-violet-50 text-purple-700 rounded-full border border-purple-200 shadow-sm">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certification 3: 21 Days SQL Challenge -->
+                <div
+                    class="bg-white/80 backdrop-blur-xl rounded-3xl overflow-hidden border border-green-100 shadow-xl shadow-green-100/50 hover:shadow-2xl hover:shadow-green-200/50 hover:-translate-y-3 hover:border-green-300 transition-all duration-500 group relative">
+                    <!-- Corner Ribbon -->
+                    <div
+                        class="absolute top-6 -right-8 bg-gradient-to-r from-green-500 to-emerald-500 text-white text-xs font-bold px-10 py-1.5 rotate-45 shadow-lg z-20">
+                        VERIFIED
+                    </div>
+                    <!-- Large Certificate Image -->
+                    <div
+                        class="w-full h-auto md:h-[420px] bg-gradient-to-br from-white via-green-50/30 to-emerald-50/30 flex items-center justify-center relative">
+                        <img src="assets/images/certificates/idc sql.png" alt="Indian Data Club SQL Certificate"
+                            class="w-full h-auto md:h-full object-contain drop-shadow-xl group-hover:scale-[1.02] transition-transform duration-500">
+                    </div>
+                    <!-- Content -->
+                    <div class="p-6 border-t border-green-100 bg-gradient-to-b from-white to-green-50/30">
+                        <div class="flex items-start justify-between mb-3">
+                            <div>
+                                <h3
+                                    class="text-xl font-bold text-slate-900 mb-1 group-hover:text-green-600 transition-colors">
+                                    21 Days SQL Challenge</h3>
+                                <p class="text-green-600 font-semibold text-sm">Challenge Completed</p>
+                            </div>
+                            <div
+                                class="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-lg shadow-green-500/20 border border-green-100 p-2">
+                                <img src="assets/images/LOGO/SQL LOGO.png" alt="SQL"
+                                    class="w-full h-full object-contain">
+                            </div>
+                        </div>
+                        <p class="text-slate-500 font-medium">Indian Data Club</p>
+                        <p class="text-slate-400 text-sm mt-1 flex items-center gap-2">
+                            <i class="fas fa-calendar-alt"></i> Issued: Dec 2025
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span
+                                class="px-3 py-1.5 text-xs font-semibold bg-gradient-to-r from-green-50 to-emerald-50 text-green-700 rounded-full border border-green-200 shadow-sm">SQL</span>
+                            <span
+                                class="px-3 py-1.5 text-xs font-semibold bg-gradient-to-r from-green-50 to-emerald-50 text-green-700 rounded-full border border-green-200 shadow-sm">MS
+                                SQL Server</span>
+                            <span
+                                class="px-3 py-1.5 text-xs font-semibold bg-gradient-to-r from-green-50 to-emerald-50 text-green-700 rounded-full border border-green-200 shadow-sm">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certification 4: Crash Course on Python -->
+                <div
+                    class="bg-white/80 backdrop-blur-xl rounded-3xl overflow-hidden border border-blue-100 shadow-xl shadow-blue-100/50 hover:shadow-2xl hover:shadow-blue-200/50 hover:-translate-y-3 hover:border-blue-300 transition-all duration-500 group relative">
+                    <!-- Corner Ribbon -->
+                    <div
+                        class="absolute top-6 -right-8 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs font-bold px-10 py-1.5 rotate-45 shadow-lg z-20">
+                        VERIFIED
+                    </div>
+                    <!-- Large Certificate Image -->
+                    <div
+                        class="w-full h-auto md:h-[420px] bg-gradient-to-br from-white via-blue-50/30 to-cyan-50/30 flex items-center justify-center relative">
+                        <img src="assets/images/certificates/py.png" alt="Google Python Certificate"
+                            class="w-full h-auto md:h-full object-contain drop-shadow-xl group-hover:scale-[1.02] transition-transform duration-500">
+                    </div>
+                    <!-- Content -->
+                    <div class="p-6 border-t border-blue-100 bg-gradient-to-b from-white to-blue-50/30">
+                        <div class="flex items-start justify-between mb-3">
+                            <div>
+                                <h3
+                                    class="text-xl font-bold text-slate-900 mb-1 group-hover:text-blue-600 transition-colors">
+                                    Crash Course on Python</h3>
+                                <p class="text-blue-600 font-semibold text-sm">Google Career Certificates</p>
+                            </div>
+                            <div
+                                class="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/20 border border-blue-100 p-2">
+                                <img src="assets/images/LOGO/google.png" alt="Google"
+                                    class="w-full h-full object-contain">
+                            </div>
+                        </div>
+                        <p class="text-slate-500 font-medium">Google</p>
+                        <p class="text-slate-400 text-sm mt-1 flex items-center gap-2">
+                            <i class="fas fa-calendar-alt"></i> Issued: Aug 2023
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span
+                                class="px-3 py-1.5 text-xs font-semibold bg-gradient-to-r from-blue-50 to-cyan-50 text-blue-700 rounded-full border border-blue-200 shadow-sm">Python</span>
+                        </div>
+                        <a href="https://www.coursera.org/account/accomplishments/verify/J72QQWLZZ2UV" target="_blank"
+                            class="inline-flex items-center gap-2 text-sm text-blue-600 font-semibold mt-4 hover:text-blue-700 transition-colors bg-blue-50 px-4 py-2 rounded-full border border-blue-200 hover:bg-blue-100">
+                            <i class="fas fa-external-link-alt text-xs"></i>
+                            View Credential
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Certification 5: Data Analysis with R Programming -->
+                <div
+                    class="bg-white/80 backdrop-blur-xl rounded-3xl overflow-hidden border border-indigo-100 shadow-xl shadow-indigo-100/50 hover:shadow-2xl hover:shadow-indigo-200/50 hover:-translate-y-3 hover:border-indigo-300 transition-all duration-500 group relative">
+                    <!-- Corner Ribbon -->
+                    <div
+                        class="absolute top-6 -right-8 bg-gradient-to-r from-indigo-500 to-violet-500 text-white text-xs font-bold px-10 py-1.5 rotate-45 shadow-lg z-20">
+                        VERIFIED
+                    </div>
+                    <!-- Large Certificate Image -->
+                    <div
+                        class="w-full h-auto md:h-[420px] bg-gradient-to-br from-white via-indigo-50/30 to-violet-50/30 flex items-center justify-center relative">
+                        <img src="assets/images/certificates/r.png" alt="Google R Programming Certificate"
+                            class="w-full h-auto md:h-full object-contain drop-shadow-xl group-hover:scale-[1.02] transition-transform duration-500">
+                    </div>
+                    <!-- Content -->
+                    <div class="p-6 border-t border-indigo-100 bg-gradient-to-b from-white to-indigo-50/30">
+                        <div class="flex items-start justify-between mb-3">
+                            <div>
+                                <h3
+                                    class="text-xl font-bold text-slate-900 mb-1 group-hover:text-indigo-600 transition-colors">
+                                    Data Analysis with R</h3>
+                                <p class="text-indigo-600 font-semibold text-sm">Google Career Certificates</p>
+                            </div>
+                            <div
+                                class="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/20 border border-indigo-100 p-2">
+                                <img src="assets/images/LOGO/google.png" alt="Google"
+                                    class="w-full h-full object-contain">
+                            </div>
+                        </div>
+                        <p class="text-slate-500 font-medium">Google</p>
+                        <p class="text-slate-400 text-sm mt-1 flex items-center gap-2">
+                            <i class="fas fa-calendar-alt"></i> Issued: Jul 2023
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span
+                                class="px-3 py-1.5 text-xs font-semibold bg-gradient-to-r from-indigo-50 to-violet-50 text-indigo-700 rounded-full border border-indigo-200 shadow-sm">R
+                                Programming</span>
+                        </div>
+                        <a href="https://www.coursera.org/account/accomplishments/verify/9WFH7KS9QLH6" target="_blank"
+                            class="inline-flex items-center gap-2 text-sm text-indigo-600 font-semibold mt-4 hover:text-indigo-700 transition-colors bg-indigo-50 px-4 py-2 rounded-full border border-indigo-200 hover:bg-indigo-100">
+                            <i class="fas fa-external-link-alt text-xs"></i>
+                            View Credential
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Certification 6: Unlocking Research: From Concept to Publication -->
+                <div
+                    class="bg-white/80 backdrop-blur-xl rounded-3xl overflow-hidden border border-teal-100 shadow-xl shadow-teal-100/50 hover:shadow-2xl hover:shadow-teal-200/50 hover:-translate-y-3 hover:border-teal-300 transition-all duration-500 group relative">
+                    <!-- Corner Ribbon -->
+                    <div
+                        class="absolute top-6 -right-8 bg-gradient-to-r from-teal-500 to-cyan-500 text-white text-xs font-bold px-10 py-1.5 rotate-45 shadow-lg z-20">
+                        VERIFIED
+                    </div>
+                    <!-- Large Certificate Image -->
+                    <div
+                        class="w-full h-auto md:h-[420px] bg-gradient-to-br from-white via-teal-50/30 to-cyan-50/30 flex items-center justify-center relative">
+                        <img src="assets/images/certificates/solvergreen.png" alt="Solver Green Research Certificate"
+                            class="w-full h-auto md:h-full object-contain drop-shadow-xl group-hover:scale-[1.02] transition-transform duration-500">
+                    </div>
+                    <!-- Content -->
+                    <div class="p-6 border-t border-teal-100 bg-gradient-to-b from-white to-teal-50/30">
+                        <div class="flex items-start justify-between mb-3">
+                            <div>
+                                <h3
+                                    class="text-xl font-bold text-slate-900 mb-1 group-hover:text-teal-600 transition-colors">
+                                    Unlocking Research</h3>
+                                <p class="text-teal-600 font-semibold text-sm">From Concept to Publication</p>
+                            </div>
+                            <div
+                                class="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-lg shadow-teal-500/20 border border-teal-100 p-2">
+                                <img src="assets/images/LOGO/graduation.png" alt="Research"
+                                    class="w-full h-full object-contain">
+                            </div>
+                        </div>
+                        <p class="text-slate-500 font-medium">Solver Green</p>
+                        <p class="text-slate-400 text-sm mt-1 flex items-center gap-2">
+                            <i class="fas fa-calendar-alt"></i> Issued: May 2025
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span
+                                class="px-3 py-1.5 text-xs font-semibold bg-gradient-to-r from-teal-50 to-cyan-50 text-teal-700 rounded-full border border-teal-200 shadow-sm">Research
+                                Skills</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-50 py-12">
+        <div class="max-w-screen-xl mx-auto px-6 lg:px-12">
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+
+                <!-- Left: Identity (Start) -->
+                <div class="flex items-center justify-center md:justify-start gap-2 text-base">
+                    <a href="index.html" class="flex items-center gap-2 group transition-opacity hover:opacity-80">
+                        <span class="font-bold text-slate-900 text-lg">Aditto.</span>
+                        <span class="text-slate-300">|</span>
+                        <span class="text-slate-400 font-medium">© 2026</span>
+                    </a>
+                </div>
+
+                <!-- Center: Social Icons (Center) -->
+                <div class="flex justify-center gap-4">
+                    <a href="https://linkedin.com/in/adittoahosankabbo" target="_blank"
+                        class="w-11 h-11 flex items-center justify-center rounded-full bg-slate-50 text-slate-500 hover:bg-[#0077b5] hover:text-white transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-md">
+                        <i class="fab fa-linkedin-in text-sm"></i>
+                    </a>
+                    <a href="https://github.com/AdittoAhosanKabbo" target="_blank"
+                        class="w-11 h-11 flex items-center justify-center rounded-full bg-slate-50 text-slate-500 hover:bg-[#333] hover:text-white transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-md">
+                        <i class="fab fa-github text-sm"></i>
+                    </a>
+                    <a href="https://kaggle.com/adittoahosankabbo" target="_blank"
+                        class="w-11 h-11 flex items-center justify-center rounded-full bg-slate-50 text-slate-500 hover:bg-[#20BEFF] hover:text-white transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-md">
+                        <i class="fab fa-kaggle text-sm"></i>
+                    </a>
+                    <a href="mailto:aditahosankabbo@gmail.com"
+                        class="w-11 h-11 flex items-center justify-center rounded-full bg-slate-50 text-slate-500 hover:bg-red-500 hover:text-white transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-md">
+                        <i class="fas fa-envelope text-sm"></i>
+                    </a>
+                </div>
+
+                <!-- Right: Navigation (End) -->
+                <nav class="flex justify-center md:justify-end gap-6 text-base font-medium text-slate-500">
+                    <a href="about.html" class="hover:text-slate-900 transition-colors">About</a>
+                    <a href="project.html" class="hover:text-slate-900 transition-colors">Projects</a>
+                    <a href="blogs.html" class="hover:text-slate-900 transition-colors">Blogs</a>
+                    <a href="notes.html" class="hover:text-slate-900 transition-colors">Notes</a>
+                </nav>
+
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
