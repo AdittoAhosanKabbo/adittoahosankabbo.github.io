@@ -5,22 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Statistics Week 2026 Sports Live Fixtures</title>
-    <!-- Tailwind CSS for modern, responsive styling -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons for beautiful SVG icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
                     colors: {
-                        brand: {
+                    { time: "TBA", title: "সাংস্কৃতিক অনুষ্ঠান", desc: "Outdoor Game" },
                             50: '#eff6ff', 100: '#dbeafe', 400: '#60a5fa',
                             500: '#3b82f6', 600: '#2563eb', 900: '#1e3a8a',
                         }
-                    }
-                }
-            }
+                    { time: "TBA", title: "সাংস্কৃতিক অনুষ্ঠান", desc: "Performances & celebrations" },
+                    { time: "TBA", title: "Farewell", desc: "Farewell Of Batch 2019-20" },
+                    { time: "TBA", title: "Prize Giving Ceremony", desc: "Award Distribution" }
         }
     </script>
     <!-- Poster Fonts -->
@@ -30,16 +22,14 @@
         href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:ital,wght@0,400;0,600;0,800;0,900;1,700&family=Noto+Sans+Bengali:wght@500;700;900&family=Oswald:wght@500;700&display=swap"
         rel="stylesheet">
     <style>
-        * {
-            box-sizing: border-box;
-        }
-
         body {
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
-        .custom-scrollbar::-webkit-scrollbar {
+                    { time: "TBA", title: "সাংস্কৃতিক অনুষ্ঠান", desc: "Performances & celebrations" },
+                    { time: "TBA", title: "Farewell", desc: "Farewell Of Batch 2019-20" },
+                    { time: "TBA", title: "Prize Giving Ceremony", desc: "Award Distribution" }
             width: 8px;
             height: 8px;
         }
@@ -788,8 +778,8 @@
 
                 <div class="bg-brand-50 rounded-lg p-3 border border-brand-100">
                     <h2 class="text-lg font-bold text-slate-900">Admin Setup</h2>
-                    <p class="text-xs text-slate-600 mt-1 font-medium">Select game � Enter players � Generate � Select
-                        winners � Publish</p>
+                    <p class="text-xs text-slate-600 mt-1 font-medium">Select game � Enter players � Generate � Select
+                        winners � Publish</p>
                 </div>
 
                 <!-- Game Selection -->
@@ -931,7 +921,7 @@
 
                     <div id="cricketDashboardView" class="hidden flex flex-col gap-4">
                         <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl shadow-sm">
-                            <h3 class="text-xs font-bold text-slate-800 uppercase tracking-widest mb-3">?? Edit Rosters
+                            <h3 class="text-xs font-bold text-slate-800 uppercase tracking-widest mb-3">✏️ Edit Rosters
                             </h3>
                             <div class="flex flex-col gap-3">
                                 <select id="cricketEditTeamSelect"
@@ -961,7 +951,7 @@
                             class="bg-slate-50 border border-slate-200 p-4 rounded-xl shadow-sm">
                             <h3
                                 class="text-xs font-bold text-slate-800 uppercase tracking-widest mb-3 flex items-center gap-2">
-                                ?? Match Fixtures</h3>
+                                🔀 Match Fixtures</h3>
                             <button type="button" onclick="window.generateCustomTeamBracket()"
                                 class="w-full px-4 py-2.5 text-sm font-bold text-slate-700 bg-white hover:bg-slate-100 border border-slate-300 hover:border-slate-400 rounded-lg transition-all flex items-center justify-center gap-2">
                                 <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" stroke-width="2"
@@ -1046,7 +1036,7 @@
                         <p
                             style="font-family:'Montserrat',sans-serif; font-size:16px; font-weight:700; color:#1e293b; line-height:1.6; margin:0 auto 6px;">
                             Honoring our department legends, <span style="color:#b45309; font-weight:900;">Batch
-                                2019�20</span>, through <span style="color:#047857; font-weight:900;">PUST Statistics
+                                2019�20</span>, through <span style="color:#047857; font-weight:900;">PUST Statistics
                                 Week 2026.</span>
                         </p>
                         <p
@@ -1108,31 +1098,31 @@
                                                         <path
                                                             d="M13.49 5.48c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm-3.6 13.9l1-4.4 2.1 2v6h2v-7.5l-2.1-2 .6-3c1.3 1.5 3.3 2.5 5.5 2.5v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6.99 8.48v5h2v-3.5l1.8-.7-1.6 8.1-4.7-1-.4 2 6.3 1z" />
                                                     </svg></div>
-                                                <h2 class="col-title">??????? ????</h2>
+                                                <h2 class="col-title">ছেলেদের খেলা</h2>
                                             </div>
                                         </div>
-                                        <div class="game-group-title">?????</div>
+                                        <div class="game-group-title">ইনডোর</div>
                                         <div class="games-grid">
-                                            <div class="game-card"><img src="images/card.jpg" alt="?????">
-                                                <div class="game-card-name">?????</div>
+                                            <div class="game-card"><img src="images/card.jpg" alt="কার্ড">
+                                                <div class="game-card-name">কার্ড</div>
                                             </div>
-                                            <div class="game-card"><img src="images/chess.png" alt="????">
-                                                <div class="game-card-name">????</div>
+                                            <div class="game-card"><img src="images/chess.png" alt="দাবা">
+                                                <div class="game-card-name">দাবা</div>
                                             </div>
-                                            <div class="game-card"><img src="images/carrom.png" alt="???????">
-                                                <div class="game-card-name">???????</div>
+                                            <div class="game-card"><img src="images/carrom.png" alt="ক্যারাম">
+                                                <div class="game-card-name">ক্যারাম</div>
                                             </div>
                                         </div>
-                                        <div class="game-group-title" style="margin-top: 15px;">??????</div>
+                                        <div class="game-group-title" style="margin-top: 15px;">আউটডোর</div>
                                         <div class="games-grid">
-                                            <div class="game-card"><img src="images/cricket.png" alt="???????">
-                                                <div class="game-card-name">???????</div>
+                                            <div class="game-card"><img src="images/cricket.png" alt="ক্রিকেট">
+                                                <div class="game-card-name">ক্রিকেট</div>
                                             </div>
-                                            <div class="game-card"><img src="images/football.png" alt="?????">
-                                                <div class="game-card-name">?????</div>
+                                            <div class="game-card"><img src="images/football.png" alt="ফুটবল">
+                                                <div class="game-card-name">ফুটবল</div>
                                             </div>
-                                            <div class="game-card"><img src="images/rooster.png" alt="???? ?????">
-                                                <div class="game-card-name">???? ?????</div>
+                                            <div class="game-card"><img src="images/rooster.png" alt="মোরগ লড়াই">
+                                                <div class="game-card-name">মোরগ লড়াই</div>
                                             </div>
                                         </div>
                                     </div>
@@ -1144,28 +1134,28 @@
                                                         <path
                                                             d="M14.5 5.48c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm-3.6 13.9l1-4.4 2.1 2v6h2v-7.5l-2.1-2 .6-3c1.3 1.5 3.3 2.5 5.5 2.5v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1l-4.8 1.98v5h2v-3.5l1.8-.7-1.6 8.1-4.7-1-.4 2 6.3 1z" />
                                                     </svg></div>
-                                                <h2 class="col-title">???????? ????</h2>
+                                                <h2 class="col-title">মেয়েদের খেলা</h2>
                                             </div>
                                         </div>
                                         <div class="games-grid" style="margin-top: 25px; gap: 32px 10px;">
-                                            <div class="game-card"><img src="images/carrom.png" alt="???????">
-                                                <div class="game-card-name">???????</div>
+                                            <div class="game-card"><img src="images/carrom.png" alt="ক্যারাম">
+                                                <div class="game-card-name">ক্যারাম</div>
                                             </div>
-                                            <div class="game-card"><img src="images/ludo.png" alt="????">
-                                                <div class="game-card-name">????</div>
+                                            <div class="game-card"><img src="images/ludo.png" alt="লুডু">
+                                                <div class="game-card-name">লুডু</div>
                                             </div>
-                                            <div class="game-card"><img src="images/shot_kick.png" alt="?? ???">
-                                                <div class="game-card-name">?? ???</div>
+                                            <div class="game-card"><img src="images/shot_kick.png" alt="শট কিক">
+                                                <div class="game-card-name">শট কিক</div>
                                             </div>
                                             <div class="game-card"><img src="images/ball_basket.png"
-                                                    alt="??????? ?? ???????">
-                                                <div class="game-card-name">??????? ??<br>???????</div>
+                                                    alt="ঝুড়িতে বল নিক্ষেপ">
+                                                <div class="game-card-name">ঝুড়িতে বল<br>নিক্ষেপ</div>
                                             </div>
-                                            <div class="game-card"><img src="images/pillow.png" alt="????? ????">
-                                                <div class="game-card-name">????? ????</div>
+                                            <div class="game-card"><img src="images/pillow.png" alt="বালিশ খেলা">
+                                                <div class="game-card-name">বালিশ খেলা</div>
                                             </div>
-                                            <div class="game-card"><img src="images/clay_pot.png" alt="??????????">
-                                                <div class="game-card-name">??????????</div>
+                                            <div class="game-card"><img src="images/clay_pot.png" alt="হাঁড়িভাঙা">
+                                                <div class="game-card-name">হাঁড়িভাঙা</div>
                                             </div>
                                         </div>
                                     </div>
@@ -1190,7 +1180,7 @@
                                 </div>
                                 <!-- FOOTER -->
                                 <div class="footer">
-                                    <p>Organized by Department of Statistics <span>�</span> PUST <span>�</span> 2026</p>
+                                    <p>Organized by Department of Statistics <span>�</span> PUST <span>�</span> 2026</p>
                                 </div>
                             </div>
                             <!-- Abstract Graphics -->
@@ -1275,7 +1265,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
                             </svg>
-                            APR 12, 13, 15, 16 � 2026
+                            APR 12, 13, 15, 16 � 2026
                         </div>
                     </div>
                 </div>
@@ -1421,7 +1411,7 @@
                     <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">Password</label>
                     <input type="password" id="adminPass"
                         class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all"
-                        placeholder="��������" autocomplete="off">
+                        placeholder="��������" autocomplete="off">
                 </div>
                 <div id="loginError"
                     class="hidden text-sm text-red-600 font-semibold bg-red-50 p-3 rounded border border-red-100 text-center">
@@ -1463,7 +1453,7 @@
             { id: "team-d", name: "Team D", captainInputId: "cricketCaptainTeamD", seedInputId: "cricketSeedTeamD", order: 4 }
         ];
 
-        // Day Schedule Data � Edit this to update daily plans
+        // Day Schedule Data � Edit this to update daily plans
         const DAY_SCHEDULE = {
             1: {
                 label: "Day 1", date: "12 April 2026",
@@ -1495,12 +1485,12 @@
                 label: "Day 4", date: "16 April 2026",
                 events: [
                     { time: "TBA", title: "Grand Lunch", desc: "Special event lunch" },
-                    { time: "TBA", title: "??????????", desc: "Outdoor Game" },
-                    { time: "TBA", title: "????? ????", desc: "Outdoor Game" },
-                    { time: "TBA", title: "??????? ?? ???????", desc: "Outdoor Game" },
-                    { time: "TBA", title: "?? ???", desc: "Outdoor Game" },
-                    { time: "TBA", title: "???? ????", desc: "Outdoor Game" },
-                    { time: "TBA", title: "Cultural Program", desc: "Performances & celebrations" },
+                    { time: "TBA", title: "হাঁড়িভাঙা", desc: "Outdoor Game" },
+                    { time: "TBA", title: "বালিশ খেলা", desc: "Outdoor Game" },
+                    { time: "TBA", title: "ঝুড়িতে বল নিক্ষেপ", desc: "Outdoor Game" },
+                    { time: "TBA", title: "শট কিক", desc: "Outdoor Game" },
+                    { time: "TBA", title: "মোরগ লড়াই", desc: "Outdoor Game" },
+                    { time: "TBA", title: "সাংস্কৃতিক অনুষ্ঠান", desc: "Performances & celebrations" },
                     { time: "TBA", title: "Farewell", desc: "Farewell Of Batch 2019-20" },
                     { time: "TBA", title: "Prize Giving Ceremony", desc: "Award Distribution" }
                 ]
