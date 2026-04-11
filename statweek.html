@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -830,8 +830,8 @@
                             </div>
                         </label>
                         <label class="cursor-pointer group">
-                            <input type="radio" name="gameType" value="Girls Ludu" data-format="2v2"
-                                class="peer sr-only" onchange="window.switchAdminCategory(this.value)">
+                            <input type="radio" name="gameType" value="Girls Ludu" data-format="4p" class="peer sr-only"
+                                onchange="window.switchAdminCategory(this.value)">
                             <div
                                 class="p-2 text-center border border-slate-200 rounded-lg peer-checked:bg-brand-50 peer-checked:border-brand-500 peer-checked:text-brand-700 hover:bg-slate-50 transition-all bg-white">
                                 <div class="font-bold text-xs">Girls Ludu</div>
@@ -2560,12 +2560,14 @@
             allGames.forEach(game => {
                 const docId = toDocId(game);
                 const saved = localStorage.getItem(`tournament_${docId}`);
+                let data_raw = saved ? JSON.parse(saved) : null;
+                if (data_raw && data_raw.type === '4player') migrate4PlayerData(data_raw);
                 let championName = "TBD";
                 let runnerUpName = "TBD";
                 let isComplete = false;
 
                 if (saved) {
-                    const data = JSON.parse(saved);
+                    const data = data_raw;
                     if (isCustomTeamTournament(data)) {
                         const finalMatch = data.matches?.final;
                         if (finalMatch?.winnerId) {
@@ -2573,6 +2575,18 @@
                             const runnerUpId = [finalMatch.homeTeamId, finalMatch.awayTeamId].find((teamId) => teamId && teamId !== finalMatch.winnerId);
                             runnerUpName = getCricketTeamById(data, runnerUpId)?.name || "TBD";
                             isComplete = true;
+                        }
+                    } else if (data.type === '4player' && data.rounds && data.rounds.length > 0) {
+                        const finalRound = data.rounds[data.rounds.length - 1];
+                        if (finalRound.name === 'Final' && finalRound.groups && finalRound.groups.length > 0) {
+                            const finalGroup = finalRound.groups[0];
+                            if (finalGroup.first) {
+                                championName = finalGroup.first;
+                                isComplete = true;
+                            }
+                            if (finalGroup.second) {
+                                runnerUpName = finalGroup.second;
+                            }
                         }
                     } else if (data.rounds && data.rounds.length > 0) {
                         const finalRound = data.rounds[data.rounds.length - 1];
@@ -2653,6 +2667,7 @@
 
             if (saved) {
                 publicTournament = JSON.parse(saved);
+                if (publicTournament && publicTournament.type === '4player') migrate4PlayerData(publicTournament);
                 renderTournament(publicTournament, true);
             } else {
                 publicTournament = null;
@@ -2681,6 +2696,7 @@
             publicUnsubscribe = onSnapshot(docRef, (docSnap) => {
                 if (docSnap.exists()) {
                     publicTournament = docSnap.data();
+                    if (publicTournament && publicTournament.type === '4player') migrate4PlayerData(publicTournament);
                     renderTournament(publicTournament, true);
                 } else {
                     publicTournament = null;
@@ -2709,6 +2725,7 @@
                 }
 
                 if (loadedTournament) {
+                    if (loadedTournament.type === '4player') migrate4PlayerData(loadedTournament);
                     window.currentTournament = loadedTournament;
                     if (isCustomTeamTournament(window.currentTournament)) {
                         syncCricketDraftStateFromTournament(window.currentTournament);
@@ -2744,6 +2761,7 @@
                 }
 
                 if (loadedTournament) {
+                    if (loadedTournament.type === '4player') migrate4PlayerData(loadedTournament);
                     window.currentTournament = loadedTournament;
                     if (isCustomTeamTournament(window.currentTournament)) {
                         syncCricketDraftStateFromTournament(window.currentTournament);
@@ -2799,6 +2817,310 @@
                 [array[i], array[j]] = [array[j], array[i]];
             }
             return array;
+        }
+
+        // --- 4-Player Group Tournament Logic ---
+        function makeGroupsOf4(items) {
+            const n = items.length;
+            if (n <= 4) return [[...items]];
+            const numGroups = Math.ceil(n / 4);
+            const groups = Array.from({ length: numGroups }, () => []);
+            for (let i = 0; i < n; i++) {
+                groups[i % numGroups].push(items[i]);
+            }
+            return groups;
+        }
+
+        // Migrate old 4-player tournament data (results array → first/second fields)
+        function migrate4PlayerData(data) {
+            if (!data || data.type !== '4player' || !data.rounds) return data;
+            for (const round of data.rounds) {
+                if (!round.groups) continue;
+                for (const g of round.groups) {
+                    // Already migrated
+                    if ('first' in g && 'second' in g && !g.results) continue;
+                    // Migrate from results array
+                    if (g.results && Array.isArray(g.results)) {
+                        const r1 = g.results.find(r => r.position === 1);
+                        const r2 = g.results.find(r => r.position === 2);
+                        g.first = r1 ? r1.name : (g.first || null);
+                        g.second = r2 ? r2.name : (g.second || null);
+                        delete g.results;
+                    } else {
+                        // Ensure fields exist
+                        if (!('first' in g)) g.first = null;
+                        if (!('second' in g)) g.second = null;
+                    }
+                }
+            }
+            return data;
+        }
+
+        function build4PlayerTournament(names, gameName) {
+            const shuffled = shuffleArray(names);
+            const rounds = [];
+            let gid = 1;
+            let currentPlayers = [...shuffled];
+            let roundNum = 1;
+
+            while (currentPlayers.length > 1) {
+                const grouped = makeGroupsOf4(currentPlayers);
+                let roundName;
+                if (grouped.length === 1) {
+                    roundName = 'Final';
+                } else if (currentPlayers.length <= 8) {
+                    roundName = 'Semi-Finals';
+                } else {
+                    roundName = `Round ${roundNum}`;
+                }
+
+                const roundGroups = grouped.map(players => ({
+                    id: gid++,
+                    players: [...players],
+                    first: null,
+                    second: null
+                }));
+
+                rounds.push({ name: roundName, groups: roundGroups });
+
+                if (grouped.length === 1) break; // final round
+
+                // Build next-round entries
+                currentPlayers = [];
+                for (const g of roundGroups) {
+                    if (g.players.length === 1) {
+                        // bye — auto-advance
+                        currentPlayers.push(g.players[0]);
+                    } else {
+                        currentPlayers.push(`1st:G${g.id}`);
+                        currentPlayers.push(`2nd:G${g.id}`);
+                    }
+                }
+                roundNum++;
+            }
+
+            return {
+                type: '4player',
+                title: gameName,
+                gameType: gameName,
+                rounds,
+                createdAt: Date.now()
+            };
+        }
+
+        // Resolve a reference like "1st:G3" → actual player name, or return as-is
+        function resolve4PRef(ref, tournamentData) {
+            if (!ref || typeof ref !== 'string') return ref;
+            const m = ref.match(/^(1st|2nd):G(\d+)$/);
+            if (!m) return ref;
+            const pos = m[1];
+            const groupId = parseInt(m[2]);
+            for (const round of tournamentData.rounds) {
+                for (const g of round.groups) {
+                    if (g.id === groupId) {
+                        if (pos === '1st' && g.first) return g.first;
+                        if (pos === '2nd' && g.second) return g.second;
+                        return ref; // not yet resolved
+                    }
+                }
+            }
+            return ref;
+        }
+
+        function is4PRef(str) {
+            return typeof str === 'string' && /^(1st|2nd):G\d+$/.test(str);
+        }
+
+        window.selectGroupResult = (roundIdx, groupId, resolvedName, position) => {
+            if (!isAdminMode || !window.currentTournament || window.currentTournament.type !== '4player') return;
+
+            const round = window.currentTournament.rounds[roundIdx];
+            if (!round) return;
+            const group = round.groups.find(g => g.id === groupId);
+            if (!group) return;
+
+            const field = position === 1 ? 'first' : 'second';
+            const otherField = position === 1 ? 'second' : 'first';
+
+            // Toggle off if already set
+            if (group[field] === resolvedName) {
+                group[field] = null;
+            } else {
+                // Remove from other position if already there
+                if (group[otherField] === resolvedName) {
+                    group[otherField] = null;
+                }
+                group[field] = resolvedName;
+            }
+
+            // Clear results of all later rounds (they depend on this)
+            for (let r = roundIdx + 1; r < window.currentTournament.rounds.length; r++) {
+                for (const g of window.currentTournament.rounds[r].groups) {
+                    g.first = null;
+                    g.second = null;
+                }
+            }
+
+            renderTournament(window.currentTournament, false);
+            const action = group[field] === resolvedName
+                ? `set as ${position === 1 ? '1st 🥇' : '2nd 🥈'}`
+                : 'unset';
+            showMessage(`${resolvedName} ${action} in Group ${groupId}`);
+
+            if (!deleteBtn.classList.contains('hidden')) {
+                window.saveToDashboard();
+            }
+        };
+
+        function render4PlayerTournament(tournamentData, isReadOnly) {
+            emptyState.classList.add('hidden');
+            tournamentTitle.innerText = tournamentData.title;
+
+            const scheduleBadgeEl = document.getElementById('scheduleBadge');
+            const scheduleTextEl = document.getElementById('scheduleText');
+            const scheduleTime = SCHEDULE_MAP[tournamentData.title];
+            if (scheduleTime) {
+                scheduleTextEl.textContent = scheduleTime;
+                scheduleBadgeEl.classList.remove('hidden');
+                scheduleBadgeEl.classList.add('flex');
+            } else {
+                scheduleBadgeEl.classList.add('hidden');
+                scheduleBadgeEl.classList.remove('flex');
+            }
+
+            if (isReadOnly) {
+                liveBadge.classList.remove('hidden'); liveBadge.classList.add('flex');
+                draftBadge.classList.add('hidden'); draftBadge.classList.remove('flex');
+                adminInstruction.classList.add('hidden');
+            } else {
+                liveBadge.classList.add('hidden'); liveBadge.classList.remove('flex');
+                draftBadge.classList.remove('hidden'); draftBadge.classList.add('flex');
+                adminInstruction.textContent = 'Click 1st / 2nd buttons to assign positions. Top 2 qualify from each group.';
+                adminInstruction.classList.remove('hidden');
+            }
+
+            tournamentTitleContainer.classList.remove('hidden');
+            tournamentTitleContainer.classList.add('flex');
+            tournamentBracket.classList.remove('hidden');
+            tournamentBracket.classList.add('flex');
+
+            let delay = 0;
+
+            tournamentData.rounds.forEach((round, rIdx) => {
+                const roundRow = document.createElement('div');
+                const isFinal = round.name === 'Final';
+
+                roundRow.className = 'flex flex-col items-center w-full shrink-0 animate-slide-down bracket-row';
+                roundRow.style.animationDelay = `${delay}s`;
+                delay += 0.08;
+
+                const headerCls = isFinal
+                    ? 'bg-amber-50 text-amber-800 border-amber-200'
+                    : 'bg-white text-slate-700 border-slate-200 shadow-sm';
+
+                const svgCls = `w-4 h-4 ${isFinal ? 'text-amber-500' : 'text-brand-500'}`;
+                const svgIcon = isFinal
+                    ? `<svg xmlns="http://www.w3.org/2000/svg" class="${svgCls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>`
+                    : `<svg xmlns="http://www.w3.org/2000/svg" class="${svgCls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`;
+
+                let html = `
+                    <div class="${headerCls} px-6 py-2.5 rounded-full text-center font-bold relative z-10 flex items-center justify-center gap-2 border mb-4">
+                        ${svgIcon}
+                        <span class="tracking-widest uppercase text-xs">${round.name}</span>
+                        <span class="text-[9px] font-medium opacity-60">${round.groups.reduce((s, g) => s + g.players.length, 0)} players</span>
+                    </div>
+                    <div class="flex flex-wrap justify-center gap-4 w-full">`;
+
+                round.groups.forEach(group => {
+                    // Resolve every player for display
+                    const resolved = group.players.map(p => ({
+                        original: p,
+                        display: resolve4PRef(p, tournamentData),
+                        unresolved: is4PRef(resolve4PRef(p, tournamentData))
+                    }));
+
+                    const isGroupComplete = group.first !== null && group.second !== null;
+                    const autoAdvance = group.players.length === 1;
+                    const borderCls = isGroupComplete || autoAdvance ? 'border-emerald-200 shadow-lg' : 'border-slate-200 shadow-sm';
+                    const headerBg = isGroupComplete || autoAdvance
+                        ? 'from-emerald-50 to-green-50 border-emerald-100'
+                        : 'from-slate-50 to-slate-50 border-slate-100';
+                    const dotCls = isGroupComplete || autoAdvance ? 'bg-emerald-500' : 'bg-slate-300';
+
+                    if (autoAdvance) {
+                        // Single-player group — auto-advance (bye card)
+                        const pName = resolved[0].display;
+                        html += `
+                            <div class="bg-gradient-to-b from-emerald-50 to-green-50 rounded-xl border border-emerald-200 overflow-hidden w-full sm:w-72 flex flex-col shadow-md">
+                                <div class="bg-emerald-100 text-xs font-bold text-emerald-700 uppercase tracking-widest px-3 py-2.5 border-b border-emerald-200 text-center flex justify-center items-center gap-2">
+                                    Group ${group.id} · Direct Advance
+                                </div>
+                                <div class="p-4 flex items-center justify-center flex-grow min-h-[3.5rem]">
+                                    <div class="font-bold text-emerald-900 text-sm text-center break-words px-2">${escapeHtml(pName)} ✅</div>
+                                </div>
+                            </div>`;
+                        return;
+                    }
+
+                    html += `
+                        <div class="bg-white rounded-xl border ${borderCls} w-full sm:w-72 flex flex-col match-card transition-all duration-300 ${isReadOnly ? 'readonly' : ''}">
+                            <div class="bg-gradient-to-r ${headerBg} text-[10px] font-semibold text-slate-600 uppercase tracking-widest px-3 py-2.5 border-b text-center flex justify-between items-center">
+                                <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full ${dotCls}"></span>Group ${group.id}</span>
+                                <span class="text-[9px] font-bold ${isGroupComplete ? 'text-emerald-600' : 'text-slate-400'}">${resolved.length} Players</span>
+                            </div>
+                            <div class="p-3 flex flex-col gap-1.5">`;
+
+                    resolved.forEach(({ display, unresolved }) => {
+                        const isFirst = group.first === display && group.first !== null;
+                        const isSecond = group.second === display && group.second !== null;
+                        const isElim = isGroupComplete && !isFirst && !isSecond;
+
+                        let style;
+                        if (isFirst) style = 'bg-amber-100 border-amber-400 text-amber-900 font-extrabold';
+                        else if (isSecond) style = 'bg-emerald-100 border-emerald-400 text-emerald-900 font-extrabold';
+                        else if (isElim) style = 'opacity-35 bg-slate-50 border-slate-100 line-through text-slate-400';
+                        else if (unresolved) style = 'opacity-50 bg-slate-50 border-dashed text-slate-400 italic';
+                        else style = 'bg-white border-slate-200 text-slate-700 hover:border-slate-300';
+
+                        const badge = isFirst
+                            ? '<span class="shrink-0 text-[9px] font-black text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200">🥇 1st</span>'
+                            : isSecond
+                                ? '<span class="shrink-0 text-[9px] font-black text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">🥈 2nd</span>'
+                                : '';
+
+                        const dispText = unresolved
+                            ? `⏳ ${display.replace(/^(1st|2nd):G/, 'from Group ')}`
+                            : display;
+
+                        html += `<div class="rounded-lg border px-3 py-2 text-sm font-bold transition-all ${style} flex items-center justify-between gap-1">
+                                    <span class="truncate">${escapeHtml(dispText)}</span>
+                                    <div class="flex items-center gap-1 shrink-0">
+                                        ${badge}`;
+
+                        // Admin buttons — only for resolved real players
+                        if (!isReadOnly && !unresolved) {
+                            const safe = display.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+                            html += `
+                                        <button onclick="event.stopPropagation(); window.selectGroupResult(${rIdx}, ${group.id}, '${safe}', 1)"
+                                            class="w-6 h-6 rounded ${isFirst ? 'bg-amber-500 text-white shadow' : 'bg-slate-100 hover:bg-amber-100 text-slate-400 hover:text-amber-600'} flex items-center justify-center text-[9px] font-black transition-colors" title="Set as 1st place">1</button>
+                                        <button onclick="event.stopPropagation(); window.selectGroupResult(${rIdx}, ${group.id}, '${safe}', 2)"
+                                            class="w-6 h-6 rounded ${isSecond ? 'bg-emerald-500 text-white shadow' : 'bg-slate-100 hover:bg-emerald-100 text-slate-400 hover:text-emerald-600'} flex items-center justify-center text-[9px] font-black transition-colors" title="Set as 2nd place">2</button>`;
+                        }
+
+                        html += `   </div>
+                                </div>`;
+                    });
+
+                    html += `   </div>
+                        </div>`;
+                });
+
+                html += `</div>`;
+                roundRow.innerHTML = html;
+                tournamentBracket.appendChild(roundRow);
+            });
+
+            lucide.createIcons({ root: tournamentBracket });
         }
 
         // --- Tournament Generation Logic (Admin Only) ---
@@ -2897,7 +3219,12 @@
                     return;
                 }
 
-                if (names.length < 2) {
+                if (gameFormat === '4p') {
+                    if (names.length < 4) {
+                        alert(`Please enter at least 4 players for a 4-player game. You only entered ${names.length}.`);
+                        return;
+                    }
+                } else if (names.length < 2) {
                     alert(`Please enter at least 2 players in the roster. You only entered ${names.length}.`);
                     return;
                 }
@@ -2906,7 +3233,15 @@
                 let participants = [];
                 let benchedPlayer = null;
 
-                if (gameFormat === '1v1') {
+                if (gameFormat === '4p') {
+                    // 4-player game format: build special rounds
+                    window.currentTournament = build4PlayerTournament(names, gameName);
+                    updateAdminButtons(true, false);
+                    renderTournament(window.currentTournament, false);
+                    const groupCount = Math.ceil(names.length / 4);
+                    showMessage(`4-Player bracket generated: ${groupCount} group(s), ${names.length} players`, false, 3500);
+                    return;
+                } else if (gameFormat === '1v1') {
                     participants = [...names];
                 } else if (gameFormat === '2v2') {
                     for (let i = 0; i < names.length; i += 2) {
@@ -3451,6 +3786,11 @@
 
             if (isCustomTeamTournament(tournamentData)) {
                 renderCustomTeamTournament(tournamentData, isReadOnly);
+                return;
+            }
+
+            if (tournamentData.type === '4player') {
+                render4PlayerTournament(tournamentData, isReadOnly);
                 return;
             }
 
