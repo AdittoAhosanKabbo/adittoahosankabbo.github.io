@@ -3506,7 +3506,12 @@
                 return showMessage("Finish previous matches first", true);
             }
 
-            match.winner = side === 1 ? p1Val : p2Val;
+            const selectedVal = side === 1 ? p1Val : p2Val;
+            if (match.winner === selectedVal) {
+                match.winner = null; // Unselect
+            } else {
+                match.winner = selectedVal;
+            }
 
             for (let r = rIdx + 1; r < window.currentTournament.rounds.length; r++) {
                 for (let m of window.currentTournament.rounds[r].matches) m.winner = null;
@@ -3514,7 +3519,7 @@
 
             // INSTANT UI UPDATE
             renderTournament(window.currentTournament, false);
-            showMessage("Match result updated");
+            showMessage(match.winner ? "Match result updated" : "Winner unselected");
 
             // Instantly sync to the public dashboard if it's already a published bracket
             if (!deleteBtn.classList.contains('hidden')) {
@@ -3938,7 +3943,7 @@
                         <div class="bg-white rounded-xl border ${m.winner ? 'border-emerald-200 shadow-lg' : 'border-slate-200 shadow-sm'} relative group w-full sm:w-64 flex flex-col match-card transition-all duration-300 ${isReadOnly ? 'readonly' : ''}">
                             <div class="bg-gradient-to-r ${m.winner ? 'from-emerald-50 to-green-50' : 'from-slate-50 to-slate-50'} text-[10px] font-semibold text-slate-600 uppercase tracking-widest px-3 py-2.5 border-b ${m.winner ? 'border-emerald-100' : 'border-slate-100'} text-center flex justify-between items-center">
                                 <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full ${m.winner ? 'bg-emerald-500' : 'bg-slate-300'}"></span>Match ${m.id}</span>
-                                ${m.winner ? '' : (isReadOnly ? '' : '')}
+                                ${(!isReadOnly && m.winner) ? `<button onclick="window.selectWinner(${rIdx}, ${mIdx}, ${m.winner === p1Display ? 1 : 2})" class="text-[10px] bg-red-50 hover:bg-red-100 text-red-600 px-2 flex items-center justify-center rounded cursor-pointer transition-colors font-bold z-20">UNSELECT</button>` : ''}
                             </div>
                             <div class="p-4 flex flex-col gap-3 relative flex-grow justify-center">
                                 <div class="relative group/p1">
