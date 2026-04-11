@@ -1436,9 +1436,7 @@
 
     <!-- Application Logic with Firebase -->
     <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, collection, doc, addDoc, updateDoc, setDoc, getDoc, onSnapshot, deleteDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 
         // Configuration
         const CRICKET_GAME = "Cricket";
@@ -1598,39 +1596,21 @@
             } catch (e) { /* storage unavailable — hardcoded fallback still works */ }
         })();
 
-        // Initialize Firebase
+        // Initialize Supabase
+        const SUPABASE_URL = 'https://yoagjgkyjmlmhirgkbae.supabase.co';
+        const SUPABASE_KEY = 'sb_publishable_J937OVutceqpk8HFokKCfQ_9FMTEmRs';
+        
+        let supabase = null;
         try {
-            const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : 'null');
-            if (firebaseConfig) {
-                const app = initializeApp(firebaseConfig);
-                db = getFirestore(app);
-                auth = getAuth(app);
-
-                const initAuth = async () => {
-                    if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                        await signInWithCustomToken(auth, __initial_auth_token);
-                    } else {
-                        await signInAnonymously(auth);
-                    }
-                };
-                initAuth();
-
-                onAuthStateChanged(auth, (user) => {
-                    currentUser = user;
-                    renderPublicTabs();
-                    showHomeView();
-                });
-            } else {
-                // Offline Mode - Use localStorage for demo
-                useLocalStorage = true;
-                currentUser = { uid: 'demo-user' }; // Simulate user for demo
-                renderPublicTabs();
-                showHomeView();
-            }
+            supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+            // Simulate anonymous login state to render the tabs immediately 
+            currentUser = { uid: 'public-user' };
+            renderPublicTabs();
+            showHomeView();
         } catch (e) {
-            console.log("Firebase setup failed, using offline mode:", e);
+            console.error("Supabase setup failed:", e);
             useLocalStorage = true;
-            currentUser = { uid: 'demo-user' }; // Simulate user for demo
+            currentUser = { uid: 'demo-user' };
             renderPublicTabs();
             showHomeView();
         }
@@ -2695,7 +2675,6 @@
         // --- Public View Logic (with offline support) ---
         function loadPublicBracketOffline(gameName) {
             if (isAdminMode) return;
-
             const docId = toDocId(gameName);
             const saved = localStorage.getItem(`tournament_${docId}`);
             const hardcoded = HARDCODED_TOURNAMENTS[docId];
@@ -2717,37 +2696,60 @@
             }
         }
 
+        let publicChannel = null;
+
         function loadPublicBracket(gameName) {
             if (!gameName) return;
 
-            if (useLocalStorage) {
-                loadPublicBracketOffline(gameName);
-                return;
-            }
+            loadPublicBracketOffline(gameName); // Always load cached/hardcoded immediately for fast UI
 
-            if (!db || !currentUser || isAdminMode) return;
+            if (!supabase || isAdminMode) return;
 
-            if (publicUnsubscribe) {
-                publicUnsubscribe();
-                publicUnsubscribe = null;
+            if (publicChannel) {
+                supabase.removeChannel(publicChannel);
+                publicChannel = null;
             }
 
             const docId = toDocId(gameName);
-            const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'published_tournaments', docId);
 
-            publicUnsubscribe = onSnapshot(docRef, (docSnap) => {
-                if (docSnap.exists()) {
-                    publicTournament = docSnap.data();
-                    if (publicTournament && publicTournament.type === '4player') migrate4PlayerData(publicTournament);
-                    renderTournament(publicTournament, true);
-                } else {
-                    publicTournament = null;
-                    renderTournament(null, true);
-                    emptyStateText.innerText = `No live schedule available for ${gameName} yet.\n${SCHEDULE_MAP[gameName] ? '📅 Scheduled: ' + SCHEDULE_MAP[gameName] : ''}`;
-                }
-            }, (error) => {
-                console.error("Error fetching public bracket:", error);
-            });
+            // Fetch initial state from cloud
+            supabase.from('tournaments')
+                .select('data')
+                .eq('id', docId)
+                .single()
+                .then(({ data, error }) => {
+                    if (error) {
+                        // Keep the hardcoded/cached data that we just loaded
+                        if (error.code !== 'PGRST116') {
+                            console.error("Cloud fetch error:", error);
+                        }
+                        return;
+                    }
+
+                    if (data && data.data) {
+                        publicTournament = data.data;
+                        if (publicTournament && publicTournament.type === '4player') migrate4PlayerData(publicTournament);
+                        renderTournament(publicTournament, true);
+                    }
+                });
+
+            // Subscribe to live cloud updates
+            publicChannel = supabase.channel(`public:tournaments:${docId}`)
+                .on('postgres_changes', { event: '*', schema: 'public', table: 'tournaments', filter: `id=eq.${docId}` }, payload => {
+                    const updatedData = payload.new ? payload.new.data : null;
+                    if (updatedData) {
+                        publicTournament = updatedData;
+                        if (publicTournament && publicTournament.type === '4player') migrate4PlayerData(publicTournament);
+                        renderTournament(publicTournament, true);
+                        // Save local backup when receiving live update
+                        localStorage.setItem(`tournament_${docId}`, JSON.stringify(publicTournament));
+                    } else {
+                        publicTournament = null;
+                        renderTournament(null, true);
+                        emptyStateText.innerText = `No live schedule available for ${gameName} yet.\n${SCHEDULE_MAP[gameName] ? '📅 Scheduled: ' + SCHEDULE_MAP[gameName] : ''}`;
+                    }
+                })
+                .subscribe();
         }
 
         // --- Admin Input & Category Logic ---
@@ -2757,15 +2759,11 @@
             const docId = toDocId(gameName);
             updateAdminPanelForGame(gameName);
 
-            if (useLocalStorage) {
-                // Offline mode - load from localStorage
-                const saved = localStorage.getItem(`tournament_${docId}`);
-                let loadedTournament = saved ? JSON.parse(saved) : null;
-
-                if (loadedTournament && isCustomTeamGame(gameName) && !isCustomTeamTournament(loadedTournament)) {
-                    loadedTournament = null;
-                }
-
+            // Load immediate offline cache for snappier UI
+            const saved = localStorage.getItem(`tournament_${docId}`);
+            if (saved) {
+                let loadedTournament = JSON.parse(saved);
+                if (loadedTournament && isCustomTeamGame(gameName) && !isCustomTeamTournament(loadedTournament)) loadedTournament = null;
                 if (loadedTournament) {
                     if (loadedTournament.type === '4player') migrate4PlayerData(loadedTournament);
                     window.currentTournament = loadedTournament;
@@ -2776,27 +2774,27 @@
                     }
                     renderTournament(window.currentTournament, false);
                     updateAdminButtons(true, true);
-                } else {
-                    window.currentTournament = null;
-                    if (isCustomTeamGame(gameName)) {
-                        document.getElementById('cricketGenView').classList.remove('hidden');
-                        document.getElementById('cricketDashboardView').classList.add('hidden');
-                    }
-                    renderTournament(null, false);
-                    emptyStateText.innerText = `No bracket saved for ${gameName} yet. Generate one to start.`;
-                    updateAdminButtons(false, false);
                 }
+            } else {
+                window.currentTournament = null;
+                if (isCustomTeamGame(gameName)) {
+                    document.getElementById('cricketGenView').classList.remove('hidden');
+                    document.getElementById('cricketDashboardView').classList.add('hidden');
+                }
+                renderTournament(null, false);
+                emptyStateText.innerText = `Loading bracket for ${gameName}...`;
+                updateAdminButtons(false, false);
+            }
+
+            // Fetch from Supabase
+            if (!supabase) {
+                if (!saved) emptyStateText.innerText = `No bracket saved for ${gameName} yet. Generate one to start.`;
                 return;
             }
 
-            // Firebase mode
-            if (!db || !currentUser) return;
-
-            const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'published_tournaments', docId);
-
             try {
-                const docSnap = await getDoc(docRef);
-                let loadedTournament = docSnap.exists() ? docSnap.data() : null;
+                const { data, error } = await supabase.from('tournaments').select('data').eq('id', docId).single();
+                let loadedTournament = (data && data.data) ? data.data : null;
 
                 if (loadedTournament && isCustomTeamGame(gameName) && !isCustomTeamTournament(loadedTournament)) {
                     loadedTournament = null;
@@ -2812,7 +2810,8 @@
                     }
                     renderTournament(window.currentTournament, false);
                     updateAdminButtons(true, true);
-                } else {
+                    localStorage.setItem(`tournament_${docId}`, JSON.stringify(loadedTournament)); // Sync down changes
+                } else if (!saved) {
                     window.currentTournament = null;
                     if (isCustomTeamGame(gameName)) {
                         document.getElementById('cricketGenView').classList.remove('hidden');
@@ -2822,7 +2821,10 @@
                     emptyStateText.innerText = `No bracket published for ${gameName} yet. Generate one to start.`;
                     updateAdminButtons(false, false);
                 }
-            } catch (e) { console.error(e); }
+            } catch (e) {
+                console.error("Fetch admin error:", e);
+                if (!saved) emptyStateText.innerText = `Failed to connection load for ${gameName}.`;
+            }
         };
 
         nameInput.addEventListener('input', () => {
@@ -3372,27 +3374,19 @@
                 return;
             }
 
-            // Check if user is authenticated
-            if (!useLocalStorage && (!db || !currentUser)) {
-                showMessage("Error: Not authenticated with Firebase", true);
-                return;
-            }
-
             try {
                 const gameDocId = toDocId(window.currentTournament.gameType);
 
-                if (useLocalStorage) {
-                    // Offline mode - save to localStorage
-                    localStorage.setItem(`tournament_${gameDocId}`, JSON.stringify(window.currentTournament));
-                } else {
-                    // Firebase mode
-                    const publicRef = doc(db, 'artifacts', appId, 'public', 'data', 'published_tournaments', gameDocId);
-                    await setDoc(publicRef, window.currentTournament);
+                // Save locally
+                localStorage.setItem(`tournament_${gameDocId}`, JSON.stringify(window.currentTournament));
+
+                // Save to Supabase
+                if (supabase) {
+                    await supabase.from('tournaments').upsert({ id: gameDocId, data: window.currentTournament });
                 }
 
                 updateAdminButtons(true, true);
-                const mode = useLocalStorage ? '(Demo Mode)' : '';
-                showMessage(`Published to dashboard. ${mode}`, false, 3500);
+                showMessage(`Published to dashboard.`, false, 3500);
             } catch (err) {
                 console.error("Save error:", err);
                 showMessage("Failed to publish: " + err.message, true);
@@ -3405,24 +3399,17 @@
                 return;
             }
 
-            // Check if user is authenticated
-            if (!useLocalStorage && (!db || !currentUser)) {
-                showMessage("Error: Not authenticated with Firebase", true);
-                return;
-            }
-
             const selectedRadio = document.querySelector('input[name="gameType"]:checked');
             const gameName = selectedRadio.value;
             const gameDocId = toDocId(gameName);
 
             try {
-                if (useLocalStorage) {
-                    // Offline mode - remove from localStorage
-                    localStorage.removeItem(`tournament_${gameDocId}`);
-                } else {
-                    // Firebase mode
-                    const publicRef = doc(db, 'artifacts', appId, 'public', 'data', 'published_tournaments', gameDocId);
-                    await deleteDoc(publicRef);
+                // Remove locally
+                localStorage.removeItem(`tournament_${gameDocId}`);
+
+                // Remove from Supabase
+                if (supabase) {
+                    await supabase.from('tournaments').delete().eq('id', gameDocId);
                 }
 
                 window.currentTournament = null;
