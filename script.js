@@ -181,6 +181,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Check if Excel Project
                 if (title.toLowerCase().includes('foodpanda') || title.toLowerCase().includes('excel')) {
                     currentModalType = 'excel';
+                } else if (title.toLowerCase().includes('well-being') || title.toLowerCase().includes('survey') || title.toLowerCase().includes('mental')) {
+                    currentModalType = 'survey';
                 } else {
                     currentModalType = 'dataviz';
                 }
@@ -269,6 +271,100 @@ function openModal(iframeSrc, githubUrl, linkedinUrl, title, dashboardSrc = null
     // Strict check: Only if modal type is explicitly Excel (set by listener/nav) 
     // or title matches specific Excel project keywords. Removed src check to prevent false positives.
     const isExcelProject = currentModalType === 'excel' || (title && title.toLowerCase().includes('foodpanda') && !title.toLowerCase().includes('sales'));
+    const isSurveyProject = currentModalType === 'survey';
+
+    // --- Survey Gallery Mode ---
+    if (isSurveyProject && typeof surveyImages !== 'undefined') {
+        loadingSpinner.style.display = 'none';
+
+        const container = document.createElement('div');
+        container.className = 'w-full h-full flex flex-col pointer-events-auto';
+
+        const imgContainer = document.createElement('div');
+        imgContainer.className = 'flex-1 w-full relative min-h-0 flex items-center justify-center py-2 px-12';
+
+        const slider = document.createElement('div');
+        slider.className = 'w-full h-full max-h-[65vh] flex overflow-x-auto snap-x snap-mandatory scroll-smooth';
+        slider.style.scrollbarWidth = 'none';
+
+        surveyImages.forEach(src => {
+            const el = document.createElement('img');
+            el.src = src;
+            el.className = 'min-w-full h-full object-contain snap-center flex-shrink-0';
+            slider.appendChild(el);
+        });
+
+        setTimeout(() => {
+            if (slider.offsetWidth) slider.scrollTo({ left: slider.offsetWidth * currentSurveyIndex, behavior: 'auto' });
+        }, 10);
+
+        imgContainer.appendChild(slider);
+
+        const updateThumbs = (idx) => {
+            const domThumbs = thumbRow.querySelectorAll('img');
+            domThumbs.forEach((t, i) => {
+                if (i === idx) {
+                    t.className = `w-28 h-20 object-cover rounded-lg border-2 cursor-pointer transition-all hover:scale-105 border-blue-500 opacity-100 ring-2 ring-blue-500/50`;
+                } else {
+                    t.className = `w-28 h-20 object-cover rounded-lg border-2 cursor-pointer transition-all hover:scale-105 border-white/20 opacity-60 hover:opacity-100`;
+                }
+            });
+        };
+
+        slider.addEventListener('scroll', () => {
+            const newIndex = Math.round(slider.scrollLeft / slider.offsetWidth);
+            if (newIndex !== currentSurveyIndex) {
+                currentSurveyIndex = newIndex;
+                updateThumbs(currentSurveyIndex);
+            }
+        });
+
+        const scrollToSlide = (idx) => {
+            slider.scrollTo({ left: slider.offsetWidth * idx, behavior: 'smooth' });
+        };
+
+        container.appendChild(imgContainer);
+
+        const thumbRow = document.createElement('div');
+        thumbRow.className = 'flex gap-4 justify-center items-center p-4 w-full flex-shrink-0 bg-slate-900/50 backdrop-blur-sm z-50';
+
+        const prevBtn = document.createElement('button');
+        prevBtn.className = 'w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all hover:scale-110';
+        prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+        prevBtn.onclick = (e) => {
+            e.stopPropagation();
+            const total = surveyImages.length;
+            const nextIdx = (currentSurveyIndex - 1 + total) % total;
+            scrollToSlide(nextIdx);
+        };
+        thumbRow.appendChild(prevBtn);
+
+        surveyImages.forEach((src, idx) => {
+            const t = document.createElement('img');
+            t.src = src;
+            t.className = `w-28 h-20 object-cover rounded-lg border-2 cursor-pointer transition-all hover:scale-105 ${idx === currentSurveyIndex ? 'border-blue-500 opacity-100 ring-2 ring-blue-500/50' : 'border-white/20 opacity-60 hover:opacity-100'}`;
+            t.onclick = (e) => {
+                e.stopPropagation();
+                scrollToSlide(idx);
+            };
+            thumbRow.appendChild(t);
+        });
+
+        const nextBtn = document.createElement('button');
+        nextBtn.className = 'w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all hover:scale-110';
+        nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+        nextBtn.onclick = (e) => {
+            e.stopPropagation();
+            const total = surveyImages.length;
+            const nextIdx = (currentSurveyIndex + 1) % total;
+            scrollToSlide(nextIdx);
+        };
+        thumbRow.appendChild(nextBtn);
+
+        container.appendChild(thumbRow);
+        iframeWrapper.appendChild(container);
+        return;
+    }
 
     if (isExcelProject && typeof excelImages !== 'undefined') {
         loadingSpinner.style.display = 'none';
@@ -507,8 +603,8 @@ function closeModal() {
 
 // Map Index to Project (Navigation Logic)
 function navigateModal(direction) {
-    // Default (DataViz/Excel) Navigation
-    if ((currentModalType === 'dataviz' || currentModalType === 'excel') && datavizProjects.length > 0) {
+    // Default (DataViz/Excel/Survey) Navigation
+    if ((currentModalType === 'dataviz' || currentModalType === 'excel' || currentModalType === 'survey') && datavizProjects.length > 0) {
         const total = datavizProjects.length;
         currentDatavizIndex = (currentDatavizIndex + direction + total) % total;
         const p = datavizProjects[currentDatavizIndex];
@@ -516,6 +612,8 @@ function navigateModal(direction) {
         // Auto-update type for next project
         if (p.title.toLowerCase().includes('excel') || p.title.toLowerCase().includes('foodpanda')) {
             currentModalType = 'excel';
+        } else if (p.title.toLowerCase().includes('well-being') || p.title.toLowerCase().includes('survey') || p.title.toLowerCase().includes('mental')) {
+            currentModalType = 'survey';
         } else {
             currentModalType = 'dataviz';
         }
@@ -627,6 +725,104 @@ document.addEventListener('DOMContentLoaded', () => {
             const total = excelImages.length;
             currentExcelIndex = (currentExcelIndex + 1) % total;
             updateExcelGallery();
+        });
+    }
+});
+
+// --- Survey Project Gallery Logic ---
+const surveyImages = [
+    'assets/images/survey/data%20collection.png',
+    'assets/images/survey/data%20entry.png',
+    'assets/images/survey/1%20socio%20demographic%20profile.png',
+    'assets/images/survey/2%20socio%20demographic%20profile.png',
+    'assets/images/survey/3%20Family%20Structure%20%26%20Household%20Size.png',
+    'assets/images/survey/4%20Screen%20Exposure%20Profile.png',
+    'assets/images/survey/5%20Parental%20Education.png',
+    'assets/images/survey/6%20Parental%20Occupation.png',
+    'assets/images/survey/7%20spearmans%20correlation.png',
+    'assets/images/survey/8%20ml%20model%20compare.png'
+];
+let currentSurveyIndex = 0;
+let isSurveyAutoScrolling = false;
+
+function updateSurveyVisuals(index) {
+    const thumbs = document.querySelectorAll('.survey-thumb');
+
+    thumbs.forEach((thumb, i) => {
+        if (i === index) {
+            thumb.classList.remove('border-transparent', 'opacity-60');
+            thumb.classList.add('border-blue-500', 'opacity-100');
+        } else {
+            thumb.classList.add('border-transparent', 'opacity-60');
+            thumb.classList.remove('border-blue-500', 'opacity-100');
+        }
+    });
+}
+
+function updateSurveyGallery() {
+    const slider = document.getElementById('surveySlider');
+    if (!slider) return;
+
+    isSurveyAutoScrolling = true;
+
+    slider.scrollTo({
+        left: slider.offsetWidth * currentSurveyIndex,
+        behavior: 'smooth'
+    });
+
+    updateSurveyVisuals(currentSurveyIndex);
+
+    setTimeout(() => { isSurveyAutoScrolling = false; }, 600);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    // Survey Slider Scroll Listener (Sync Swipe)
+    const surveySlider = document.getElementById('surveySlider');
+    if (surveySlider) {
+        surveySlider.addEventListener('scroll', () => {
+            if (isSurveyAutoScrolling) return;
+
+            const index = Math.round(surveySlider.scrollLeft / surveySlider.offsetWidth);
+            if (index !== currentSurveyIndex) {
+                currentSurveyIndex = index;
+                updateSurveyVisuals(currentSurveyIndex);
+            }
+        });
+    }
+
+    // Survey Thumbnails
+    const surveyThumbs = document.querySelectorAll('.survey-thumb');
+    surveyThumbs.forEach((thumb, index) => {
+        thumb.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            currentSurveyIndex = index;
+            updateSurveyGallery();
+        });
+    });
+
+    // Survey Arrows
+    const surveyPrevBtn = document.getElementById('surveyPrevBtn');
+    const surveyNextBtn = document.getElementById('surveyNextBtn');
+
+    if (surveyPrevBtn) {
+        surveyPrevBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const total = surveyImages.length;
+            currentSurveyIndex = (currentSurveyIndex - 1 + total) % total;
+            updateSurveyGallery();
+        });
+    }
+
+    if (surveyNextBtn) {
+        surveyNextBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const total = surveyImages.length;
+            currentSurveyIndex = (currentSurveyIndex + 1) % total;
+            updateSurveyGallery();
         });
     }
 });
